@@ -68,6 +68,5 @@ int main(int argc, char **argv)
 		if(i<n)
 			printf("\n\n\n");
 	}
-
 	return 0;
 }
