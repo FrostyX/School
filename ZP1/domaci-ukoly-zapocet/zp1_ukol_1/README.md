@@ -1,13 +1,16 @@
-INFO
+###INFO
 
-BUILD
+###BUILD
 	cd build
+
 	cmake .
+
 	make
-RUN
+###RUN
 	bin/zp1_ukol_1
 
-AUTHOR
-	Name: Jakub Kadlčík "FrostyX"
-	Email: frostyx@email.cz
+###AUTHOR
+	Name: Jakub Kadlčík
+
+	Email: jakub.kadlcik01@upol.cz
 
