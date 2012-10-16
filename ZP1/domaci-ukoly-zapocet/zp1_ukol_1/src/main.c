@@ -48,15 +48,10 @@ int main(int argc, char **argv)
 				// Za předpokladu označení pomyslného čtverce běžným ABCD:
 				// 	- První část podmínky reprezentuje úhlopříčku BD
 				// 	- Druhá část podmínky reprezentuje úhlopříčku AC
-				if((x==y) || (pozice==x))
-				{
-					printf("x");
-				}
-				else
-					printf("-");
+				printf("%c", ((x==y) || (pozice==x)) ? 'x' : ' ');
 			}
 
-			//
+			// x na příštím řádku vypíšeme o jednu Xovou souřadnici dříve
 			pozice--;
 
 			// Nový řádek vypisovaného kříže
