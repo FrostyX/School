@@ -54,38 +54,3 @@ int main(int argc, char **argv)
 
 	return 0;
 }
-
-
-/*
-		// Vezmeme první prvek nesetříděné části
-		tmp = cisla[hranice];
-
-		printf("%i==========\n", hranice);
-
-		// Projdeme setřízenou část
-		int j;
-		for(j=hranice-1; j>=0; j--)
-		{
-			//printf("--> %i>%i", cisla[j], tmp);
-			// Uděláme prostor pro nové číslo v setřízené části
-			// --> Posuneme všechny větší čísla než je tmp dozadu
-			if(cisla[j]>tmp)
-				cisla[j+1] = cisla[j];
-			if((cisla[j]<=tmp) || (j==0))
-			//else
-			{
-				cisla[j] = tmp;
-				break;
-			}
-
-			//printf(" | %i", cisla[j+1]);
-			//printf(" | %i", cisla[j]);
-			//printf("\n");
-		}
-		hranice++;
-
-		// Výpis seřazeného pole
-		int x;
-		for(x=0; x<count; x++)
-			printf("%i\n", cisla[x]);
- */
