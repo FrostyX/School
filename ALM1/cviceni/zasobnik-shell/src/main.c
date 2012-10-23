@@ -4,7 +4,7 @@
  * 	o   - odebere ze zásobníku
  * 	e   - vypíše zda je zásobník prázdný
  * 	t   - vypíše celý zásobník
- * 	q   - ukončit
+ * 	q   - ukončí shell
  *
  * Jakub Kadlčík [jakub.kadlcik01@upol.cz]
  */
