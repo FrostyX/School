@@ -35,6 +35,8 @@ int main(int argc, char **argv)
 
 		// Pro příkaz p - přidat do zásobníku
 		int cislo;
+
+		// Pro příkaz t - vypsání zásobníku
 		int i;
 
 		// Použití správného příkazu
