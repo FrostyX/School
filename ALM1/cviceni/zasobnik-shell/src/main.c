@@ -33,10 +33,8 @@ int main(int argc, char **argv)
 		char c;
 		scanf(" %c", &c);
 
-		// Načtení v příkazu p
+		// Pro příkaz p - přidat do zásobníku
 		int cislo;
-
-		// Cyklus v příkazu p
 		int i;
 
 		// Použití správného příkazu
