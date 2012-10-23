@@ -23,6 +23,7 @@ int main(int argc, char **argv)
 	// Počet čísel v zásobníku
 	int count=0;
 
+	// Vstup shellu je nekonečný
 	while(1)
 	{
 		// Zadání příkazu shellu
