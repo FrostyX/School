@@ -15,21 +15,19 @@
 int main(int argc, char **argv)
 {
 	int pole[5] = {1, 2, 3, 4, 5};
-	int i;
 
 	// Výpis původních hodnot
+	int i;
 	printf("Původní hodnoty: ");
 	for(i=0; i<5; i++)
 		printf("%i ", pole[i]);
 	printf("\n");
 
-
 	// Převrácení pole
-	int tmp;
 	int j;
 	for(i=0, j=4; i<5/2; i++, j--)
 	{
-		tmp = pole[j];
+		int tmp = pole[j];
 		pole[j] = pole[i];
 		pole[i] = tmp;
 	}
