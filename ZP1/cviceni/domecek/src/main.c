@@ -61,7 +61,7 @@ int main(int argc, char **argv)
 			}
 		}
 
-		// Pokračujeme s vypisováním domečku na dalším řádku
+		// Pokračujeme na dalším řádku
 		printf("\n");
 	}
 
