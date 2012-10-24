@@ -60,6 +60,8 @@ int main(int argc, char **argv)
 					printf(" ");
 			}
 		}
+
+		// Pokračujeme s vypisováním domečku na dalším řádku
 		printf("\n");
 	}
 
