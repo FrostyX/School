@@ -15,37 +15,31 @@ int main(int argc, char **argv)
 	// Počet čísel v poli
 	int count = sizeof(cisla)/sizeof(int);
 
-	// Určíme hranici mezi setřízenou a nesetřízenou částí
-	int setrizenych = 1;
-
 	// Pro dočasné uložení prvního prvku nesetříděné části
 	int tmp;
 
 	// Projdeme nesetřízenou část pole
 	int i, j;
-	for(i=setrizenych; i<count; i++)
+	for(i=1; i<count; i++)
 	{
 		// Uložíme si první prvek z nesetříděné části
-		tmp = cisla[setrizenych];
+		tmp = cisla[i];
 
 		// Od konce projdeme setřízenou část pole
-		for(j=setrizenych-1; j>=0; j--)
+		for(j=i; j>0; j--)
 		{
 			// Pokud je prvek ze setřízené části větší než zapamatovaný
-			if(cisla[j]>tmp)
-				cisla[j+1] = cisla[j];
-
-			// Pokud je celá setřízená část porovnána, nebo
-			//    je zapamatovaný prvek >= prvek ze setřízené části
-			if((j==0) || (cisla[j]<=tmp))
+			if(cisla[j-1]>tmp)
 			{
-				cisla[j] = tmp;
-				break;
+				cisla[j] = cisla[j-1];
+				continue;
 			}
-		}
 
-		// Posuneme hranici mezi setřízenou a nesetřízenou částí pole
-		setrizenych++;
+			// Srovnávání skončí když je zapamatovaná hodnota
+			//    ze setřízené části je <= zapamatovaná hodnota z nesetříděné
+			break;
+		}
+		cisla[j] = tmp;
 	}
 
 	// Výpis seřazeného pole
