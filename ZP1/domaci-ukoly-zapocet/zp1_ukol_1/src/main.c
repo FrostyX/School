@@ -6,7 +6,7 @@
  *
  * Jakub Kadlčík [jakub.kadlcik01@upol.cz]
  *
- * License: The BSD 3-Clause License
+ * Product is under The BSD 3-Clause License
  * Copyright (c) 2012, Jakub Kadlčík
  * All rights reserved.
  */
