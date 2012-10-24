@@ -5,6 +5,10 @@
  * 	(součástí programu musí být i test přípustnosti n).
  *
  * Jakub Kadlčík [jakub.kadlcik01@upol.cz]
+ *
+ * License: The BSD 3-Clause License
+ * Copyright (c) 2012, Jakub Kadlčík
+ * All rights reserved.
  */
 
 #include <stdio.h>
