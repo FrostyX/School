@@ -29,8 +29,10 @@ int vratVyskytNejpocetnejsiho(vyskytZnak *pole, int max);
 
 int main(int argc, char **argv)
 {
-	// @TODO: Nahradit slovem získaným od uživatele
-	char slovo[] = {"trololo"};
+	printf("Zadej řetězec: ");
+	char slovo[200] = {};
+	scanf("%s", slovo);
+	printf("\n");
 
 	// Česká abeceda sestává ze 42 písmen
 	// Do pole budeme přidávat strukturované prvky
