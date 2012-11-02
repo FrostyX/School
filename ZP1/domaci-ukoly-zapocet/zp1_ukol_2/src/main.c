@@ -16,6 +16,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h> // tolower
 
 typedef struct
 {
@@ -45,7 +46,7 @@ int main(int argc, char **argv)
 	int i;
 	for(i=0; i<strlen(slovo); i++)
 	{
-		pridejVyskytZnaku(slovo[i], vyskyt, &count);
+		pridejVyskytZnaku(tolower(slovo[i]), vyskyt, &count);
 	}
 
 	// Vypíšeme kolikrát se který znak vyskytuje
