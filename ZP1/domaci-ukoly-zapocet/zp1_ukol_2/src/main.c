@@ -33,7 +33,8 @@ int main(int argc, char **argv)
 
 	// Náhrada za asociativní pole
 	// klíč je ascii hodnota znaku a hodnota je počet výskytů
-	int vyskyt[200] = { 0 };
+	// Základní ASCII tabulka má 0 - 127 znaků
+	int vyskyt[127] = { 0 };
 
 	// Unikátní znaky nalezené ve slově
 	// Česká abeceda sestává ze 42 písmen
