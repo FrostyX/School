@@ -1,3 +1,9 @@
+/*
+ * Udělat to přes "asociativní" pole
+ * 	- místo klíču v podobě 'x' dát (int)'x'
+ * 	- Zjistit počet přidaných dokážu, protože to teď mám v kódu
+ * Zjištovat největší výskyt znaku už při přidávání do pole
+ */
 /* Zadání: Napište program, který pro vstupní řetězec
  *     o maximální délce 200 znaků, vypíše,
  *     kolikrát se v něm který znak vyskytuje
@@ -18,16 +24,6 @@
 #include <string.h>
 #include <ctype.h> // tolower
 
-typedef struct
-{
-	char znak;
-	int vyskyt;
-} vyskytZnak;
-
-void pridejVyskytZnaku(char znak, vyskytZnak *kam, int *count);
-int vratPoziciZnaku(char znak, vyskytZnak *kde, int max);
-int vratVyskytNejpocetnejsiho(vyskytZnak *pole, int max);
-
 int main(int argc, char **argv)
 {
 	printf("Zadej řetězec: ");
@@ -38,78 +34,54 @@ int main(int argc, char **argv)
 	// Česká abeceda sestává ze 42 písmen
 	// Do pole budeme přidávat strukturované prvky
 	//    alternativa k asociativnímu poli.
-	vyskytZnak vyskyt[43] = {};
+	int vyskyt[200] = { 0 };
 
+	// Unikátní znaky nalezené ve slově
+	char uqZnaky[43] = {};
+
+	// Počet výskytů nejvíce se vyskytujícího znaku
+	int nejVyskyt = 0;
 
 	// Projdeme slovo a uložíme počet výskytů jednotlivých znaků
 	int count = 0;
 	int i;
 	for(i=0; i<strlen(slovo); i++)
 	{
-		pridejVyskytZnaku(tolower(slovo[i]), vyskyt, &count);
+		int poziceNovehoZnaku = count;
+		int j=0;
+		for(j=0; j<poziceNovehoZnaku; j++)
+		{
+			if(uqZnaky[j]==tolower(slovo[i]))
+			{
+				poziceNovehoZnaku = j;
+				break;
+			}
+		}
+		vyskyt[tolower(slovo[i])]++;
+		uqZnaky[poziceNovehoZnaku] = tolower(slovo[i]);
+
+		if(nejVyskyt<vyskyt[tolower(slovo[i])])
+			nejVyskyt=vyskyt[tolower(slovo[i])];
+
+		if(count==poziceNovehoZnaku)
+			count++;
 	}
 
 	// Vypíšeme kolikrát se který znak vyskytuje
-	//int count = vratPocetZnaku(vyskyt, sizeof(vyskyt)/sizeof(vyskytZnak));
 	for(i=0; i<count; i++)
 	{
-		printf("Znak %c se v řetězci vyskytuje %ix\n", vyskyt[i].znak, vyskyt[i].vyskyt);
+		printf("Znak %c se v řetězci vyskytuje %ix\n", uqZnaky[i], vyskyt[uqZnaky[i]]);
 	}
 	printf("\n");
 
 	// Vypíšeme nejpočetnější znaky
-	int vyskytNejpocetnejsiho = vratVyskytNejpocetnejsiho(vyskyt, count);
 	printf("Nejčastěji se v řetězci vyskytuje znak: ");
 	for(i=0; i<count; i++)
 	{
-		if(vyskyt[i].vyskyt==vyskytNejpocetnejsiho)
-			printf("%c ", vyskyt[i].znak);
+		if(vyskyt[uqZnaky[i]]==nejVyskyt)
+			printf("%c ", uqZnaky[i]);
 	}
 	printf("\n");
 
 	return 0;
-}
-
-// Do pole *kam započítá výskyt daného znaku
-// Pomocí ukazatele *count vrací počet prvků v poli
-void pridejVyskytZnaku(char znak, vyskytZnak *kam, int *count)
-{
-	int pozice = vratPoziciZnaku(znak, kam, *count);
-	if(pozice!=-1)
-	{
-		kam[pozice].vyskyt++;
-	}
-	else
-	{
-		vyskytZnak novyZnak = {znak, 1};
-		kam[*count] = novyZnak;
-		*count = *count+1;
-	}
-}
-
-// Vrátí pozici na které je uložen hledaný znak.
-// Pokud znak nebude nalezen, vrátí -1
-int vratPoziciZnaku(char znak, vyskytZnak *kde, int max)
-{
-	int count = sizeof(kde)/sizeof(vyskytZnak);
-	int i;
-	for(i=0; i<max; i++)
-	{
-		if(kde[i].znak==znak)
-			return i;
-	}
-	return -1;
-}
-
-// Vrátí, kolikrát se opakuje nejpočetnější znak
-int vratVyskytNejpocetnejsiho(vyskytZnak *pole, int max)
-{
-	int i;
-	int vyskyt = 0;
-	for(i=0; i<max; i++)
-	{
-		if(pole[i].vyskyt>vyskyt)
-			vyskyt = pole[i].vyskyt;
-	}
-	return vyskyt;
 }
