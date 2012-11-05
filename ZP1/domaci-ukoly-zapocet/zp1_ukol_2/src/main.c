@@ -31,14 +31,16 @@ int main(int argc, char **argv)
 	scanf("%s", slovo);
 	printf("\n");
 
-	// Česká abeceda sestává ze 42 písmen
-	// Do pole budeme přidávat strukturované prvky
-	//    alternativa k asociativnímu poli.
+	// Náhrada za asociativní pole
+	// klíč je ascii hodnota znaku a hodnota je počet výskytů
 	int vyskyt[200] = { 0 };
 
 	// Unikátní znaky nalezené ve slově
+	// Česká abeceda sestává ze 42 písmen
 	char uqZnaky[43] = {};
 
+	// Do pole budeme přidávat strukturované prvky
+	//    alternativa k asociativnímu poli.
 	// Počet výskytů nejvíce se vyskytujícího znaku
 	int nejVyskyt = 0;
 
@@ -47,6 +49,8 @@ int main(int argc, char **argv)
 	int i;
 	for(i=0; i<strlen(slovo); i++)
 	{
+		// Zjistíme zda se jedná o první výskyt znaku,
+		//    nebo zda (na které pozici) se znak v poli nachází
 		int poziceNovehoZnaku = count;
 		int j=0;
 		for(j=0; j<poziceNovehoZnaku; j++)
@@ -57,12 +61,16 @@ int main(int argc, char **argv)
 				break;
 			}
 		}
+
+		// Započítáme výskyt znaku
 		vyskyt[tolower(slovo[i])]++;
 		uqZnaky[poziceNovehoZnaku] = tolower(slovo[i]);
 
+		// Zjišťujeme, který znak se vyskytuje nejčastěji
 		if(nejVyskyt<vyskyt[tolower(slovo[i])])
 			nejVyskyt=vyskyt[tolower(slovo[i])];
 
+		// Pokud jsme přidávali nový znak, zvýšíme počet záznamů v poli
 		if(count==poziceNovehoZnaku)
 			count++;
 	}
