@@ -1,9 +1,3 @@
-/*
- * Udělat to přes "asociativní" pole
- * 	- místo klíču v podobě 'x' dát (int)'x'
- * 	- Zjistit počet přidaných dokážu, protože to teď mám v kódu
- * Zjištovat největší výskyt znaku už při přidávání do pole
- */
 /* Zadání: Napište program, který pro vstupní řetězec
  *     o maximální délce 200 znaků, vypíše,
  *     kolikrát se v něm který znak vyskytuje
