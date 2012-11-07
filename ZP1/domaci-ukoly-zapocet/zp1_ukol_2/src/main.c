@@ -30,9 +30,8 @@ int main(int argc, char **argv)
 	// Základní ASCII tabulka má 0 - 127 znaků
 	int vyskyt[127] = { 0 };
 
-	// Unikátní znaky nalezené ve slově
-	// Česká abeceda sestává ze 42 písmen
-	char uqZnaky[43] = {};
+	// Unikátní znaky nalezené v řetězci
+	char uqZnaky[127] = {};
 
 	// Do pole budeme přidávat strukturované prvky
 	//    alternativa k asociativnímu poli.
@@ -78,11 +77,19 @@ int main(int argc, char **argv)
 	printf("\n");
 
 	// Vypíšeme nejpočetnější znaky
+	int j;
 	printf("Nejčastěji se v řetězci vyskytuje znak: ");
-	for(i=0; i<count; i++)
+	for(i=0, j=0; i<count; i++)
 	{
 		if(vyskyt[uqZnaky[i]]==nejVyskyt)
-			printf("%c ", uqZnaky[i]);
+		{
+			// Nevíme předem kolik znaků vypíšeme, proto
+			//     budeme přidávat čárku před znak (vyjma prvního)
+			if(j!=0)
+				printf(", ");
+			printf("%c", uqZnaky[i]);
+			j++;
+		}
 	}
 	printf("\n");
 
