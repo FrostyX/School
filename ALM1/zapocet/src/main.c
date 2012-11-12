@@ -1,4 +1,16 @@
-/* Zadání:
+/* Zadání: V jazyce C napište program, který:
+ *     1. Vygeneruje pole alespoň 1000 náhodných přirozených čísel menších než 1000
+ *     2. Setřídí toto pole pomocí algoritmu Quick Sort a Heapsort.
+ *        Tyto algogirtmy implementujte pomocí funkcí (tj. jedna funkce pro jeden algoritmus) tak,
+ *        aby návratovou hodnotou byl počet porovnání prvků z tříděného pole,
+ *        které daný algoritmus provedl.
+ *     3. Na terminál vypište report ve tvaru:
+ *
+ *            Algoritmus | počet porovnání
+ *            ----------------------------
+ *            Heapsort   | 1000
+ *            Quicksort  | 2000
+ *
  *
  * Jakub Kadlčík [jakub.kadlcik01@upol.cz]
  *
