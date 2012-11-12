@@ -1,0 +1,1 @@
+/usr/bin/gcc      CMakeFiles/../bin/zapocet.dir/home/frostyx/docs/skola/upol/ALM1/zapocet/src/main.c.o  -o ../bin/zapocet -rdynamic 

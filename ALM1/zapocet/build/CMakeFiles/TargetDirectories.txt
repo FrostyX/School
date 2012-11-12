@@ -1,0 +1,1 @@
+/home/frostyx/docs/skola/upol/ALM1/zapocet/build/CMakeFiles/../bin/zapocet.dir
