@@ -15,10 +15,11 @@ int heapSort(int a[], int n);
 
 int main(int argc, char **argv)
 {
-	//int cisla[] = {1, 3, 7, 6, 9, 4, 3, 5};
+	int cisla[] = {1, 3, 7, 6, 9, 4, 3, 5};
+	//int cisla[] = {1, 3, 6, 7, 9, 4, 3, 5};
 	//int cisla[] = {3, 4, 1};
 	//int cisla[] = {5, 3, 4, 1};
-	int cisla[] = {7, 1, 9, 5, 4, 8, 3, 2};
+	//int cisla[] = {7, 1, 9, 5, 4, 8, 3, 2};
 	int n = sizeof(cisla)/sizeof(int);
 	quickSort(cisla, 0, n-1);
 
@@ -37,19 +38,17 @@ int quickSort(int a[], int k, int l)
 
 	int i=k;
 	int j=l;
-	int s;
 
-	while(i<=j)
+	// Ukončení cyklu je závislé na indexech v určité části těla
+	while(1)
 	{
 		// Najdeme index prvku, který je uprostřed tříděné části pole
-		s=(k+l)/2;
-		int x=a[s];
+		int x=a[(k+l)/2];
 
 		while(a[i]<x)
 			i++;
 		while(a[j]>x)
 			j--;
-
 		if(i>j)
 			break;
 
@@ -64,7 +63,8 @@ int quickSort(int a[], int k, int l)
 	if(k<j)
 		quickSort(a, k, j);
 	if(i<l)
-		quickSort(a, i, l);
+		// Ale proč -1 ?
+		quickSort(a, i-1, l);
 
 	return 0;
 }
