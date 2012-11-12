@@ -19,7 +19,7 @@
  * All rights reserved.
  */
 
-int quickSort(int a[], int k, int l);
+//int quickSort(int a[], int k, int l);
 int heapSort(int a[], int n);
 
 #include <stdio.h>
@@ -50,12 +50,12 @@ int quickSort(int a[], int k, int l)
 	int i=k;
 	int j=l;
 
+	// Najdeme prvek, který je uprostřed tříděné části pole
+	int x=a[(k+l)/2];
+
 	// Ukončení cyklu je závislé na indexech v určité části těla
 	while(1)
 	{
-		// Najdeme prvek, který je uprostřed tříděné části pole
-		int x=a[(k+l)/2];
-
 		while(a[i]<x)
 			i++;
 		while(a[j]>x)
