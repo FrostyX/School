@@ -53,7 +53,7 @@ int quickSort(int a[], int k, int l)
 	// Ukončení cyklu je závislé na indexech v určité části těla
 	while(1)
 	{
-		// Najdeme index prvku, který je uprostřed tříděné části pole
+		// Najdeme prvek, který je uprostřed tříděné části pole
 		int x=a[(k+l)/2];
 
 		while(a[i]<x)
