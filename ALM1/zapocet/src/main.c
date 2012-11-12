@@ -35,7 +35,6 @@ int main(int argc, char **argv)
 int quickSort(int a[], int k, int l)
 {
 	int r; // Index prvku uprostřed tříděné části
-
 	int i=k;
 	int j=l;
 
