@@ -30,6 +30,7 @@ int main(int argc, char **argv)
 
 int shellSort(int cisla[], int n)
 {
+	// Aplikujeme insert sort na konkrétní posloupnosti
 	int h;
 	for(h=n/2; h>0; h=h/2)
 	{
