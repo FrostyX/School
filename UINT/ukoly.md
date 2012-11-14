@@ -16,3 +16,8 @@ Přečíst stránky wikipedie:
 (Přednáška 2)
 
 Převeďte několik logických funkcí se třemi a více proměnnými do ÚKNF a ÚDNF.
+
+### Úkol č.4:
+(Přednáška 2)
+
+Pokuste se minimalizovat logické funkce z předchozího úkolu.
