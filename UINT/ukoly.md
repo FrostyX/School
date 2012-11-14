@@ -41,3 +41,8 @@ Vytvořte binární reprezentace celých čísel pomocí aditivního, inverzníh
 (Přednáška 3)
 
 Vytvořte binární reprezentace několika racionálních čísel s fixní i plovoucí řádovou čárkou.
+
+### Úkol č.9:
+(Přednáška 3)
+
+Vytvořte binární reprezentace několika českých slov s diakritickými znaky pomocí kódování UTF-8 a UTF-16. K dispozici máte Unicode tabulku znaků (UCS).
