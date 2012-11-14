@@ -26,3 +26,8 @@ Pokuste se minimalizovat logické funkce z předchozího úkolu.
 (Přednáška 2)
 
 Vyjádřete logické operace negace, logický součin, logický součet, implikace ekvivalence a nonekvivalence pomocí (1) Shefferovy funkce a (2) Piercovy funkce.
+
+### Úkol č.6:
+(Přednáška 2)
+
+Nakreslete schéma zapojení logického obvodu realizujícího logické operace NOT, AND, OR, implikace, ekvivalence, a XOR pomocí logických členů realizujících operaci (1) NAND a (2) NOR
