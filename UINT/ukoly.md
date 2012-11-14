@@ -11,3 +11,8 @@ Přečíst stránky wikipedie:
 
 1. Pro několik čísel zjistěte (hodnotu) čísla ze zápisů ve dvojkové, osmičkové, desítkové a šestnáctkové soustavě.
 2. Pro několik čísel zjistěte zápis čísla (dané hodnoty) ve dvojkové, osmičkové, desítkové a šestnáctkové soustavě.
+
+### Úkol č.3:
+(Přednáška 2)
+
+Převeďte několik logických funkcí se třemi a více proměnnými do ÚKNF a ÚDNF.
