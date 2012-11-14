@@ -1,3 +1,6 @@
+Na přednáškách zadané domácí úkoly. Nepovinné, ale doporučené umět na zápočet
+
+
 ### Úkol č.1:
 (Přednáška 1)
 
