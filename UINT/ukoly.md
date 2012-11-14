@@ -21,3 +21,8 @@ Převeďte několik logických funkcí se třemi a více proměnnými do ÚKNF a
 (Přednáška 2)
 
 Pokuste se minimalizovat logické funkce z předchozího úkolu.
+
+### Úkol č.5:
+(Přednáška 2)
+
+Vyjádřete logické operace negace, logický součin, logický součet, implikace ekvivalence a nonekvivalence pomocí (1) Shefferovy funkce a (2) Piercovy funkce.
