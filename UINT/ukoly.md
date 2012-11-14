@@ -34,4 +34,10 @@ Nakreslete schéma zapojení logického obvodu realizujícího logické operace 
 
 ### Úkol č.7:
 (Přednáška 3)
+
 Vytvořte binární reprezentace celých čísel pomocí aditivního, inverzního (jedničkově doplňkového) a (dvojkově doplňkového) kódu.
+
+### Úkol č.8:
+(Přednáška 3)
+
+Vytvořte binární reprezentace několika racionálních čísel s fixní i plovoucí řádovou čárkou.
