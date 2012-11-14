@@ -7,6 +7,7 @@ Přečíst stránky wikipedie:
 - Computer: [http://en.wikipedia.org/wiki/Computer](http://en.wikipedia.org/wiki/Computer)
 
 
+
 ### Úkol č.2:
 (Přednáška 2)
 
