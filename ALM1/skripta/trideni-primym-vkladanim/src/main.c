@@ -15,12 +15,23 @@ int main(int argc, char **argv)
 	// Počet čísel v poli
 	int count = sizeof(cisla)/sizeof(int);
 
+
+	// Výpis seřazeného pole
+	int i;
+	for(i=0; i<count; i++)
+		printf("%i\n", cisla[i]);
+
+	return 0;
+}
+
+int shellSort(int cisla[], int n)
+{
 	// Pro dočasné uložení prvního prvku nesetříděné části
 	int tmp;
 
 	// Projdeme nesetřízenou část pole
 	int i, j;
-	for(i=1; i<count; i++)
+	for(i=1; i<n; i++)
 	{
 		// Uložíme si první prvek z nesetříděné části
 		tmp = cisla[i];
@@ -41,10 +52,4 @@ int main(int argc, char **argv)
 		}
 		cisla[j] = tmp;
 	}
-
-	// Výpis seřazeného pole
-	for(i=0; i<count; i++)
-		printf("%i\n", cisla[i]);
-
-	return 0;
 }

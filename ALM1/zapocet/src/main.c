@@ -22,18 +22,21 @@
 //int quickSort(int a[], int k, int l);
 int heapSort(int a[], int n);
 
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 
 int main(int argc, char **argv)
 {
 	int cisla[] = {1, 3, 7, 6, 9, 4, 3, 5};
+	//int cisla[] = {41, 67, 34, 0, 69, 24, 78, 58, 62, 64, 5, 45, 81, 27, 61};
 	//int cisla[] = {1, 3, 6, 7, 9, 4, 3, 5};
 	//int cisla[] = {3, 4, 1};
 	//int cisla[] = {5, 3, 4, 1};
 	//int cisla[] = {7, 1, 9, 5, 4, 8, 3, 2};
 	int n = sizeof(cisla)/sizeof(int);
-	quickSort(cisla, 0, n-1);
+	//quickSort(cisla, 0, n-1);
+	heapSort(cisla, n);
 
 
 	int i;
@@ -82,5 +85,44 @@ int quickSort(int a[], int k, int l)
 
 int heapSort(int a[], int n)
 {
+	// Projdeme haldu od kořene k listům
+	// @TODO Přepsat podmínku cyklu
+	int i;
+	for(i=0; i<n; i++)
+	{
+		int iLevy = 2*i+1;
+		int iPravy = 2*i+2;
+
+		// Pokud existuje levý potomek
+		if(iLevy<n)
+		{
+			// Pokud je potomek větší než rodič
+			if(a[iLevy]>a[i])
+			{
+				int tmp = a[iLevy];
+				a[iLevy] = a[i];
+				a[i] = tmp;
+				i=0; // @TODO Nevracet na začátek ale pouze na předchozí uzel
+			}
+		}
+
+		// Pokud existuje pravý potomek
+		if(iPravy<n)
+		{
+			// Pokud je potomek větší než rodič
+			if(a[iPravy]>a[i])
+			{
+				int tmp = a[iPravy];
+				a[iPravy] = a[i];
+				a[i] = tmp;
+				i=0; // @TODO Nevracet na začátek ale pouze na předchozí uzel
+			}
+		}
+	}
+
+	/*
+	// Zjistíme výšku stromu
+	int h = log(n)/log(2);
+	*/
 	return 0;
 }
