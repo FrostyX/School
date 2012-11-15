@@ -66,3 +66,8 @@ Vytvořte binární reprezentace několika racionálních čísel s fixní i plo
 (Přednáška 3)
 
 Vytvořte binární reprezentace několika českých slov s diakritickými znaky pomocí kódování UTF-8 a UTF-16. K dispozici máte Unicode tabulku znaků (UCS).
+
+
+--------------------
+
+Moje řešení, které vůbec nemusejí být správná! Pokud najdete chybu, poprosil bych, abyste mi dali vědět.
