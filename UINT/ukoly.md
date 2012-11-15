@@ -1,5 +1,14 @@
 Na přednáškách zadané domácí úkoly. Nepovinné, ale doporučené umět na zápočet
 
+- [Úkol č.1](https://github.com/FrostyX/School/blob/master/UINT/ukoly.md#%C3%9Akol-%C4%8D1)
+- [Úkol č.2](https://github.com/FrostyX/School/blob/master/UINT/ukoly.md#%C3%9Akol-%C4%8D2)
+- [Úkol č.3](https://github.com/FrostyX/School/blob/master/UINT/ukoly.md#%C3%9Akol-%C4%8D3)
+- [Úkol č.4](https://github.com/FrostyX/School/blob/master/UINT/ukoly.md#%C3%9Akol-%C4%8D4)
+- [Úkol č.5](https://github.com/FrostyX/School/blob/master/UINT/ukoly.md#%C3%9Akol-%C4%8D5)
+- [Úkol č.6](https://github.com/FrostyX/School/blob/master/UINT/ukoly.md#%C3%9Akol-%C4%8D6)
+- [Úkol č.7](https://github.com/FrostyX/School/blob/master/UINT/ukoly.md#%C3%9Akol-%C4%8D7)
+- [Úkol č.8](https://github.com/FrostyX/School/blob/master/UINT/ukoly.md#%C3%9Akol-%C4%8D8)
+- [Úkol č.9](https://github.com/FrostyX/School/blob/master/UINT/ukoly.md#%C3%9Akol-%C4%8D9)
 
 ### Úkol č.1:
 (Přednáška 1)

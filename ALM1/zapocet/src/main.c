@@ -83,6 +83,13 @@ int quickSort(int a[], int k, int l)
 	return 0;
 }
 
+/*
+ * http://www.algoritmy.net/article/17/Heapsort
+ * http://en.wikipedia.org/wiki/Heapsort
+ * http://cs.wikipedia.org/wiki/Heapsort
+ * http://cs.wikipedia.org/wiki/Bin%C3%A1rn%C3%AD_strom
+ * http://www.devbook.cz/algoritmus-heap-sort-trideni-cisel-podle-velikosti
+ */
 int heapSort(int a[], int n)
 {
 	// Projdeme haldu od kořene k listům
