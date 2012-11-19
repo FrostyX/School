@@ -15,15 +15,12 @@ int main(int argc, char **argv)
 	// Počet čísel v poli
 	int count = sizeof(cisla)/sizeof(int);
 
-	// Počet pozic, které je potřeba projít a porovnat
-	int projit = count;
-
 	// Průchod neseřazenou částí pole
 	int i, j;
-	for(j=0; j<=projit; j++)
+	for(j=0; j<=count; j++)
 	{
 		// Posunutí jednoho prvku nakonec
-		for(i=0; i<=projit; i++)
+		for(i=0; i<=count-j; i++)
 		{
 			// Pokud je číslo větší než následující
 			if(cisla[i]>cisla[i+1])
@@ -34,10 +31,6 @@ int main(int argc, char **argv)
 				cisla[i] = tmp;
 			}
 		}
-
-		// Příště nám bude stačit projít méně prvků,
-		//    protože některé jsou již seřazeny
-		projit--;
 	}
 
 	// Výpis seřazeného pole
