@@ -97,6 +97,7 @@ int heapSort(int a[], int n)
 	// Projdeme haldu od kořene k listům
 	// @TODO Přepsat podmínku cyklu
 	int i;
+	int opakovat=0;
 	for(i=0; i<n; i++)
 	{
 		int iLevy = 2*i+1;
@@ -111,8 +112,7 @@ int heapSort(int a[], int n)
 				int tmp = a[iLevy];
 				a[iLevy] = a[i];
 				a[i] = tmp;
-				i=-1; // @TODO Nevracet na začátek ale pouze na předchozí uzel
-				continue;
+				opakovat = 1;
 			}
 		}
 
@@ -125,9 +125,15 @@ int heapSort(int a[], int n)
 				int tmp = a[iPravy];
 				a[iPravy] = a[i];
 				a[i] = tmp;
-				i=-1; // @TODO Nevracet na začátek ale pouze na předchozí uzel
-				continue;
+				opakovat = 1;
 			}
+		}
+
+		if(opakovat)
+		{
+			i=-1; // @TODO Nevracet na začátek ale pouze na předchozí uzel
+			opakovat = 0;
+			continue;
 		}
 	}
 
