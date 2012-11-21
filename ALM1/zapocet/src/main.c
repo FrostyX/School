@@ -19,7 +19,7 @@
  * All rights reserved.
  */
 
-//int quickSort(int a[], int k, int l);
+int quickSort(int a[], int k, int l);
 int heapSort(int a[], int n);
 
 #include <math.h>
