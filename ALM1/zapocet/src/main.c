@@ -29,8 +29,8 @@ int heapSort(int a[], int n);
 int main(int argc, char **argv)
 {
 	//int cisla[] = {1, 3, 7, 6, 9, 4, 3, 5};
-	//int cisla[] = {17, 1, 3, 28, 8, 7, 4, 2};
-	int cisla[] = {41, 67, 34, 0, 69, 24, 78, 58, 62, 64, 5, 45, 81, 27, 61};
+	int cisla[] = {17, 1, 3, 28, 8, 7, 4, 2};
+	//int cisla[] = {41, 67, 34, 0, 69, 24, 78, 58, 62, 64, 5, 45, 81, 27, 61};
 	//int cisla[] = {1, 3, 6, 7, 9, 4, 3, 5};
 	//int cisla[] = {3, 4, 1};
 	//int cisla[] = {5, 3, 4, 1};
@@ -135,6 +135,20 @@ int heapSort(int a[], int n)
 			opakovat = 0;
 			continue;
 		}
+	}
+
+	// Pokud již nejsou setřízené všechny prvky
+	if(n!=0)
+	{
+		// Vyměníme poslední prvek s kořenem, který nyní přesuneme
+		//     na začátek setřízené části
+		int tmp = a[0];
+		a[0] = a[n-1];
+		a[n-1] = tmp;
+
+		// Znovu zhaldujeme setřízenou část, protože přesunutím
+		//     posledního prvku na začátek jsou porušeny pravidla haldy
+		heapSort(a, n-1);
 	}
 
 	/*
