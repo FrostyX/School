@@ -38,12 +38,14 @@ int main(int argc, char **argv)
 	//int cisla[] = {5, 3, 4, 1};
 	//int cisla[] = {7, 1, 9, 5, 4, 8, 3, 2};
 	int n = sizeof(cisla)/sizeof(int);
-	quickSort(cisla, 0, n-1);
-	//
-
-	//heapSort(cisla2, n);
-
 	int *cisla2 = copyArray(cisla, n);
+
+
+	printf("Algoritmus | Počet porovnání\n");
+	printf("----------------------------\n");
+	printf("Heapsort   | %i\n", heapSort(cisla2, n));
+	printf("Quicksort  | %i\n", quickSort(cisla, 0, n-1));
+
 
 
 	int i;
