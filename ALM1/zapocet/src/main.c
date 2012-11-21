@@ -102,6 +102,9 @@ int quickSort(int a[], int k, int l)
  */
 int heapSort(int a[], int n)
 {
+	// Počet porovnání prvků z tříděného pole
+	int porovnani = 0;
+
 	// Projdeme haldu od kořene k listům
 	// @TODO Přepsat podmínku cyklu
 	int i;
@@ -122,6 +125,7 @@ int heapSort(int a[], int n)
 				a[i] = tmp;
 				opakovat = 1;
 			}
+			porovnani++;
 		}
 
 		// Pokud existuje pravý potomek
@@ -135,6 +139,7 @@ int heapSort(int a[], int n)
 				a[i] = tmp;
 				opakovat = 1;
 			}
+			porovnani++;
 		}
 
 		if(opakovat)
@@ -156,9 +161,9 @@ int heapSort(int a[], int n)
 
 		// Znovu zhaldujeme setřízenou část, protože přesunutím
 		//     posledního prvku na začátek jsou porušeny pravidla haldy
-		heapSort(a, n-1);
+		porovnani += heapSort(a, n-1);
 	}
-	return 0;
+	return porovnani;
 }
 
 // Zkopíruje pole a vrátí ukazatel na jeho první prvek
