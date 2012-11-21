@@ -21,10 +21,12 @@
 
 int quickSort(int a[], int k, int l);
 int heapSort(int a[], int n);
+int *copyArray(int a[], int n);
 
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
+
 
 int main(int argc, char **argv)
 {
@@ -36,13 +38,17 @@ int main(int argc, char **argv)
 	//int cisla[] = {5, 3, 4, 1};
 	//int cisla[] = {7, 1, 9, 5, 4, 8, 3, 2};
 	int n = sizeof(cisla)/sizeof(int);
-	//quickSort(cisla, 0, n-1);
-	//heapSort(cisla, n);
+	quickSort(cisla, 0, n-1);
+	//
+
+	//heapSort(cisla2, n);
+
+	int *cisla2 = copyArray(cisla, n);
 
 
 	int i;
 	for(i=0; i<n; i++)
-		printf("%i\n", cisla[i]);
+		printf("%i\n", cisla2[i]);
 	return 0;
 }
 
@@ -151,4 +157,15 @@ int heapSort(int a[], int n)
 		heapSort(a, n-1);
 	}
 	return 0;
+}
+
+// Zkopíruje pole a vrátí ukazatel na jeho první prvek
+int *copyArray(int a[], int n)
+{
+	int *b;
+	b = (int *) malloc(n);
+	int i;
+	for(i=0; i<n; i++)
+		b[i] = a[i];
+	return b;
 }
