@@ -37,7 +37,7 @@ int main(int argc, char **argv)
 	//int cisla[] = {7, 1, 9, 5, 4, 8, 3, 2};
 	int n = sizeof(cisla)/sizeof(int);
 	//quickSort(cisla, 0, n-1);
-	heapSort(cisla, n);
+	//heapSort(cisla, n);
 
 
 	int i;
@@ -150,10 +150,5 @@ int heapSort(int a[], int n)
 		//     posledního prvku na začátek jsou porušeny pravidla haldy
 		heapSort(a, n-1);
 	}
-
-	/*
-	// Zjistíme výšku stromu
-	int h = log(n)/log(2);
-	*/
 	return 0;
 }
