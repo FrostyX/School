@@ -100,8 +100,8 @@ int heapSort(int a[], int n)
 	int opakovat=0;
 	for(i=0; i<n; i++)
 	{
-		int iLevy = 2*i+1;
-		int iPravy = 2*i+2;
+		int iLevy = 2*i+1; // Index levého potomka
+		int iPravy = 2*i+2; // Index pravého potomka
 
 		// Pokud existuje levý potomek
 		if(iLevy<n)
