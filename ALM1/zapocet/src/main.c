@@ -31,8 +31,8 @@ int *copyArray(int a[], int n);
 int main(int argc, char **argv)
 {
 	//int cisla[] = {1, 3, 7, 6, 9, 4, 3, 5};
-	int cisla[] = {17, 1, 3, 28, 8, 7, 4, 2};
-	//int cisla[] = {41, 67, 34, 0, 69, 24, 78, 58, 62, 64, 5, 45, 81, 27, 61};
+	//int cisla[] = {17, 1, 3, 28, 8, 7, 4, 2};
+	int cisla[] = {41, 67, 34, 0, 69, 24, 78, 58, 62, 64, 5, 45, 81, 27, 61};
 	//int cisla[] = {1, 3, 6, 7, 9, 4, 3, 5};
 	//int cisla[] = {3, 4, 1};
 	//int cisla[] = {5, 3, 4, 1};
@@ -58,6 +58,9 @@ int main(int argc, char **argv)
 // l - Index konce části pole která je právě tříděna (n-1)
 int quickSort(int a[], int k, int l)
 {
+	// Počet porovnání prvků z tříděného pole
+	int porovnani = 0;
+
 	int r; // Index prvku uprostřed tříděné části
 	int i=k;
 	int j=l;
@@ -69,9 +72,15 @@ int quickSort(int a[], int k, int l)
 	while(1)
 	{
 		while(a[i]<x)
+		{
 			i++;
+			porovnani++;
+		}
 		while(a[j]>x)
+		{
 			j--;
+			porovnani++;
+		}
 		if(i>j)
 			break;
 
@@ -84,12 +93,12 @@ int quickSort(int a[], int k, int l)
 		j--;
 	}
 	if(k<j)
-		quickSort(a, k, j);
+		porovnani += quickSort(a, k, j);
 	if(i<l)
 		// Ale proč -1 ?
-		quickSort(a, i-1, l);
+		porovnani += quickSort(a, i-1, l);
 
-	return 0;
+	return porovnani;
 }
 
 /*
