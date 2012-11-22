@@ -22,7 +22,32 @@ typedef struct
 	char email[15];
 } osoba;
 
+int vytvor_osobu(char *jmeno, char *prijmeni, char *adresa, char den, char mesic, int rok, char *telefon, char *email, osoba *seznam_osob);
+int zrus_osobu(char *celejmeno, osoba *seznam);
+osoba *najdi_osobu(char *kde, char *co, osoba *seznam_osob);
+int tisk(osoba *seznam_osob);
+
 int main(int argc, char **argv)
+{
+	return 0;
+}
+
+int vytvor_osobu(char *jmeno, char *prijmeni, char *adresa, char den, char mesic, int rok, char *telefon, char *email, osoba *seznam_osob)
+{
+	return 0;
+}
+
+int zrus_osobu(char *celejmeno, osoba *seznam)
+{
+	return 0;
+}
+
+osoba *najdi_osobu(char *kde, char *co, osoba *seznam_osob)
+{
+	return 0;
+}
+
+int tisk(osoba *seznam_osob)
 {
 	return 0;
 }
