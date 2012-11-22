@@ -10,6 +10,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+typedef struct
+{
+	char jmeno[10];
+	char prijmeni[15];
+	char adresa[20];
+	char den;
+	char mesic;
+	int rok;
+	char telefon[16];
+	char email[15];
+} osoba;
+
 int main(int argc, char **argv)
 {
 	return 0;
