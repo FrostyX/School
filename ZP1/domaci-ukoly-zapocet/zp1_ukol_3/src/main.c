@@ -2,6 +2,7 @@
  *
  * Jakub Kadlčík [jakub.kadlcik01@upol.cz]
  *
+ * Seznamy: http://www.linuxsoft.cz/article.php?id_article=868
  * Product is under The BSD 3-Clause License
  * Copyright (c) 2012, Jakub Kadlčík
  * All rights reserved.
@@ -11,18 +12,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef struct
+typedef struct s
 {
-	/*
-	char *jmeno;
-	char *prijmeni;
-	char *adresa;
-	char den;
-	char mesic;
-	int rok;
-	char *telefon;
-	char *email;
-	*/
 	char jmeno[10];
 	char prijmeni[15];
 	char adresa[20];
@@ -31,9 +22,11 @@ typedef struct
 	int rok;
 	char telefon[16];
 	char email[15];
+	struct s *dalsi;
 } osoba;
 
-int vytvor_osobu(char *jmeno, char *prijmeni, char *adresa, char den, char mesic, int rok, char *telefon, char *email, osoba *seznam_osob);
+//int vytvor_osobu(char *jmeno, char *prijmeni, char *adresa, char den, char mesic, int rok, char *telefon, char *email, osoba *seznam_osob);
+osoba *vytvor_osobu(char *jmeno, char *prijmeni, char *adresa, char den, char mesic, int rok, char *telefon, char *email, osoba *seznam_osob);
 int zrus_osobu(char *celejmeno, osoba *seznam);
 osoba *najdi_osobu(char *kde, char *co, osoba *seznam_osob);
 int tisk(osoba *seznam_osob);
@@ -41,36 +34,37 @@ int tisk(osoba *seznam_osob);
 int main(int argc, char **argv)
 {
 	// Vytvoření dynamického pole pro ukládání prvků datového typu osoba
-	osoba *osoby;
+	osoba *osoby = NULL;
 
 	// Použití funkcí pro práci s osobami
-	vytvor_osobu("Tony", "Stark", "New York City", 2, 3, 1963, "987 654 321", "ironman@foo.com", osoby);
-	//vytvor_osobu("Bruce", "Wayne", "Gotham City", 1, 5, 1939, "123 456 789", "batman@foo.com", osoby);
+	osoby = vytvor_osobu("Tony", "Stark", "New York City", 2, 3, 1963, "987 654 321", "ironman@foo.com", osoby);
+	osoby = vytvor_osobu("Bruce", "Wayne", "Gotham City", 1, 5, 1939, "123 456 789", "batman@foo.com", osoby);
 
-	printf("%s\n", osoby[0].jmeno);
+	while(osoby!=NULL)
+	{
+		printf("%s\n", osoby->jmeno);
+		osoby = osoby->dalsi;
+	}
 	return 0;
 }
 
-int vytvor_osobu(char *jmeno, char *prijmeni, char *adresa, char den, char mesic, int rok, char *telefon, char *email, osoba *seznam_osob)
+osoba *vytvor_osobu(char *jmeno, char *prijmeni, char *adresa, char den, char mesic, int rok, char *telefon, char *email, osoba *seznam_osob)
 {
 	// Vytvoření datové struktury z předaných parametrů
-	//osoba novaOsoba = {jmeno, prijmeni, adresa, den, mesic, rok, telefon, email};
-	//novaOsoba.jmeno = (char*)malloc(sizeof(jmeno));
-	osoba novaOsoba;
-	strcpy(novaOsoba.jmeno, jmeno);
-	strcpy(novaOsoba.prijmeni, prijmeni);
+	osoba *novaOsoba = (osoba*)malloc(sizeof(osoba));
+	strcpy(novaOsoba->jmeno, jmeno);
+	strcpy(novaOsoba->prijmeni, prijmeni);
+	strcpy(novaOsoba->adresa, adresa);
+	novaOsoba->den = den;
+	novaOsoba->mesic = mesic;
+	novaOsoba->rok = rok;
+	strcpy(novaOsoba->telefon, telefon);
+	strcpy(novaOsoba->email, email);
 
-
-	// Zvětšení pole, aby se do něj vešel další prvek datového typu osoba
-	int n = sizeof(seznam_osob)/sizeof(osoba); // Počet prvků v poli
-	seznam_osob = (osoba*)malloc(sizeof(seznam_osob)+sizeof(osoba));
-
-	// Přidání nové osoby do předaného pole
-	seznam_osob[n] = novaOsoba;
-
-	printf("%s\n", seznam_osob[0].jmeno);
-
-	return n+1;
+	// Tohle ne tak úplně chápu
+	novaOsoba->dalsi = seznam_osob;
+	seznam_osob = novaOsoba;
+	return seznam_osob;
 }
 
 int zrus_osobu(char *celejmeno, osoba *seznam)
