@@ -153,7 +153,10 @@ int heapSort(int a[], int n)
 
 		if(opakovat)
 		{
-			i=-1; // @TODO Nevracet na začátek ale pouze na předchozí uzel
+			// Vrátíme se na rodiče;
+			// Ve skutečnosti se musíme vrátit před něj
+			//     - nesmíme zapomenout na inkrementaci cyklu
+			i=((i-1)/2)-1;
 			opakovat = 0;
 			continue;
 		}
