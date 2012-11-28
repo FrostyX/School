@@ -94,16 +94,20 @@ Převod z libovolné soustavy do desítkové ukázaný na příkladu:
 	- ABCD = 10*16^3 + 11*16^2 + 12*16 + 13 = 40960 + 2816 + 192 + 13 = 43981
 
 #### Část 2)
+Převod z desítkové soustavy do libovolné:
+Dělíme číslo základem soustavy dokud nedostaneme nulu. Zbytky po dělení napsané od konce jsou výsledkem
 
 - Převod do dvojkové soustavy:
-	- 358
-	- 432
-	- 37
+	- 358: 358/2 = 179 (zb 0) / 2 = 89 (zb 1) / 2 = 44 (zb 1) / 2 = 22 (zb 0) / 2 = 11 (zb 0) / 2 = 5 (zb 1) / 2 = 2 (zb 1) / 2 = 1 (zb 0) / 2 = 0 (zb 1)
+	      => 101100110
+	- 432: 432/2 = 216 (zb 0) / 2 = 108 (zb 0) / 2 = 54 (zb 0) / 2 = 27 (zb 0) / 2 = 13 (zb 1) / 2 = 6 (zb 1) / 2 = 3 (zb 0) / 2 = 1 (zb 1) / 2 = 0 (zb 1)
+	      => 110110000
+	- 37: 32 + 4 + 1 => 100101
 - Převod do osmičkové soustavy:
-	- 123
-	- 5478
-	- 23
+	- 123: 123/8 = 15 (zb 3) / 8 = 1 (zb 7) / 8 = 0 (zb 1) => 173
+	- 5478: 5478/8 = 684 (zb 6) / 8 = 85 (zb 4) / 8 = 10 (zb 5) / 8 = 1 (zb 2) / 8 = 0 (zb 1) => 12546
+	- 23: 23/8 = 2 (zb 7) / 8 = 0 (zb 2) => 27
 - Převod do šestnáctkové soustavy:
-	- 10932
-	- 374
-	- 1234
+	- 10932 = 10932/16 = 683 (zb 4) / 16 = 42 (zb 11) / 16 = 2 (zb 10) / 16 = 0 (zb 2) => 2AB4
+	- 374 = 374/16 = 23 (zb 6) / 16 = 1 (zb 7) / 16 = 0 (zb 1) => 176
+	- 1234 = 1234/16 = 77 (zb 2) / 16 = 4 (zb 13) / 16 = 0 (zb 4) => 4D2
