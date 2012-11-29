@@ -126,6 +126,7 @@ Dělíme číslo základem soustavy dokud nedostaneme nulu. Zbytky po dělení n
 	1 1 0 1
 	1 1 1 1
 ÚDNF: (!p & !q & !r) | (!p & !q & r) | (!p & q & !r) | (!p & q & r) | (p & !q & !r) | (p & q & !r) | (p & q & r)
+
 ÚKNF: (!p | q | !r)
 
 #### Druhá funkce
@@ -141,4 +142,5 @@ Dělíme číslo základem soustavy dokud nedostaneme nulu. Zbytky po dělení n
 	1 1 0 0
 	1 1 1 1
 ÚDNF: (!p & !q & !r) | (!p & !q & r) | (!p & q & r) | (p & q & r)
+
 ÚKNF: (p | !q | r) & (!p | q | r) & (!p | q | !r) & (!p | !q | r)
