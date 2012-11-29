@@ -20,7 +20,7 @@ Přečíst stránky wikipedie:
 
 
 ### Úkol č.2:
-(Přednáška 2)
+(Přednáška 2) [[řešení](https://github.com/FrostyX/School/blob/master/UINT/ukoly.md#%C5%98e%C5%A1en%C3%AD-%C3%BAkolu-%C4%8D2)]
 
 1. Pro několik čísel zjistěte (hodnotu) čísla ze zápisů ve dvojkové, osmičkové, desítkové a šestnáctkové soustavě.
 2. Pro několik čísel zjistěte zápis čísla (dané hodnoty) ve dvojkové, osmičkové, desítkové a šestnáctkové soustavě.

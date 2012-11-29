@@ -20,7 +20,7 @@
  */
 
 int quickSort(int a[], int k, int l);
-int heapSort(int a[], int n);
+int heapSort(int a[], int z, int n);
 int *copyArray(int a[], int n);
 
 #include <math.h>
@@ -43,7 +43,7 @@ int main(int argc, char **argv)
 
 	printf("Algoritmus | Počet porovnání\n");
 	printf("----------------------------\n");
-	printf("Heapsort   | %i\n", heapSort(cisla2, n));
+	printf("Heapsort   | %i\n", heapSort(cisla2, 0, n));
 	printf("Quicksort  | %i\n", quickSort(cisla, 0, n-1));
 
 
@@ -109,8 +109,9 @@ int quickSort(int a[], int k, int l)
  * http://www.devbook.cz/algoritmus-heap-sort-trideni-cisel-podle-velikosti
  * http://www.youtube.com/watch?v=6NB0GHY11Iw
  */
-int heapSort(int a[], int n)
+int heapSort(int a[], int z, int n)
 {
+	printf("n:%i\n", n);
 	// Počet porovnání prvků z tříděného pole
 	int porovnani = 0;
 
@@ -118,7 +119,7 @@ int heapSort(int a[], int n)
 	// @TODO Přepsat podmínku cyklu
 	int i;
 	int opakovat=0;
-	for(i=0; i<n; i++)
+	for(i=z; i<n; i++)
 	{
 		int iLevy = 2*i+1; // Index levého potomka
 		int iPravy = 2*i+2; // Index pravého potomka
@@ -162,6 +163,7 @@ int heapSort(int a[], int n)
 		}
 	}
 
+	printf("p:%i\n", porovnani);
 	// Pokud již nejsou setřízené všechny prvky
 	if(n!=0)
 	{
@@ -173,7 +175,7 @@ int heapSort(int a[], int n)
 
 		// Znovu zhaldujeme setřízenou část, protože přesunutím
 		//     posledního prvku na začátek jsou porušeny pravidla haldy
-		porovnani += heapSort(a, n-1);
+		porovnani += heapSort(a, 0, n-1);
 	}
 	return porovnani;
 }
