@@ -31,8 +31,9 @@
 			((< x 0)(- x 2))
 			(else x))))
 
-;6
+; 6
 (define implies
 	(lambda (p q)
 		(or (not p) q)))
+
 
