@@ -116,29 +116,29 @@ Dělíme číslo základem soustavy dokud nedostaneme nulu. Zbytky po dělení n
 #### První funkce
 (p & r) -> q
 
-p q r V
-0 0 0 1
-0 0 1 1
-0 1 0 1
-0 1 1 1
-1 0 0 1
-1 0 1 0
-1 1 0 1
-1 1 1 1
+	p q r V
+	0 0 0 1
+	0 0 1 1
+	0 1 0 1
+	0 1 1 1
+	1 0 0 1
+	1 0 1 0
+	1 1 0 1
+	1 1 1 1
 ÚDNF: (!p & !q & !r) | (!p & !q & r) | (!p & q & !r) | (!p & q & r) | (p & !q & !r) | (p & q & !r) | (p & q & r)
 ÚKNF: (!p | q | !r)
 
 #### Druhá funkce
 (p | q) <=> (q & r)
 
-p q r V
-0 0 0 1
-0 0 1 1
-0 1 0 0
-0 1 1 1
-1 0 0 0
-1 0 1 0
-1 1 0 0
-1 1 1 1
+	p q r V
+	0 0 0 1
+	0 0 1 1
+	0 1 0 0
+	0 1 1 1
+	1 0 0 0
+	1 0 1 0
+	1 1 0 0
+	1 1 1 1
 ÚDNF: (!p & !q & !r) | (!p & !q & r) | (!p & q & r) | (p & q & r)
 ÚKNF: (p | !q | r) & (!p | q | r) & (!p | q | !r) & (!p | !q | r)
