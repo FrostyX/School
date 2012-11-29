@@ -27,7 +27,7 @@ Přečíst stránky wikipedie:
 
 
 ### Úkol č.3:
-(Přednáška 2)
+(Přednáška 2) [[řešení](https://github.com/FrostyX/School/blob/master/UINT/ukoly.md#%C5%98e%C5%A1en%C3%AD-%C3%BAkolu-%C4%8D3)]
 
 Převeďte několik logických funkcí se třemi a více proměnnými do ÚKNF a ÚDNF.
 
@@ -111,3 +111,34 @@ Dělíme číslo základem soustavy dokud nedostaneme nulu. Zbytky po dělení n
 	- 10932 = 10932/16 = 683 (zb 4) / 16 = 42 (zb 11) / 16 = 2 (zb 10) / 16 = 0 (zb 2) => 2AB4
 	- 374 = 374/16 = 23 (zb 6) / 16 = 1 (zb 7) / 16 = 0 (zb 1) => 176
 	- 1234 = 1234/16 = 77 (zb 2) / 16 = 4 (zb 13) / 16 = 0 (zb 4) => 4D2
+
+### Řešení úkolu č.3
+#### První funkce
+(p & r) -> q
+
+p q r V
+0 0 0 1
+0 0 1 1
+0 1 0 1
+0 1 1 1
+1 0 0 1
+1 0 1 0
+1 1 0 1
+1 1 1 1
+ÚDNF: (!p & !q & !r) | (!p & !q & r) | (!p & q & !r) | (!p & q & r) | (p & !q & !r) | (p & q & !r) | (p & q & r)
+ÚKNF: (!p | q | !r)
+
+#### Druhá funkce
+(p | q) <=> (q & r)
+
+p q r V
+0 0 0 1
+0 0 1 1
+0 1 0 0
+0 1 1 1
+1 0 0 0
+1 0 1 0
+1 1 0 0
+1 1 1 1
+ÚDNF: (!p & !q & !r) | (!p & !q & r) | (!p & q & r) | (p & q & r)
+ÚKNF: (p | !q | r) & (!p | q | r) & (!p | q | !r) & (!p | !q | r)
