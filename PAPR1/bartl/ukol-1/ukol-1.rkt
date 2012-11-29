@@ -36,4 +36,8 @@
 	(lambda (p q)
 		(or (not p) q)))
 
+; 7
+(define my-even
+	(lambda a)
+		)
 
