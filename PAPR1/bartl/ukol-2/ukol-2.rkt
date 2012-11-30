@@ -38,3 +38,8 @@
 		(make-c
 			(- (* (real a) (real b)) (* (imag a) (imag b)))
 			(+ (* (real a) (imag b)) (* (imag a) (real b))))))
+
+; 4
+(define singletons
+	(lambda (seznam)
+		(map list seznam)))
