@@ -43,3 +43,16 @@
 (define singletons
 	(lambda (seznam)
 		(map list seznam)))
+
+; 5
+(define roots-of-unity
+	(lambda (n)
+		(build-list n
+			(lambda (k)
+				(make-rectangular
+						(upresni (cos (/ (* 2 pi k) n)))
+						(upresni (* 1 (sin (/ (* 2 pi k) n)))))))))
+
+(define upresni
+	(lambda (x)
+		(rationalize (inexact->exact x) 1/10)))
