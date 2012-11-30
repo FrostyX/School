@@ -14,3 +14,8 @@
 (define my-cdr
 	(lambda (par)
 		(par #f)))
+
+; 2
+(define switch
+	(lambda (par)
+		(my-cons (my-cdr par) (my-car par))))
