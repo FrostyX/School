@@ -56,3 +56,10 @@
 (define upresni
 	(lambda (x)
 		(rationalize (inexact->exact x) 1/10)))
+
+; 6
+(define div-list
+	(lambda (n)
+		(build-list n
+			(lambda (k)
+				(if (= (modulo n (+ 1 k)) 0) #t #f)))))
