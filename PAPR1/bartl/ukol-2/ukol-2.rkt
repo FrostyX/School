@@ -50,8 +50,8 @@
 		(build-list n
 			(lambda (k)
 				(make-rectangular
-						(upresni (cos (/ (* 2 pi k) n)))
-						(upresni (* 1 (sin (/ (* 2 pi k) n)))))))))
+					(upresni (cos (/ (* 2 pi k) n)))
+					(upresni (* 1 (sin (/ (* 2 pi k) n)))))))))
 
 (define upresni
 	(lambda (x)
@@ -63,3 +63,8 @@
 		(build-list n
 			(lambda (k)
 				(if (= (modulo n (+ 1 k)) 0) #t #f)))))
+
+; 7
+(define make-palindrom
+	(lambda (slovo)
+		0))
