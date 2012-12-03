@@ -116,3 +116,21 @@
 7. Co je to nedefinovaná hodnota?
 8. Co se myslí hloubkovou rekurzí na seznamech?
 
+# Lekce 10
+Ve skriptech nejsou žádné kontrolní otázky.
+
+## Lekce 11
+1. Co je kvazikvotování? Jak se liší od kvotování?
+2. Jak jsme naprogramovali zjednodušování aritmetických výrazů?
+3. Jak jsme naprogramovali symbolickou derivaci?
+4. Jak jsme naprogramovali převod mezi jednotlivými notacemi?
+
+## Lekce 12
+1. Co jsou to generické procedury?
+2. Jaké jsou výhody a nevýhody automatického přetypování?
+3. Co jsou manifestované typy?
+4. Jak jsme v naší implementaci jazyka scheme reprezentovali jednotlivé elementy jazyka?
+5. Kolik jsme uvažovali počátečních prostředí a proč?
+6. Jaký je rozdíl mezi jazykem/interpretem a metajazykem/metainterpretem?
+
+
