@@ -62,3 +62,57 @@
 9. Jaký je rozdíl mezi silně a slabě typovaným jazykem?
 10. Jaký je rozdíl mezi staticky a dynamicky typovaným jazykem?
 11. Jaký je rozdíl mezi bezpečně a nebezpečně typovaným jazykem?
+
+## Lekce 6
+1. Jaký je rozdíl mezi implicitní a explicitní aplikací procedury?
+2. Jaké argumenty může mít procedura apply a jaký mají význam?
+3. V kterých případech je nutné použít apply?
+4. Jak se zapisují formální argumenty procedur s nepovinnými argumenty?
+5. Jak se zapisují formální argumenty procedur s libovolnými argumenty?
+6. Jaké omezení platí při použití nepovinných argumentu?
+7. Jaké znáte speciální for a procedury pro práci s prostředím?
+8. Jak se provádí explicitní vyhodnocování elementů?
+
+## Lekce 7
+1. Čím se od sebe liší foldr a foldr?
+2. Jak probíhá aplikace foldr?
+3. K čemu slouží terminátory?
+4. Jak lze využít foldr k rozšíření procedury dvou argumentů na libovolný počet argumentů?
+5. Co pro nás hrálo klíčovou roli při stanovování časové náročnosti procedur?
+
+## Lekce 8
+1. K čemu slouží princip rekurze?
+2. K čemu byste použili indukci?
+3. Jak lze dokázat správnost rekurzivních definic?
+4. Jaký je rozdíl mezi matematickou indukcí a strukturální indukcí?
+5. Co to znamená, že jeden seznam je strukturálně jednodušší než jiný seznam?
+6. Je scheme čistě funkcionální jazyk?
+7. Co jsou to rekurzivní procedury?
+8. Co říká princip "divide et impera"?
+9. Jaký je rozdíl mezi rekurzivními procedurami a procedurami, se kterými jsme pracovali v předchozích lekcích?
+10. Jaký je rozdíl mezi rekurzivní procedurou a rekurzivním výpočetním procesem?
+11. Jaké typy rekurzivních výpočetních procesů znáte?
+12. Co je charakteristické pro lineárně rekurzivní výpočetní proces?
+13. Jak je definována koncová pozice?
+14. Co je to koncová aplikace a koncově rekurzivní procedura?
+15. Jak je ve většině programovacích jazyků realizována iterace?
+16. Má každý literárně iterativní výpočetní proces lineární časovou složitost?
+17. Co jsou a k čemu slouží čítače?
+18. Co jsou a k čemu slouží střadače?
+19. V jakých fázích probíhají jednotlivé rekurzivní výpočetní procesy?
+20. Z jakého důvodu je v rekurzivních procedurách přítomná limitní podmínka?
+21. Co máme na mysli pod pojmem jednorázová aplikace rekurzivní procedury?
+22. Jakým způsobem lze vždy nahradit rekurzivní proceduru iterativní procedurou?
+23. U kterých výpočetních procesů roste exponenciálně počet prostředí vzniklých během aplikace?
+24. Který z rekurzivních výpočetních procesů je možné snadno "zastavit" a "rozběhnout"?
+
+## Lekce 9
+1. Jakými způsoby lze zastavit rekurzi?
+2. Proč if jako procedura nezastaví rekurzi?
+3. Jakou má roli speciální forma define při psaní rekurzivních procedur?
+4. Co je to y-kombinátor?
+5. Jak se používá speciální forma letrec?
+6. Na jaké výrazy se přepisují letrec-bloky?
+7. Co je to nedefinovaná hodnota?
+8. Co se myslí hloubkovou rekurzí na seznamech?
+
