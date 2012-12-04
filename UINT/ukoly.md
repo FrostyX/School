@@ -151,11 +151,11 @@ Dělíme číslo základem soustavy dokud nedostaneme nulu. Zbytky po dělení n
 
 ![Karnaughova mapa](https://github.com/FrostyX/School/blob/master/UINT/img/karn-mapa-prvni.png)
 
-Po formule po zjednodušení = !p | q | !r
+Formule po zjednodušení = !p | q | !r
 
 #### Druhá funkce
 ÚDNF: (!p & !q & !r) | (!p & !q & r) | (!p & q & r) | (p & q & r)
 
 ![Karnaughova mapa](https://github.com/FrostyX/School/blob/master/UINT/img/karn-mapa-druha.png)
 
-Po formule po zjednodušení = (q & r) | (!p & !q)
+Formule po zjednodušení = (q & r) | (!p & !q)
