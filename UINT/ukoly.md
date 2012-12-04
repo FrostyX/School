@@ -149,13 +149,13 @@ Dělíme číslo základem soustavy dokud nedostaneme nulu. Zbytky po dělení n
 #### První funkce
 ÚDNF: (!p & !q & !r) | (!p & !q & r) | (!p & q & !r) | (!p & q & r) | (p & !q & !r) | (p & q & !r) | (p & q & r)
 
-![Karnaughova mapa](https://github.com/FrostyX/School/blob/master/UINT/img/karn-mapa-prvni.png)
+![Karnaughova mapa](https://raw.github.com/FrostyX/School/master/UINT/img/karn-mapa-prvni.png)
 
 Formule po zjednodušení = !p | q | !r
 
 #### Druhá funkce
 ÚDNF: (!p & !q & !r) | (!p & !q & r) | (!p & q & r) | (p & q & r)
 
-![Karnaughova mapa](https://github.com/FrostyX/School/blob/master/UINT/img/karn-mapa-druha.png)
+![Karnaughova mapa](https://raw.github.com/FrostyX/School/master/UINT/img/karn-mapa-druha.png)
 
 Formule po zjednodušení = (q & r) | (!p & !q)
