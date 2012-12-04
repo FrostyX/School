@@ -33,7 +33,7 @@ Převeďte několik logických funkcí se třemi a více proměnnými do ÚKNF a
 
 
 ### Úkol č.4:
-(Přednáška 2)
+(Přednáška 2) [[řešení](https://github.com/FrostyX/School/blob/master/UINT/ukoly.md#%C5%98e%C5%A1en%C3%AD-%C3%BAkolu-%C4%8D4)]
 
 Pokuste se minimalizovat logické funkce z předchozího úkolu.
 
@@ -144,3 +144,18 @@ Dělíme číslo základem soustavy dokud nedostaneme nulu. Zbytky po dělení n
 ÚDNF: (!p & !q & !r) | (!p & !q & r) | (!p & q & r) | (p & q & r)
 
 ÚKNF: (p | !q | r) & (!p | q | r) & (!p | q | !r) & (!p | !q | r)
+
+### Řešení úkolu č.4
+#### První funkce
+ÚDNF: (!p & !q & !r) | (!p & !q & r) | (!p & q & !r) | (!p & q & r) | (p & !q & !r) | (p & q & !r) | (p & q & r)
+
+![Karnaughova mapa](https://github.com/FrostyX/School/blob/master/UINT/img/karn-mapa-prvni.png)
+
+Po formule po zjednodušení = !p | q | !r
+
+#### Druhá funkce
+ÚDNF: (!p & !q & !r) | (!p & !q & r) | (!p & q & r) | (p & q & r)
+
+![Karnaughova mapa](https://github.com/FrostyX/School/blob/master/UINT/img/karn-mapa-druha.png)
+
+Po formule po zjednodušení = (q & r) | (!p & !q)
