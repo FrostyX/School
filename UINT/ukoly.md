@@ -146,6 +146,15 @@ Dělíme číslo základem soustavy dokud nedostaneme nulu. Zbytky po dělení n
 ÚKNF: (p | !q | r) & (!p | q | r) & (!p | q | !r) & (!p | !q | r)
 
 ### Řešení úkolu č.4
+
+1. Z ÚDNF sestavíme Karnaughovu mapu. (každý součin ÚDNF představuje jedničku v mapě)
+2. Najdeme smyčky jedniček
+	- Smyčky mohou obsahovat pouze 2^n jedniček
+	- Hledáme co největší smyčky (čím je smyčka větší, tím vypadne více proměnných)
+3. Napíšeme novou formuli.
+	- Formule má tvar stejný jako ÚDNF - součet násobků
+	- Každá konjunkce obsahuje pouze prvky, jejichž hodnota se ve smyčce nemění
+
 #### První funkce
 ÚDNF: (!p & !q & !r) | (!p & !q & r) | (!p & q & !r) | (!p & q & r) | (p & !q & !r) | (p & q & !r) | (p & q & r)
 
