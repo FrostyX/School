@@ -1,6 +1,5 @@
 ## Paradigmata programování 1
-
-Najdete zde zdrojáky k některým cvičením ze školy, domácím úkolům a projektům
+Tento kurs je zaměřen na funkcionální programování a související problematiky. Zejména se jedná o problémy vyhodnocování výrazů, aplikace procedur a hierarchických dat konstruovaných z párů. Jako modelovací jazyk je během kursu používán jazyk Scheme. V závěru kursu jsou studenti seznámeni s principy konstrukce interpretu jednoduchého funkcionálního jazyka. Po absolvování kursu by studenti měli získat nadhled nad funkcionálním programováním a měli by být schopni rychle se sžít s libovolným funkcionálním programovacím jazykem.
 
 ### Vyučující
 Přednášky: doc. RNDr Vilém Vychodil, Ph.D
