@@ -168,3 +168,20 @@ Formule po zjednodušení = !p | q | !r
 ![Karnaughova mapa](https://raw.github.com/FrostyX/School/master/UINT/img/karn-mapa-druha.png)
 
 Formule po zjednodušení = (q & r) | (!p & !q)
+
+### Řešení úkolu č.5
+#### Piercova funkce (šipka dolu)
+	V = p NOR q
+	p q V
+	0 0 1
+	0 1 0
+	1 0 0
+	1 1 0
+
+#### Shefferova funkce (šipka nahoru)
+	V = p NAND q
+	p q V
+	0 0 1
+	0 1 1
+	1 0 1
+	1 1 0
