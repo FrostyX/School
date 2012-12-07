@@ -9,7 +9,7 @@
 
 
 ; 2. Napište predikát, který pro posloupnost zjistí, zda je neklesající. Posloupnost bude reprezentovaná seznamem, jehož prvky jsou čísla. Viz příklady aplikace:
-;	(nondecreasing? `()) => #t
+;	(nondecreasing? `())        => #t
 ;	(nondecreasing? `(1 2 3 4)) => #t
 ;	(nondecreasing? `(1 2 4 3)) => #f
 ;	(nondecreasing? `(1 4 2 3)) => #f
