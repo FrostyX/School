@@ -20,8 +20,11 @@
  */
 
 int quickSort(int a[], int k, int l);
-int heapSort(int a[], int z, int n);
+int maxHeapify(int a[], int i, int n);
+int buildMaxHeap(int a[], int n);
+int heapSort(int a[], int n);
 int *copyArray(int a[], int n);
+int *genArrayOfRand(int n, int max);
 
 #include <math.h>
 #include <stdio.h>
@@ -30,28 +33,15 @@ int *copyArray(int a[], int n);
 
 int main(int argc, char **argv)
 {
-	//int cisla[] = {1, 3, 7, 6, 9, 4, 3, 5};
-	//int cisla[] = {17, 1, 3, 28, 8, 7, 4, 2};
-	//int cisla[] = {41, 67, 34, 0, 69, 24, 78, 58, 62, 64, 5, 45, 81, 27, 61};
-	int cisla[] = {41, 67, 34, 0, 69, 24, 78, 58, 62, 64, 5, 45, 81, 27, 61, 35, 38, 60, 6, 1672, 35, 375, 235, 44, 22, 33, 909, 383, 273, 92, 27, 1, 11, 25};
-	//int cisla[] = {1, 3, 6, 7, 9, 4, 3, 5};
-	//int cisla[] = {3, 4, 1};
-	//int cisla[] = {5, 3, 4, 1};
-	//int cisla[] = {7, 1, 9, 5, 4, 8, 3, 2};
-	int n = sizeof(cisla)/sizeof(int);
+	int n = 1000;
+	int *cisla = genArrayOfRand(n, 1000);
 	int *cisla2 = copyArray(cisla, n);
-
 
 	printf("Algoritmus | Počet porovnání\n");
 	printf("----------------------------\n");
-	printf("Heapsort   | %i\n", heapSort(cisla2, 0, n));
-	printf("Quicksort  | %i\n", quickSort(cisla, 0, n-1));
+	printf("Heapsort   | %i\n", heapSort(cisla, n));
+	printf("Quicksort  | %i\n", quickSort(cisla2, 0, n-1));
 
-
-
-	int i;
-	for(i=0; i<n; i++)
-		printf("%i\n", cisla2[i]);
 	return 0;
 }
 
@@ -96,87 +86,58 @@ int quickSort(int a[], int k, int l)
 	if(k<j)
 		porovnani += quickSort(a, k, j);
 	if(i<l)
-		// Ale proč -1 ?
-		porovnani += quickSort(a, i-1, l);
+		porovnani += quickSort(a, i, l);
 
 	return porovnani;
 }
 
-/*
- * http://www.algoritmy.net/article/17/Heapsort
- * http://en.wikipedia.org/wiki/Heapsort
- * http://cs.wikipedia.org/wiki/Heapsort
- * http://cs.wikipedia.org/wiki/Bin%C3%A1rn%C3%AD_strom
- * http://www.devbook.cz/algoritmus-heap-sort-trideni-cisel-podle-velikosti
- * http://www.youtube.com/watch?v=6NB0GHY11Iw
- */
-int heapSort(int a[], int z, int n)
+
+int maxHeapify(int a[], int i, int n)
 {
-	//printf("n:%i\n", n);
-	// Počet porovnání prvků z tříděného pole
 	int porovnani = 0;
+	int iLevy = 2*i+1; // Index levého potomka
+	int iPravy = 2*i+2; // Index pravého potomka
 
-	// Projdeme haldu od kořene k listům
-	// @TODO Přepsat podmínku cyklu
-	int i;
-	int opakovat=0;
-	for(i=z; i<n; i++)
+	int largest;
+	if((iLevy<=n) && (a[iLevy]>a[i]))
+		largest = iLevy;
+	else
+		largest = i;
+	if((iPravy<=n) && a[iPravy]>a[largest])
+		largest = iPravy;
+	porovnani += 2;
+
+	if(largest!=i)
 	{
-		int iLevy = 2*i+1; // Index levého potomka
-		int iPravy = 2*i+2; // Index pravého potomka
+		int tmp = a[i];
+		a[i] = a[largest];
+		a[largest] = tmp;
 
-		// Pokud existuje levý potomek
-		if(iLevy<n)
-		{
-			// Pokud je potomek větší než rodič
-			if(a[iLevy]>a[i])
-			{
-				int tmp = a[iLevy];
-				a[iLevy] = a[i];
-				a[i] = tmp;
-				opakovat = 1;
-			}
-			porovnani++;
-		}
-
-		// Pokud existuje pravý potomek
-		if(iPravy<n)
-		{
-			// Pokud je potomek větší než rodič
-			if(a[iPravy]>a[i])
-			{
-				int tmp = a[iPravy];
-				a[iPravy] = a[i];
-				a[i] = tmp;
-				opakovat = 1;
-			}
-			porovnani++;
-		}
-
-		if(opakovat)
-		{
-			// Vrátíme se na rodiče;
-			// Ve skutečnosti se musíme vrátit před něj
-			//     - nesmíme zapomenout na inkrementaci cyklu
-			i=((i-1)/2)-1;
-			opakovat = 0;
-			continue;
-		}
+		porovnani += maxHeapify(a, largest, n);
 	}
+	return porovnani;
+}
 
-	//printf("p:%i\n", porovnani);
-	// Pokud již nejsou setřízené všechny prvky
-	if(n!=0)
+int buildMaxHeap(int a[], int n)
+{
+	int i, porovnani = 0;
+	for(i=(n/2)-1; i>=0; i--)
+		porovnani += maxHeapify(a, i, n-1);
+	return porovnani;
+}
+
+int heapSort(int a[], int n)
+{
+	int porovnani = 0;
+	porovnani = buildMaxHeap(a, n);
+
+	int i;
+	for(i=n-1; i>=1; i--)
 	{
-		// Vyměníme poslední prvek s kořenem, který nyní přesuneme
-		//     na začátek setřízené části
 		int tmp = a[0];
-		a[0] = a[n-1];
-		a[n-1] = tmp;
-
-		// Znovu zhaldujeme setřízenou část, protože přesunutím
-		//     posledního prvku na začátek jsou porušeny pravidla haldy
-		porovnani += heapSort(a, 0, n-1);
+		a[0] = a[i];
+		a[i] = tmp;
+		porovnani += maxHeapify(a, 0, i-1);
 	}
 	return porovnani;
 }
@@ -190,4 +151,19 @@ int *copyArray(int a[], int n)
 	for(i=0; i<n; i++)
 		b[i] = a[i];
 	return b;
+}
+
+// Vygeneruje pole náhodných čísel a vrátí ukazatel na jeho první prvek
+// n = počet prvků
+// max = nejvyšší vygenerovatelné číslo
+int *genArrayOfRand(int n, int max)
+{
+	int *a;
+	a = (int *) malloc(n*sizeof(int));
+
+	srand(time(0));
+	int i;
+	for(i=0; i<n; i++)
+		a[i] = rand() % max;
+	return a;
 }
