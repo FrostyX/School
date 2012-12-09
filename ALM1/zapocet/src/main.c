@@ -98,14 +98,19 @@ int maxHeapify(int a[], int i, int n)
 	int iLevy = 2*i+1; // Index levého potomka
 	int iPravy = 2*i+2; // Index pravého potomka
 
-	int largest;
-	if((iLevy<=n) && (a[iLevy]>a[i]))
-		largest = iLevy;
-	else
-		largest = i;
-	if((iPravy<=n) && a[iPravy]>a[largest])
-		largest = iPravy;
-	porovnani += 2;
+	int largest = i;
+	if(iLevy<=n)
+	{
+		if(a[iLevy]>a[largest])
+			largest = iLevy;
+		porovnani++;
+	}
+	if(iPravy<=n)
+	{
+		if(a[iPravy]>a[largest])
+			largest = iPravy;
+		porovnani++;
+	}
 
 	if(largest!=i)
 	{
