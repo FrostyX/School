@@ -19,17 +19,16 @@
  * All rights reserved.
  */
 
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+
 int quickSort(int a[], int k, int l);
 int maxHeapify(int a[], int i, int n);
 int buildMaxHeap(int a[], int n);
 int heapSort(int a[], int n);
 int *copyArray(int a[], int n);
 int *genArrayOfRand(int n, int max);
-
-#include <math.h>
-#include <stdio.h>
-#include <stdlib.h>
-
 
 int main(int argc, char **argv)
 {
