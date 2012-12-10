@@ -10,6 +10,24 @@
 ;	- symbol ins, pak je prvek na odpovídající pozici ponechán
 ;	- procedury, pak je prvek seznamu na odpovídající pozici nahrazen aplikací této procedury na tento prvek.
 ; Viz příklad volání (format `(1 2 3 4 5) (list `del even? even? `ins (lambda (x) (+ x 1))))
+(define format
+	(lambda (seznam vzor)
+		(apply append
+			(map (lambda (atom pat)
+					1)
+				seznam vzor))))
+
+(format `(1 2 3 4 5) (list `del even? even? `ins (lambda (x) (+ x 1))))
+
+;(define format
+;  (lambda (l pattern)
+;    (apply append
+;        (map (lambda (atom pat)
+;            (cond ((equal? pat 'del) '())
+;                ((equal? pat 'ins) (list atom))
+;                ((procedure? pat) (list (pat atom)))
+;                (else #f)))
+;          l pattern))))
 
 
 ; 2. Naprogramujte proceduru vracející seznam mocnin čísla k (od 0-té až po (n-1)-té).
