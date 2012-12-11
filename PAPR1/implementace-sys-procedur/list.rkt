@@ -18,6 +18,13 @@
 			(and (pair? x)
 				(list-z-prednasky? (cdr x))))))
 
+(define list-elegantni?
+	(lambda (x)
+		(or (null? x)
+			(and (pair? x)
+				(list-elegantni? (cdr x))))))
+
 (define l `(1 2 3))
 (list? l)
 (list-z-prednasky? l)
+(list-elegantni? l)
