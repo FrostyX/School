@@ -170,7 +170,7 @@ Formule po zjednodušení = !p | q | !r
 Formule po zjednodušení = (q & r) | (!p & !q)
 
 ### Řešení úkolu č.5
-Zdroj: [1](http://mikrokontrolery-pic.cz/zaciname/cislicova-technika/kombinacni-logicke-obvody/realizace-zakladnich-logickych-funkci-hradly-nand-a-nor/)
+Zdroj: [\[1\]](http://mikrokontrolery-pic.cz/zaciname/cislicova-technika/kombinacni-logicke-obvody/realizace-zakladnich-logickych-funkci-hradly-nand-a-nor/)
 
 #### Piercova funkce NOR (šipka dolu)
 	V = p NOR q
