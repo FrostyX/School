@@ -14,7 +14,7 @@
 ; Vybere podmnožinu prvků, které nesplňují danou vlastnost
 (define remove
 	(lambda (proc seznam)
-		(filter (lambda (x) (not (proc x))) seznam)))
+		(filter (lambda (x) (not (proc x))) seznam))) ; Proč tam musí být lambda?
 
 ; Zjistí, zda je prvek obsažen v seznamu
 (define member?
