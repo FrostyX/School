@@ -200,6 +200,7 @@ p NXOR q = ((p NOR q) NOR p) NOR ((p NOR q) NOR q)
 ##### Nonekvivalence XOR
 p NXOR q = (((p NOR q) NOR p) NOR ((p NOR q) NOR q)) NOR 0
 
+---
 
 #### Shefferova funkce NAND (šipka nahoru)
 	V = p NAND q
