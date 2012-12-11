@@ -39,7 +39,7 @@ Pokuste se minimalizovat logické funkce z předchozího úkolu.
 
 
 ### Úkol č.5:
-(Přednáška 2)
+(Přednáška 2) [[řešení](https://github.com/FrostyX/School/blob/master/UINT/ukoly.md#%C5%98e%C5%A1en%C3%AD-%C3%BAkolu-%C4%8D5)]
 
 Vyjádřete logické operace negace, logický součin, logický součet, implikace ekvivalence a nonekvivalence pomocí (1) Shefferovy funkce a (2) Piercovy funkce.
 
@@ -170,7 +170,9 @@ Formule po zjednodušení = !p | q | !r
 Formule po zjednodušení = (q & r) | (!p & !q)
 
 ### Řešení úkolu č.5
-#### Piercova funkce (šipka dolu)
+Zdroj: [](http://mikrokontrolery-pic.cz/zaciname/cislicova-technika/kombinacni-logicke-obvody/realizace-zakladnich-logickych-funkci-hradly-nand-a-nor/)
+
+#### Piercova funkce NOR (šipka dolu)
 	V = p NOR q
 	p q V
 	0 0 1
@@ -178,10 +180,51 @@ Formule po zjednodušení = (q & r) | (!p & !q)
 	1 0 0
 	1 1 0
 
-#### Shefferova funkce (šipka nahoru)
+	Když 1 => výsledek je 0
+
+##### Logická negace NOT
+NOT p = p NOR 0 = p NOR p
+
+##### Logický součet OR
+p OR q = (p NOR q) NOR 0
+
+##### Logický součin AND
+p AND q = (p NOR 0) NOR (q NOR 0)
+
+##### Implikace NOR
+p NOR q = p NOR q
+
+##### Ekvivalence NXOR
+p NXOR q = ((p NOR q) NOR p) NOR ((p NOR q) NOR q)
+
+##### Nonekvivalence XOR
+p NXOR q = (((p NOR q) NOR p) NOR ((p NOR q) NOR q)) NOR 0
+
+
+#### Shefferova funkce NAND (šipka nahoru)
 	V = p NAND q
 	p q V
 	0 0 1
 	0 1 1
 	1 0 1
 	1 1 0
+
+	Když 0 => výsledek je 1
+
+##### Logická negace NOT
+NOT p = p NAND 1 = p NAND p
+
+##### Logický součet OR
+p OR q = (p NAND 1) NAND (q NAND 1)
+
+##### Logický součin AND
+p AND q = (p NAND q) NAND 1
+
+##### Implikace NOR
+p NOR q = ((p NAND 1) NAND (q NAND 1)) NAND 1
+
+##### Ekvivalence NXOR
+p NXOR q = (((p NAND q) NAND p) NAND ((p NAND q) NAND q)) NAND 1
+
+##### Nonekvivalence XOR
+p XOR q = ((p NAND q) NAND p) NAND ((p NAND q) NAND q)
