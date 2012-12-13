@@ -17,3 +17,6 @@ Cvičení: Mgr. Lucie Urbanová
 
 ### Zápočet
 Dva testy dohromady za 32 bodů. Pro získání zápočtu je potřeba 20 bodů.
+
+### Zkouška
+Zkouška je pouze ústní. Vybírají se dvě otázky ze 30ti, přičemž nesmí být ze stejného tématického okruhu. Je potřeba z každé získat minimálně 50% bodů. Oficiální informace a seznam otázek [zde](https://github.com/FrostyX/School/blob/master/UDI/doc/ZkouskoveOtazkyUDI_YUDI2012.pdf?raw=true).
