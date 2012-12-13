@@ -6,3 +6,6 @@ Cvičení: Mgr. Jiří Zacpal, Ph.D.
 
 ### Zápočet
 Tři domácí úkoly a písemka, každé po pěti bodech. Pro získání zápočtu je potřeba získat 12 bodů.
+
+### Zkouška
+Tento předmět není zakončen zkouškou
