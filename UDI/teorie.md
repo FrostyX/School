@@ -51,12 +51,15 @@ Neobsahuje žádné pojmy ani kontrolní otázky. Text látky je ve skriptu [Uvo
 - princip inkluze a exkluze
 - elementární jev, jev
 - pravděpodobnost
+
 ### Kontrolní otázky
+####První část
 1. Co říká pravidlo součtu? Co říká pravidlo součinu?
 2. Čím se liší permutace a variace? Čím se liší variace a kombinace?
 3. Čím se liší permutace a permutace s opakováním? Čím se liší variace a variace s opakováním? Čím se liší kombinace a kombinace s opakováním?
 4. Čím se liší aspekt opakování u permutací s opakováním, variací s opakováním a kombinací s opakováním?
 
+####Druhá část
 1. Co říká princip inkluze a exkluze?
 2. Jak se zjednoduší vzorec z principu inkluze a exkluze, jsou-li množiny A1, .... An po dvou disjunktní?
 3. Jaký je rozdíl mezi pojmy jev a elementární jev?
