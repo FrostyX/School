@@ -6,6 +6,7 @@
 - pravdivostní hodnota výroku
 - symbol logické spojky a pravdivostní funkce logické spojky
 - kvantifikátor
+
 ### Kontrolní otázky
 1. Jaké znáte logický spojky?
 2. Co to je klasická a neklasická logika?
@@ -20,6 +21,7 @@
 - inkluze
 - průnik, sjednocení, rozdíl
 - potenční množina
+
 ### Kontrolní otázky
 1. Může množina obsahovat daný prvek více než jedenkrát? Proč? Jsou množiny {a, b} a {b, a} různé? Proč?
 2. Jaké znáte způsoby zápisu množin? Jsou množiny {xeR | x^2 < 0} a {xeN | x^4 < 0} stejné? Je některá z nich rovna {} ?
@@ -32,6 +34,7 @@
 - relace, binární relace, inverzní relace, skládání binárních relací, reprezentace binárních relací
 - funkce, injekce, surjekce, bijekce
 - princip indukce
+
 ### Kontrolní otázky
 1. Je pravda, že každá neprázdná n-ární relace má alespoň n prvků? Proč?
 2. Jaká je inverzní relace k relaci "být otcem" na množině všech lidí (slovně ji popište)? Je-li R výše uvedená relace "být otcem", co je relací R (kolečko) R? Co jsou relace R (šipka doleva) R, R (šipka doprava) R?
