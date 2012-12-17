@@ -1,4 +1,4 @@
-## Lekce 1
+## Výroková logika
 ### Pojmy
 - logika
 - logická spojka
@@ -14,7 +14,7 @@
 5. Vysvětlete, co to je tabulková metoda a k čemu slouží.
 6. Vysvětlete pojem sémantické vyplývání.
 
-## Lekce 2 - množiny
+## Množiny
 ### Pojmy
 - množina
 - inkluze
@@ -26,7 +26,7 @@
 3. Platí, že když A je podmnožinou(?) B, pak |A| = |B|? Co je to potenční množina dané množiny? Existuje množina, jejíž potenční množina je prázdná?
 4. Jaké znáte množinové operace? Jaká je nutná a postačující podmínka pro to, aby A (průnik) X = A? Jaká pro A (sjednoceno) X = A ?
 
-## Lekce 2 - relace
+## Relace
 ### Pojmy
 - kartézský součin
 - relace, binární relace, inverzní relace, skládání binárních relací, reprezentace binárních relací
@@ -39,10 +39,10 @@
 4. Nechť X a Y jsou množiny. Jaký vztah musí platit mezi |X| a |Y| pro to, aby existovala funkce f: X -> Y, která je injekcí, surjekcí, bijekcí?
 5. Může být prázdná množina funkcí X do Y? Rozeberte v závislosti na množinách X a Y.
 
-## Lekce 3
-Neobsahuje žádné pojmy ani kontrolní otázky
+## Čísla a číselné obory
+Neobsahuje žádné pojmy ani kontrolní otázky. Text látky je ve skriptu [UvodDoInformatiky.pdf](https://github.com/FrostyX/School/blob/master/UDI/doc/UvodDoInformatiky%20.pdf?raw=true) jako kapitola číslo 3 - Čísla (strana 44)
 
-## Lekce 4
+## Kombinatorika a pravděpodobnost
 ### Pojmy
 - pravidla součtu a součinu
 - permutace a permutace s opakováním
@@ -61,3 +61,21 @@ Neobsahuje žádné pojmy ani kontrolní otázky
 2. Jak se zjednoduší vzorec z principu inkluze a exkluze, jsou-li množiny A1, .... An po dvou disjunktní?
 3. Jaký je rozdíl mezi pojmy jev a elementární jev?
 4. Co je to pravděpodobnost jevu a jak je definována?
+
+## Algoritmy, složitost algoritmů
+Zatím jsem nenašel v žádných skriptech kapitolu zabývající se tímto tématem.
+
+## Teorie grafů
+### Pojmy
+- orientovaný graf, neorientovaný graf, vrchol hrana
+- izomorfismus grafů, podgraf
+- sled, délka sledu, uzavřený sled, tah, cesta, kružnice, vzdálenost vrcholů
+- obohacený graf
+- souvislost, komponenta, hledání cest
+- stupeň vrcholu, skóre, eulerovský tah
+### Kontrolní otázky
+1. Vysvětlete rozdíl mezi pojmy orientovaný graf a neorientovaný graf.
+2. Je-li graf G izomorfní s grafem G', je jeho podgrafem?
+3. Jaký je rozdíl mezi pojmy sled, tah, cesta?
+4. Může mít souvislý graf po odstranění jedné hrany tři komponenty?
+5. Existuje graf, který má skóre 7, 3, 1?
