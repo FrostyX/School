@@ -111,3 +111,17 @@ Tabulková metoda představuje jednoduchý způsob, jak zapsat pravdivostní hod
 
 #### Vysvětlete pojem sémantické vyplývání.
 Formule Q sémanticky vyplývá z množiny T formulí je pravdivá při každém ohodnocení, při kterém jsou současně pravdivé všechny formule z množiny T. Značí se T |= Q
+
+---
+
+#### Může množina obsahovat daný prvek více než jedenkrát? Proč? Jsou množiny {a, b} a {b, a} různé? Proč?
+Ano může, ale množina je dána prvky, které obsahuje. Nemá u nich smysl rozlišovat pořadí, nebo kolikrát je prvek obsažen. Množina jej buďto obsahuje, nebo nikoliv. Uvedené množiny jsou z tohoto důvodu (nezáleží na pořadí) stejné.
+
+#### Jaké znáte způsoby zápisu množin? Jsou množiny {xeR | x^2 < 0} a {xeN | x^4 < 0} stejné? Je některá z nich rovna {} ?
+Množiny zapisujeme dvěma základními způsoby. Udáním charakteristické vlastnosti, nebo výčtem jejích prvků. Uvedené množiny nejsou stejné první obsahuje záporná čísla umocněná na poloviny lichých čísel, zatímco druhá je prázdná.
+
+#### Platí, že když A je podmnožinou (býti podmnožinou = inkluze) B, pak |A| = |B|? Co je to potenční množina dané množiny? Existuje množina, jejíž potenční množina je prázdná?
+Platí pouze v případě, kdy množina A obsahuje úplně všechny prvky z B. Potenční množina množiny X je množina všech podmnožin množiny X. Množina je podmnožinou sebe samé. Podmnožinou každé množiny je také prázdná množina.
+
+#### Jaké znáte množinové operace? Jaká je nutná a postačující podmínka pro to, aby A (průnik) X = A? Jaká pro A (sjednoceno) X = A ?
+Průnik, sjednocení, rozdíl. A (průnik) X = A v případě, kdy X = A. Dále A (sjednoceno) X = A v případě, kdy X = {}
