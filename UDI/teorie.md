@@ -40,7 +40,7 @@
 5. Může být prázdná množina funkcí X do Y? Rozeberte v závislosti na množinách X a Y.
 
 ## Čísla a číselné obory
-Neobsahuje žádné pojmy ani kontrolní otázky. Text látky je ve skriptu [UvodDoInformatiky.pdf](https://github.com/FrostyX/School/blob/master/UDI/doc/UvodDoInformatiky%20.pdf?raw=true) jako kapitola číslo 3 - Čísla (strana 44)
+Neobsahuje žádné pojmy ani kontrolní otázky. Text látky je ve skriptu [UvodDoInformatiky.pdf](https://github.com/FrostyX/School/raw/master/UDI/doc/UvodDoInformatiky.pdf) jako kapitola číslo 3 - Čísla (strana 44)
 
 ## Kombinatorika a pravděpodobnost
 ### Pojmy
