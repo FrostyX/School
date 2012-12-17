@@ -76,6 +76,7 @@ Zatím jsem nenašel v žádných skriptech kapitolu zabývající se tímto té
 - obohacený graf
 - souvislost, komponenta, hledání cest
 - stupeň vrcholu, skóre, eulerovský tah
+
 ### Kontrolní otázky
 1. Vysvětlete rozdíl mezi pojmy orientovaný graf a neorientovaný graf.
 2. Je-li graf G izomorfní s grafem G', je jeho podgrafem?
