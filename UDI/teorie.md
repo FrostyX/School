@@ -86,3 +86,28 @@ Zatím jsem nenašel v žádných skriptech kapitolu zabývající se tímto té
 3. Jaký je rozdíl mezi pojmy sled, tah, cesta?
 4. Může mít souvislý graf po odstranění jedné hrany tři komponenty?
 5. Existuje graf, který má skóre 7, 3, 1?
+
+---
+## Odpovědi na kontrolní otázky
+! Moje odpovědi, které nemusejí být správné - v tomto případě prosím dejte vědět !
+
+#### Jaké znáte logický spojky?
+Konjunkce ^, disjunkce V, implikace ->, ekvivalence <->
+
+#### Co to je klasická a neklasická logika?
+Klasickou logikou se rozumí logika, která používá právě dvě pravdivostní hodnoty (pravda a nepravda) a klasické logické spojky (předchozí otázka). Neklasická logika se zabývá dalšími aspekty, používá jiné logické spojky, případně jiné pravdivostní hodnoty.
+
+#### Jaký je vztah mezi obecným a existenčním kvantifikátorem?
+Výrokové formy mohou obsahovat proměnné. Dosazením konkrétních čísel vznikají výroky. Kvantifikátory udávají určitou vlastnost těchto proměnných. Obecný kvantifikátor říká, že pro všechna možná x platí následující výrok. Existenční kvantifikátor potom říká, že existuje alespoň jedno x, pro které výrok platí.
+
+#### Co to je formule výrokové logiky?
+Formule daného jazyka výrokové logiky je definována následovně:
+
+- Každý výrokový symbol je formule (tzv atomická formule)
+- Jsou-li P a Q formule, jsou i výrazy !P, (P & Q), (P | Q), (P => Q), (P <=> Q)
+
+#### Vysvětlete, co to je tabulková metoda a k čemu slouží.
+Tabulková metoda představuje jednoduchý způsob, jak zapsat pravdivostní hodnoty dané formule při všech možných ohodnoceních jejích proměnných.
+
+#### Vysvětlete pojem sémantické vyplývání.
+Formule Q sémanticky vyplývá z množiny T formulí je pravdivá při každém ohodnocení, při kterém jsou současně pravdivé všechny formule z množiny T. Značí se T |= Q
