@@ -47,6 +47,15 @@
 ## Mé vypracování
 ! Moje vypracování otázek, které nemusí být správné - v tomto případě prosím dejte vědět !
 
+### 6. pojem množiny, zapisování množin, vztahy mezi množinami, operace s množinami
+
+### 7. konečné spočetné a nespočetné množiny
+Množina se nazývá končená, právě když je prázdná, nebo existuje přirozené číslo n a bijekce A -> {1, 2, 3, .., n}. Množina se nazývá nekončená, právě když není konečná.
+
+Množina se nazývá spočetná, právě když existuje bijekce A -> N. Množina se nazývá nespočetná, právě když je nekonečná a není spočetná.
+
+### 8. pojem funkce, typy funkcí (surjektivní, injektivní, bijektivní)
+
 ### 9. pojem relace, arita relace
 Relace je matematickým protějškem běžně užívaného pojmu vztah. Formálně řečeno - relace je podmnožinou kartézského součinu. Relace je dána aritou, to jest počtem objektů, které do ní vstupují a množinami jejichž prvky do vztahu vstupují.
 
@@ -78,8 +87,20 @@ Každá relace ekvivalence musí být reflexivní, symetrická a tranzitivní.
 
 ### 15. speciální prvky uspořádaných množin, polosvazy, svazy
 
+### 16. přirozená, celá, racionální, iracionální, reálná a komplexní čísla
+- Přirozená čísla N: 1 2 50 38, ..
+- Celá čísla Z: -2 8 5 -23, 0, ..
+- Racionální čísla Q: Čísla která lze vyjádřit zlomkem
+- Iracionální čísla: Čísla, která nelze vyjádřit ve tvaru zlomku: sqrt(2) sqrt(3) e pí
+- Reálná čísla R: Všechna čísla na číselné ose
+- Komplexní čísla:
+
+### 17. princip indukce
+
+### 18. dělitelnost, prvočísla, číselné soustavy
 
 ### 19. pravidla součtu a součinu, permutace a permutace s opakováním
+
 #### Pravidlo součtu
 Klíčové slovo - nebo
 
@@ -97,12 +118,12 @@ P(n) = n!. Pokud se mohou objekty permutace opakovat, pak vydělíme n! násobky
 
 ### 20. variace a variace s opakováním, kombinace a kombinace s opakováním
 #### Variace (s opakováním)
-Výběr r objektů z n pokud záleží na pořadí vybíraných objektů.
+Výběr r objektů z n pokud záleží na pořadí vybíraných objektů. Počítáme jednoduchou úvahou. Například pokud chceme vybrat z 10ti uchazečů čtyři pro čtyři různé pozice, máme 10*9*8*7 možností. Pokud by jeden uchazeč mohl vykonávat více pozicí, máme 10*10*10*10 (tedy 10^4) možností, jak pozice rozdělit.
 
 
 #### Kombinace
 Výběr r objektů z n pokud nezáleží na pořadí vybíraných objektů. Počítá se pomocí kombinačního čísla (n nad r).
 
-
 ### 21. binomická věta, princip inkluze a exkluze
 ### 22. počítání pravděpodobnosti
+Pravděpodobnost vypočítáme, když vydělíme počet příznivých pokusu počtem všech možných pokusů. Pokud chceme znát výsledek v procentech, vynásobíme jej stem.
