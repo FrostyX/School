@@ -41,3 +41,68 @@
 	28. neorientované a orientované grafy, základní pojmy teorie grafů
 	29. hledání cest (Dijkstrův algoritmus)
 	30. hledání minimální kostry grafů (Kruskalův algoritmus)
+
+---
+
+## Mé vypracování
+! Moje vypracování otázek, které nemusí být správné - v tomto případě prosím dejte vědět !
+
+### 9. pojem relace, arita relace
+Relace je matematickým protějškem běžně užívaného pojmu vztah. Formálně řečeno - relace je podmnožinou kartézského součinu. Relace je dána aritou, to jest počtem objektů, které do ní vstupují a množinami jejichž prvky do vztahu vstupují.
+
+Pojmenování relace v závislosti na aritě
+- 1 = unární
+- 2 = binární
+- 3 = ternární
+- 4 = kvaternární
+
+### 10. operace s binárními relacemi, binární relace a jejich reprezentace
+Protože jsou relace množinami, lze s nimi provádět množinové operace - průnik, sjednocení, rozdíl a lze na ně aplikovat vztah inkluze (být podmnožinou). Binární relace můžeme reprezentovat maticí, tabulkou, grafem, nebo seznamem seznamů. [Obrázek]
+
+### 11. binární relace na množině (vlastnosti, příklady)
+Binární relace R na X může být:
+- reflexivní - na diagonále matice musejí být samé jedničky
+- ireflexivní - na diagonále matice musejí být samé nuly
+- symetrická - podle diagonály matice naproti sobě musejí být stejné hodnoty
+- asymetrická
+- antisymetrická - podle diagonály matice nesmí být naproti sobě dvě jedničky
+- úplná - v grafu relace je hrana mezi každými dvěma vrcholy
+- tranzitivní - "pokud se z bodu A dostaneme do bodu B a z bodu B se dostaneme do bodu C, pak se musíme dostat z bodu A do bodu C i bez prostředníka",  lépe se poznává z grafu
+
+### 12. uzávěry relací
+
+### 13. ekvivalence a rozklady na množině, ekvivalence a surjektivní zobrazení
+Každá relace ekvivalence musí být reflexivní, symetrická a tranzitivní.
+
+### 14. uspořádání, Hasseovy diagramy
+
+### 15. speciální prvky uspořádaných množin, polosvazy, svazy
+
+
+### 19. pravidla součtu a součinu, permutace a permutace s opakováním
+#### Pravidlo součtu
+Klíčové slovo - nebo
+
+Lze-li úkol A provést m způsoby a lze-li úkol B provést n způsoby, přičemž žádný ze způsobu m není totožný s n, pak lze úkol A nebo úkol B provést m + n způsoby.
+
+#### Pravidlo součinu
+Klíčové slovo - a
+
+Lze-li úkol C rozložit na po sobě následující úkoly A a B (provést C znamená nejdříve provést A a potom B) a lze-li úkol A provést m způsoby a úkol B lze provést n způsoby, pak lze úkol C provést m * n způsoby.
+
+
+#### Permutace (s opakováním)
+Permutace je speciální případ variace. Použijeme ji, když chceme vybrat n objektů z n (1O z 10, 5 z 5, ..).
+P(n) = n!. Pokud se mohou objekty permutace opakovat, pak vydělíme n! násobky faktoriálů počtů opakujících se objektů.
+
+### 20. variace a variace s opakováním, kombinace a kombinace s opakováním
+#### Variace (s opakováním)
+Výběr r objektů z n pokud záleží na pořadí vybíraných objektů.
+
+
+#### Kombinace
+Výběr r objektů z n pokud nezáleží na pořadí vybíraných objektů. Počítá se pomocí kombinačního čísla (n nad r).
+
+
+### 21. binomická věta, princip inkluze a exkluze
+### 22. počítání pravděpodobnosti
