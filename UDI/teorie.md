@@ -34,6 +34,7 @@
 - relace, binární relace, inverzní relace, skládání binárních relací, reprezentace binárních relací
 - funkce, injekce, surjekce, bijekce
 - princip indukce
+- arita = počet objektů, které do relace vstupují
 
 ### Kontrolní otázky
 1. Je pravda, že každá neprázdná n-ární relace má alespoň n prvků? Proč?
@@ -125,3 +126,17 @@ Platí pouze v případě, kdy množina A obsahuje úplně všechny prvky z B. P
 
 #### Jaké znáte množinové operace? Jaká je nutná a postačující podmínka pro to, aby A (průnik) X = A? Jaká pro A (sjednoceno) X = A ?
 Průnik, sjednocení, rozdíl. A (průnik) X = A v případě, kdy X = A. Dále A (sjednoceno) X = A v případě, kdy X = {}
+
+---
+
+#### Je pravda, že každá neprázdná n-ární relace má alespoň n prvků? Proč?
+
+
+#### Jaká je inverzní relace k relaci "být otcem" na množině všech lidí (slovně ji popište)? Je-li R výše uvedená relace "být otcem", co je relací R (kolečko) R? Co jsou relace R (šipka doleva) R, R (šipka doprava) R?
+Když R = "být otcem", potom R^(-1) = "mít otce".
+
+#### Jaký je rozdíl mezi tabulkovou a maticovou reprezentací binární relace?
+Téměř žádný. Rozdíl je jen v tom, že matice mají specifický způsob zápisu a jsou pro ně definovány různé standardní operace.
+
+4. Nechť X a Y jsou množiny. Jaký vztah musí platit mezi |X| a |Y| pro to, aby existovala funkce f: X -> Y, která je injekcí, surjekcí, bijekcí?
+5. Může být prázdná množina funkcí X do Y? Rozeberte v závislosti na množinách X a Y.
