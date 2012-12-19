@@ -113,12 +113,12 @@ Binární relace R na X může být:
 ### 13. ekvivalence a rozklady na množině, ekvivalence a surjektivní zobrazení
 Každá relace ekvivalence musí být reflexivní, symetrická a tranzitivní. Co je s čím v relaci, to spolu patří do stejné třídy ekvivalence. Nejdříve uděláme třídy ekvivalence pro každý prvek a výsledným rozkladem je potom množina těchto tříd. Průnik každých dvou množin ve výsledkem rozkladu musí být prázdná množina.
 
-[Rozklad ekvivalence](https://raw.github.com/FrostyX/School/master/UDI/images/rozklad.jpg)
+![Rozklad ekvivalence](https://raw.github.com/FrostyX/School/master/UDI/images/rozklad.jpg)
 
 ### 14. uspořádání, Hasseovy diagramy
 Každá relace uspořádání musí být reflexivní, antisymetrická a tranzitivní.
 
-[Hassův diagram + svazy](https://raw.github.com/FrostyX/School/master/UDI/images/hass-diagra-svazy.jpg)
+![Hassův diagram + svazy](https://raw.github.com/FrostyX/School/master/UDI/images/hass-diagra-svazy.jpg)
 
 ### 15. speciální prvky uspořádaných množin, polosvazy, svazy
 GOTO [14. uspořádání, Hasseovy diagramy](https://github.com/FrostyX/School/blob/master/UDI/zkouska.md#14-uspo%C5%99%C3%A1d%C3%A1n%C3%AD-hasseovy-diagramy)
