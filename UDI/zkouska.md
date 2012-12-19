@@ -96,7 +96,7 @@ Každá relace ekvivalence musí být reflexivní, symetrická a tranzitivní.
 - Komplexní čísla:
 
 ### 17. princip indukce
-Sice to nemá s matematickou indukcí co dělat, ale v příkladech se občas objevuje suma. Suma je posloupnost po sobě jdoucích čísel, které navzájem sečteme. Pod znakem sumy je hodnota od které posloupnost začíná, nad znakem sumy je hodnota na které posloupnost končí. Například [http://www.matweb.cz/cgi-bin/mimetex.cgi?\sum_{i=1}^n%20a_i](http://www.matweb.cz/cgi-bin/mimetex.cgi?\sum_{i=1}^n%20a_i) = [http://www.matweb.cz/cgi-bin/mimetex.cgi?\sum_{i=1}^n%20a_i=a_1+a_2+a_3+\,\ldots\,+a_{n}](http://www.matweb.cz/cgi-bin/mimetex.cgi?\sum_{i=1}^n%20a_i=a_1+a_2+a_3+\,\ldots\,+a_{n}).
+Sice to nemá s matematickou indukcí co dělat, ale v příkladech se občas objevuje suma. Suma je posloupnost po sobě jdoucích čísel, které navzájem sečteme. Pod znakem sumy je hodnota od které posloupnost začíná, nad znakem sumy je hodnota na které posloupnost končí. Například ![suma](http://www.matweb.cz/cgi-bin/mimetex.cgi?\sum_{i=1}^n%20a_i) = ![posloupnost sumy](http://www.matweb.cz/cgi-bin/mimetex.cgi?\sum_{i=1}^n%20a_i=a_1+a_2+a_3+\,\ldots\,+a_{n}).
 Vysvětleno [zde](http://www.matweb.cz/symboly).
 
 
