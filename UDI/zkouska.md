@@ -66,7 +66,7 @@ Pojmenování relace v závislosti na aritě
 - 4 = kvaternární
 
 ### 10. operace s binárními relacemi, binární relace a jejich reprezentace
-Protože jsou relace množinami, lze s nimi provádět množinové operace - průnik, sjednocení, rozdíl a lze na ně aplikovat vztah inkluze (být podmnožinou). Binární relace můžeme reprezentovat maticí, tabulkou, grafem, nebo seznamem seznamů. [Obrázek]
+Protože jsou relace množinami, lze s nimi provádět množinové operace - průnik, sjednocení, rozdíl a lze na ně aplikovat vztah inkluze (být podmnožinou). Binární relace můžeme reprezentovat maticí, tabulkou, grafem, nebo seznamem seznamů. ![Reprezentace relací](https://raw.github.com/FrostyX/School/master/UDI/images/zobrazeni-relace.jpg)
 
 ### 11. binární relace na množině (vlastnosti, příklady)
 Binární relace R na X může být:
@@ -96,6 +96,10 @@ Každá relace ekvivalence musí být reflexivní, symetrická a tranzitivní.
 - Komplexní čísla:
 
 ### 17. princip indukce
+Sice to nemá s matematickou indukcí co dělat, ale v příkladech se občas objevuje suma. Suma je posloupnost po sobě jdoucích čísel, které navzájem sečteme. Pod znakem sumy je hodnota od které posloupnost začíná, nad znakem sumy je hodnota na které posloupnost končí. Například [http://www.matweb.cz/cgi-bin/mimetex.cgi?\sum_{i=1}^n%20a_i](http://www.matweb.cz/cgi-bin/mimetex.cgi?\sum_{i=1}^n%20a_i) = [http://www.matweb.cz/cgi-bin/mimetex.cgi?\sum_{i=1}^n%20a_i=a_1+a_2+a_3+\,\ldots\,+a_{n}](http://www.matweb.cz/cgi-bin/mimetex.cgi?\sum_{i=1}^n%20a_i=a_1+a_2+a_3+\,\ldots\,+a_{n}).
+Vysvětleno [zde](http://www.matweb.cz/symboly).
+
+
 
 ### 18. dělitelnost, prvočísla, číselné soustavy
 
