@@ -47,6 +47,25 @@
 ## Mé vypracování
 ! Moje vypracování otázek, které nemusí být správné - v tomto případě prosím dejte vědět !
 
+### 1. úvod do logiky, logické spojky, kvantifikátory, pravdivostní hodnota výroku
+
+### 2. jazyk, formule a pravdivostní hodnota formule výrokové logiky
+
+### 3. tabulková metoda, sémantické vyplývání ve výrokové logice
+
+### 4. booleovské funkce, úplná konjunktivní a disjunktivní normální forma
+
+### 5. vyjadřování spojek jinými spojkami, úplné systémy spojek
+Použití převážně Demorganových zákonů - !(a+b) = !a * !b, a dvojité negace. Implikace se dá vyjádřit pomocí negace předpokladu + důsledku, tedy p->q = !p | q. Ekvivalenci je možno nahradit součinem implikací na obě strany. Tedy p<->q = (p->q)*(q->p)
+
+
+Úplný systém spojek je taková množina booleovských funkcí, pomocí kterých lze vyjádřit všechny ostatní funkce. Báze je každý úplný minimální systém spojek. Příkladem báze může být:
+- &, !
+- |, !
+- ->, !
+- NAND (Shefferova funkce)
+- NOR (Piercova funkce)
+
 ### 6. pojem množiny, zapisování množin, vztahy mezi množinami, operace s množinami
 
 ### 7. konečné spočetné a nespočetné množiny
@@ -54,10 +73,18 @@ Množina se nazývá končená, právě když je prázdná, nebo existuje přiro
 
 Množina se nazývá spočetná, právě když existuje bijekce A -> N. Množina se nazývá nespočetná, právě když je nekonečná a není spočetná.
 
-### 8. pojem funkce, typy funkcí (surjektivní, injektivní, bijektivní)
+![Spočetné a nespočetné množiny](https://raw.github.com/FrostyX/School/master/UDI/images/konecnost-spocetnost-mnozin.jpg)
 
-### 9. pojem relace, arita relace
-Relace je matematickým protějškem běžně užívaného pojmu vztah. Formálně řečeno - relace je podmnožinou kartézského součinu. Relace je dána aritou, to jest počtem objektů, které do ní vstupují a množinami jejichž prvky do vztahu vstupují.
+### 8. pojem funkce, typy funkcí (surjektivní, injektivní, bijektivní)
+Funkce je matematickým protějškem běžného pojmu přiřazení. Formálně řečeno, relace R mezi X a Y se nazývá funkce (zobrazení) množiny X do množiny Y, právě když pro každé xeX existuje právě jedno yeY, tak že <x, y>eR.
+
+- Injektivní (prostá) - Pro každé různé x je různé f(x)
+- Surjektivní - Pro každé y existuje x takové, že f(x) = y
+- Bijektivní (vzájemně jednoznačná) - Právě když je injektivní a surjektivní současně
+
+![Typy funkcí](https://raw.github.com/FrostyX/School/master/UDI/images/typy-funkci.jpg)
+
+### 9. pojem relace, arita relace Relace je matematickým protějškem běžně užívaného pojmu vztah. Formálně řečeno - relace je podmnožinou kartézského součinu. Relace je dána aritou, to jest počtem objektů, které do ní vstupují a množinami jejichž prvky do vztahu vstupují.
 
 Pojmenování relace v závislosti na aritě
 - 1 = unární
@@ -79,13 +106,26 @@ Binární relace R na X může být:
 - tranzitivní - "pokud se z bodu A dostaneme do bodu B a z bodu B se dostaneme do bodu C, pak se musíme dostat z bodu A do bodu C i bez prostředníka",  lépe se poznává z grafu
 
 ### 12. uzávěry relací
+Úzavěr relace je stručně řečeno sjednocení relace s množinou uspořádaných dvojic takových, aby doplnili relaci tak, že bude splňovat tu kterou vlastnost uzávěru.
+
+![Uzávěry relací](https://raw.github.com/FrostyX/School/master/UDI/images/uzavery.jpg)
 
 ### 13. ekvivalence a rozklady na množině, ekvivalence a surjektivní zobrazení
-Každá relace ekvivalence musí být reflexivní, symetrická a tranzitivní.
+Každá relace ekvivalence musí být reflexivní, symetrická a tranzitivní. Co je s čím v relaci, to spolu patří do stejné třídy ekvivalence. Nejdříve uděláme třídy ekvivalence pro každý prvek a výsledným rozkladem je potom množina těchto tříd. Průnik každých dvou množin ve výsledkem rozkladu musí být prázdná množina.
+
+[Rozklad ekvivalence](https://raw.github.com/FrostyX/School/master/UDI/images/rozklad.jpg)
 
 ### 14. uspořádání, Hasseovy diagramy
+Každá relace uspořádání musí být reflexivní, antisymetrická a tranzitivní.
+
+[Hassův diagram + svazy](https://raw.github.com/FrostyX/School/master/UDI/images/hass-diagra-svazy.jpg)
 
 ### 15. speciální prvky uspořádaných množin, polosvazy, svazy
+GOTO [14. uspořádání, Hasseovy diagramy](https://github.com/FrostyX/School/blob/master/UDI/zkouska.md#14-uspo%C5%99%C3%A1d%C3%A1n%C3%AD-hasseovy-diagramy)
+
+- Spojový polosvaz - Uspořádání, ve kterém můžeme pro každé dva prvky najít supremum.
+- Průsekový polosvaz - Uspořádání, ve kterém můžeme pro každé dva prvky najít infimum.
+- Svaz - Uspořádání, které je spojovým i průsekovým polosvazem současně.
 
 ### 16. přirozená, celá, racionální, iracionální, reálná a komplexní čísla
 - Přirozená čísla N: 1 2 50 38, ..
