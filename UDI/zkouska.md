@@ -84,7 +84,8 @@ Funkce je matematickým protějškem běžného pojmu přiřazení. Formálně �
 
 ![Typy funkcí](https://raw.github.com/FrostyX/School/master/UDI/images/typy-funkci.jpg)
 
-### 9. pojem relace, arita relace Relace je matematickým protějškem běžně užívaného pojmu vztah. Formálně řečeno - relace je podmnožinou kartézského součinu. Relace je dána aritou, to jest počtem objektů, které do ní vstupují a množinami jejichž prvky do vztahu vstupují.
+### 9. pojem relace, arita relace
+Relace je matematickým protějškem běžně užívaného pojmu vztah. Formálně řečeno - relace je podmnožinou kartézského součinu. Relace je dána aritou, to jest počtem objektů, které do ní vstupují a množinami jejichž prvky do vztahu vstupují.
 
 Pojmenování relace v závislosti na aritě
 - 1 = unární
