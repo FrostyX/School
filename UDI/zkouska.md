@@ -142,6 +142,7 @@ Vysvětleno [zde](http://www.matweb.cz/symboly).
 
 
 ### 18. dělitelnost, prvočísla, číselné soustavy
+Číslo n se nazývá prvočíslo, jestliže n!=1 a jestliže n je dělitelné jen čísly 1 a n.
 
 ### 19. pravidla součtu a součinu, permutace a permutace s opakováním
 
@@ -169,5 +170,50 @@ Výběr r objektů z n pokud záleží na pořadí vybíraných objektů. Počí
 Výběr r objektů z n pokud nezáleží na pořadí vybíraných objektů. Počítá se pomocí kombinačního čísla (n nad r).
 
 ### 21. binomická věta, princip inkluze a exkluze
+Princip inkluze a exkluze nám říká, že počet prvků ve sjednocení dvou množin je součet prvků v každé z nich, mínus počet prvků, které jsou v obou.
+
 ### 22. počítání pravděpodobnosti
 Pravděpodobnost vypočítáme, když vydělíme počet příznivých pokusu počtem všech možných pokusů. Pokud chceme znát výsledek v procentech, vynásobíme jej stem.
+
+### 23. pojem algoritmu (vlastnosti, druhy)
+
+### 24. rekurze
+Rekurze znamená opakování sebe sama. Dělíme ji buď na přímou a nepřímou, nebo lineární a stromovou.
+
+Příklady rekurze je výpočet faktoriálu, nebo fibbonaciho čísla.
+
+
+### 25. konečné automaty
+
+### 26. pojem složitosti, řádové porovnávání funkcí, příklady časové složitosti
+
+### 27. třídy složitostí P a NP, NP-úplné úlohy (příklady)
+
+### 28. neorientované a orientované grafy, základní pojmy teorie grafů
+Grafy slouží k popisu situací ve kterých se vyskytují místa (vrcholy/uzly) a spojení (hrany) mezi těmito místy.
+
+Orientovaný vs neorientovaný: Pokud záleží na orientaci hrany, nazývá se orientaovaná. Pokud jsou všechny hrany orientované, graf je orientovaný, jinak neorientovaný.
+
+G = <V, E> kde V je neprázdná množina vrcholů (uzlů) a E množina hran. V případě neorientovaného grafu obsahuje dvouprvkové množiny vrcholů. V případě orientovaného grafu obsahuje uspořádané dvojice hran.
+
+Graf <V1, E1> je podgrafem grafu <V2, E2> právě když V1 je podmnožinou V2 a E1 je podmnožinou E2.
+
+Sled v grafu <V, E> je posloupnost v0, e1, v1, e2, v2, ... en, vn kde veV jsou vrcholy a eeE jsou hrany. Sled se nazývá:
+- uzavřený, je li v0 = v1
+- tah, neopakuje-li se v něm žádná hrana
+- cesta, neopakuje-li se v něm žádný vrchol
+- kružnice, je-li v0 = vn a s vyjímkou vrcholů v0 a v1 jsou každé dva vrcholy různé.
+
+Vzdálenost je délka cesty která má nejmenší vzdálenost.
+
+Graf se nazývá souvislý, právě když pro každé dva vrcholy existuje sled
+
+### 29. hledání cest (Dijkstrův algoritmus)
+Dijkstrův algoritmus je algoritmus sloužící k nalezení nejkratší cesty v grafu. Vstupem je neorientovaný graf G a hranové ohodnocení E a vrchol s. Výstupem d(v) pro každé v, přičemž d(v) je hodnota nejkratší cesty z s do v.
+
+Algoritmus
+1. Inicializace - A=V. všechny vzdálenosti kromě d(s) (to je nastaveno na nula) jsou nastaveny na nekonečno.
+2. Pokud neexistuje takové veA, při kterém d(v) = nekonečno -> konec.
+3.
+
+### 30. hledání minimální kostry grafů (Kruskalův algoritmus)
