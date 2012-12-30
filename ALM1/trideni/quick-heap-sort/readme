@@ -1,0 +1,13 @@
+INFO
+
+BUILD
+	cd build
+	cmake .
+	make
+RUN
+	bin/quick-heap-sort
+
+AUTHOR
+	Name: Jakub Kadlčík
+	Email: jakub.kadlcik01@upol.cz
+
