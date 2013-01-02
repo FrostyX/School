@@ -1,4 +1,5 @@
-/* Zadání:
+/* Zadání: Implementace algoritmu merge-sort
+ * Řazení vzestupně
  *
  * Jakub Kadlčík [jakub.kadlcik01@upol.cz]
  *
