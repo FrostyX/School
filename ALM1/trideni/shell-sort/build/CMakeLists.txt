@@ -1,2 +1,2 @@
-PROJECT(log)
-ADD_EXECUTABLE(../bin/log ../src/main.c)
+PROJECT(shell-sort)
+ADD_EXECUTABLE(../bin/shell-sort ../src/main.c)
