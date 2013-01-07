@@ -11,6 +11,8 @@
  * Pro implementaci je lepší kouknout do skript od prof. Bělohlávka
  */
 
+//@TODO - opravit bug, který při některých počtech čísel vrací špatné výsledky
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h> // memcpy
@@ -18,19 +20,22 @@
 
 int main(int argc, char **argv)
 {
-	int cisla[] = {8, 9, 7, 3, 2, 6, 10, 5};
+	//int cisla[] = {8, 9, 7, 3, 2, 6, 10, 5}; // Funkční
+	int cisla[] = {76, 7, 54, 1, 5, 3,  8, 9, 20, 1, 12, 10, 1}; // Nefunkční
 	int n = sizeof(cisla)/sizeof(int);
 	mergeSort(cisla, 0, n-1);
 
 	int i;
 	for(i=0; i<n; i++)
-	{
 		printf("%i\n", cisla[i]);
-	}
 
 	return 0;
 }
 
+// a - pole čísel
+// p - index prvního prvku tříděné části
+// r - index posledního prvku tříděné části
+// Použití: mergeSort(pole_cisel, 0, n-1)
 int mergeSort(int a[], int p, int r)
 {
 	if(p<r) // Nejmenší pole které má smysl třídit je dvouprvkové
@@ -60,8 +65,16 @@ int merge(int a[], int p, int q, int r)
 	int R[n2+1];
 
 	// Zkopírujeme prvky z pole a[] do pole L[] a R[]
-	memcpy(L, a+p, sizeof(int)*n1);
-	memcpy(R, a+q+1, sizeof(int)*n2);
+	// --> podle skript
+	int z;
+	for(z=0; z<n1; z++)
+		L[z] = a[p+z];
+	for(z=0; z<n2; z++)
+		R[z] = a[q+1+z];
+
+	// --> můj způsob
+	//memcpy(L, a+p, sizeof(int)*n1);
+	//memcpy(R, a+q+1, sizeof(int)*n2);
 
 	// Nastavíme poslední prvky na "nekonečno"
 	L[n1] = INT_MAX;
