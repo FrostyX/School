@@ -15,6 +15,7 @@ int main(int argc, char **argv)
 	// Počet čísel v poli
 	int count = sizeof(cisla)/sizeof(int);
 
+	insertSort(cisla, count);
 
 	// Výpis seřazeného pole
 	int i;
@@ -24,7 +25,7 @@ int main(int argc, char **argv)
 	return 0;
 }
 
-int shellSort(int cisla[], int n)
+int insertSort(int cisla[], int n)
 {
 	// Pro dočasné uložení prvního prvku nesetříděné části
 	int tmp;
