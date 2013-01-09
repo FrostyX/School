@@ -16,17 +16,15 @@ int main(int argc, char **argv)
 	int count = sizeof(cisla)/sizeof(int);
 
 	// Počet setřízených prvků
-	int setrizenych = 0;
-
 	int i,j;
 	for(i=0; i<count; i++)
 	{
 		// Zapamatujeme si pozici prvního prvku v nesetřízené části
-		int tmp_pozice = setrizenych;
+		int tmp_pozice = i;
 
 		// Projdeme nesetřízenou část
 		// První prvek máme již zapamatován
-		for(j=setrizenych+1; j<count; j++)
+		for(j=i+1; j<count; j++)
 		{
 			if(cisla[j]<cisla[tmp_pozice])
 				tmp_pozice = j;
@@ -34,12 +32,9 @@ int main(int argc, char **argv)
 
 		// Prohodíme nejmenší nalezený prvek
 		//    s prvním prvkem v nesetřízené části.
-		int tmp = cisla[setrizenych];
-		cisla[setrizenych] = cisla[tmp_pozice];
+		int tmp = cisla[i];
+		cisla[i] = cisla[tmp_pozice];
 		cisla[tmp_pozice] = tmp;
-
-		// Posuneme hranici mezi setřízenou a nesetřízenou částí
-		setrizenych++;
 	}
 
 	// Výpis seřazeného pole
