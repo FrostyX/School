@@ -27,6 +27,18 @@ Vstupní pole: 5 1 15 13 20 10
 	- Kvadratická časová složitost. V nejhorším případě je potřeba v každém kroku projít celé pole
 - Operace vkládání
 
-#### Paměťová složitost
 
+### Pseudokód
+Vstup:
+- a - pole tříděných prvků
+- n - velikost pole
 
+	for i <- 1..n
+		q = a[i]
+		for j <- n..i
+			if(a[j-1]>q)
+				a[j] = a[j-1]
+				continue
+
+			break
+		a[i] = q
