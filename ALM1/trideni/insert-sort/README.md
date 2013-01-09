@@ -23,6 +23,10 @@ Vstupní pole: 5 1 15 13 20 10
 
 ### Složitost
 #### Časová složitost
+- Operace srovnání
+	- Kvadratická časová složitost. V nejhorším případě je potřeba v každém kroku projít celé pole
+- Operace vkládání
+
 #### Paměťová složitost
 
 
