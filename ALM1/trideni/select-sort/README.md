@@ -1,5 +1,4 @@
 ## Select-sort
-### Využití
 
 ### Algoritmus
 1. Rozdělíme si pole na setříděnou a nesetříděnou část.
@@ -20,8 +19,15 @@ Vstupní pole: 5 3 8 4 2 7
 	2 3 4 5 | 8 7
 	2 3 4 5 7 | 8
 
-### Složitost
-#### Časová složitost
-#### Paměťová složitost
 
+### Pseudokód
+Vstup:
+- a - pole tříděných prvků
+- n - velikost pole
 
+	for i <- 0..n
+		q = i
+		for j <- i+1..n
+			if(a[j]<a[q])
+				q = j;
+		swap(a[q], a[i])
