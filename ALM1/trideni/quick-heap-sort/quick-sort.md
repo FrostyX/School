@@ -21,5 +21,30 @@
 ### Odkazy
 
 
+Vstup:
+- a - pole tříděných prvků
+- p - začátek tříděné části
+- r - konec tříděné části
 
+
+function quickSort(a, p, r)
+	x <- a[(p-r)/2]
+
+	i <- p
+	j <- r
+	while(true)
+		while(a[i]<x)
+			i++
+		while(a[i]>x)
+			j--
+		if(i<j)
+			break
+
+		switch(a[i], a[j])
+
+		i++
+		j--
+
+	quickSort(a, p, j)
+	quickSort(a, i, r)
 
