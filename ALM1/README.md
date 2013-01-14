@@ -16,3 +16,6 @@ Cvičení: Mgr. Petr Osička, Ph.D.
 ### Zápočet
 - Test z třídících algoritmů, pseudokódů a časových složitostí algoritmů
 - Domácí úkol - implementace algoritmů quicksort a heapsort a porovnání jejich efektivity.
+
+### Zkouška
+Zkouška se skládá ze dvou částí (písemná a ústní). Po dopsání 45-minutové písemky si zkoušející volá studenty k ústní části. Prochází se písemka a společně se v ní opravují chyby.
