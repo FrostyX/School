@@ -1,8 +1,8 @@
 #!/usr/bin/racket
 #lang racket
 
-(define x 10)
-(define y 4)
+(define x 4)
+(define y 3)
 
 ; Přepis if na or + and
 (if (= x 3) 10 20)
@@ -48,3 +48,11 @@
 (cond ((= x 3) 90)
       ((= x 4) 100)
       (110))
+
+; Přepis and na or
+(and (= x 3) (= y 3))
+(not (or (not (= x 3)) (not (= y 3))))
+
+; Přepis or na and
+(or (= x 3) (= y 3))
+(not (and (not (= x 3)) (not (= y 3))))
