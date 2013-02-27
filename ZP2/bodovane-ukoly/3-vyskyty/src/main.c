@@ -18,9 +18,9 @@ int main(int argc, char **argv)
 	char *texty[] = {"foo", "bar", "lol"};
 	char hledany[] = {'f', 'o', 'x', 't'};
 
-	int *v = vyskyty(texty, 3, hledany);
+	int *v = vyskyty(texty, sizeof(texty) / sizeof(*texty), hledany);
 	int i;
-	for(i=0; i<=3; i++)
+	for(i=0; i<strlen(hledany); i++)
 	{
 		printf("%c - %i\n", hledany[i], v[i]);
 	}
