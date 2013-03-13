@@ -26,7 +26,7 @@ int main(int argc, char **argv)
 	komplexni c3 = {7, 8};
 	komplexni vysledek = suma(3, c1, c2, c3);
 
-	printf("Suma: %g+%gi", vysledek.r, vysledek.c);
+	printf("Suma: %g+%gi\n", vysledek.r, vysledek.c);
 	return 0;
 }
 
