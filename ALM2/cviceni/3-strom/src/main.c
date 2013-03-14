@@ -72,7 +72,9 @@ void inOrderWalk(struct node **root)
 int maxHeight(struct node **root)
 {
 	if(*root==0)
-		return 0;
+		// Nikoliv 0. Je potřeba výsledek zmenšit, protože
+		//    výška kořene je 0, nikoliv 1.
+		return -1;
 
 	int mLeft = maxHeight(&(*root)->left);
 	int mRight = maxHeight(&(*root)->right);
