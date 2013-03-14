@@ -13,44 +13,35 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h> // memcpy
-
-// Datový typ bool se pro tuto reprezentaci matic hodí lépe
-typedef enum { false, true } bool;
-//typedef char bool;
-//enum { true, false};
 
 // Uzávěrové funkce
-// Oproti zadání jsem změnil datový tip char na bool
-//     řešení je samozřejmě plně funkční i pro char
-bool **reflexivni(bool **R, int n);
-bool **symetricky(bool **R, int n);
-bool **tranzitivni(bool **R, int n);
+char **reflexivni(char **R, int n);
+char **symetricky(char **R, int n);
+char **tranzitivni(char **R, int n);
 
 // Pomocné funkce
-void kopirujMatici(bool **co, bool **kam, int n);
-void vypisRelaci(bool **R, int n);
-bool **novaMatice(int n);
+void kopirujMatici(char **co, char **kam, int n);
+void vypisRelaci(char **R, int n);
+char **novaMatice(int n);
 
 int main(int argc, char **argv)
 {
 	// Relace R definovaná pomocí matice
-	bool r0[] = {0, 0, 1, 0, 0};
-	bool r1[] = {0, 0, 1, 0, 0};
-	bool r2[] = {1, 0, 1, 0, 1};
-	bool r3[] = {0, 0, 0, 0, 0};
-	bool r4[] = {0, 0, 0, 0, 0};
-	bool *R[] = {r0, r1, r2, r3, r4};
+	char r0[] = {0, 0, 1, 0, 0};
+	char r1[] = {0, 0, 1, 0, 0};
+	char r2[] = {1, 0, 1, 0, 1};
+	char r3[] = {0, 0, 0, 0, 0};
+	char r4[] = {0, 0, 0, 0, 0};
+	char *R[] = {r0, r1, r2, r3, r4};
 
 	// Velikost matice je počítána podle počtu prvků v prvním řádku
-	int n = sizeof(r0)/sizeof(bool*);
+	int n = sizeof(r0)/sizeof(char);
 
 	// Zjištění uzávěrů
-	bool **Ur = reflexivni(R, n);
-	bool **Us = symetricky(R, n);
-	bool **Ut = tranzitivni(R, n);
+	char **Ur = reflexivni(R, n);
+	char **Us = symetricky(R, n);
+	char **Ut = tranzitivni(R, n);
 
-	printf("%i", sizeof(bool));
 	// Vypsání relace R
 	printf("Relace R je: ");
 	vypisRelaci(R, n);
@@ -73,11 +64,11 @@ int main(int argc, char **argv)
 
 
 // Všechny (a, a)eR
-bool **reflexivni(bool **R, int n)
+char **reflexivni(char **R, int n)
 {
 	// Vytvoříme novou matici a naplníme ji uspořádaními
 	//     dvojicemi z relace R
-	bool **S = novaMatice(n);
+	char **S = novaMatice(n);
 	kopirujMatici(R, S, n);
 
 	// Rozšíříme relaci S o dvojice nezbytné k tomu, aby
@@ -86,28 +77,29 @@ bool **reflexivni(bool **R, int n)
 	for(i=0; i<n; i++)
 	{
 		if(R[i][i]!=1)
+		{
 			S[i][i] = 1;
+		}
 	}
 	return S;
 }
 
 // Pokud (a, b)eR pak musí (b, a)eR
-bool **symetricky(bool **R, int n)
+char **symetricky(char **R, int n)
 {
 	// Vytvoříme novou matici a naplníme ji uspořádaními
 	//     dvojicemi z relace R
-	bool **S = novaMatice(n);
+	char **S = novaMatice(n);
 	kopirujMatici(R, S, n);
 
 	// Rozšíříme relaci S o dvojice nezbytné k tomu, aby
 	//     byla symetrická
-	// @TODO Neprocházet zbytečně celou matici
 	int i, j;
 	for(i=0; i<n; i++)
 	{
 		for(j=0; j<n; j++)
 		{
-			if(R[i][j]==1)
+			if(R[i][j])
 				S[j][i] = 1;
 		}
 	}
@@ -115,11 +107,11 @@ bool **symetricky(bool **R, int n)
 }
 
 // Pokud (a, b)eR a (b, c)eR, pak musí (a, c)eR
-bool **tranzitivni(bool **R, int n)
+char **tranzitivni(char **R, int n)
 {
 	// Vytvoříme novou matici a naplníme ji uspořádaními
 	//     dvojicemi z relace R
-	bool **S = novaMatice(n);
+	char **S = novaMatice(n);
 	kopirujMatici(R, S, n);
 
 	// Rozšíříme relaci S o dvojice nezbytné k tomu, aby
@@ -130,12 +122,12 @@ bool **tranzitivni(bool **R, int n)
 		for(b=0; b<n; b++)
 		{
 			// Našli jsme (a, b)eR
-			if(R[a][b]==1)
+			if(R[a][b])
 			{
 				for(c=0; c<n; c++)
 				{
 					// Našli jsme (b, c)eR
-					if(R[b][c]==1)
+					if(R[b][c])
 						S[a][c]=1;
 				}
 			}
@@ -146,27 +138,27 @@ bool **tranzitivni(bool **R, int n)
 
 // Vytvoří a vrátí novou matici
 // Všechny žádná uspořádaná dvojice nebude nastavena na pravdu
-bool **novaMatice(int n)
+char **novaMatice(int n)
 {
-	bool **M;
-	M = malloc(sizeof(bool*)*n);
+	char **M;
+	M = malloc(sizeof(char*)*n);
 
 	int i;
 	for(i=0; i<n; i++)
-		M[i] = malloc(sizeof(bool)*n);
+		M[i] = malloc(sizeof(char)*n);
 	return M;
 }
 
 // Kopíruje uspořádané dvojice z jedné matice do druhé
 // Původní dvojice cílové matice zůstanou zachovány
-void kopirujMatici(bool **co, bool **kam, int n)
+void kopirujMatici(char **co, char **kam, int n)
 {
 	int i, j;
 	for(i=0; i<n; i++)
 	{
 		for(j=0; j<n; j++)
 		{
-			if(co[i][j]==1)
+			if(co[i][j])
 				kam[i][j] = 1;
 		}
 	}
@@ -174,7 +166,7 @@ void kopirujMatici(bool **co, bool **kam, int n)
 
 // Do konzole vypíše relaci ve tvaru
 //     {(0, 2), (1, 2), (2, 0), (2, 2), (2, 4), }
-void vypisRelaci(bool **R, int n)
+void vypisRelaci(char **R, int n)
 {
 	printf("{");
 	int i, j;
@@ -182,10 +174,9 @@ void vypisRelaci(bool **R, int n)
 	{
 		for(j=0; j<n; j++)
 		{
-			if(R[i][j]==1)
+			if(R[i][j])
 				printf("(%i, %i), ", i, j);
 		}
 	}
 	printf("}\n");
 }
-
