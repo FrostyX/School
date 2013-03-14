@@ -30,6 +30,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// Struktura reprezentující jeden uzel stromu
 struct node // !!!
 {
 	int number;
@@ -37,30 +38,52 @@ struct node // !!!
 	struct node *right;
 };
 
+// Funkce pro práci se stromem
 struct node *find(int number, struct node **root);
 struct node *add(int number, struct node **root); // !!!
 struct node *removeMin(int number, struct node **root);
 
-// Výpis stromu
+// Průchod a výpis celého stromu
 void inOrderWalk(struct node **root);
+void preOrderWalk(struct node **root);
+void postOrderWalk(struct node **root);
 
+// Výška a hloubka
 int height(struct node **root);
 int depth(struct node **root);
+int maxHeight(struct node **root);
 
+// @TODO dopsat funkci pro vytvoření stromu, aby byl veškerý kód ve funkcích
 int main(int argc, char **argv)
 {
 	struct node *tree = 0;
-	add(2, &tree);
-	add(5, &tree);
-	add(8, &tree);
-	add(3, &tree);
-	add(8, &tree);
 
+	add(1, &tree);
+	add(2, &tree);
+	add(3, &tree);
+	add(4, &tree);
+	add(5, &tree);
+	add(6, &tree);
+	add(7, &tree);
+
+	printf("Height: %i\n", maxHeight(&tree));
+
+	printf("inOrderWalk:   ");
 	inOrderWalk(&tree);
+	printf("\n");
+
+	printf("preOrderWalk:  ");
+	preOrderWalk(&tree);
+	printf("\n");
+
+	printf("postOrderWalk: ");
+	postOrderWalk(&tree);
 	printf("\n");
 	return 0;
 }
 
+// @TODO Zařídit vyvažování stromu tak, aby byl vždy nejefektivnější
+//     --> AVL vyvážení
 struct node *add(int number, struct node **root)
 {
 	// Pokud kořen neexistuje
@@ -81,6 +104,18 @@ struct node *add(int number, struct node **root)
 		add(number, &(*root)->left);
 }
 
+// Vrátí výšku celého stromu
+int maxHeight(struct node **root)
+{
+	if(*root==0)
+		return 0;
+
+	int mLeft = maxHeight(&(*root)->left);
+	int mRight = maxHeight(&(*root)->right);
+	return (mLeft > mRight? mLeft : mRight) + 1;
+}
+
+// Projde pole a vypíše čísla vzestupně
 void inOrderWalk(struct node **root)
 {
 	if(*root==0)
@@ -91,3 +126,22 @@ void inOrderWalk(struct node **root)
 	inOrderWalk(&(*root)->right);
 }
 
+void preOrderWalk(struct node **root)
+{
+	if(*root==0)
+		return;
+
+	printf("%i ", (*root)->number);
+	preOrderWalk(&(*root)->left);
+	preOrderWalk(&(*root)->right);
+}
+
+void postOrderWalk(struct node **root)
+{
+	if(*root==0)
+		return;
+
+	postOrderWalk(&(*root)->left);
+	postOrderWalk(&(*root)->right);
+	printf("%i ", (*root)->number);
+}
