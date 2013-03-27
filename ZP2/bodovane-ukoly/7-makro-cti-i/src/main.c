@@ -7,7 +7,7 @@
  * All rights reserved.
  */
 
-#define cti_int(i) (i = getchar()-48)
+#define cti_int(i) (scanf("%d", &i), i)
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -15,6 +15,9 @@
 int main(int argc, char **argv)
 {
 	int j, k;
+
+	//scanf("%d", &j) && j;
+
 	printf("Zadejte cele čislo: ");
 	if((j = cti_int(k)) == 0)
 		printf("nula\n");
