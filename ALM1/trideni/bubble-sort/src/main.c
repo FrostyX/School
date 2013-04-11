@@ -17,10 +17,10 @@ int main(int argc, char **argv)
 
 	// Průchod neseřazenou částí pole
 	int i, j;
-	for(j=0; j<=count; j++)
+	for(j=0; j<count-1; j++)
 	{
 		// Posunutí jednoho prvku nakonec
-		for(i=0; i<=count-j; i++)
+		for(i=0; i<count-j-1; i++)
 		{
 			// Pokud je číslo větší než následující
 			if(cisla[i]>cisla[i+1])
