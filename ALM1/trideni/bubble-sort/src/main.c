@@ -7,6 +7,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void bubbleSort(int cisla[], int n);
+
 int main(int argc, char **argv)
 {
 	// Deklarace pole, které budeme třídit, s inicializací výchozích prvků
@@ -15,12 +17,25 @@ int main(int argc, char **argv)
 	// Počet čísel v poli
 	int count = sizeof(cisla)/sizeof(int);
 
+	// Seřazení pole
+	bubbleSort(cisla, count);
+
+	// Výpis seřazeného pole
+	int i;
+	for(i=0; i<count; i++)
+		printf("%i\n", cisla[i]);
+
+	return 0;
+}
+
+void bubbleSort(int cisla[], int n)
+{
 	// Průchod neseřazenou částí pole
 	int i, j;
-	for(j=0; j<count-1; j++)
+	for(j=0; j<n-1; j++)
 	{
 		// Posunutí jednoho prvku nakonec
-		for(i=0; i<count-j-1; i++)
+		for(i=0; i<n-j-1; i++)
 		{
 			// Pokud je číslo větší než následující
 			if(cisla[i]>cisla[i+1])
@@ -32,10 +47,4 @@ int main(int argc, char **argv)
 			}
 		}
 	}
-
-	// Výpis seřazeného pole
-	for(i=0; i<count; i++)
-		printf("%i\n", cisla[i]);
-
-	return 0;
 }
