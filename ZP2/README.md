@@ -11,6 +11,11 @@ Probírané učivo:
 - Funkce.
 - Základní vstup a výstup.
 
+### Info
+- První ročník Bc.
+- Letní semestr
+- A
+
 ### Vyučující
 Cvičení: Mgr. Jiří Zacpal, Ph.D.
 
