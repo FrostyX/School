@@ -8,6 +8,11 @@
 - Lineární transformace a matice.
 - Aplikace v informatice.
 
+### Info
+- První ročník Bc.
+- Letní semestr
+- A
+
 ### Vyučující
 Přednášky: RNDr. Miroslav Kolařík, Ph.D.
 

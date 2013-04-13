@@ -8,6 +8,11 @@
 - Vnější třídění. Metoda slučování. Polyfázové třídění.
 - Pořádkové statistiky.
 
+### Info
+- První ročník Bc.
+- Zimní semestr
+- A
+
 ### Vyučující
 Přednášky: RNDr. Arnošt Večerka
 

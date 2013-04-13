@@ -8,6 +8,11 @@
 7. Úvod do vektorové analýzy
 8. Implicitně zadané funkce
 
+### Info
+- První ročník Bc.
+- Letní semestr
+- A
+
 ### Vyučující
 Přednášky: Doc. RNDr. Michal Krupka, Ph.D.
 

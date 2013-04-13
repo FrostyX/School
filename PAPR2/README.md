@@ -1,4 +1,4 @@
-## Paradigmata programování 1
+## Paradigmata programování 2
 Kurs je zaměřen na pokročilé partie z funkcionálního programování
 (líné vyhodnocování, makra) a dále na problematiku imperativního
 programování (stav, změna stavu, vedlejší efekt) a nepreemptivního
@@ -47,6 +47,12 @@ elementů. Optimalizace na koncovou rekurzi. Únikové funkce jako
 manipulátory se zásobníky. Nedeterminismus a nepreemptivní
 paralelismus. Operátor amb. Simulace přepnutí kontextu procedur pomocí
 únikových funkcí. Nepreemptivní paralelní systém.
+
+### Info
+- První ročník Bc.
+- Letní semestr
+- A
+
 
 ### Vyučující
 Přednášky: Mgr. Jan Konečný, Ph.D.

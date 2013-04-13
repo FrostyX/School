@@ -10,6 +10,11 @@
 - Úvod do složitosti algoritmů. Převoditelnost problému na problém. Nezvládnutelné problémy a jak se s nimi vypořádat.
 - Vybrané aplikace probíraných pojmů.
 
+### Info
+- První ročník Bc.
+- Zimní semestr
+- A
+
 ### Vyučující
 Přednášky: RNDr. Miroslav Kolařík, Ph.D.
 
