@@ -27,11 +27,20 @@ char **novaMatice(int n);
 int main(int argc, char **argv)
 {
 	// Relace R definovaná pomocí matice
+	/*
 	char r0[] = {0, 0, 1, 0, 0};
 	char r1[] = {0, 0, 1, 0, 0};
 	char r2[] = {1, 0, 1, 0, 1};
 	char r3[] = {0, 0, 0, 0, 0};
 	char r4[] = {0, 0, 0, 0, 0};
+	*/
+
+	char r0[] = {0, 0, 1, 0, 0};
+	char r1[] = {0, 0, 0, 0, 0};
+	char r2[] = {0, 0, 0, 3, 0};
+	char r3[] = {0, 0, 0, 0, 1};
+	char r4[] = {0, 0, 0, 0, 0};
+
 	char *R[] = {r0, r1, r2, r3, r4};
 
 	// Velikost matice je počítána podle počtu prvků v prvním řádku
@@ -116,23 +125,33 @@ char **tranzitivni(char **R, int n)
 
 	// Rozšíříme relaci S o dvojice nezbytné k tomu, aby
 	//     byla tranzitivní
-	int a, b, c;
-	for(a=0; a<n; a++)
+	int a=0, b, c;
+	char zmena = 0;
+	do
 	{
-		for(b=0; b<n; b++)
+		//zmena = 1;
+		for(a=0; a<n; a++)
+		//do
 		{
-			// Našli jsme (a, b)eR
-			if(R[a][b])
+			for(b=0; b<n; b++)
 			{
-				for(c=0; c<n; c++)
+				// Našli jsme (a, b)eR
+				if(R[a][b])
 				{
-					// Našli jsme (b, c)eR
-					if(R[b][c])
-						S[a][c]=1;
+					for(c=0; c<n; c++)
+					{
+						// Našli jsme (b, c)eR
+						if(R[b][c])
+						{
+							S[a][c]=1;
+							zmena = 0;
+						}
+					}
 				}
 			}
+			//a++;
 		}
-	}
+	}while(zmena == 0);
 	return S;
 }
 

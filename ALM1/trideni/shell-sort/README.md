@@ -1,5 +1,6 @@
 ## Shell-sort
 ### Využití
+- Není důvod pro jeho použití. Implementačně není tak jednoduchý jako algoritmy přímého třídění a navíc nedosahuje takových rychlostí jako quicksort nebo heapsort
 
 ### Algoritmus
 1.Vybíráme různé intervaly z pole
