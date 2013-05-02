@@ -1,0 +1,13 @@
+INFO
+
+BUILD
+	cd build
+	cmake .
+	make
+RUN
+	bin/ukol
+
+AUTHOR
+	Name: Jakub Kadlčík "FrostyX"
+	Email: frostyx@email.cz
+
