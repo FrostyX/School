@@ -26,7 +26,7 @@ int main(int argc, char **argv)
 	int i;
 	for(i=1; i<=n; i++)
 	{
-		Insert(&T, i);
+		Insert(&T, rand()%1000000);
 		if(i==pocty[iPocty])
 		{
 			printf("%i | %0.2f | %i | %0.2f\n", i, 0.0, Height(T), 0.0);
