@@ -2,8 +2,9 @@
 
 Node *CreateNode(int x, Node *v, Node *w)
 {
-	Node *u = malloc(sizeof(Node));
+	Node *u = (Node*)malloc(sizeof(Node));
 	u->item[0] = x;
+	u->order = 2;
 	u->child[0] = v;
 	u->child[1] = w;
 	u->child[2] = NULL;
