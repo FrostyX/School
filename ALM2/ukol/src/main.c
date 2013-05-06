@@ -11,7 +11,7 @@
 #include <stdlib.h>
 #include "tree.h"
 
-
+extern nodes;
 
 int main(int argc, char **argv)
 {
@@ -20,6 +20,7 @@ int main(int argc, char **argv)
 	int iPocty=0;
 
 	Node *T = NULL;
+	srand(time(0));
 
 	printf("Pocet | Prum | Vyska | Podil\n");
 	printf("----------------------------\n");
@@ -29,11 +30,14 @@ int main(int argc, char **argv)
 		Insert(&T, rand()%1000000);
 		if(i==pocty[iPocty])
 		{
-			printf("%i | %0.2f | %i | %0.2f\n", i, 0.0, Height(T), 0.0);
+			printf("%i | %0.2f | %i | %0.2f\n", i, (float)i/nodes, Height(T), Podil(T, i));
 			iPocty++;
 		}
 	}
 
+	// Výpis deseti prvních a deseti posledních prvků
+	PrvniPosledni(T, Count(T));
+	printf("\n");
+
 	return 0;
 }
-

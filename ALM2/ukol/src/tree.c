@@ -1,7 +1,11 @@
 #include "tree.h"
 
+int nodes=0; // Globální proměnná uchovávající počet uzlů
+
 Node *CreateNode(int x, Node *v, Node *w)
 {
+	nodes++;
+
 	Node *u = (Node*)malloc(sizeof(Node));
 	u->item[0] = x;
 	u->order = 2;
@@ -89,4 +93,55 @@ int Height(Node *u)
 	if(u==NULL)
 		return -1;
 	return Height(u->child[0])+1;
+}
+
+float Podil(Node *u, int n)
+{
+	int h = Height(u);
+	return h/log2(n);
+}
+
+void PrvniPosledni(Node *tree, int n)
+{
+	static int tmp = 0;
+	int i = 0;
+
+	if (tree == NULL)
+		return;
+
+	PrvniPosledni(tree->child[0], n);
+
+	do
+	{
+		tmp++;
+		if ((tmp <= 10) || (tmp >= n-9))
+		{
+			if(tmp==1)
+				printf("\n\nPrvnich deset prvku:\n");
+			if(tmp==n-9)
+				printf("\n\nPoslednich deset prvku:\n");
+
+			printf("%i ", tree->item[i]);
+		}
+		i++;
+
+		PrvniPosledni(tree->child[i], n);
+	} while(i<(tree->order-1));
+}
+
+int Count(Node *u)
+{
+	static int count=0;
+	if(u==NULL)
+		return 0;
+
+	int i=0;
+	Count(u->child[0]);
+
+	do{
+		count++;
+		i++;
+		Count(u->child[i]);
+	} while(i<u->order-1);
+	return count;
 }

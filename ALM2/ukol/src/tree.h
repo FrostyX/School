@@ -3,6 +3,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <math.h>
 
 typedef struct node
 {
@@ -15,5 +16,8 @@ Node *CreateNode(int x, Node *v, Node *w);
 Node *SplitNode(Node *u, Node *v);
 char Insert(Node **T, int x);
 int Height(Node *u);
+float Podil(Node *u, int n);
+void PrvniPosledni(Node *tree, int n);
+int Count(Node *u);
 
 #endif
