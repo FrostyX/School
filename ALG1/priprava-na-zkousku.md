@@ -62,11 +62,29 @@
 	- Součet matic [112]
 	- Násobení matice skalárem [114]
 	- Transpozice [117]
-	- Násobení matic [118]
+	- Součin matic [118]
+
+	- Regulární, singulární [191]
 
 
 ## 6. Determinanty.
+	- Permutace [125]
+	- Inverze, znaménko permutace, sudá/lichá [128]
+	- Transpozice [130]
+	- Determinant [135]
+	- Dílčí matice [141]
+	- Subdeterminant [141]
+	- Minor [141]
 
 ## 7. Soustavy lineárních rovnic.
+	- Řádkový podprostor [158]
+	- Elementární řádkové transformace [158]
+	- Řádková ekvivalence [159]
+	- Hodnost matice [164]
+	- Lineární rovnice [170]
 
 ## 8. Transformace souřadnic.
+	- Homeomorfismus, izomorfismus [200]
+	- Jádro [202]
+	- Souřadnice vektoru [207]
+	- Monomorfismus, epimorfismus [213]
