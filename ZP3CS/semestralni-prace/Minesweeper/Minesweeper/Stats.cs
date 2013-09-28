@@ -5,8 +5,8 @@ using System.Text;
 
 namespace Minesweeper
 {
-    class Stats
-    {
+	class Stats
+	{
 		// Velikost hrací desky
 		// Pro hodnotu 9 bude mřížka velká 9x9 políček
 		int size;
@@ -30,5 +30,5 @@ namespace Minesweeper
 
 		// Počet započatých her 
 		int gamesTotal = 0;
-    }
+	}
 }

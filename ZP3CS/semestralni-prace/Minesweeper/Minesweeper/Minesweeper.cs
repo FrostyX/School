@@ -5,10 +5,7 @@ using System.Text;
 
 namespace Minesweeper
 {
-	class Program
+	class Minesweeper
 	{
-		static void Main(string[] args)
-		{
-		}
 	}
 }
