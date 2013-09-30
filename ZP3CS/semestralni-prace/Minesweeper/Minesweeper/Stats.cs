@@ -7,10 +7,6 @@ namespace Minesweeper
 {
 	class Stats
 	{
-		// Velikost hrací desky
-		// Pro hodnotu 9 bude mřížka velká 9x9 políček
-		public int size;
-
 		// Počet políček, na které uživatel klikl
 		public int steps = 0;
 
@@ -23,7 +19,7 @@ namespace Minesweeper
 		public int minesTotal;
 
 		// Počet nalezených min
-		public int minesFount = 0;
+		public int minesFound = 0;
 
 		// Počet vyhraných her v řadě (za sebou) 
 		public int gamesWin = 0;
