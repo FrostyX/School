@@ -6,6 +6,7 @@ Základní struktura dokumentu zajišťující funkční češtinu
 	\documentclass[10pt,a4paper]{article}
 	\usepackage[utf8]{inputenc}
 	\usepackage[czech]{babel}
+	\usepackage[T1]{fontenc}
 
 	\begin{document}
 		Hello world
