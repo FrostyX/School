@@ -31,14 +31,28 @@ namespace Minesweeper
 				Console.WriteLine("Zadejte dvě čísla oddělené mezerou.");
 				Console.WriteLine("První hodnota reprezentuje osu X, druhá osu Y");
 				Console.Write("Hodnoty: ");
-				string[] axis = Console.ReadLine().Split();
-				int x = int.Parse(axis[0]);
-				int y = int.Parse(axis[1]);
+				string[] input = Console.ReadLine().Split();
+				char action = char.Parse(input[0]);
+				int x = int.Parse(input[1]);
+				int y = int.Parse(input[2]);
 
-				m.discover(x, y);
-
+				m.action(action, x, y);
+				if ((action == 's') && (m.toLiveOrNotToLive(x ,y)))
+					break;
 			} while(m.stats.minesTotal != m.stats.minesFound);
 
+			Console.WriteLine("\n--------------------------\n");
+
+			// Pokud uživatel neodhalil všechny miny -> na nějakou stoupl
+			if (m.stats.minesTotal != m.stats.minesFound)
+			{
+				Console.WriteLine("Stoupl jste na minu a umřete za 3... 2... 1...");
+				Console.WriteLine("Smůla. Jste mrtvý. Zkuste to znovu :-)");
+			}
+			else
+			{
+				Console.WriteLine("Jste rozený profík! Našel jste všechny miny.");
+			}
 
 			TUI.pressAnyKeyToExit();
 		}

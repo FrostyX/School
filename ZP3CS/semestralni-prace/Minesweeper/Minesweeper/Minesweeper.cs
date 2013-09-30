@@ -60,18 +60,35 @@ namespace Minesweeper
 			}
 		}
 
-		// Prozkoumá pole dané souřadnicemi
-		public void discover(int x, int y)
+		public void action(char action, int x, int y)
 		{
-			// Pokud uživatel narazil na minu
-			//if (this.getCellValue(x, y) == -2)
-			this.discoveredCells[x, y] = this.mines[x, y] == 1 ? -1 : this.getLocalMinesCount(x, y);
-
-			Console.WriteLine(this.discoveredCells[x, y]);
-			//this.discoveredCells[x, y] = this.getLocalMinesCount(x, y);
+			switch (action)
+			{
+				case 's': { this.stepOn(x, y); break; } 
+				case 'm': { this.mark(x, y)  ; break; }
+				case 'u': { this.unMark(x, y); break; } 
+			}
 		}
 
-		public bool liveOrDie(int x, int y)
+		public void stepOn(int x, int y)
+		{
+			this.discoveredCells[x, y] = this.mines[x, y] == 1 ? -1 : this.getLocalMinesCount(x, y);
+		}
+
+		public void mark(int x, int y)
+		{
+			this.discoveredCells[x, y] = -1;
+			this.stats.minesFound++;
+		}
+
+		public void unMark(int x, int y)
+		{
+			this.discoveredCells[x, y] = -2;
+			this.stats.minesFound--;
+		}
+
+
+		public bool toLiveOrNotToLive(int x, int y)
 		{
 			return this.mines[x, y] == 1;
 		}
