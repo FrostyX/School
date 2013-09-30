@@ -15,3 +15,9 @@ Základní struktura dokumentu zajišťující funkční češtinu
 Pro vygenerování PDF dokumentu bez zbytečných mezikroků, můžeme použít příkaz `pdflatex` z balíčku `texlive-core`:
 
 	pdflatex main.tex
+
+### Překlad - Windows
+
+	cslatex pokus
+	dvips pokus
+	dvipdfm pokus
