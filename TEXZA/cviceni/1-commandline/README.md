@@ -18,6 +18,6 @@ Pro vygenerování PDF dokumentu bez zbytečných mezikroků, můžeme použít 
 
 ### Překlad - Windows
 
-	cslatex pokus
-	dvips pokus
-	dvipdfm pokus
+	cslatex main
+	dvips main
+	dvipdfm main
