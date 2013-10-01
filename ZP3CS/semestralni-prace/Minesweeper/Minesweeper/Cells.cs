@@ -5,6 +5,7 @@ using System.Text;
 
 namespace Minesweeper
 {
+	// Reprezentuje "inteligentní" seznam herních políček 
 	class Cells 
 	{
 		// Všechna políčka hrací desky uložena pod souřadnicemi x, y

@@ -11,7 +11,7 @@ namespace Minesweeper
 		// ve výchozí velikosti, s výchozím písmem při rozlišení obrazovky 1366x768
 		public const int maxGridSize = 18;
 		public const int minGridSize = 2;
-		public const int defaultGridSize = 9;
+		public const int defaultGridSize = 5;
 
 		// Kolik procent políček bude pokryto minami
 		public const int minesPerc = 10;
@@ -42,8 +42,8 @@ namespace Minesweeper
 				int x, y;
 				do // Kdyby mina na dané pozici už existovala
 				{
-					x = r.Next(this.stats.minesTotal);
-					y = r.Next(this.stats.minesTotal);
+					x = r.Next(this.size);
+					y = r.Next(this.size);
 				} while(this.cells.get(x, y).mine);
 
 				// Uložíme minu

@@ -20,7 +20,10 @@ namespace Minesweeper
 					Console.Write("Velikost [{0}]: ", Minesweeper.defaultGridSize);
 					size = Convert.ToInt32(Console.ReadLine());
 				}
-				catch {}
+				catch
+				{
+					size = Minesweeper.defaultGridSize;
+				}
 			} while ((size < Minesweeper.minGridSize) || (size > Minesweeper.maxGridSize));
 			Console.WriteLine();
 

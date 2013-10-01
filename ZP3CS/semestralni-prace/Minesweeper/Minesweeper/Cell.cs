@@ -5,6 +5,7 @@ using System.Text;
 
 namespace Minesweeper
 {
+	// Reprezentuje políčko ve hře "Hledání min"
 	class Cell
 	{
 		// Je v políčku umístěna mina?

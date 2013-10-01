@@ -5,6 +5,7 @@ using System.Text;
 
 namespace Minesweeper
 {
+	// Třída pro prácí s textovým uživatelským rozhraním
 	class TUI : UI
 	{
 		// Na hrací desce se mohou kromě čísel, označujících počet min v okolí,
