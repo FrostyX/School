@@ -94,7 +94,7 @@ namespace Minesweeper
 		}
 
 		// Zjistí, zda uživatel našel vsechny miny
-		public bool foundAllMines()
+		public bool foundAllAndOnlyMines()
 		{
 			for (int y = 0; y < this.size; y++)
 			{
@@ -103,6 +103,8 @@ namespace Minesweeper
 					// Pokud je na políčku mina a uživatel řekl, že je na něm mina
 					Cell c = this.cells.get(x, y);
 					if ((c.mine) && (c.value != CellValues.mine))
+						return false;
+					if ((!c.mine) && (c.value == CellValues.mine))
 						return false;
 				}
 			}

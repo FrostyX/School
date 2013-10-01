@@ -59,17 +59,16 @@ namespace Minesweeper
 		// Vypíše panel statistik
 		public static void printStats(Stats s)
 		{
-		}
-
-		// Vyčistí obrazovku
-		public static void clear()
-		{
+			Console.Write("Min ve hře:  {0}".PadRight(18), s.minesTotal);
+			Console.Write("| Počet kroků: {0}\n", s.steps);
+			Console.Write("Min označno: {0}", s.minesFound);
+			TUI.printHorizontalBorder();
 		}
 
 		// Vypíše dialog pro ukončení aplikace
-		public static void pressAnyKeyToExit()
+		public static void pressAnyKeyToContinue(string text)
 		{
-			Console.WriteLine("\nStisknutím libovolné klávesy ukončíte program");
+			Console.WriteLine(text);
 			Console.ReadKey();
 		}
 
@@ -88,7 +87,6 @@ namespace Minesweeper
 			}
 			Console.Write("-\n");
 		}
-
 
 		// Vypíše buňku tabulky
 		protected static void printCell(Cell c, int n)
