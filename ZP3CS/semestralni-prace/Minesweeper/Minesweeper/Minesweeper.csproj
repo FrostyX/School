@@ -43,6 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Axis.cs" />
+    <Compile Include="Cell.cs" />
+    <Compile Include="Cells.cs" />
+    <Compile Include="CellValues.cs" />
     <Compile Include="Minesweeper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

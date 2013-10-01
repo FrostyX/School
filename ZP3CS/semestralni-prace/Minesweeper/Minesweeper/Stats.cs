@@ -7,7 +7,7 @@ namespace Minesweeper
 {
 	class Stats
 	{
-		// Počet políček, na které uživatel klikl
+		// Počet kroků, které uživatel provedl
 		public int steps = 0;
 
 		// Počet odkrytých políček

@@ -7,14 +7,17 @@ namespace Minesweeper
 {
 	class TUI : UI
 	{
+		// Na hrací desce se mohou kromě čísel, označujících počet min v okolí,
+		// vyskytovat také speciální hodnoty. Zde jsou symboly, které se pro ně zobrazí.
 		public static Dictionary<int, char> symbols = new Dictionary<int,char>
 		{
-			{-2, '#'},  // Neprozkoumané pole
-			{-1, '*'},  // Mina
-			{0 , ' '}   // Žádná mina v okolí
+			{CellValues.undiscovered, '#'},  // Neprozkoumané pole
+			{CellValues.mine        , '*'},  // Mina
+			{0                      , ' '}   // Žádná mina v okolí
 		};
 
-		public static void printGrid(int n, int[,] mines)
+		// Vypíše herní desku s navigací
+		public static void printGrid(int n, Cells cells)
 		{
 			// Šířka (ve znacích) vertikální navigace
 			const int indent = 4;
@@ -30,28 +33,20 @@ namespace Minesweeper
 			Console.Write("\n\n");
 
 			// Výpis hrací desky
-			// Sloupce
-			for(int i=0; i<n; i++)
+			for(int y=0; y<n; y++)
 			{
 				// Hrana tabulky nad každým řádkem
 				Console.Write("".PadRight(indent));
 				TUI.printHorizontalBorder(n); 
 
-				// Řádky
-				for(int j=0; j<n; j++)
+				for(int x=0; x<n; x++)
 				{
 					// Vertikální navigace tabulky
-					if (j == 0)
-						Console.Write(i.ToString().PadRight(indent));
+					if (x == 0)
+						Console.Write(y.ToString().PadRight(indent));
 
-					int value = mines[j, i];
-					//Console.WriteLine(value);
-					string svalue = value<=0 ? Convert.ToString(TUI.symbols[value]) : Convert.ToString(value);
-					Console.Write("| {0} ", svalue);
-
-					// Poslední sloupec je potřeba uzavřít
-					if(j == n-1)
-						Console.Write("|");
+					// Hodnoty tabulky
+					TUI.printCell(cells.get(x, y), n);
 				}
 				Console.Write("\n");
 			}
@@ -61,16 +56,30 @@ namespace Minesweeper
 			TUI.printHorizontalBorder(n);
 		}
 
+		// Vypíše panel statistik
 		public static void printStats(Stats s)
 		{
 		}
 
+		// Vyčistí obrazovku
+		public static void clear()
+		{
+		}
+
+		// Vypíše dialog pro ukončení aplikace
 		public static void pressAnyKeyToExit()
 		{
 			Console.WriteLine("\nStisknutím libovolné klávesy ukončíte program");
 			Console.ReadKey();
 		}
 
+		// Vypíše vodorovnou čáru
+		public static void printHorizontalBorder()
+		{
+			Console.WriteLine("\n--------------------------\n");
+		}
+
+		// Vypíše vodorovnou čáru o šířce tabulky
 		protected static void printHorizontalBorder(int cells)
 		{
 			for(int i=0; i<cells; i++)
@@ -78,6 +87,19 @@ namespace Minesweeper
 				Console.Write("----");
 			}
 			Console.Write("-\n");
+		}
+
+
+		// Vypíše buňku tabulky
+		protected static void printCell(Cell c, int n)
+		{
+			// Buď symbol reprezentující minu/neprozkoumané políčko, nebo počet min v okolí
+			string value = c.value <= 0 ? Convert.ToString(TUI.symbols[c.value]) : Convert.ToString(c.value);
+			Console.Write("| {0} ", value);
+
+			// Poslední sloupec je potřeba uzavřít
+			if(c.axis.x == n-1)
+				Console.Write("|");
 		}
 	}
 }

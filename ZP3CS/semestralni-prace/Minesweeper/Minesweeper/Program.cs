@@ -13,47 +13,62 @@ namespace Minesweeper
 			Console.WriteLine("Volte čísla v rozsahu {0} - {1}", Minesweeper.minGridSize, Minesweeper.maxGridSize);			
 			Console.WriteLine("Pro hodnotu 9 bude velikost mřížky 9x9");
 			int size;
-			do
+			do // Uživatel se musí trefit do povoleného rozsahu velikostí
 			{
 				Console.Write("Velikost [{0}]: ", Minesweeper.defaultGridSize);
 				size = Convert.ToInt32(Console.ReadLine());
 			} while ((size < Minesweeper.minGridSize) || (size > Minesweeper.maxGridSize));
 			Console.WriteLine();
 
+			// Vytvoříme a vygenerujeme herní desku 
 			Minesweeper m = new Minesweeper();
 			m.size = size;
 			m.generateMines();
 
-			do
+			char action;
+			do // Uživatel prozkoumává herní desku a označuje miny, dokud neřekne, že má hotovo
 			{
-				TUI.printGrid(m.size, m.discovered);
+				TUI.printGrid(m.size, m.cells);
 				Console.WriteLine("Na kterou hodnotu chcete kliknout?");
 				Console.WriteLine("Zadejte dvě čísla oddělené mezerou.");
 				Console.WriteLine("První hodnota reprezentuje osu X, druhá osu Y");
 				Console.Write("Hodnoty: ");
+
+				// Parsujeme vstup
 				string[] input = Console.ReadLine().Split();
-				char action = char.Parse(input[0]);
+				action = char.Parse(input[0]);
 				int x = int.Parse(input[1]);
 				int y = int.Parse(input[2]);
 
-				m.action(action, x, y);
-				if ((action == 's') && (m.toLiveOrNotToLive(x ,y)))
+				// Pokud uživatel řekl, že už má hotovo
+				if (action == 'q')
 					break;
-			} while(m.stats.minesTotal != m.stats.minesFound);
 
-			Console.WriteLine("\n--------------------------\n");
+				// Provedeme požadovanou akci s požadovanými souřadnicemi
+				m.action(action, x, y);
 
-			// Pokud uživatel neodhalil všechny miny -> na nějakou stoupl
-			if (m.stats.minesTotal != m.stats.minesFound)
+				// Pokud uživatel stoupl na minu
+				if ((action == 's') && (m.toBeOrNotToBe(x, y)))
+					break;
+
+			} while(true); // Cyklus je ukončen zevnitř
+
+			TUI.printHorizontalBorder();
+
+			// Pokud uživatel stoupl na minu
+			if (action == 's')
 			{
 				Console.WriteLine("Stoupl jste na minu a umřete za 3... 2... 1...");
 				Console.WriteLine("Smůla. Jste mrtvý. Zkuste to znovu :-)");
 			}
 			else
 			{
-				Console.WriteLine("Jste rozený profík! Našel jste všechny miny.");
+				// Pokud uživatel označil miny na správných místech
+				if (m.foundAllMines())
+					Console.WriteLine("Jste rozený profík! Našel jste všechny miny.");
+				else
+					Console.WriteLine("Bohužel jste nenašel všechny miny. Doufejme, že na ně nikdo nešlápne.");
 			}
-
 			TUI.pressAnyKeyToExit();
 		}
 	}

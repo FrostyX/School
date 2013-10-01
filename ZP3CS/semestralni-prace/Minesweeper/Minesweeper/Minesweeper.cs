@@ -21,8 +21,7 @@ namespace Minesweeper
 		public int _size;
 
 		protected Stats _stats;
-		protected int[,] mines;
-		protected int[,] discoveredCells;
+		protected Cells _cells;
 
 		public Minesweeper()
 		{
@@ -30,28 +29,11 @@ namespace Minesweeper
 			this.size = defaultGridSize;
 		}
 
-		/* Vrátí co se nachází na daném políčku
-		 * -1 = Mina
-		 * 0  = V okolí se nenachází žádná mina. 
-		 * 1+ = Počet min v okolí
-		 *
-		 * Spíš už jen
-		 * 1 = Mina
-		 * 0 = Nic
-		 */
-		public int getCellValue(int x, int y)
-		{
-			int value = 0;
-			if((x>=0) && (y>=0) && (x<this.size) && (y<this.size))
-				value = this.mines[x, y];
-			return value;
-		}
-
-
-		// Vygeneruje a uloží miny. Počet je závislý na velikosti herní desky
-		// Pozice min jsou náhodné
+		// Vygeneruje a uloží miny na náhodné pozice tabulky. 
+		// Jejich počet je závislý na velikosti herní desky a procentu výskytu min
 		public void generateMines()
 		{
+			// Zjistíme, kolik min by bylo vhodné vygenerovat
 			this.stats.minesTotal = this.getOptimalNumberOfMines();
 
 			Random r = new Random();
@@ -62,12 +44,14 @@ namespace Minesweeper
 				{
 					x = r.Next(this.stats.minesTotal);
 					y = r.Next(this.stats.minesTotal);
-				} while(this.mines[x,y]==1);
+				} while(this.cells.get(x, y).mine);
 
-				this.mines[x, y] = 1;
+				// Uložíme minu
+				this.cells.get(x, y).mine = true;
 			}
 		}
 
+		// Zavolá jednu z uživatelských akcí
 		public void action(char action, int x, int y)
 		{
 			switch (action)
@@ -78,130 +62,87 @@ namespace Minesweeper
 			}
 		}
 
+		// Vstoupí na políčko a zjistí jeho hodnotu
+		// != discover(..) -> Narozdíl od něj je to uživatelská akce
+		// a tedy započítá uživatelovo kliknutí
 		public void stepOn(int x, int y)
 		{
-			this.discoveredCells[x, y] = this.mines[x, y] == 1 ? -1 : this.getLocalMinesCount(x, y);
-			if (this.discoveredCells[x, y] == 0)
-				this.discoverZeros(x, y);
+			this.discover(x, y);
 			this.stats.steps++;
 		}
 
+		// Označí, kde si uživatel myslí, že je mina
 		public void mark(int x, int y)
 		{
-			this.discoveredCells[x, y] = -1;
+			this.cells.get(x, y).value = CellValues.mine;
 			this.stats.minesFound++;
+			this.stats.steps++;
 		}
 
+		// Zruší uživatelské označení miny
 		public void unMark(int x, int y)
 		{
-			this.discoveredCells[x, y] = -2;
+			this.cells.get(x, y).value = CellValues.undiscovered;
 			this.stats.minesFound--;
+			this.stats.steps++;
 		}
 
-		public bool toLiveOrNotToLive(int x, int y)
+		// Zjistí zda uživatel stoupl na minu
+		public bool toBeOrNotToBe(int x, int y) // that is the question
+		{ // --- W. Shakespeare
+			return this.cells.get(x, y).mine;
+		}
+
+		// Zjistí, zda uživatel našel vsechny miny
+		public bool foundAllMines()
 		{
-			return this.mines[x, y] == 1;
+			for (int y = 0; y < this.size; y++)
+			{
+				for (int x = 0; x < this.size; x++)
+				{
+					// Pokud je na políčku mina a uživatel řekl, že je na něm mina
+					Cell c = this.cells.get(x, y);
+					if ((c.mine) && (c.value != CellValues.mine))
+						return false;
+				}
+			}
+			return true;
 		}
 
-		// Vrátí počet min v okolí políčka daného souřadnicemi
-		protected int getLocalMinesCount(int x, int y)
-		{
-			int count = 0;
-			Dictionary<char, int[]> sur = this.getSurrounding(x, y);
-			for(int i=0; i<sur['x'].Length; i++)
-				count += this.getCellValue(sur['x'][i], sur['y'][i]);
-			return count;
-		}
-
+		// Prozkoumá dané políčko tabulky
 		protected void discover(int x, int y)
 		{
-			if((x>=0) && (y>=0) && (x<this.size) && (y<this.size))
-				this.discoveredCells[x, y] = this.mines[x, y] == 1 ? -1 : this.getLocalMinesCount(x, y);
+			Cell c = this.cells.get(x, y);
+			c.value = c.mine ? CellValues.mine : this.cells.getLocalMinesCount(x, y);
+			if (c.value == 0)
+				this.discoverZeros(x, y);
 		}
 
 		// Prozkoumá všechny okolní políčka, která vedle sebe nemají žádnou minu
 		protected void discoverZeros(int x, int y)
 		{
-			Dictionary<char, int[]> sur = this.getSurrounding(x, y);
-			for (int i = 0; i < sur['x'].Length; i++)
+			List<Cell> sur = this.cells.getSurrounding(x, y);
+			foreach(Cell s in sur)
 			{
-				int xi = sur['x'][i];
-				int yi = sur['y'][i];
-
 				// Pokud okolo vybraného okolního políčka není žádná mina
-				if (this.getCellValue(xi, yi) == 0)
+				if (this.cells.getLocalMinesCount(x, y) == 0)
 				{
-					// Pokud nehledáme za hranou
-					if ((xi >= 0) && (yi >= 0) && (xi < this.size) && (yi < this.size))
+					// Pokud okolní políčko zatím nebylo prozkoumané
+					if(s.value == -2)
 					{
-						// Pokud okolní políčko zatím nebylo prozkoumané
-						if (this.discoveredCells[xi, yi] == -2)
-						{
-							this.discover(xi, yi);
-							this.discoverZeros(sur['x'][i], sur['y'][i]);
-						}
+						//Console.WriteLine(s.axis.x + "-" + s.axis.y);
+						this.discover(s.axis.x, s.axis.y);
+						this.discoverZeros(s.axis.x, s.axis.y);
 					}
 				}
 			}
-				
-			/*
-			// Pokud je na x, y 0, pak prozkoumat okolí
-			if (this.getCellValue(x, y) == 0)
-			{
-				if(this.getLocalMinesCount(x, y) == 0)
-				{
-					this.discoveredCells[x, y] = 0;
-
-					Dictionary<char, int[]> sur = this.getSurrounding(x, y);
-					for (int i = 0; i < sur['x'].Length; i++)
-					{
-						// Pokud je kdekoliv nalezena nula, zavolat rekurzivně tuto funkci
-						if (this.getCellValue(sur['x'][i], sur['y'][i]) == 0)
-						{
-							if (this.getLocalMinesCount(sur['x'][i], sur['y'][i]) == 0)
-							{
-								if ((sur['x'][i] > 0) && (sur['y'][i] > 0) && (sur['x'][i] < this.size) && (sur['y'][i] < this.size))
-									this.discoverZeros(sur['x'][i], sur['y'][i]);
-							}
-						}
-					}
-				}
-				*/
-				/*
-				if ((x > 0) && (y > 0) && (x < this.size) && (y < this.size))
-				{
-					this.discoveredCells[x, y] = 0;
-					Dictionary<char, int[]> sur = this.getSurrounding(x, y);
-					for (int i = 0; i < sur['x'].Length; i++)
-					{
-						// Pokud je kdekoliv nalezena nula, zavolat rekurzivně tuto funkci
-						if (this.getCellValue(sur['x'][i], sur['y'][i]) == 0)
-							this.discoverZeros(sur['x'][i], sur['y'][i]);
-					}
-				}
-			}
-				*/
-		}
-
-		/* Vrátí sousední políčka
-		 * (některé z políček nemusejí skutečně existovat - platí pro políčka na hranici desky)
-		 * Sousedních by mělo být 8 políček, například hodnotu prvního lze získat pomocí:
-		 *     var sur = getSurrounding(x, y)
-		 *     sur['x'][0], sur['y'][0]
-		 */
-		protected Dictionary<char, int[]> getSurrounding(int x, int y)
-		{
-			Dictionary<char, int[]> sur = new Dictionary<char, int[]>();
-			sur['x'] = new int[] {x-1, x-1, x-1, x+0, x+1, x+1, x+1, x+0};
-			sur['y'] = new int[] {y-1, y+0, y+1, y+1, y+1, y+0, y-1, y-1};
-			return sur;
 		}
 
 		// Vrátí počet min který by byl optimální pro danou velikost hrací desky
 		protected int getOptimalNumberOfMines()
 		{
 			// Počet min střední optížnosti by mohl odpovídat funkci 
-			// f(n) = {0.2*n^2 | kde n je velikost mřížky }
+			// f(n) = {(p/100)*n^2 | kde n je velikost mřížky; p je procento výskytu min}
 			return Convert.ToInt32(Math.Ceiling((minesPerc / 100.0) * this.size * this.size));
 		}
 
@@ -214,37 +155,20 @@ namespace Minesweeper
 			set { this._stats = value; }
 		}
 
+		public Cells cells 
+		{
+			get { return this._cells; }
+			set { this._cells= value; }
+		}
+
 		public int size 
 		{
 			get { return this._size; }
-
 			set 
 			{ 
 				this._size = value;
-				this.mines = new int[value, value];
-
-				// Vytvoření herní desky a nastavení všech políček na neprozkoumané
-				this.discoveredCells = new int[value, value];
-				for (int i = 0; i < value; i++)
-				{
-					for (int j = 0; j < value; j++)
-					{
-						this.discoveredCells[j, i] = -2;
-					}
-
-				}
+				this._cells = new Cells(value);
 			}
-		}
-
-		public int[,] discovered
-		{
-			/* Vrátí co se nachází na daném políčku --- !
-			 * -2 = Neprozkoumané pole
-			 * -1 = Mina
-			 * 0  = V okolí se nenachází žádná mina. 
-			 * 1+ = Počet min v okolí
-			 */
-			get { return this.discoveredCells; }
 		}
 	}
 }
