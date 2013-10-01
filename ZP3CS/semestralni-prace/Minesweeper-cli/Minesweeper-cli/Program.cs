@@ -2,33 +2,35 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Minesweeper;
 
-namespace Minesweeper
+
+namespace Minesweeper_cli
 {
 	class Program
 	{
 		static void Main(string[] args)
 		{
 			Console.WriteLine("Zadejte velikost mřížky.");
-			Console.WriteLine("Volte čísla v rozsahu {0} - {1}", Minesweeper.minGridSize, Minesweeper.maxGridSize);			
+			Console.WriteLine("Volte čísla v rozsahu {0} - {1}", Minesweeper.Minesweeper.minGridSize, Minesweeper.Minesweeper.maxGridSize);			
 			Console.WriteLine("Pro hodnotu 9 bude velikost mřížky 9x9");
 			int size=0;
 			do // Uživatel se musí trefit do povoleného rozsahu velikostí
 			{
 				try
 				{
-					Console.Write("Velikost [{0}]: ", Minesweeper.defaultGridSize);
+					Console.Write("Velikost [{0}]: ", Minesweeper.Minesweeper.defaultGridSize);
 					size = Convert.ToInt32(Console.ReadLine());
 				}
 				catch
 				{
-					size = Minesweeper.defaultGridSize;
+					size = Minesweeper.Minesweeper.defaultGridSize;
 				}
-			} while ((size < Minesweeper.minGridSize) || (size > Minesweeper.maxGridSize));
+			} while ((size < Minesweeper.Minesweeper.minGridSize) || (size > Minesweeper.Minesweeper.maxGridSize));
 			Console.WriteLine();
 
 			// Vytvoříme a vygenerujeme herní desku 
-			Minesweeper m = new Minesweeper();
+			Minesweeper.Minesweeper m = new Minesweeper.Minesweeper();
 			m.size = size;
 			m.generateMines();
 

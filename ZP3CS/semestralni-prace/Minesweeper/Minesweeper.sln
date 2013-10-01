@@ -1,18 +1,52 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minesweeper", "Minesweeper\Minesweeper.csproj", "{C5A0080F-AC7B-4310-A292-870046ED42BF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minesweeper", "Minesweeper\Minesweeper.csproj", "{27D6FB21-6E9E-45DC-B2A6-708AFDBAC6E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minesweeper-cli", "..\Minesweeper-cli\Minesweeper-cli\Minesweeper-cli.csproj", "{DFB1115C-44D8-47E9-B98A-49411B016BED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minesweeper-gui", "..\Minesweeper-gui\Minesweeper-gui.csproj", "{38A37867-CD13-405E-BA85-749545E685C4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
 		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C5A0080F-AC7B-4310-A292-870046ED42BF}.Debug|x86.ActiveCfg = Debug|x86
-		{C5A0080F-AC7B-4310-A292-870046ED42BF}.Debug|x86.Build.0 = Debug|x86
-		{C5A0080F-AC7B-4310-A292-870046ED42BF}.Release|x86.ActiveCfg = Release|x86
-		{C5A0080F-AC7B-4310-A292-870046ED42BF}.Release|x86.Build.0 = Release|x86
+		{27D6FB21-6E9E-45DC-B2A6-708AFDBAC6E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27D6FB21-6E9E-45DC-B2A6-708AFDBAC6E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27D6FB21-6E9E-45DC-B2A6-708AFDBAC6E0}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{27D6FB21-6E9E-45DC-B2A6-708AFDBAC6E0}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{27D6FB21-6E9E-45DC-B2A6-708AFDBAC6E0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{27D6FB21-6E9E-45DC-B2A6-708AFDBAC6E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27D6FB21-6E9E-45DC-B2A6-708AFDBAC6E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27D6FB21-6E9E-45DC-B2A6-708AFDBAC6E0}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{27D6FB21-6E9E-45DC-B2A6-708AFDBAC6E0}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{27D6FB21-6E9E-45DC-B2A6-708AFDBAC6E0}.Release|x86.ActiveCfg = Release|Any CPU
+		{DFB1115C-44D8-47E9-B98A-49411B016BED}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{DFB1115C-44D8-47E9-B98A-49411B016BED}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{DFB1115C-44D8-47E9-B98A-49411B016BED}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{DFB1115C-44D8-47E9-B98A-49411B016BED}.Debug|x86.ActiveCfg = Debug|x86
+		{DFB1115C-44D8-47E9-B98A-49411B016BED}.Debug|x86.Build.0 = Debug|x86
+		{DFB1115C-44D8-47E9-B98A-49411B016BED}.Release|Any CPU.ActiveCfg = Release|x86
+		{DFB1115C-44D8-47E9-B98A-49411B016BED}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{DFB1115C-44D8-47E9-B98A-49411B016BED}.Release|Mixed Platforms.Build.0 = Release|x86
+		{DFB1115C-44D8-47E9-B98A-49411B016BED}.Release|x86.ActiveCfg = Release|x86
+		{DFB1115C-44D8-47E9-B98A-49411B016BED}.Release|x86.Build.0 = Release|x86
+		{38A37867-CD13-405E-BA85-749545E685C4}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{38A37867-CD13-405E-BA85-749545E685C4}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{38A37867-CD13-405E-BA85-749545E685C4}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{38A37867-CD13-405E-BA85-749545E685C4}.Debug|x86.ActiveCfg = Debug|x86
+		{38A37867-CD13-405E-BA85-749545E685C4}.Debug|x86.Build.0 = Debug|x86
+		{38A37867-CD13-405E-BA85-749545E685C4}.Release|Any CPU.ActiveCfg = Release|x86
+		{38A37867-CD13-405E-BA85-749545E685C4}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{38A37867-CD13-405E-BA85-749545E685C4}.Release|Mixed Platforms.Build.0 = Release|x86
+		{38A37867-CD13-405E-BA85-749545E685C4}.Release|x86.ActiveCfg = Release|x86
+		{38A37867-CD13-405E-BA85-749545E685C4}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Minesweeper;
 
-namespace Minesweeper
+namespace Minesweeper_cli
 {
 	// Třída pro prácí s textovým uživatelským rozhraním
 	class TUI : UI

@@ -6,7 +6,7 @@ using System.Text;
 namespace Minesweeper
 {
 	// Reprezentuje souřadnice objektu na osách x, y
-	class Axis
+	public class Axis
 	{
 		protected int _x;
 		protected int _y;

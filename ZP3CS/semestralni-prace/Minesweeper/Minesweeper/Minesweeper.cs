@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Minesweeper
 {
-	class Minesweeper
+	public class Minesweeper
 	{
 		// Hodnota 18 je maximální počet sloupců, který se na šířku vleze do okna konzole
 		// ve výchozí velikosti, s výchozím písmem při rozlišení obrazovky 1366x768

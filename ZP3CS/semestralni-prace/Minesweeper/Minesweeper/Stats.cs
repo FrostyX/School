@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Minesweeper
 {
-	class Stats
+	public class Stats
 	{
 		// Počet kroků, které uživatel provedl
 		public int steps = 0;

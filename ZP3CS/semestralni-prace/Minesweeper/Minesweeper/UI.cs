@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Minesweeper
 {
-	interface UI
+	public interface UI
 	{
 	}
 }
