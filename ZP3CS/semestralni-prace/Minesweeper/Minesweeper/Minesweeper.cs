@@ -104,6 +104,8 @@ namespace Minesweeper
 					Cell c = this.cells.get(x, y);
 					if ((c.mine) && (c.value != CellValues.mine))
 						return false;
+
+					// Pokud na políčku není mina a uživatel řekl, že je
 					if ((!c.mine) && (c.value == CellValues.mine))
 						return false;
 				}
