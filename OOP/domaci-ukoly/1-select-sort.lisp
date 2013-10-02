@@ -26,12 +26,7 @@
                      ((eq l '()) '())
                      (t (let* ((min (apply #'min (nthcdr i l)))       ; Nejmenší prvek nesetříděné části
                                (min-pos (position min l :start i)))   ; Pozice nejmenšího prvku v nesetříděné části
-                          (print l)
-                          (print i)
-                          (print min-pos)
                           (switch i min-pos)
-                          (print l)
-                          (print "---")
                           (iter (+ i 1))))))
 
              ; Prohodí dva prvky seznamu na daných indexech
@@ -43,7 +38,7 @@
       (iter 0)))) 
 
 ; Použití: 
-;(select-sort-destructive *numbers*)
+(select-sort-destructive *numbers*)
 
 
 
