@@ -22,7 +22,7 @@ namespace Minesweeper
 		/*
 		 * Gettery a settery
 		 */
-		public bool mine 
+		public bool mine
 		{
 			get { return this._mine; }
 			set { this._mine = value; }
@@ -34,7 +34,7 @@ namespace Minesweeper
 			set { this._value = value; }
 		}
 
-		public Axis axis 
+		public Axis axis
 		{
 			get { return this._axis; }
 			set { this._axis = value; }

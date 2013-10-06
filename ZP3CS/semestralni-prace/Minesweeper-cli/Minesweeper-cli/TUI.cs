@@ -7,11 +7,11 @@ using Minesweeper;
 namespace Minesweeper_cli
 {
 	// Třída pro prácí s textovým uživatelským rozhraním
-	class TUI : UI
+	class TUI
 	{
 		// Na hrací desce se mohou kromě čísel, označujících počet min v okolí,
 		// vyskytovat také speciální hodnoty. Zde jsou symboly, které se pro ně zobrazí.
-		public static Dictionary<int, char> symbols = new Dictionary<int,char>
+		public static Dictionary<int, char> symbols = new Dictionary<int, char>
 		{
 			{CellValues.undiscovered, '#'},  // Neprozkoumané pole
 			{CellValues.mine        , '*'},  // Mina
@@ -35,13 +35,13 @@ namespace Minesweeper_cli
 			Console.Write("\n\n");
 
 			// Výpis hrací desky
-			for(int y=0; y<n; y++)
+			for (int y = 0; y < n; y++)
 			{
 				// Hrana tabulky nad každým řádkem
 				Console.Write("".PadRight(indent));
-				TUI.printHorizontalBorder(n); 
+				TUI.printHorizontalBorder(n);
 
-				for(int x=0; x<n; x++)
+				for (int x = 0; x < n; x++)
 				{
 					// Vertikální navigace tabulky
 					if (x == 0)
@@ -83,7 +83,7 @@ namespace Minesweeper_cli
 		// Vypíše vodorovnou čáru o šířce tabulky
 		protected static void printHorizontalBorder(int cells)
 		{
-			for(int i=0; i<cells; i++)
+			for (int i = 0; i < cells; i++)
 			{
 				Console.Write("----");
 			}
@@ -98,7 +98,7 @@ namespace Minesweeper_cli
 			Console.Write("| {0} ", value);
 
 			// Poslední sloupec je potřeba uzavřít
-			if(c.axis.x == n-1)
+			if (c.axis.x == n - 1)
 				Console.Write("|");
 		}
 	}

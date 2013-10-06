@@ -12,9 +12,9 @@ namespace Minesweeper_cli
 		static void Main(string[] args)
 		{
 			Console.WriteLine("Zadejte velikost mřížky.");
-			Console.WriteLine("Volte čísla v rozsahu {0} - {1}", Minesweeper.Minesweeper.minGridSize, Minesweeper.Minesweeper.maxGridSize);			
+			Console.WriteLine("Volte čísla v rozsahu {0} - {1}", Minesweeper.Minesweeper.minGridSize, Minesweeper.Minesweeper.maxGridSize);
 			Console.WriteLine("Pro hodnotu 9 bude velikost mřížky 9x9");
-			int size=0;
+			int size = 0;
 			do // Uživatel se musí trefit do povoleného rozsahu velikostí
 			{
 				try
@@ -34,7 +34,7 @@ namespace Minesweeper_cli
 			m.size = size;
 			m.generateMines();
 
-			char action=' ';
+			char action = ' ';
 			do // Uživatel prozkoumává herní desku a označuje miny, dokud neřekne, že má hotovo
 			{
 				// Nejdříve se vyčistí obrazovka
@@ -52,7 +52,7 @@ namespace Minesweeper_cli
 				Console.Write("\nVstup: ");
 
 				// Parsujeme vstup [1/2]
-				int x=0, y=0;
+				int x = 0, y = 0;
 				try
 				{
 					string[] input = Console.ReadLine().Split();
@@ -66,11 +66,11 @@ namespace Minesweeper_cli
 					x = int.Parse(input[1]);
 					y = int.Parse(input[2]);
 				}
-				catch {};
+				catch { };
 
 				// Pokud uživatel zadal neexistující souřadnice
 				if (m.cells.get(x, y) == null)
-				{ 
+				{
 					TUI.pressAnyKeyToContinue(
 						"\nNeplatné souřadnice.\n"
 						+ "Pokračujte stiskem libovolné klávesy ..."
@@ -95,7 +95,7 @@ namespace Minesweeper_cli
 				if ((action == 's') && (m.toBeOrNotToBe(x, y)))
 					break;
 
-			} while(true); // Cyklus je ukončen zevnitř
+			} while (true); // Cyklus je ukončen zevnitř
 
 			TUI.printHorizontalBorder();
 

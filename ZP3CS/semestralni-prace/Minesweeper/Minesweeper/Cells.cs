@@ -6,7 +6,7 @@ using System.Text;
 namespace Minesweeper
 {
 	// Reprezentuje "inteligentní" seznam herních políček 
-	public class Cells 
+	public class Cells
 	{
 		// Všechna políčka hrací desky uložena pod souřadnicemi x, y
 		protected Cell[,] cells;
@@ -25,7 +25,7 @@ namespace Minesweeper
 		// Vrátí políčko na daných souřadnicích
 		public Cell get(int x, int y)
 		{
-			if((x>=0) && (y>=0) && (x<this.size) && (y<this.size))
+			if ((x >= 0) && (y >= 0) && (x < this.size) && (y < this.size))
 				return this.cells[x, y];
 			return null;
 		}
@@ -44,7 +44,7 @@ namespace Minesweeper
 			List<Cell> sur = this.getSurrounding(x, y);
 			foreach (Cell s in sur)
 			{
-				if(s.mine)
+				if (s.mine)
 					count++;
 			}
 			return count;
@@ -54,8 +54,8 @@ namespace Minesweeper
 		public List<Cell> getSurrounding(int x, int y)
 		{
 			List<Cell> cells = new List<Cell>();
-			int[] X = new int[] {x-1, x-1, x-1, x+0, x+1, x+1, x+1, x+0};
-			int[] Y = new int[] {y-1, y+0, y+1, y+1, y+1, y+0, y-1, y-1};
+			int[] X = new int[] { x - 1, x - 1, x - 1, x + 0, x + 1, x + 1, x + 1, x + 0 };
+			int[] Y = new int[] { y - 1, y + 0, y + 1, y + 1, y + 1, y + 0, y - 1, y - 1 };
 
 			for (int i = 0; i < 8; i++)
 			{

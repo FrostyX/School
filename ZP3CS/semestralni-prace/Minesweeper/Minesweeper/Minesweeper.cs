@@ -44,7 +44,7 @@ namespace Minesweeper
 				{
 					x = r.Next(this.size);
 					y = r.Next(this.size);
-				} while(this.cells.get(x, y).mine);
+				} while (this.cells.get(x, y).mine);
 
 				// Uložíme minu
 				this.cells.get(x, y).mine = true;
@@ -56,9 +56,9 @@ namespace Minesweeper
 		{
 			switch (action)
 			{
-				case 's': { this.stepOn(x, y); break; } 
-				case 'm': { this.mark(x, y)  ; break; }
-				case 'u': { this.unMark(x, y); break; } 
+				case 's': { this.stepOn(x, y); break; }
+				case 'm': { this.mark(x, y); break; }
+				case 'u': { this.unMark(x, y); break; }
 			}
 		}
 
@@ -135,13 +135,13 @@ namespace Minesweeper
 		protected void discoverZeros(int x, int y)
 		{
 			List<Cell> sur = this.cells.getSurrounding(x, y);
-			foreach(Cell s in sur)
+			foreach (Cell s in sur)
 			{
 				// Pokud okolo vybraného okolního políčka není žádná mina
 				if (this.cells.getLocalMinesCount(x, y) == 0)
 				{
 					// Pokud okolní políčko zatím nebylo prozkoumané
-					if(s.value == -2)
+					if (s.value == -2)
 					{
 						//Console.WriteLine(s.axis.x + "-" + s.axis.y);
 						this.discover(s.axis.x, s.axis.y);
@@ -168,17 +168,17 @@ namespace Minesweeper
 			set { this._stats = value; }
 		}
 
-		public Cells cells 
+		public Cells cells
 		{
 			get { return this._cells; }
-			set { this._cells= value; }
+			set { this._cells = value; }
 		}
 
-		public int size 
+		public int size
 		{
 			get { return this._size; }
-			set 
-			{ 
+			set
+			{
 				this._size = value;
 				this._cells = new Cells(value);
 			}
