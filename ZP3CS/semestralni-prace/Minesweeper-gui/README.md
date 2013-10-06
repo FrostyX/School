@@ -1,8 +1,4 @@
-## Minesweeper-cli
-
-### Screenshots
-![Hledání min](https://raw.github.com/FrostyX/School/master/ZP3CS/semestralni-prace/Minesweeper/screenshots/game.png)
-
+## Minesweeper-gui
 
 ### The BSD 3-Clause License
 
