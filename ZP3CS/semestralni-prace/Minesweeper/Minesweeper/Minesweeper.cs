@@ -18,7 +18,7 @@ namespace Minesweeper
 
 		// Velikost hrací desky
 		// Pro hodnotu 9 bude mřížka velká 9x9 políček
-		public int _size;
+		protected int _size;
 
 		protected Stats _stats;
 		protected Cells _cells;
@@ -85,6 +85,15 @@ namespace Minesweeper
 			this.cells.get(x, y).value = CellValues.undiscovered;
 			this.stats.minesFound--;
 			this.stats.steps++;
+		}
+
+		// Přepíná mezi ozačením a neoznačením miny
+		public void toggleMark(int x, int y)
+		{
+			if (this.cells.get(x, y).value == -1)
+				this.unMark(x, y);
+			else if (this.cells.get(x, y).value == -2)
+				this.mark(x, y);
 		}
 
 		// Zjistí zda uživatel stoupl na minu
