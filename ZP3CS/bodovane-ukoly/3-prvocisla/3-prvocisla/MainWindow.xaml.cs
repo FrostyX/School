@@ -36,7 +36,6 @@ namespace _3_prvocisla
 						this.tPrvocisla.Text += i + ", ";
 				}
 			}
-			//finally
 			catch(Exception)
 			{
 				this.lChyba.Content = "Prosím zadejte číslo";
