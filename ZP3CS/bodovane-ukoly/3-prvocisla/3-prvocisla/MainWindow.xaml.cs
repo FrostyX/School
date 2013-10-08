@@ -29,6 +29,8 @@ namespace _3_prvocisla
 			try
 			{
 				int n = Convert.ToInt32(this.tVstup.Text);
+				if (n <= 0)
+					throw new NotNaturalNumberException("Zadejte prosím celé kladné číslo");
 				this.tPrvocisla.Text = "";
 				for (int i = 2; i < n; i++)
 				{
@@ -36,16 +38,21 @@ namespace _3_prvocisla
 						this.tPrvocisla.Text += i + ", ";
 				}
 			}
-			catch(Exception)
+			catch (NotNaturalNumberException ex)
 			{
-				this.lChyba.Content = "Prosím zadejte číslo";
 				this.tPrvocisla.Text = "";
+				MessageBox.Show(ex.Message);
 			}
-		}
-
-		private void tVstup_TextChanged(object sender, TextChangedEventArgs e)
-		{
-			this.lChyba.Content = "";
+			catch (OverflowException)
+			{
+				this.tPrvocisla.Text = "";
+				MessageBox.Show("Zadali jste moc vysoké číslo");
+			}
+			catch (Exception)
+			{
+				this.tPrvocisla.Text = "";
+				MessageBox.Show("Prosím zadejte číslo");
+			}
 		}
 
 		protected bool jePrvocislo(int x)
@@ -57,5 +64,10 @@ namespace _3_prvocisla
 			}
 			return true;
 		}
+	}
+
+	public class NotNaturalNumberException : Exception
+	{
+		public NotNaturalNumberException(string message) : base(message){}
 	}
 }
