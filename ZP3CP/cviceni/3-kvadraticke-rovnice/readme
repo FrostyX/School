@@ -1,0 +1,13 @@
+INFO
+
+BUILD
+	cd build
+	cmake .
+	make
+RUN
+	bin/3-kvadraticke-rovnice
+
+AUTHOR
+	Name: Jakub Kadlčík
+	Email: jakub.kadlcik01@upol.cz
+
