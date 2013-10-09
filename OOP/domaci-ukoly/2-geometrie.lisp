@@ -51,26 +51,26 @@
 
 ;; class SEGMENT
 (defclass segment ()
-  ((a :initform (make-instance 'point))
-   (b :initform (make-instance 'point))))
+  ((A :initform (make-instance 'point))
+   (B :initform (make-instance 'point))))
 
 ; Vrátí délku úsečky
 (defmethod size ((segment segment))
-  (distance (slot-value segment 'a) 
-            (slot-value segment 'b)))
+  (distance (slot-value segment 'A) 
+            (slot-value segment 'B)))
 
 
 ;; class TRIANGLE
 (defclass triangle ()
-  ((a :initform (make-instance 'point))
-   (b :initform (make-instance 'point))
-   (c :initform (make-instance 'point))))
+  ((A :initform (make-instance 'point))
+   (B :initform (make-instance 'point))
+   (C :initform (make-instance 'point))))
 
 ; Vrátí obvod trojúhelníku
 (defmethod perimeter ((tr triangle))
-  (let ((A (slot-value tr 'a))
-        (B (slot-value tr 'b))
-        (C (slot-value tr 'c)))
+  (let ((A (slot-value tr 'A))
+        (B (slot-value tr 'B))
+        (C (slot-value tr 'C)))
     (+ (distance A B) (distance A C) (distance B C))))
 
 ; Vrátí obsah trojúhelníku
@@ -87,9 +87,9 @@
 
 ; Vrátí seznam těžnic trojúhelníku
 (defmethod medians ((tr triangle))
-  (let* ((a (distance (slot-value tr 'b) (slot-value tr 'c)))
-         (b (distance (slot-value tr 'a) (slot-value tr 'c)))
-         (c (distance (slot-value tr 'a) (slot-value tr 'b)))
+  (let* ((a (distance (slot-value tr 'B) (slot-value tr 'C)))
+         (b (distance (slot-value tr 'A) (slot-value tr 'C)))
+         (c (distance (slot-value tr 'A) (slot-value tr 'B)))
          (ta (* 1/2 (sqrt (- (* 2 (+ (expt b 2) (expt c 2))) (expt a 2)))))
          (tb (* 1/2 (sqrt (- (* 2 (+ (expt a 2) (expt c 2))) (expt b 2)))))
          (tc (* 1/2 (sqrt (- (* 2 (+ (expt a 2) (expt b 2))) (expt c 2))))))
@@ -99,19 +99,19 @@
 
 ; Vráti těžiště trojúhelníku
 (defmethod center ((tr triangle))
-  (let* ((A (slot-value tr 'a))
-         (B (slot-value tr 'b))
-         (C (slot-value tr 'c))
-         (p (make-instance 'point)))
+  (let* ((A (slot-value tr 'A))
+         (B (slot-value tr 'B))
+         (C (slot-value tr 'C))
+         (P (make-instance 'point)))
 
     ; http://www.matematika.cz/teznice-trojuhelniku    
-    (setf (slot-value p 'x) (/ (+ (slot-value A 'x) 
+    (setf (slot-value P 'x) (/ (+ (slot-value A 'x) 
                                     (slot-value B 'x) 
                                     (slot-value C 'x)) 3))
-    (setf (slot-value p 'y) (/ (+ (slot-value A 'y) 
+    (setf (slot-value P 'y) (/ (+ (slot-value A 'y) 
                                     (slot-value B 'y) 
                                     (slot-value C 'y)) 3))
-    p))
+    P))
 
 ; Zarotuje trojúhelník kolem těžiště
 ; Hint: Posunout do počátku -> zarotovat kolem počátku -> posunout zpátky
@@ -119,34 +119,35 @@
   0)
 
 
-(defvar *a*)
-(setf *a* (make-instance 'point))
-(shift *a* 0 0)
+(defvar *A*)
+(setf *A* (make-instance 'point))
+(shift *A* 0 0)
 
-(defvar *b*)
-(setf *b* (make-instance 'point))
-(shift *b* 0 3)
-(slot-value *b* 'y)
+(defvar *B*)
+(setf *B* (make-instance 'point))
+(shift *B* 0 3)
+(slot-value *B* 'y)
+(rotate *B* (/ pi 2))
+;(slot-value *B* 'y)
 
-(defvar *c*)
-(setf *c* (make-instance 'point))
-(shift *c* 3 0)
+(defvar *C*)
+(setf *C* (make-instance 'point))
+(shift *C* 3 0)
 
-(distance *a* *b*)
-(rotate *a* 1/2)
+(distance *A* *B*)
 
 (defvar *s*)
 (setf *s* (make-instance 'segment))
-(setf (slot-value *s* 'a) *a*)
-(setf (slot-value *s* 'b) *b*)
+(setf (slot-value *s* 'A) *A*)
+(setf (slot-value *s* 'B) *B*)
 (size *s*)
 
-(defvar *abc*)
-(setf *abc* (make-instance 'triangle))
-(setf (slot-value *abc* 'a) *a*)
-(setf (slot-value *abc* 'b) *b*)
-(setf (slot-value *abc* 'c) *c*)
-(perimeter *abc*)
-(area *abc*)
-(medians *abc*)
-(slot-value (center *abc*) 'x)
+(defvar *ABC*)
+(setf *ABC* (make-instance 'triangle))
+(setf (slot-value *ABC* 'A) *A*)
+(setf (slot-value *ABC* 'B) *B*)
+(setf (slot-value *ABC* 'C) *C*)
+(perimeter *ABC*)
+(area *ABC*)
+(medians *ABC*)
+(slot-value (center *ABC*) 'X)
