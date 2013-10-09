@@ -114,10 +114,31 @@
     P))
 
 ; Zarotuje trojúhelník kolem těžiště
-; Hint: Posunout do počátku -> zarotovat kolem počátku -> posunout zpátky
+; Hint: Posunout vrcholy do počátku -> zarotovat kolem počátku -> posunout zpátky
 (defmethod rotate ((tr triangle) angle)
-  0)
+  (let* ((A (slot-value tr 'A))
+         (B (slot-value tr 'B))
+         (C (slot-value tr 'C))
+         (center (center tr))
+         (x (- (slot-value center 'x)))
+         (y (- (slot-value center 'y))))
+    
+    ; Posunutí vrcholů do počátku
+    (shift A x y)
+    (shift B x y)
+    (shift C x y)
 
+    ; Zarotování kolem počátku
+    (rotate A angle)
+    (rotate B angle)
+    (rotate C angle)
+
+    ; Posunutí vrcholů zpět
+    (shift A (- x) (- y))
+    (shift B (- x) (- y))
+    (shift C (- x) (- y))
+
+    tr))
 
 (defvar *A*)
 (setf *A* (make-instance 'point))
@@ -127,8 +148,7 @@
 (setf *B* (make-instance 'point))
 (shift *B* 0 3)
 (slot-value *B* 'y)
-(rotate *B* (/ pi 2))
-;(slot-value *B* 'y)
+
 
 (defvar *C*)
 (setf *C* (make-instance 'point))
@@ -151,3 +171,13 @@
 (area *ABC*)
 (medians *ABC*)
 (slot-value (center *ABC*) 'X)
+(slot-value (center *ABC*) 'Y)
+
+(defvar *ABC2*)
+(setf *ABC2* (rotate *ABC* pi))
+(slot-value (slot-value *ABC2* 'A) 'x)
+(slot-value (slot-value *ABC2* 'A) 'y)
+(slot-value (slot-value *ABC2* 'B) 'x)
+(slot-value (slot-value *ABC2* 'B) 'y)
+(slot-value (slot-value *ABC2* 'C) 'x)
+(slot-value (slot-value *ABC2* 'C) 'y)
