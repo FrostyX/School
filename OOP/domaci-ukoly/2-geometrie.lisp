@@ -105,12 +105,12 @@
          (p (make-instance 'point)))
 
     ; http://www.matematika.cz/teznice-trojuhelniku    
-    (setf (slot-value p 'x) (/ 3 (+ (slot-value A 'x) 
+    (setf (slot-value p 'x) (/ (+ (slot-value A 'x) 
                                     (slot-value B 'x) 
-                                    (slot-value C 'x))))
-    (setf (slot-value p 'y) (/ 3 (+ (slot-value A 'y) 
+                                    (slot-value C 'x)) 3))
+    (setf (slot-value p 'y) (/ (+ (slot-value A 'y) 
                                     (slot-value B 'y) 
-                                    (slot-value C 'y))))
+                                    (slot-value C 'y)) 3))
     p))
 
 ; Zarotuje trojúhelník kolem těžiště
@@ -133,7 +133,7 @@
 (shift *c* 3 0)
 
 (distance *a* *b*)
-
+(rotate *a* 1/2)
 
 (defvar *s*)
 (setf *s* (make-instance 'segment))
