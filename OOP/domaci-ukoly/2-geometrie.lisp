@@ -99,10 +99,10 @@
 
 ; Vráti těžiště trojúhelníku
 (defmethod center ((tr triangle))
-  (let* ((A (slot-value tr 'A))
-         (B (slot-value tr 'B))
-         (C (slot-value tr 'C))
-         (P (make-instance 'point)))
+  (let ((A (slot-value tr 'A))
+        (B (slot-value tr 'B))
+        (C (slot-value tr 'C))
+        (P (make-instance 'point)))
 
     ; http://www.matematika.cz/teznice-trojuhelniku    
     (setf (slot-value P 'x) (/ (+ (slot-value A 'x) 
