@@ -10,19 +10,23 @@
     (setf (slot-value album 'tracks) tracks)
     album))
 
+; Vrátí počet skladeb v albu
 (defmethod track-count ((album album))
   (length (slot-value album 'tracks)))
 
+; Vrátí celkový čas alba v sekundách
 (defmethod total-time ((album album))
-  (let ((tracks (slot-value album 'tracks)))
-;    (print (get-sec (slot-value (car tracks) 'time)))
-    0))
+  (labels ((iter (tracks)
+             (if (eq tracks `()) 0 
+               (+ (get-sec (get-time (car tracks))) (iter (cdr tracks))))))   
+    (iter (slot-value album 'tracks))))
 
-
+; Vypíše autora, název alba, jeho skladby, jejich počet a celkovou délku
 (defmethod print-album ((album album))
-  (format t "~x - ~x:~%" (slot-value album 'author) (slot-value album 'name))
-  (mapcar #'print-track (slot-value album 'tracks))
-  (format t "(~x tracks | ~x)~%" (track-count album) (total-time album)))
+    (format t "~x - ~x:~%" (slot-value album 'author) (slot-value album 'name))
+    (mapcar #'print-track (slot-value album 'tracks))
+    (format t "-> ~x tracks | " (track-count album))
+    (print-time (make-time (total-time album))))
 
 
 ;; TRACK
@@ -40,6 +44,11 @@
 (defmethod print-track ((track track))
   (format t "~x " (slot-value track 'title))
   (print-time (slot-value track 'time)))
+
+; Vrátí délku songu jako objekt třídy TIME
+(defmethod get-time ((track track))
+  (slot-value track 'time))
+
 
 ;; TIME
 (defclass my-time () (sec))
@@ -60,6 +69,7 @@
   (let ((x (mins-secs time)))
     (format t "[~s:~s]~%" (car x) (cdr x))))
 
+; Vrátí čas v sekundách
 (defmethod get-sec ((time my-time))
   (slot-value time 'sec))
 
