@@ -3,7 +3,7 @@
   (name author tracks))
 
 ; Vytvoří objekt třídy ALBUM
-(defmethod make-album (name author tracks)
+(defun make-album (name author tracks)
   (let ((album (make-instance 'album)))
     (setf (slot-value album 'name) name)
     (setf (slot-value album 'author) author)
@@ -28,13 +28,25 @@
     (format t "-> ~x tracks | " (track-count album))
     (print-time (make-time (total-time album))))
 
+; Vrátí název alba
+(defmethod get-name ((album album))
+  (slot-value album 'name))
+
+; Vrátí autora alba
+(defmethod get-author ((album album))
+  (slot-value album 'author))
+
+; Vrátí seznam songů (objektů třídy TRACK) v albu
+(defmethod get-tracks ((album album))
+  (slot-value album 'tracks))
+
 
 ;; TRACK
 (defclass track ()
   (title time))
 
 ; Vytvoří objekt třídy TRACK
-(defmethod make-track (title length-seconds)
+(defun make-track (title length-seconds)
   (let ((track (make-instance 'track)))
     (setf (slot-value track 'title) title)
     (setf (slot-value track 'time) (make-time length-seconds))
@@ -49,12 +61,16 @@
 (defmethod get-time ((track track))
   (slot-value track 'time))
 
+; Vrátí název songu
+(defmethod get-title ((track track))
+  (slot-value track 'title))
+
 
 ;; TIME
 (defclass my-time () (sec))
 
 ; Vytvoří objekt třídy TIME
-(defmethod make-time (sec)
+(defun make-time (sec)
   (let ((time (make-instance 'my-time)))
     (setf (slot-value time 'sec) sec)
     time))
@@ -73,6 +89,9 @@
 (defmethod get-sec ((time my-time))
   (slot-value time 'sec))
 
+; Nastaví čas v sekundách
+(defmethod set-sec ((time my-time) sec)
+  (setf (slot-value time 'sec) sec))
 
 
 ;; POUŽITÍ
