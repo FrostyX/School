@@ -76,7 +76,7 @@
   (slot-value track 'time))
 
 ; Nastaví délku songu
-(defmethod set-time ((track track) (time my-time))
+(defmethod set-time ((track track) time)
   (setf (slot-value track 'time) time))
 
 ; Vrátí název songu
