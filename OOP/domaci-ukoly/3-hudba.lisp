@@ -48,6 +48,7 @@
 (defmethod get-tracks ((album album))
   (slot-value album 'tracks))
 
+; Nastaví seznam songů
 (defmethod set-tracks ((album album) tracks)
   (if (not (listp tracks)) 
       (error "Seznam songu musi byt seznam")
