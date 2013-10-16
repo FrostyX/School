@@ -32,13 +32,26 @@
 (defmethod get-name ((album album))
   (slot-value album 'name))
 
+; Nastaví název alba
+(defmethod set-name ((album album) name)
+  (setf (slot-value album 'name) name))
+
 ; Vrátí autora alba
 (defmethod get-author ((album album))
   (slot-value album 'author))
 
+; Nastaví autora alba
+(defmethod set-author ((album album) author)
+  (setf (slot-value album 'author) author))
+
 ; Vrátí seznam songů (objektů třídy TRACK) v albu
 (defmethod get-tracks ((album album))
   (slot-value album 'tracks))
+
+(defmethod set-tracks ((album album) tracks)
+  (if (not (listp tracks)) 
+      (error "Seznam songu musi byt seznam")
+    (setf (slot-value album 'tracks) tracks)))
 
 
 ;; TRACK
@@ -61,9 +74,17 @@
 (defmethod get-time ((track track))
   (slot-value track 'time))
 
+; Nastaví délku songu
+(defmethod set-time ((track track) (time my-time))
+  (setf (slot-value track 'time) time))
+
 ; Vrátí název songu
 (defmethod get-title ((track track))
   (slot-value track 'title))
+
+; Nastaví název songu
+(defmethod set-title ((track track) title)
+  (setf (slot-value track 'title) title))
 
 
 ;; TIME
@@ -91,7 +112,9 @@
 
 ; Nastaví čas v sekundách
 (defmethod set-sec ((time my-time) sec)
-  (setf (slot-value time 'sec) sec))
+  (if (not (numberp sec)) 
+      (error "Zadejte prosim cislo")
+    (setf (slot-value time 'sec) sec)))
 
 
 ;; POUŽITÍ
