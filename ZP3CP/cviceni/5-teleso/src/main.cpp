@@ -1,5 +1,6 @@
 #include <iostream>
 #include <typeinfo>
+#include <cxxabi.h>
 #include "Telesa.cpp"
 
 using namespace std;
@@ -15,7 +16,10 @@ int main(int argc, char **argv)
 
 	for(int i=0; i<3; i++)
 	{
-		cout << typeid(*t[i]).name() << " " << t[i]->objem() << endl;
+		// http://stackoverflow.com/a/2216993
+		int status;
+		char *name = abi::__cxa_demangle(typeid(*t[i]).name(), 0, 0, &status);
+		cout << name << " " << t[i]->objem() << endl;
 	}
 
 	return 0;
