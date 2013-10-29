@@ -4,7 +4,21 @@
 
 (defun make-databaze-obchodu (seznam-zbozi)
   (let ((db (make-instance 'databaze-obchodu)))
-    (set-seznam-zbozi db seznam-zbozi)))
+    (set-seznam-zbozi db seznam-zbozi)
+    db))
+
+(defmethod print-databaze-obchodu ((db databaze-obchodu))
+  (format t "Zboží: ~D kusů - ~D kč~%  => " (length (seznam-zbozi db)) (celkova-cena db))
+  (print-seznam-zbozi db))
+
+(defmethod print-seznam-zbozi ((db databaze-obchodu))
+  (labels ((iter (seznam)
+             (if (eq seznam `()) `()
+               (progn 
+                 (format t (if (eq (cdr seznam) '()) "~x" "~x | ") (nazev (car seznam)))
+                 (iter (cdr seznam))))))
+    (iter (seznam-zbozi db))))
+
 
 ; Vrátí celkovou cenu všeho zboží v obchodě
 (defmethod celkova-cena ((o databaze-obchodu))
@@ -20,6 +34,7 @@
 (defmethod set-seznam-zbozi ((o databaze-obchodu) s)
   (setf (slot-value o 'seznam-zbozi) s))
 
+
 ;; ZBOZI
 (defclass zbozi ()
   ((nazev :initform "")
@@ -32,7 +47,8 @@
     (set-nazev zbozi nazev)
     (set-autor zbozi autor)
     (set-cena zbozi cena)
-    (set-rok zbozi rok)))
+    (set-rok zbozi rok)
+    zbozi))
 
 ; Gettery & Settery
 ; Nazev
@@ -73,7 +89,12 @@
     (set-autor kniha autor)
     (set-cena kniha cena)
     (set-rok kniha rok)
-    (set-stran kniha stran)))
+    (set-stran kniha stran)
+    kniha))
+
+(defmethod print-kniha ((k kniha))
+  ; http://psg.com/~dlamkins/sl/chapter24.html
+  (format t "~x - ~x: ~D stran ~%" (autor k) (nazev k) (stran k)))
 
 ; Gettery & Settery
 (defmethod stran ((kniha kniha))
@@ -81,6 +102,7 @@
 
 (defmethod set-stran ((kniha kniha) stran)
   (setf (slot-value kniha 'stran) stran))
+
 
 ;; MULTIMEDIALNI-SOUBOR
 (defclass multimedialni-soubor (zbozi)
@@ -92,14 +114,16 @@
     (set-autor soubor autor)
     (set-cena soubor cena)
     (set-rok soubor rok)
-    (set-delka soubor delka)))
+    (set-delka soubor delka)
+    soubor))
 
 ; Gettery & Settery
 (defmethod delka ((s multimedialni-soubor))
   (slot-value s 'delka))
 
 (defmethod set-delka ((s multimedialni-soubor) delka)
-  (setf (slot-value s 'delka) delka))
+  (setf (slot-value s 'delka) (make-time delka)))
+
 
 ;; SKLADBA
 (defclass skladba (multimedialni-soubor)
@@ -114,7 +138,8 @@
     (set-rok skladba rok)
     (set-delka skladba delka)
     (set-autor-hudby skladba autor-hudby)
-    (set-autor-textu skladba autor-textu)))
+    (set-autor-textu skladba autor-textu)
+    skladba))
 
 ; Gettery & Settery
 ; Autor-hudby
@@ -131,6 +156,7 @@
 (defmethod set-autor-textu ((skladba skladba) autor)
   (setf (slot-value skladba 'autor-textu) autor))
 
+
 ;; VIDEO
 (defclass video (multimedialni-soubor)
   ((herci :initform '())
@@ -144,7 +170,8 @@
     (set-rok video rok)
     (set-delka video delka)
     (set-herci video herci)
-    (set-jazyk video jazyk)))
+    (set-jazyk video jazyk)
+    video))
 
 ; Gettery & Settery
 ; Herci
@@ -172,7 +199,12 @@
     (set-autor kolekce autor)
     (set-cena kolekce cena)
     (set-rok kolekce rok)
-    (set-soubory kolekce soubory)))
+    (set-soubory kolekce soubory)
+    kolekce))
+
+(defmethod print-kolekce-multimedii ((k kolekce-multimedii))
+  (format t "~x - ~x: ~x soubory " (autor k) (nazev k) (pocet-souboru k))
+  (print-time (celkova-delka k)))
 
 (defmethod pocet-souboru ((k kolekce-multimedii))
   (length (soubory k)))
@@ -182,7 +214,7 @@
   (labels ((iter (soubory)
              (if (eq soubory `()) 0 
                (+ (get-sec (delka (car soubory))) (iter (cdr soubory))))))   
-    (iter (soubory k))))
+    (make-time (iter (soubory k)))))
 
 ; Gettery & Settery
 (defmethod soubory ((k kolekce-multimedii))
@@ -201,7 +233,11 @@
     (set-autor album autor)
     (set-cena album cena)
     (set-rok album rok)
-    (set-soubory album soubory)))
+    (set-soubory album soubory)
+    album))
+
+(defmethod print-album ((album album))
+  (print-kolekce-multimedii album))
 
 
 ;; SERIAL
@@ -213,7 +249,11 @@
     (set-autor serial autor)
     (set-cena serial cena)
     (set-rok serial rok)
-    (set-soubory serial soubory)))
+    (set-soubory serial soubory)
+    serial))
+
+(defmethod print-serial ((serial serial))
+  (print-kolekce-multimedii serial))
 
 
 ;; TIME
@@ -244,3 +284,26 @@
   (if (not (numberp sec)) 
       (error "Zadejte prosim cislo")
     (setf (slot-value time 'sec) sec)))
+
+
+
+;; POUŽITÍ
+(let* ((s1 (make-skladba "Tears Dont Fall" "BFMW" 50 2005 348 "Matt Tuck" "Matt Tuck"))
+       (s2 (make-skladba "Hit The Floor" "BFMW" 30 2005 210 "Matt Tuck" "Matt Tuck"))
+       (s3 (make-skladba "The End" "BFMW" 75 2005 407 "Matt Tuck" "Matt Tuck"))
+       (a (make-album "The Poison" "BFMW" 99 2005 (list s1 s2 s3)))
+ 
+       (h1 (list "Johnny Galecki" "Jim Parsons" "Kaley Cuoco"))
+       (v1 (make-video "01x01 - Pilot" "James Burrows" 40 2007 1380 h1 "en"))
+       (v2 (make-video "01x02 - The Big Bran Hypothesis" "James Burrows" 40 2007 1380 h1 "en"))
+       (v3 (make-video "01x03 - The Fuzzy Boots Corollary" "James Burrows" 40 2007 1380 h1 "en"))
+       (s (make-serial "Big Bang Theory, The" "James Burrows" 99 2007 (list v1 v2 v3)))
+
+       (k (make-kniha "Carrie" "Stephen King" 85 1973 171))
+       (db (make-databaze-obchodu (list a s k))))
+
+  (format t "~%")
+  (print-album a)
+  (print-serial s)
+  (print-kniha k)
+  (print-databaze-obchodu db))
