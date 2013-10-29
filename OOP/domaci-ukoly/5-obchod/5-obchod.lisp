@@ -6,8 +6,12 @@
   (let ((db (make-instance 'databaze-obchodu)))
     (set-seznam-zbozi db seznam-zbozi)))
 
+; Vrátí celkovou cenu všeho zboží v obchodě
 (defmethod celkova-cena ((o databaze-obchodu))
-  0)
+  (labels ((iter (seznam)
+             (if (eq seznam `()) 0 
+               (+ (cena (car seznam)) (iter (cdr seznam))))))
+    (iter (seznam-zbozi o))))
 
 ; Gettery & Settery
 (defmethod seznam-zbozi ((o databaze-obchodu))
@@ -171,10 +175,14 @@
     (set-soubory kolekce soubory)))
 
 (defmethod pocet-souboru ((k kolekce-multimedii))
-  0)
+  (length (soubory k)))
 
+; Vrátí celkový čas kolekce v sekundách
 (defmethod celkova-delka ((k kolekce-multimedii))
-  0)
+  (labels ((iter (soubory)
+             (if (eq soubory `()) 0 
+               (+ (get-sec (delka (car soubory))) (iter (cdr soubory))))))   
+    (iter (soubory k))))
 
 ; Gettery & Settery
 (defmethod soubory ((k kolekce-multimedii))
