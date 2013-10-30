@@ -8,7 +8,7 @@
     db))
 
 (defmethod print-databaze-obchodu ((db databaze-obchodu))
-  (format t "Zboží: ~D kusů - ~D kč~%  => " (length (seznam-zbozi db)) (celkova-cena db))
+  (format t "Zboží: ~D kusů - ~D kc~%  => " (length (seznam-zbozi db)) (celkova-cena db))
   (print-seznam-zbozi db))
 
 (defmethod print-seznam-zbozi ((db databaze-obchodu))
@@ -32,6 +32,8 @@
   (slot-value o 'seznam-zbozi))
 
 (defmethod set-seznam-zbozi ((o databaze-obchodu) s)
+  (unless (typep s 'list)
+    (error "Seznam zbozi musi byt seznam"))
   (setf (slot-value o 'seznam-zbozi) s))
 
 
@@ -56,6 +58,8 @@
   (slot-value zbozi 'nazev))
 
 (defmethod set-nazev ((zbozi zbozi) nazev)
+  (unless (typep nazev 'string)
+    (error "Nazev zbozi musi byt textovy retezec"))
   (setf (slot-value zbozi 'nazev) nazev))
 
 ; Autor
@@ -63,6 +67,8 @@
   (slot-value zbozi 'autor))
 
 (defmethod set-autor ((zbozi zbozi) autor)
+  (unless (typep autor 'string)
+    (error "Jmeno autora musi byt textovy retezec"))
   (setf (slot-value zbozi 'autor) autor))
 
 ; Cena
@@ -70,6 +76,8 @@
   (slot-value zbozi 'cena))
 
 (defmethod set-cena ((zbozi zbozi) cena)
+  (unless (typep cena 'number)
+    (error "Cena musi byt cislo"))
   (setf (slot-value zbozi 'cena) cena)) 
 
 (defmethod rok ((zbozi zbozi))
@@ -101,6 +109,8 @@
   (slot-value kniha 'stran))
 
 (defmethod set-stran ((kniha kniha) stran)
+  (unless (typep stran 'number)
+    (error "Pocet stran musi byt cislo"))  
   (setf (slot-value kniha 'stran) stran))
 
 
@@ -122,6 +132,8 @@
   (slot-value s 'delka))
 
 (defmethod set-delka ((s multimedialni-soubor) delka)
+  (unless (typep delka 'number)
+    (error "Delka multimedialniho souboru se zadava v sekundach => musi to byt cislo"))
   (setf (slot-value s 'delka) (make-time delka)))
 
 
@@ -147,6 +159,8 @@
   (slot-value skladba 'autor-hudby))
 
 (defmethod set-autor-hudby ((skladba skladba) autor)
+  (unless (typep autor 'string)
+    (error "Jmeno autora hudby musi byt textovy retezec"))
   (setf (slot-value skladba 'autor-hudby) autor))
 
 ; Autor-textu
@@ -154,6 +168,8 @@
   (slot-value skladba 'autor-textu))
 
 (defmethod set-autor-textu ((skladba skladba) autor)
+  (unless (typep autor 'string)
+      (error "Jmeno autora textu musi byt textovy retezec"))
   (setf (slot-value skladba 'autor-textu) autor))
 
 
@@ -179,6 +195,8 @@
   (slot-value video 'herci))
 
 (defmethod set-herci ((video video) herci)
+  (unless (typep herci 'list)
+    (error "Seznam hercu musi byt seznam"))
   (setf (slot-value video 'herci) herci))
 
 ; Jazyk
@@ -186,6 +204,8 @@
   (slot-value video 'jazyk))
 
 (defmethod set-jazyk ((video video) jazyk)
+  (unless (typep jazyk 'string)
+    (error "Jazyk musi byt dan textovym retezcem"))
   (setf (slot-value video 'jazyk) jazyk))
 
 
@@ -221,6 +241,8 @@
   (slot-value k 'soubory))
 
 (defmethod set-soubory ((k kolekce-multimedii) soubory)
+  (unless (typep soubory 'list)
+      (error "Soubory musi byt dany seznamem"))
   (setf (slot-value k 'soubory) soubory))
 
 
