@@ -1,25 +1,25 @@
 (load (current-pathname "micro-graphics.lisp"))
 
-;; CELL
-(defclass cell (picture) 
+;; FIELD
+(defclass field (picture) 
   ((value :initform 0))) ; Value: -1 0 1
 
 ; Vytvoří objekt reprezentující políčko piškvorek
-(defun make-cell (value)
-  (let ((cell (make-instance 'cell)))
-    (set-value cell value)
-    cell))
+(defun make-field (value)
+  (let ((field (make-instance 'field)))
+    (set-value field value)
+    field))
 
 ; @override
-(defmethod draw ((cell cell))
-  (let ((value-image (cond ((= (value cell) -1) (cross cell))
-                           ((= (value cell) +1) (circle cell))
+(defmethod draw ((field field))
+  (let ((value-image (cond ((= (value field) -1) (cross field))
+                           ((= (value field) +1) (circle field))
                            (t (make-instance 'empty-shape)))))
-    (set-items cell (list value-image (border cell)))
+    (set-items field (list value-image (border field)))
     (call-next-method)))
 
 ; Vrátí objekt reprezentující rámeček okolo políčka
-(defmethod border ((cell cell))
+(defmethod border ((field field))
   (let ((border (make-instance 'polygon))
         (A (make-point 0 0))
         (B (make-point 0 50))
@@ -30,7 +30,7 @@
     border))
 
 ; Vrátí objekt reprezentující značku prvního hráče - křížek
-(defmethod cross ((cell cell))
+(defmethod cross ((field field))
   (let* ((cross (make-instance 'picture))
          (l1 (make-instance 'polygon))
          (l2 (make-instance 'polygon)))
@@ -46,7 +46,7 @@
     cross))
 
 ; Vrátí objekt reprezentující značku druhého hráče - kolečko
-(defmethod circle ((cell cell))
+(defmethod circle ((field field))
   (let ((c (make-instance 'circle))
         (s (make-point 25 25)))
 
@@ -57,14 +57,14 @@
     c))
 
 ; Gettery & Settery
-(defmethod value ((cell cell))
-  (slot-value cell 'value))
+(defmethod value ((field field))
+  (slot-value field 'value))
 
-(defmethod set-value ((cell cell) value) 
+(defmethod set-value ((field field) value) 
   (unless (and (>= value -1) (<= value 1))
     (error "Hodnota policka musi byt -1, 0, nebo 1"))
-  (setf (slot-value cell 'value) value)
-  cell)
+  (setf (slot-value field 'value) value)
+  field)
 
 
 
@@ -74,6 +74,6 @@
 (defvar *win*)
 (setf *win* (make-instance 'window))
 
-(let* ((cell (make-cell -2)))
-  (set-shape *win* cell)
+(let* ((field (make-field -2)))
+  (set-shape *win* field)
   (redraw *win*))
