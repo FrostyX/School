@@ -59,7 +59,7 @@
   (let ((value-image (cond ((= value -1) (cross field))
                            ((= value +1) (circle field))
                            (t (make-instance 'empty-shape)))))
-    (print value)
+
     (set-items field (list value-image (border field)))
     (setf (slot-value field 'value) value)
     field))
@@ -72,7 +72,8 @@
 (defvar *win*)
 (setf *win* (make-instance 'window))
 
-(let ((f1 (make-field -1))
+(let ((p (make-instance 'picture))
+      (f1 (make-field -1))
       (f2 (make-field 0))
       (f3 (make-field 1))
       (f4 (make-field 1))
@@ -80,6 +81,12 @@
       (f6 (make-field 0)))
 
   (move f1 50 50)
+  (move f2 100 50)
+  (move f3 150 50)
+  (move f4 50 100)
+  (move f5 100 100)
+  (move f6 150 100)
 
-  (set-shape *win* f1)
+  (set-items p (list f1 f2 f3 f4 f5 f6))
+  (set-shape *win* p)
   (redraw *win*))
