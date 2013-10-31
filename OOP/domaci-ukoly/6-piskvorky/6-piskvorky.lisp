@@ -8,7 +8,11 @@
 
 ;; FIELD
 (defclass field (picture) 
-  ((value :initform 0))) ; Value: -1 0 1
+  ; Hodnoty:
+  ;    -1 = Křížek
+  ;     0 = Neutrální
+  ;    +1 = Kolečko
+  ((value :initform 0)))
 
 ; Vytvoří objekt reprezentující políčko piškvorek
 (defun make-field (value)
