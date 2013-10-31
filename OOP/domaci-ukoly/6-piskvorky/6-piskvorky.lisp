@@ -10,14 +10,6 @@
     (set-value field value)
     field))
 
-; @override
-(defmethod draw ((field field))
-  (let ((value-image (cond ((= (value field) -1) (cross field))
-                           ((= (value field) +1) (circle field))
-                           (t (make-instance 'empty-shape)))))
-    (set-items field (list value-image (border field)))
-    (call-next-method)))
-
 ; Vrátí objekt reprezentující rámeček okolo políčka
 (defmethod border ((field field))
   (let ((border (make-instance 'polygon))
@@ -63,8 +55,14 @@
 (defmethod set-value ((field field) value) 
   (unless (and (>= value -1) (<= value 1))
     (error "Hodnota policka musi byt -1, 0, nebo 1"))
-  (setf (slot-value field 'value) value)
-  field)
+  
+  (let ((value-image (cond ((= value -1) (cross field))
+                           ((= value +1) (circle field))
+                           (t (make-instance 'empty-shape)))))
+    (print value)
+    (set-items field (list value-image (border field)))
+    (setf (slot-value field 'value) value)
+    field))
 
 
 
@@ -74,6 +72,14 @@
 (defvar *win*)
 (setf *win* (make-instance 'window))
 
-(let* ((field (make-field -2)))
-  (set-shape *win* field)
+(let ((f1 (make-field -1))
+      (f2 (make-field 0))
+      (f3 (make-field 1))
+      (f4 (make-field 1))
+      (f5 (make-field -1))
+      (f6 (make-field 0)))
+
+  (move f1 50 50)
+
+  (set-shape *win* f1)
   (redraw *win*))
