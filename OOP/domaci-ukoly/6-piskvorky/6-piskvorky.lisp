@@ -4,7 +4,7 @@
 (defvar *field-width* 50)
 (defvar *fields-in-row* 3)
 (defvar *gap-x* 45)
-(defvar *gap-y* 40)
+(defvar *gap-y* 15)
 
 ;; FIELD
 (defclass field (picture) 
@@ -94,21 +94,29 @@
                     (make-field 1)
                     (make-field 1)
                     (make-field -1)
-                    (make-field 0)))
+                    (make-field 0)
+                    (make-field 0)
+                    (make-field 1)
+                    (make-field -1)))
       (x 0)
       (y 0))
 
   (dolist (field fields)
     (move field 
-          (+ (* *field-width* x) *gap-x*) 
-          (+ (* *field-width* y) *gap-y*))
+          (* *field-width* x)
+          (* *field-width* y))
 
     (setq x (+ x 1))
     (if (= x *fields-in-row*)
-        (progn 
+        (progn
           (setq x 0)
           (setq y (+ y 1)))))
           
-  (set-items p fields)
-  (set-shape *win* p)
-  (redraw *win*))
+  (let ((center (make-point (+ *gap-x* (* *fields-in-row* (/ *field-width* 2)))
+                            (+ *gap-y* (* y (/ *field-width* 2))))))
+    
+    (set-items p fields)
+    (move p *gap-x* *gap-y*)
+    (scale p 1.1 center)
+    (set-shape *win* p)
+    (redraw *win*)))
