@@ -82,6 +82,15 @@
 
 
 
+; Převody
+(defun deg2Rad (degrees)
+  (* (/ degrees 180.0) pi))
+
+(defun rad2Deg (radians)
+  (* (/ radians pi) 180.0))
+
+
+
 ;; POUŽITÍ
 
 ; WINDOW musí být globální!
@@ -114,9 +123,12 @@
           
   (let ((center (make-point (+ *gap-x* (* *fields-in-row* (/ *field-width* 2)))
                             (+ *gap-y* (* y (/ *field-width* 2))))))
-    
+
     (set-items p fields)
+
     (move p *gap-x* *gap-y*)
     (scale p 1.1 center)
+    (rotate p (deg2rad 45) center)
+
     (set-shape *win* p)
     (redraw *win*)))
