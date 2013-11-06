@@ -192,6 +192,10 @@
 (defmethod center ((c circle))
   (slot-value c 'center))
 
+(defmethod set-center ((c circle) value)
+  (setf (slot-value c 'center) value)
+  c)
+
 ; transformations
 
 (defmethod move ((c circle) dx dy)
