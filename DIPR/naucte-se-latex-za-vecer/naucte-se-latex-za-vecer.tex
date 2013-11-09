@@ -1,0 +1,93 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[czech]{babel}
+\usepackage[T1]{fontenc}
+
+\usepackage[colorlinks]{hyperref}
+\hypersetup{citecolor=black}
+\hypersetup{linkcolor=black}
+\hypersetup{urlcolor=blue}
+
+\newcommand{\inlinecode}{\texttt}
+
+\title{Naučte se LaTeX za večer}
+\author{Jakub Kadlčík}
+\date{9. 11. 2013}
+
+\begin{document}
+	\maketitle
+	\newpage
+
+	\section*{Předmluva}
+	Tento dokument je určen každému, kdo se chce s co nejmenší námahou naučit používat typografický systém LaTeX. Nepředpokládá téměř žádné dovednosti, takže nezáleží na tom, zda jste žákem základní školy, studentem, který právě zjistil, že LaTeX není xy materiál a má v něm do konce týdne napsat práci, nebo důchodce, který chce, aby jeho písemné stížnosti vypadaly úhledně.
+	Přesto je mířený na určitou cílovou skupinu lidí -- pro ty, kteří se chtějí naučit stěžejní věci v co nejkratším možném čase. Tedy aby mohli v LaTeXu psát pokud možno ihned a to i přesto, že se nedozvědí, xy.
+		
+	\newpage
+	\tableofcontents
+	\newpage
+	
+    \section{LaTeX?}
+		\subsection{Úvod}
+		Mluvíme-li o LaTeXu myslíme tím typografický systém sloužící k profesionální sazbě textů. Hlavním rozdílem mezi ním a textovými procesory, jakými jsou například MS Word, nebo OpenOffice Writer je ten, že dokument LaTeXu needitujete v takové podobě, v jaké bude tištěn. Pro formátování textu se používají různé příkazy a symboly -- dal by se tak přirovnat například k jazyku HTML.
+		
+		\subsection{Historie}
+		Většina knih začíná mnoha stranami popisujícími detailní historii projektu. Znalost historie je zajisté důležitá, ale pokud chceme rychle začít něco dělat, je nám k ničemu. Zmínil bych jen základní fakta. LaTeX je sada maker pro systém TeX, který v 70. letech 20. století vytvořil profesor D. E. Knuth. Nebyl moc spokojený s tím, jak nakladatelství na  Stanfordově univerzitě sázelo jeho skripta do matematiky. 
+
+	\newpage
+	\section{Instalace}
+		LaTeX je k dispozici v různých distribucích - tou nejrozšířenější je TeX Live\footnote{\url{http://www.tug.org/texlive/}}. Nemusíte mít obavy, zda na vašem počítači bude fungovat. Podporuje totiž mnoho operačních systémů a architektur\footnote{\url{http://www.tug.org/texlive/doc.html}}.
+		\\
+		TeX Live vám sice umožní překlad zdrojových souborů na PDF dokumenty, ale o uživatelské přívětivosti nelze ani hovořit. Proto na scénu přichází Texmaker\footnote{\url{http://www.xm1math.net/texmaker/}}. 
+
+		\subsection{Linux}
+		Jsem přesvědčen, že v každé rozumné linuxové distribuci stačí nainstalovat program Texmaker a díky závislostem se vám do systému dostane vše co k psaní v LaTeXu potřebujete. To je přece to, co na linuxu milujeme.
+
+		\subsection{Windows a ostatní systémy}
+		Pro instalaci distribuce TeX Live následujte \url{http://www.tug.org/texlive/doc.html}. Pro instalaci Texmakeru potom \url{http://www.xm1math.net/texmaker/download.html}.
+				
+			
+	\newpage	
+	\section{Jedeme na to}
+		V případě, že nejste příliš zdatní v českém jazyce, přečtěte si bonusovou kapitolu číslo X, pojednávající o české typografii. Vlastně, \dots{} Podívejte se tam raději všichni. 
+		
+		\subsection{Dokument v LaTeXu}
+		Jak jsem předeslal již v úvodu, soubor, se kterým člověk pracuje, vypadá jinak než výstupní soubor, který LaTeX vrací. Zdrojový kód je tedy kombinace formátovacích příkazů a textu. Tohle je naprosto stěžejní informace, pro jejíž ujasnění doporučuji srovnání tohoto dokumentu a jeho zdrojového kódu, který naleznete na adrese \url{http://frostyx.cz/posts/naucte-se-latex-za-vecer}.
+		\\
+		Teď už se pusťme do samotné tvorby zdrojového kódu.
+		\subsection{Základní kostra dokumentu}
+			Každý dokument psaný v LaTeXu musí obsahovat hlavičku a samotný text. Vždy když vytváříte nový dokument, automaticky do něj vložte následující kód:
+
+			\begin{verbatim}
+			\documentclass[10pt,a4paper]{article}
+			\usepackage[utf8]{inputenc}
+			\usepackage[T1]{fontenc}
+
+			\begin{document}
+			    Hello world
+			\end{document}
+			\end{verbatim}
+			
+			Obsah bloku ohraničeného příkazy \inlinecode{\textbackslash{}begin\{document\}} a \inlinecode{\textbackslash{}end\{document\}} je text výsledného dokumentu. Kód nad tímto blokem se nazývá hlavička. Ta slouží k nastavení velikosti papíru, kódování znaků, jazyku, atd.
+						
+			\subsubsection{Čeština}
+			Při psaní českého dokumentu budete chtít, aby LaTeX zohledňoval české typografické speciality. Toho docílíte přidáním následujícího řádku do hlavičky.
+			
+			\begin{verbatim}
+			\usepackage[czech]{babel}
+			\end{verbatim}						
+			
+		\subsection{Strukturování textu}
+			\subsubsection{Odkaz na místo v textu}
+			\subsubsection{Obsah}
+		\subsection{Písmo a speciální znaky}
+			\subsubsection{Písmo}
+			\subsubsection{Speciální znaky}
+		\subsection{Seznamy}
+		\subsection{Tabulky}
+		\subsection{Obrázky}
+		\subsection{Matematika}
+		\subsection{Seznam literatury}
+	
+	\newpage
+	\section{Typografie}
+\end{document}
