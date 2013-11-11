@@ -14,7 +14,7 @@
 \author{Jakub Kadlčík}
 \date{9. 11. 2013}
 
-\begin{document}
+\begin{document}	
 	\maketitle
 	\newpage
 
@@ -76,12 +76,79 @@
 			\usepackage[czech]{babel}
 			\end{verbatim}						
 			
+		
+		\subsection{Speciální znaky}
+		Jak už jste si mohli všimnout, příkazy LaTeXu se skládají ze znaků \texttt{\textbackslash{}, \{, \}}, proto není možné je do textu jen tak zapsat, aby se nevyhodnotily na příkaz. Speciálních znaků však existuje mnohem více, než jen tyto tři. Následující tabulka ukáže, jak je psát.
+
+		\begin{tabular}{|p{4cm}|p{4cm}|}
+			\hline
+			\textbf{Znak}  & \textbf{Příkaz} \\ \hline
+			\textbackslash & \textbackslash{}textbackslash \\ \hline
+			\{             & \textbackslash\{ \\ \hline
+			\}             & \textbackslash\} \\ \hline
+			\#             & \textbackslash\# \\ \hline
+			\$             & \textbackslash\$ \\ \hline
+			\&             & \textbackslash\& \\ \hline 
+			\_             & \textbackslash\_ \\ \hline 
+			\%             & \textbackslash\% \\ \hline
+		\end{tabular}				
+		
 		\subsection{Strukturování textu}
+			S psaním delších textů ruku v ruce přichází nutnost je členit na kapitoly, podkapitoly, odstavce, atd. Tedy je strukturovat. S klidem v srdci můžu říct, že v tomhle LaTeX sráží konkurenty na kolena.
+			
+			\paragraph{Kapitoly a odstavce}
+				jsou řešeny pomocí několika málo příkazů.
+				
+				\begin{tabular}{|p{5cm}|p{6cm}|}
+					\hline
+					\textbackslash{}part             & Nová část \\ \hline
+					\textbackslash{}section          & Nová sekce \\ \hline
+					\textbackslash{}subsection       & Podsekce prvního řádu \\ \hline
+					\textbackslash{}subsubsection    & Podsekce druhého řádu \\ \hline
+					\textbackslash{}paragraph        & Nový odstavec \\ \hline
+					\textbackslash{}subparagraph     & Nový pod-odstavec \\ \hline
+					\textbackslash{}newpage          & Nová stránka \\ \hline
+					\textbackslash{}\textbackslash{} & Nový řádek \\ \hline
+				\end{tabular}
+				
+				Pomineme-li na okamžik poslední dva příkazy, pak každý z výše uvedených bere jako povinný argument název sekce -- například \texttt{\textbackslash{}section\{Úvod\}}. Navíc každý z nich existuje i ve variantě s hvězdičkou -- například \texttt{\textbackslash{}section*\{Úvod\}}. Taková sekce se potom nezobrazí v obsahu.
+				
 			\subsubsection{Odkaz na místo v textu}
+			Libovolnou část dokumentu si můžeme označit příkazem \texttt{\textbackslash{}label\{návěští\}}. Poté se na místo můžeme odkázat dvěma způsoby. \texttt{\textbackslash{}ref\{návěští\}} vypíše číslo kapitoly a \texttt{\textbackslash{}pageref\{návěští\}} vypíše číslo stránky, kde se nachází odkazovaný text.
+			
 			\subsubsection{Obsah}
-		\subsection{Písmo a speciální znaky}
-			\subsubsection{Písmo}
-			\subsubsection{Speciální znaky}
+			Už žádné ruční psaní obsahu, nebo používání magie při jeho generování. Nikdy, nikdy nikdy. Prostě použijte příkaz \texttt{\textbackslash{}tableofcontents}.
+		
+		\subsection{Písmo}
+			Následující tabulka č.X osvětlí, jak lze měnit formát písma.
+		
+			\begin{tabular}{|p{4cm}|p{5cm}|}
+				\hline		
+				\texttt{\textbackslash{}textit} & \textit{kurzíva - italic} \\ \hline
+				\texttt{\textbackslash{}textsf} & \textsf{skloněné - slanted} \\ \hline
+				\texttt{\textbackslash{}texttt} & \texttt{strojopisné - typewritter} \\ \hline
+				\texttt{\textbackslash{}textbf} & \textbf{tučné - bold face} \\ \hline
+				\texttt{\textbackslash{}textsc} & \textsc{kapitálky - small caps} \\ \hline
+			\end{tabular}
+			
+			Následující výčet ukáže, jak lze měnit jeho velikost (výčet je seřazen od nejmenšího po největší).
+
+		\begin{itemize}
+			\item \texttt{\textbackslash{}tiny}
+			\item \texttt{\textbackslash{}scriptsize}
+			\item \texttt{\textbackslash{}footnotesize}
+			\item \texttt{\textbackslash{}small}
+			\item \texttt{\textbackslash{}normalsize}
+			\item \texttt{\textbackslash{}large}
+			\item \texttt{\textbackslash{}Large}
+			\item \texttt{\textbackslash{}LARGE}
+			\item \texttt{\textbackslash{}huge}
+			\item \texttt{\textbackslash{}Huge}
+			\item \texttt{\textbackslash{}HUGE}
+		\end{itemize}
+		
+		Jak můžete vidět, mnoho názvů příkazů LaTeXu je velmi intuitivních.
+	
 		\subsection{Seznamy}
 		\subsection{Tabulky}
 		\subsection{Obrázky}
