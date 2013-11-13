@@ -3,6 +3,7 @@
 \usepackage[czech]{babel}
 \usepackage[T1]{fontenc}
 
+\usepackage[font=footnotesize]{subcaption}
 \usepackage[colorlinks]{hyperref}
 \hypersetup{citecolor=black}
 \hypersetup{linkcolor=black}
@@ -10,46 +11,46 @@
 
 \newcommand{\inlinecode}{\texttt}
 
-\title{Naučte se LaTeX za večer}
+\title{Naučte se \LaTeX{} za večer}
 \author{Jakub Kadlčík}
 \date{9. 11. 2013}
 
-\begin{document}	
+\begin{document}
 	\maketitle
 	\newpage
 
 	\section*{Předmluva}
 	Tento dokument je určen každému, kdo se chce s co nejmenší námahou naučit používat typografický systém LaTeX. Nepředpokládá téměř žádné dovednosti, takže nezáleží na tom, zda jste žákem základní školy, studentem, který právě zjistil, že LaTeX není xy materiál a má v něm do konce týdne napsat práci, nebo důchodce, který chce, aby jeho písemné stížnosti vypadaly úhledně.
 	Přesto je mířený na určitou cílovou skupinu lidí -- pro ty, kteří se chtějí naučit stěžejní věci v co nejkratším možném čase. Tedy aby mohli v LaTeXu psát pokud možno ihned a to i přesto, že se nedozvědí, xy.
-		
+
 	\newpage
 	\tableofcontents
 	\newpage
-	
+
     \section{LaTeX?}
 		\subsection{Úvod}
 		Mluvíme-li o LaTeXu myslíme tím typografický systém sloužící k profesionální sazbě textů. Hlavním rozdílem mezi ním a textovými procesory, jakými jsou například MS Word, nebo OpenOffice Writer je ten, že dokument LaTeXu needitujete v takové podobě, v jaké bude tištěn. Pro formátování textu se používají různé příkazy a symboly -- dal by se tak přirovnat například k jazyku HTML.
-		
+
 		\subsection{Historie}
-		Většina knih začíná mnoha stranami popisujícími detailní historii projektu. Znalost historie je zajisté důležitá, ale pokud chceme rychle začít něco dělat, je nám k ničemu. Zmínil bych jen základní fakta. LaTeX je sada maker pro systém TeX, který v 70. letech 20. století vytvořil profesor D. E. Knuth. Nebyl moc spokojený s tím, jak nakladatelství na  Stanfordově univerzitě sázelo jeho skripta do matematiky. 
+		Většina knih začíná mnoha stranami popisujícími detailní historii projektu. Znalost historie je zajisté důležitá, ale pokud chceme rychle začít něco dělat, je nám k ničemu. Zmínil bych jen základní fakta. LaTeX je sada maker pro systém TeX, který v 70. letech 20. století vytvořil profesor D. E. Knuth. Nebyl moc spokojený s tím, jak nakladatelství na  Stanfordově univerzitě sázelo jeho skripta do matematiky.
 
 	\newpage
 	\section{Instalace}
 		LaTeX je k dispozici v různých distribucích - tou nejrozšířenější je TeX Live\footnote{\url{http://www.tug.org/texlive/}}. Nemusíte mít obavy, zda na vašem počítači bude fungovat. Podporuje totiž mnoho operačních systémů a architektur\footnote{\url{http://www.tug.org/texlive/doc.html}}.
 		\\
-		TeX Live vám sice umožní překlad zdrojových souborů na PDF dokumenty, ale o uživatelské přívětivosti nelze ani hovořit. Proto na scénu přichází Texmaker\footnote{\url{http://www.xm1math.net/texmaker/}}. 
+		TeX Live vám sice umožní překlad zdrojových souborů na PDF dokumenty, ale o uživatelské přívětivosti nelze ani hovořit. Proto na scénu přichází Texmaker\footnote{\url{http://www.xm1math.net/texmaker/}}.
 
 		\subsection{Linux}
 		Jsem přesvědčen, že v každé rozumné linuxové distribuci stačí nainstalovat program Texmaker a díky závislostem se vám do systému dostane vše co k psaní v LaTeXu potřebujete. To je přece to, co na linuxu milujeme.
 
 		\subsection{Windows a ostatní systémy}
 		Pro instalaci distribuce TeX Live následujte \url{http://www.tug.org/texlive/doc.html}. Pro instalaci Texmakeru potom \url{http://www.xm1math.net/texmaker/download.html}.
-				
-			
-	\newpage	
+
+
+	\newpage
 	\section{Jedeme na to}
-		V případě, že nejste příliš zdatní v českém jazyce, přečtěte si bonusovou kapitolu číslo X, pojednávající o české typografii. Vlastně, \dots{} Podívejte se tam raději všichni. 
-		
+		V případě, že nejste příliš zdatní v českém jazyce, přečtěte si bonusovou kapitolu číslo X, pojednávající o české typografii. Vlastně, \dots{} Podívejte se tam raději všichni.
+
 		\subsection{Dokument v LaTeXu}
 		Jak jsem předeslal již v úvodu, soubor, se kterým člověk pracuje, vypadá jinak než výstupní soubor, který LaTeX vrací. Zdrojový kód je tedy kombinace formátovacích příkazů a textu. Tohle je naprosto stěžejní informace, pro jejíž ujasnění doporučuji srovnání tohoto dokumentu a jeho zdrojového kódu, který naleznete na adrese \url{http://frostyx.cz/posts/naucte-se-latex-za-vecer}.
 		\\
@@ -66,17 +67,17 @@
 			    Hello world
 			\end{document}
 			\end{verbatim}
-			
+
 			Obsah bloku ohraničeného příkazy \inlinecode{\textbackslash{}begin\{document\}} a \inlinecode{\textbackslash{}end\{document\}} je text výsledného dokumentu. Kód nad tímto blokem se nazývá hlavička. Ta slouží k nastavení velikosti papíru, kódování znaků, jazyku, atd.
-						
+
 			\subsubsection{Čeština}
 			Při psaní českého dokumentu budete chtít, aby LaTeX zohledňoval české typografické speciality. Toho docílíte přidáním následujícího řádku do hlavičky.
-			
+
 			\begin{verbatim}
 			\usepackage[czech]{babel}
-			\end{verbatim}						
-			
-		
+			\end{verbatim}
+
+
 		\subsection{Speciální znaky}
 		Jak už jste si mohli všimnout, příkazy LaTeXu se skládají ze znaků \texttt{\textbackslash{}, \{, \}}, proto není možné je do textu jen tak zapsat, aby se nevyhodnotily na příkaz. Speciálních znaků však existuje mnohem více, než jen tyto tři. Následující tabulka ukáže, jak je psát.
 
@@ -88,17 +89,17 @@
 			\}             & \textbackslash\} \\ \hline
 			\#             & \textbackslash\# \\ \hline
 			\$             & \textbackslash\$ \\ \hline
-			\&             & \textbackslash\& \\ \hline 
-			\_             & \textbackslash\_ \\ \hline 
+			\&             & \textbackslash\& \\ \hline
+			\_             & \textbackslash\_ \\ \hline
 			\%             & \textbackslash\% \\ \hline
-		\end{tabular}				
-		
+		\end{tabular}
+
 		\subsection{Strukturování textu}
 			S psaním delších textů ruku v ruce přichází nutnost je členit na kapitoly, podkapitoly, odstavce, atd. Tedy je strukturovat. S klidem v srdci můžu říct, že v tomhle LaTeX sráží konkurenty na kolena.
-			
+
 			\paragraph{Kapitoly a odstavce}
 				jsou řešeny pomocí několika málo příkazů.
-				
+
 				\begin{tabular}{|p{5cm}|p{6cm}|}
 					\hline
 					\textbackslash{}part             & Nová část \\ \hline
@@ -110,27 +111,27 @@
 					\textbackslash{}newpage          & Nová stránka \\ \hline
 					\textbackslash{}\textbackslash{} & Nový řádek \\ \hline
 				\end{tabular}
-				
+
 				Pomineme-li na okamžik poslední dva příkazy, pak každý z výše uvedených bere jako povinný argument název sekce -- například \texttt{\textbackslash{}section\{Úvod\}}. Navíc každý z nich existuje i ve variantě s hvězdičkou -- například \texttt{\textbackslash{}section*\{Úvod\}}. Taková sekce se potom nezobrazí v obsahu.
-				
+
 			\subsubsection{Odkaz na místo v textu}
 			Libovolnou část dokumentu si můžeme označit příkazem \texttt{\textbackslash{}label\{návěští\}}. Poté se na místo můžeme odkázat dvěma způsoby. \texttt{\textbackslash{}ref\{návěští\}} vypíše číslo kapitoly a \texttt{\textbackslash{}pageref\{návěští\}} vypíše číslo stránky, kde se nachází odkazovaný text.
-			
+
 			\subsubsection{Obsah}
 			Už žádné ruční psaní obsahu, nebo používání magie při jeho generování. Nikdy, nikdy nikdy. Prostě použijte příkaz \texttt{\textbackslash{}tableofcontents}.
-		
+
 		\subsection{Písmo}
 			Následující tabulka č.X osvětlí, jak lze měnit formát písma.
-		
+
 			\begin{tabular}{|p{4cm}|p{5cm}|}
-				\hline		
+				\hline
 				\texttt{\textbackslash{}textit} & \textit{kurzíva - italic} \\ \hline
 				\texttt{\textbackslash{}textsf} & \textsf{skloněné - slanted} \\ \hline
 				\texttt{\textbackslash{}texttt} & \texttt{strojopisné - typewritter} \\ \hline
 				\texttt{\textbackslash{}textbf} & \textbf{tučné - bold face} \\ \hline
 				\texttt{\textbackslash{}textsc} & \textsc{kapitálky - small caps} \\ \hline
 			\end{tabular}
-			
+
 			Následující výčet ukáže, jak lze měnit jeho velikost (výčet je seřazen od nejmenšího po největší).
 
 		\begin{itemize}
@@ -146,15 +147,86 @@
 			\item \texttt{\textbackslash{}Huge}
 			\item \texttt{\textbackslash{}HUGE}
 		\end{itemize}
-		
+
 		Jak můžete vidět, mnoho názvů příkazů LaTeXu je velmi intuitivních.
-	
+
+		\newpage
 		\subsection{Seznamy}
+		Řekne-li se seznam (případně výčet), nejspíš ne úplně každý bude mít jasnou představu o čem je řeč. Při čtení tohoto zdrojového kódu jste si mohli seznamu všimnout například v kapitole číslo XY, pojednávající o velikosti písma.
+		\\
+		Seznam může být číslovaný, \uv{odrážkovaný}, nebo uvozený libovolným znakem. Každý z nich může obsahovat libovolně mnoho podseznamů. Teorie by stačila, teď si je ukážeme.
+
+		\subsubsection{\uv{Odrážkovaný} seznam}
+			\begin{figure}[!ht]
+				\centering
+				\begin{subfigure}{.45\textwidth}
+					\centering
+					\begin{verbatim}
+						\begin{itemize}
+						    \item První položka
+						    \item Druhá položka
+						    \begin{itemize}
+							\item A
+							\item B
+						    \end{itemize}
+						    \item Třetí položka
+						\end{itemize}
+					\end{verbatim}
+				\end{subfigure}
+				\vline
+				\begin{subfigure}{.45\textwidth}
+					\centering
+					\begin{itemize}
+						\item První položka
+						\item Druhá položka
+							\begin{itemize}
+								\item A
+								\item B
+							\end{itemize}
+						\item Třetí položka
+					\end{itemize}
+				\end{subfigure}
+			\end{figure}
+
+		\subsubsection{Číslovaný seznam}
+			\begin{figure}[!ht]
+				\centering
+				\begin{subfigure}{.45\textwidth}
+					\centering
+					\begin{verbatim}
+						\begin{enumerate}
+						    \item První položka
+						    \item Druhá položka
+						    \begin{itemize}
+							\item A
+							\item B
+						    \end{enumerate}
+						    \item Třetí položka
+						\end{itemize}
+					\end{verbatim}
+				\end{subfigure}
+				\vline
+				\begin{subfigure}{.45\textwidth}
+					\centering
+					\begin{enumerate}
+						\item První položka
+						\item Druhá položka
+							\begin{itemize}
+								\item A
+								\item B
+							\end{itemize}
+						\item Třetí položka
+					\end{enumerate}
+				\end{subfigure}
+			\end{figure}
+
+		Nehledě na to, jaký typ seznamu se použije, jeho body vždy začínají příkazem \texttt{\textbackslash{}item}, takže změnit typ seznamu není vůbec komplikované. Navíc můžete vidět, že není problém udělat číslovaný seznam, který bude obsahovat \uv{odrážkovaný} podseznam.
+
 		\subsection{Tabulky}
 		\subsection{Obrázky}
 		\subsection{Matematika}
 		\subsection{Seznam literatury}
-	
+
 	\newpage
 	\section{Typografie}
 \end{document}
