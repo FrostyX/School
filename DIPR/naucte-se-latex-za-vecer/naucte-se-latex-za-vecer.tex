@@ -79,7 +79,7 @@
 
 
 		\subsection{Speciální znaky}
-		Jak už jste si mohli všimnout, příkazy LaTeXu se skládají ze znaků \texttt{\textbackslash{}, \{, \}}, proto není možné je do textu jen tak zapsat, aby se nevyhodnotily na příkaz. Speciálních znaků však existuje mnohem více, než jen tyto tři. Následující tabulka ukáže, jak je psát.
+		Jak už jste si mohli všimnout, příkazy LaTeXu se skládají ze znaků \texttt{\textbackslash{}, \{, \}}, proto není možné je do textu jen tak zapsat, aby se nevyhodnotily na příkaz. Speciálních znaků však existuje mnohem více\footnote{Mnoho matematických symbolů lze najít na \url{http://web.ift.uib.no/Teori/KURS/WRK/TeX/symALL.html} a případě, že chcete zapsat symbol, pro nějž neznáte příkaz, stránka \url{http://detexify.kirelabs.org/classify.html} vám jistě pomůže.}, než jen tyto tři. Následující tabulka ukáže, jak je psát.
 
 		\begin{tabular}{|p{4cm}|p{4cm}|}
 			\hline
@@ -93,7 +93,8 @@
 			\_             & \textbackslash\_ \\ \hline
 			\%             & \textbackslash\% \\ \hline
 		\end{tabular}
-
+		
+		
 		\subsection{Strukturování textu}
 			S psaním delších textů ruku v ruce přichází nutnost je členit na kapitoly, podkapitoly, odstavce, atd. Tedy je strukturovat. S klidem v srdci můžu říct, že v tomhle LaTeX sráží konkurenty na kolena.
 
@@ -260,7 +261,28 @@
 				
 		
 		\subsection{Obrázky}
-		\subsection{Matematika}				
+		
+		\subsection{Matematika}
+		Matematika -- důvod, proč LaTeX vznikl. Taky vlastnost, ve které bezkonkurenčně a nelítostně likviduje všechny své konkurenty.
+		\\
+		\\
+		Matematické prostředí lze spustit několika způsoby. Ukážeme si je na předpisu lineární funkce:
+		\begin{enumerate}
+			\item \texttt{\$f(x) = ax + b\$}
+			\item \texttt{\$\$f(x) = ax + b\$\$	}
+			\item \texttt{\textbackslash{}begin\{equation\} f(x) = ax + b \textbackslash{}end\{equation\}}
+		\end{enumerate}
+
+		Každá ze zmíněných možností vloží vzoreček jinak. První se hodí, když jej chceme vložit do textu, protože přesně to se stane. Například chci říci, že \uv{$f(x) = ax + y$ je předpis lineární funkce}. Druhá možnost vypíše vzoreček na samostatném řádku, třetí jej navíc očísluje.
+		
+		\subsubsection{Mocniny a odmocniny}
+		Víme, že vzorec $a^2 + b^2 = c^2$ představuje Pythagorovu větu. 
+		
+		\subsubsection{Indexy}
+		\subsubsection{Zlomky}
+		\subsubsection{Kombinační čísla}
+		\subsubsection{Závorky}
+				
 		\subsection{Seznam literatury}
 
 	\newpage
