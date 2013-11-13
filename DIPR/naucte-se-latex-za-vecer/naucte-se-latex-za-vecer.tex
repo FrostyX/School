@@ -222,9 +222,45 @@
 
 		Nehledě na to, jaký typ seznamu se použije, jeho body vždy začínají příkazem \texttt{\textbackslash{}item}, takže změnit typ seznamu není vůbec komplikované. Navíc můžete vidět, že není problém udělat číslovaný seznam, který bude obsahovat \uv{odrážkovaný} podseznam.
 
+		\newpage
 		\subsection{Tabulky}
+		Nemůžu říci, že se v LaTeXu vytvářejí tabulky tak jednoduše, jako v MS Word, nebo OpenOffice Writer, ale i tak se nejedná o nic složitého.
+		
+			\begin{figure}[!ht]
+				\centering
+				\begin{subfigure}{.45\textwidth}
+					\centering
+					\begin{verbatim}
+						\begin{tabular}{|c|c|}
+						    \hline
+						    AAA & BBB \\\hline
+						    CCC & DDD \\\hline
+						    EEE & FFF \\\hline
+						    GGG & HHH \\\hline
+						\end{tabular}
+					\end{verbatim}
+				\end{subfigure}
+				\vline
+				\begin{subfigure}{.45\textwidth}
+					\centering
+					\begin{tabular}{|c|c|}
+						\hline
+						AAA & BBB \\\hline
+						CCC & DDD \\\hline
+						EEE & FFF \\\hline
+						GGG & HHH \\\hline
+					\end{tabular}
+				\end{subfigure}
+			\end{figure}
+			
+			Můžete vidět, že tabulku reprezentuje prostředí \texttt{tabular}, který přebírá jeden povinný argument. Pojďme si ho teď objasnit. Znak \texttt{|} reprezentuje, kde budou v tabulce svislé \uv{čáry}. Písmena mezi nimi reprezentují počet sloupců a zarovnání textu v nich. Lze použít \texttt{l} - zarovnání vlevo, \texttt{r} - zarovnání vpravo, \texttt{c} - zarovnání na střed.
+			\\
+			Nový řádek tabulky není uvozen žádným příkazem, jak je tomu u seznamů, naopak na konec každého řádku je potřeba napsat \texttt{\textbackslash{}\textbackslash}. Vodorovné \uv{čáry} za nás LaTeX bohužel taky sám nevypíše. Musíme to udělat příkazem \texttt{\textbackslash{}hline}.
+			\\ A konečně znak \texttt{\&}. Určitě vám došlo, že odděluje sloupce.
+				
+		
 		\subsection{Obrázky}
-		\subsection{Matematika}
+		\subsection{Matematika}				
 		\subsection{Seznam literatury}
 
 	\newpage
