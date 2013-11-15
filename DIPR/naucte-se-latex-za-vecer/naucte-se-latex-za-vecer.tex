@@ -27,7 +27,7 @@
 
 	\section*{Předmluva}
 	Tento dokument je určen každému, kdo se chce s co nejmenší námahou naučit používat typografický systém LaTeX. Nepředpokládá téměř žádné dovednosti, takže nezáleží na tom, zda jste žákem základní školy, studentem, který právě zjistil, že LaTeX není xy materiál a má v něm do konce týdne napsat práci, nebo důchodce, který chce, aby jeho písemné stížnosti vypadaly úhledně.
-	Přesto je mířený na určitou cílovou skupinu lidí -- pro ty, kteří se chtějí naučit stěžejní věci v co nejkratším možném čase. Tedy aby mohli v LaTeXu psát pokud možno ihned a to i přesto, že se nedozvědí, xy.
+	Přesto je mířený na určitou cílovou skupinu lidí --- na ty, kteří se chtějí naučit stěžejní věci v co nejkratším možném čase. Tedy aby mohli v LaTeXu psát pokud možno ihned a to i přesto, že se nedozvědí, xy.
 
 	\newpage
 	\tableofcontents
@@ -36,7 +36,7 @@
 	\setcounter{page}{4}
     \part{LaTeX?}
 		\section{Úvod}
-		Mluvíme-li o LaTeXu myslíme tím typografický systém sloužící k profesionální sazbě textů. Hlavním rozdílem mezi ním a textovými procesory, jakými jsou například MS Word, nebo OpenOffice Writer je ten, že dokument LaTeXu needitujete v takové podobě, v jaké bude tištěn. Pro formátování textu se používají různé příkazy a symboly -- dal by se tak přirovnat například k jazyku HTML.
+		Mluvíme-li o LaTeXu myslíme tím typografický systém sloužící k profesionální sazbě textů. Hlavním rozdílem mezi ním a textovými procesory, jakými jsou například MS Word, nebo OpenOffice Writer je ten, že dokument LaTeXu needitujete v takové podobě, v jaké bude tištěn. Pro formátování textu se používají různé příkazy a symboly --- dal by se tak přirovnat například k jazyku HTML.
 
 		\section{Historie}
 		Většina knih začíná mnoha stranami popisujícími detailní historii projektu. Znalost historie je zajisté důležitá, ale pokud chceme rychle začít něco dělat, je nám k ničemu. Zmínil bych jen základní fakta. LaTeX je sada maker pro systém TeX, který v 70. letech 20. století vytvořil profesor D. E. Knuth. Nebyl moc spokojený s tím, jak nakladatelství na  Stanfordově univerzitě sázelo jeho skripta do matematiky.
@@ -56,14 +56,14 @@
 
 	\newpage
 	\part{Jedeme na to}
-		V případě, že nejste příliš zdatní v českém jazyce, přečtěte si bonusovou kapitolu číslo X, pojednávající o české typografii. Vlastně, \dots{} Podívejte se tam raději všichni.
+		V případě, že nejste příliš zdatní v českém jazyce, přečtěte si bonusovou kapitolu číslo \ref{typografie}, pojednávající o české typografii. Vlastně, \dots{} Podívejte se tam raději všichni.
 
 		\section{Dokument v LaTeXu}
 		Jak jsem předeslal již v úvodu, soubor, se kterým člověk pracuje, vypadá jinak než výstupní soubor, který LaTeX vrací. Zdrojový kód je tedy kombinace formátovacích příkazů a textu. Tohle je naprosto stěžejní informace, pro jejíž ujasnění doporučuji srovnání tohoto dokumentu a jeho zdrojového kódu, který naleznete na adrese \url{http://frostyx.cz/posts/naucte-se-latex-za-vecer}.
 		\\
 		Teď už se pusťme do samotné tvorby zdrojového kódu.
 		\section{Základní kostra dokumentu}
-			Každý dokument psaný v LaTeXu musí obsahovat hlavičku a samotný text. Vždy když vytváříte nový dokument, automaticky do něj vložte následující kód:
+			Každý dokument psaný v LaTeXu musí obsahovat hlavičku (preambuli) a samotný text. Vždy když vytváříte nový dokument, automaticky do něj vložte následující kód:
 
 			\begin{verbatim}
 			\documentclass[10pt,a4paper]{article}
@@ -86,8 +86,9 @@
 
 
 		\section{Speciální znaky}
-		Jak už jste si mohli všimnout, příkazy LaTeXu se skládají ze znaků \texttt{\textbackslash{}, \{, \}}, proto není možné je do textu jen tak zapsat, aby se nevyhodnotily na příkaz. Speciálních znaků však existuje mnohem více\footnote{Mnoho matematických symbolů lze najít na \url{http://web.ift.uib.no/Teori/KURS/WRK/TeX/symALL.html} a případě, že chcete zapsat symbol, pro nějž neznáte příkaz, stránka \url{http://detexify.kirelabs.org/classify.html} vám jistě pomůže.}, než jen tyto tři. Následující tabulka ukáže, jak je psát.
-
+		Jak už jste si mohli všimnout, příkazy LaTeXu se skládají ze znaků \texttt{\textbackslash{}, \{, \}}, proto není možné je do textu jen tak zapsat, aby se nevyhodnotily na příkaz. Speciálních znaků však existuje mnohem více\footnote{Spoustu symbolů lze najít na \url{http://latex.wikia.com/wiki/List_of_LaTeX_symbols}. Pro případ, kdy chcete zapsat symbol, pro nějž neznáte příkaz, jistě se vám bude hodit stránka \url{http://detexify.kirelabs.org/classify.html}.} než jen tyto tři. Následující tabulka ukáže, jak je psát.
+		\\
+		\\
 		\begin{tabular}{|p{4cm}|p{4cm}|}
 			\hline
 			\textbf{Znak}  & \textbf{Příkaz} \\ \hline
@@ -107,7 +108,7 @@
 
 			\paragraph{Kapitoly a odstavce}
 				jsou řešeny pomocí několika málo příkazů.
-
+				\\\\
 				\begin{tabular}{|p{5cm}|p{6cm}|}
 					\hline
 					\textbackslash{}part             & Nová část \\ \hline
@@ -119,7 +120,7 @@
 					\textbackslash{}newpage          & Nová stránka \\ \hline
 					\textbackslash{}\textbackslash{} & Nový řádek \\ \hline
 				\end{tabular}
-
+				\\\\
 				Pomineme-li na okamžik poslední dva příkazy, pak každý z výše uvedených bere jako povinný argument název sekce -- například \texttt{\textbackslash{}section\{Úvod\}}. Navíc každý z nich existuje i ve variantě s hvězdičkou -- například \texttt{\textbackslash{}section*\{Úvod\}}. Taková sekce se potom nezobrazí v obsahu.
 
 			\subsection{Odkaz na místo v textu}
@@ -129,8 +130,9 @@
 			Už žádné ruční psaní obsahu, nebo používání magie při jeho generování. Nikdy, nikdy nikdy. Prostě použijte příkaz \texttt{\textbackslash{}tableofcontents}.
 
 		\section{Písmo}
-			Následující tabulka č.X osvětlí, jak lze měnit formát písma.
-
+			\label{pismo}
+			Následující tabulka osvětlí, jak lze měnit formát písma.
+			\\\\
 			\begin{tabular}{|p{4cm}|p{5cm}|}
 				\hline
 				\texttt{\textbackslash{}textit} & \textit{kurzíva - italic} \\ \hline
@@ -139,7 +141,7 @@
 				\texttt{\textbackslash{}textbf} & \textbf{tučné - bold face} \\ \hline
 				\texttt{\textbackslash{}textsc} & \textsc{kapitálky - small caps} \\ \hline
 			\end{tabular}
-
+			\\\\
 			Následující výčet ukáže, jak lze měnit jeho velikost (výčet je seřazen od nejmenšího po největší).
 
 		\begin{itemize}
@@ -160,7 +162,7 @@
 
 		\newpage
 		\section{Seznamy}
-		Řekne-li se seznam (případně výčet), nejspíš ne úplně každý bude mít jasnou představu o čem je řeč. Při čtení tohoto zdrojového kódu jste si mohli seznamu všimnout například v kapitole číslo XY, pojednávající o velikosti písma.
+		Řekne-li se seznam (případně výčet), nejspíš ne úplně každý bude mít jasnou představu o čem je řeč. Při čtení zdrojového kódu tohoto dokumentu jste si mohli seznamu všimnout například v kapitole č.\ref{pismo}, pojednávající písmech.
 		\\
 		Seznam může být číslovaný, \uv{odrážkovaný}, nebo uvozený libovolným znakem. Každý z nich může obsahovat libovolně mnoho podseznamů. Teorie by stačila, teď si je ukážeme.
 
@@ -340,11 +342,12 @@
 
 	\newpage
 	\part{Typografie}
+		\label{typografie}
 		\paragraph{Nezalomitelná mezera} vypadá jako obyčejná mezera, ale na jejím místě nedojde k řádkovému zlomu. Na koncích řádku nesmí zůstat jednodhláskové spojky a předložky (v, s, z, k, i, I, A, atd.). Používá se také v datech, telefonních číslech, nebo mezi tituly a jmény. Zapisuje se pomocí znaku $\sim$ (například 15.$\sim$.11.$\sim$2013).
 
 		\paragraph{Fyzikální jednotky a procenta} se od čísla oddělují nezalomitelnou mezerou, pokud se jedná od podstatné jméno. V případě, že jde o přídavné jméno, píší se za číslem bez mezery (Nárůst o 5$\sim$\% vs 5\% nárůst).
 		
-		\paragraph{Interpunkce} -- tedy čárka, tečka, dvojtečka, středník, otazník, vykřičník, atd. se píše hned za znakem, mezera až za ní. Za nadpisem se tečka nepíše. Dvojtečka při dělení se píše s mezerami s obou stran, zatímco dvojtečka ve skóre se píše bez mezer.
+		\paragraph{Interpunkce} -- tedy čárka, tečka, dvojtečka, středník, otazník, vykřičník, atd. se píše hned za znakem, mezera až za ní. Za nadpisem se tečka nepíše. Při dělení se dvojtečka píše s mezerami z obou stran, zatímco dvojtečka ve skóre se píše bez mezer.
 		
 		\paragraph{Tři tečky (výpustka)} je v LaTeXu reprezentována speciálním znakem \texttt{\textbackslash{dots}}.
 		
