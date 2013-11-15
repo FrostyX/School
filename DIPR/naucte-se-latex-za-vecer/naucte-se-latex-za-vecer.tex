@@ -3,6 +3,7 @@
 \usepackage[czech]{babel}
 \usepackage[T1]{fontenc}
 
+\usepackage{graphicx}
 \usepackage{amsfonts}
 \usepackage{amsthm}
 \newtheorem{definition}{Definice}
@@ -265,6 +266,15 @@
 
 
 		\section{Obrázky}
+			O vykreslování obrázků se v LaTeXu stará balíček \texttt{graphicx}, proto jej nejdříve v hlavičce načteme -- \texttt{\textbackslash{}usepackage\{graphicx\}}.
+			\\
+			Vložení obrázku do textu není příliš těžké. Nejjednodušší způsob jak toho docílit může být příkaz \texttt{\textbackslash{}includegraphics\{obrazek.png\}}. Můžeme také specifikovat vlastnosti jako velikost, nebo úhel.
+			
+			\begin{verbatim}
+				\includegraphics[scale=1.5, angle=-40]{obrazek.png}
+			\end{verbatim}				
+		
+
 
 		\section{Matematika}
 			Matematika -- důvod, proč LaTeX vznikl. Taky vlastnost, ve které bezkonkurenčně a nelítostně likviduje všechny své konkurenty. My si ukážeme pouze pár základních věcí, protože chceme tento dokument co nejkratší (v opačném případě by postrádal smysl a vy si rovnou můžete přečíst knihu). Zájemce o více matematiky bych rád odkázal zde \url{http://en.wikibooks.org/wiki/LaTeX/Mathematics}.
@@ -326,8 +336,13 @@
 				\end{definition}
 			\end{verbatim}
 
-		\section{Seznam literatury}
-
 	\newpage
 	\part{Typografie}
+	
+	\newpage
+	\begin{thebibliography}{}
+		\bibitem{uvod-do-latexu}{\em Tobias Oetiker:} Ne příliš stručný úvod do systému \LaTeX{} \textrm{$2_\varepsilon$} \texttt{http://www.root.cz/knihy/ne-prilis-strucny-uvod-do-systemu-latex-2e/}		
+
+		\bibitem{wikibooks-latex}{} \texttt{http://en.wikibooks.org/wiki/LaTeX/}
+	\end{thebibliography}
 \end{document}
