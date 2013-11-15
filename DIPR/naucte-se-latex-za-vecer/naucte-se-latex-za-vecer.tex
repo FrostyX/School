@@ -3,11 +3,15 @@
 \usepackage[czech]{babel}
 \usepackage[T1]{fontenc}
 
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\newtheorem{definition}{Definice}
 \usepackage[font=footnotesize]{subcaption}
 \usepackage[colorlinks]{hyperref}
 \hypersetup{citecolor=black}
 \hypersetup{linkcolor=black}
 \hypersetup{urlcolor=blue}
+
 
 \newcommand{\inlinecode}{\texttt}
 
@@ -263,7 +267,7 @@
 		\subsection{Obrázky}
 		
 		\subsection{Matematika}
-		Matematika -- důvod, proč LaTeX vznikl. Taky vlastnost, ve které bezkonkurenčně a nelítostně likviduje všechny své konkurenty.
+		Matematika -- důvod, proč LaTeX vznikl. Taky vlastnost, ve které bezkonkurenčně a nelítostně likviduje všechny své konkurenty. My si ukážeme pouze pár základních věcí, protože chceme tento dokument co nejkratší (v opačném případě by postrádal smysl a vy si rovnou můžete přečíst knihu). Zájemce o více matematiky bych rád odkázal zde \url{http://en.wikibooks.org/wiki/LaTeX/Mathematics}.
 		\\
 		\\
 		Matematické prostředí lze spustit několika způsoby. Ukážeme si je na předpisu lineární funkce:
@@ -275,13 +279,52 @@
 
 		Každá ze zmíněných možností vloží vzoreček jinak. První se hodí, když jej chceme vložit do textu, protože přesně to se stane. Například chci říci, že \uv{$f(x) = ax + y$ je předpis lineární funkce}. Druhá možnost vypíše vzoreček na samostatném řádku, třetí jej navíc očísluje.
 		
-		\subsubsection{Mocniny a odmocniny}
-		Víme, že vzorec $a^2 + b^2 = c^2$ představuje Pythagorovu větu. 
+		\subsubsection{Mocniny a odmocniny}		
+			Na následující rovnici si ukážeme, jak psát mocniny a odmocniny:
+			$$2^2 + 2^{2+1} = 8 + \sqrt[3]{8} + \sqrt{4}$$
+			Vstup: \texttt{\$\$2\^{}2 + 2\^{}\{2+1\} = 8 + \textbackslash{}sqrt[3]\{8\} + \textbackslash{}sqrt\{4\}\$\$}
 		
 		\subsubsection{Indexy}
+			Indexy si můžeme ukázat na řadě:
+			$$x_1 + x_2 + x_3 + \dots + x_{n-2} + x_{n-1} + x_n $$
+			Vstup: \texttt{\$\$x\_1 + x\_2 + x\_3 + \textbackslash{}dots + x\_\{n-2\} + x\_\{n-1\} + x\_n\$\$}
+		
 		\subsubsection{Zlomky}
+			Poznáte tento vzorec? 
+			$$x_{1,2} = \frac{-b \pm \sqrt{D}}{2a}$$
+			Vstup: \texttt{\$\$x\_\{1,2\} = \textbackslash{}frac\{-b \textbackslash{}pm \textbackslash{}sqrt\{D\}\}\{2a\}\$\$}
+		
 		\subsubsection{Kombinační čísla}
+			Umíte spočítat hodnotu kombinačního čísla? 		
+			$${n \choose k} = \frac{n!}{(n-k)! \cdot k!}$$	
+			Teď už určitě umíte.
+			\\
+			Vstup: \texttt{\$\$\{n \textbackslash{}choose k\} = \textbackslash{}frac\{n!\}\{(n-k)! \textbackslash{}cdot k!\}\$\$}
+		
 		\subsubsection{Závorky}
+			Když číslo tři patří do intervalu 1 až 10, pak určitě patří mezi reálná čísla.
+			$$3 \in \langle 1; 10\rangle \Rightarrow 3 \in \mathbb{R}$$
+			Vstup: \texttt{\$\$3 \textbackslash{}in \textbackslash{}langle 1; 10\textbackslash{}rangle \textbackslash{}Rightarrow 3 \textbackslash{}in \textbackslash{}mathbb\{R\}\$\$}\\		
+			\vspace{1cm}
+			\\
+			Na základní škole se často používá několik druhů závorek namísto kulatých. To aby byl pro žáky příklad přehlednější.
+			$$10 \cdot \left\{\frac{10-2}{4} + \left[5 + 5 - \left(3 + 6 - 2\right)\right]\right\} =$$
+			Vstup: \texttt{\$\$10 \textbackslash{}cdot \textbackslash{}left\textbackslash{}\{\textbackslash{}frac\{10-2\}\{4\} + \textbackslash{}left[5 + 5 - \textbackslash{}left(3 + 6 - 2\textbackslash{}right)\textbackslash{}right]\textbackslash{}right\textbackslash{}\} =\$\$}
+		
+		\subsubsection{Definice}
+		Nejdříve je potřeba vložit do hlavičky řádek \texttt{\textbackslash{}usepackage\{amsthm\}} a (stále v hlavičce) pomocí příkazu \texttt{\textbackslash{}newtheorem\{definition\}\{Definice\}} seznámit LaTeX s novým prostředím \texttt{definition}. Potom už si můžeme napsat takhle krásnou definici.
+		
+		\begin{definition}
+			Nechť $A \neq 0$. \textbf{Binární operací na množině} A nazveme každé zobrazení $f: A \times A \rightarrow A$.
+		\end{definition}
+		
+		Jak že jsem to udělal? Podívejte se na kód:
+		\begin{verbatim}
+			\begin{definition}
+			    Nechť $A \neq 0$. \textbf{Binární operací na množině} A
+			    nazveme každé zobrazení $f: A \times A \rightarrow A$.
+			\end{definition}
+		\end{verbatim}
 				
 		\subsection{Seznam literatury}
 
