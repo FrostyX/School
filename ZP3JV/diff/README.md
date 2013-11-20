@@ -14,3 +14,16 @@ Jakub Kadlčík &lt;[jakub.kadlcik01@upol.cz](mailto:jakub.kadlcik01@upol.cz)&gt
 - Barevný a nebarevný výstup
 - Možnost vypsat kontext změn (-u a -U)
 - Nápověda
+
+## Použití
+	diff [možnosti] prvni-soubor druhy-soubor
+
+## Možnosti
+	`-nc`, `--no-color`
+	    Neobarví výstup
+	`-o`, `--output` soubor
+	    Zapíše výstup do souboru
+	`-u`
+	    Use the unified output format.
+	`-U` lines
+	    Use the unified output format, showing lines (an integer) lines of context, or three if lines is not given. For proper operation, patch typically needs at least two lines of context.
