@@ -10,6 +10,11 @@ public class DiffFile {
 		content.add(line);
 	}
 
+	public void add(DiffFile file) {
+		for(DiffLine line : file.getContent())
+			content.add(line);
+	}
+
 	/**
 	 * @return the content
 	 */
@@ -17,7 +22,16 @@ public class DiffFile {
 		return content;
 	}
 
-	//public DiffFile() {
-		//;
-	//}
+	@Override
+	public String toString()
+	{
+		return toString(true);
+	}
+
+	public String toString(boolean colored) {
+		String s = "";
+		for(DiffLine line : this.content)
+			s += line.toString();
+		return s;
+	}
 }

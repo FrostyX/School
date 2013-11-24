@@ -28,6 +28,12 @@ public class IO {
 		}
 	}
 
+	public static void write(DiffFile f) {
+		for(DiffLine line : f.getContent()) {
+			System.out.println(line.getSymbol() + " " + line.getText());
+		}
+	}
+
 	// @TODO napsat .ToString() pro File
 	//public static void write(Object obj) {
 		//writeLine(obj);

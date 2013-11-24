@@ -57,6 +57,46 @@ public class DiffLine {
 	public void setText(String text) {
 		this.text = text;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + number;
+		result = prime * result + ((symbol == null) ? 0 : symbol.hashCode());
+		result = prime * result + ((text == null) ? 0 : text.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (!(obj instanceof DiffLine))
+			return false;
+		DiffLine other = (DiffLine) obj;
+		if (number != other.number)
+			return false;
+		if (symbol == null) {
+			if (other.symbol != null)
+				return false;
+		} else if (!symbol.equals(other.symbol))
+			return false;
+		if (text == null) {
+			if (other.text != null)
+				return false;
+		} else if (!text.equals(other.text))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "DiffLine [number=" + number + ", symbol=" + symbol + ", text="
+				+ text + "]";
+	}
 }
 
 
