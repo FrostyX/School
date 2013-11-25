@@ -12,6 +12,9 @@ public class Main {
 			File f4 = new File("/home/frostyx/diff/d");
 			File f5 = new File("/home/frostyx/diff/e");
 
+			IO.setColored(false);
+			IO.setNumberLines(false);
+
 			IO.write(Diff.compare(f4, f5));
 		} catch (IOException e) {
 			e.printStackTrace();

@@ -94,8 +94,7 @@ public class DiffLine {
 
 	@Override
 	public String toString() {
-		return "DiffLine [number=" + number + ", symbol=" + symbol + ", text="
-				+ text + "]";
+		return symbol + " " + text;
 	}
 }
 

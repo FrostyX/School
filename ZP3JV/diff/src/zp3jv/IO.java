@@ -1,13 +1,15 @@
 package zp3jv;
 
-import java.awt.List;
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class IO {
+
+	private static boolean colored = true;
+	private static boolean numberLines = false;
+
 	/**
 	 * Výstupní zařízení.
 	 * Podporované: standardní výstup, textový soubor
@@ -15,29 +17,26 @@ public class IO {
 	 */
 	private static String output = null;
 
-	public static void writeLine(Object obj) {
+
+	public static void write(DiffFile file) {
+		if(!colored) {
+			write(file.toString());
+		} else {
+			String s = "";
+			s+= Console.COLORS.get("RED");
+			for(DiffLine line : file.getContent())
+				s += line.toString() + System.getProperty("line.separator");
+
+			write(s);
+		}
+	}
+
+	public static void write(Object obj) {
 		if (output == null)
-			System.out.println(obj);
+			System.out.print(obj);
 		else {
 		}
 	}
-
-	public static void write(File f) {
-		for(String line : f.getContent()) {
-			System.out.println(line);
-		}
-	}
-
-	public static void write(DiffFile f) {
-		for(DiffLine line : f.getContent()) {
-			System.out.println(line.getSymbol() + " " + line.getText());
-		}
-	}
-
-	// @TODO napsat .ToString() pro File
-	//public static void write(Object obj) {
-		//writeLine(obj);
-	//}
 
 	public static ArrayList<String> readFile(String path) throws IOException {
 		BufferedReader reader = new BufferedReader(new FileReader(path));
@@ -49,6 +48,34 @@ public class IO {
 		}
 		reader.close();
 		return file;
+	}
+
+	/**
+	 * @return the colored
+	 */
+	public static boolean isColored() {
+		return colored;
+	}
+
+	/**
+	 * @param colored the colored to set
+	 */
+	public static void setColored(boolean colored) {
+		IO.colored = colored;
+	}
+
+	/**
+	 * @return the numberLines
+	 */
+	public static boolean isNumberLines() {
+		return numberLines;
+	}
+
+	/**
+	 * @param numberLines the numberLines to set
+	 */
+	public static void setNumberLines(boolean numberLines) {
+		IO.numberLines = numberLines;
 	}
 
 	/**

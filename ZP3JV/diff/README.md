@@ -26,7 +26,11 @@ Jakub Kadlčík &lt;[jakub.kadlcik01@upol.cz](mailto:jakub.kadlcik01@upol.cz)&gt
 	`-u`
 	    Use the unified output format.
 	`-U` lines
-	    Use the unified output format, showing lines (an integer) lines of context, or three if lines is not given. For proper operation, patch typically needs at least two lines of context.
+	    Use the unified output format, showing lines (an integer) lines of context,
+	    or three if lines is not given. For proper operation,
+	    patch typically needs at least two lines of context.
+	`-l`, `--number-lines`
+	    Vypíše čísla řádků
 
 # Zdroje
 <https://github.com/FrostyX/School/blob/master/ZP3JV/diff/An-O(ND)-Difference-Algorithm-and-Its-Variations.pdf>

@@ -25,13 +25,9 @@ public class DiffFile {
 	@Override
 	public String toString()
 	{
-		return toString(true);
-	}
-
-	public String toString(boolean colored) {
 		String s = "";
 		for(DiffLine line : this.content)
-			s += line.toString();
+			s += line.toString() + System.getProperty("line.separator");
 		return s;
 	}
 }
