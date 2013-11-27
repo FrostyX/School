@@ -47,16 +47,19 @@ int main(int argc, char *argv[])
 
 
 	// Hlavička tabulky
-	cout << setw(4) << "No." << " |"
+	cout    << setw(4)  << "No."         << " |"
 		<< setw(20) << "Destination" << " |"
-		<< setw(20) << "Source" << " |"
-		<< setw(20) << "Source MAC" << " |"
-		<< setw(8) << "Version" << " |"
-		<< setw(9) << "Protocol"
+		<< setw(20) << "Source"      << " |"
+		<< setw(20) << "Source MAC"  << " |"
+		<< setw(8)  << "Version"     << " |"
+		<< setw(9)  << "Protocol"    << " |"
+		<< setw(4)  << "TTL"         << " |"
+		<< setw(12) << "Header size" << " |"
+		<< setw(12) << "Packet size" << " |"
 		<< endl;
 
 	// Podtržení hlavičky
-	for(int i=0; i<=90; i++) cout << "-"; cout << endl;
+	for(int i=0; i<=126; i++) cout << "-"; cout << endl;
 
 	int no = 1;
 	while(true)
@@ -83,12 +86,15 @@ int main(int argc, char *argv[])
 			string dst=strdup(inet_ntoa(*(in_addr*)&ip->daddr));
 			string src=strdup(inet_ntoa(*(in_addr*)&ip->saddr));
 
-			cout << setw(4) << no << " |"
+			cout    << setw(4)  << no << " |"
 				<< setw(20) << dst << " |"
 				<< setw(20) << src << " |"
 				<< setw(20) << mac(addr) << " |"
-				<< setw(7) << "IPv" << ip->version << " |"
-				<< setw(9) << protocol(ip->protocol)
+				<< setw(7)  << "IPv" << ip->version << " |"
+				<< setw(9)  << protocol(ip->protocol) << " |"
+				<< setw(4)  << to_string(ip->ttl) << " |"
+				<< setw(12)  << ip->ihl * 4 << " |"
+				<< setw(12)  << ntohs(ip->tot_len) << " |"
 				<< endl;
 
 			no++;
