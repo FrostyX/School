@@ -2,8 +2,8 @@ package zp3jv;
 
 public class Diff {
 
-	public static final String ADD_SYMBOL = "+";
-	public static final String DEL_SYMBOL = "-";
+	public static final String ADD_SYMBOL = ">";
+	public static final String DEL_SYMBOL = "<";
 	public static final String KEEP_SYMBOL = " ";
 
 	public static DiffFile compare(File x, File y) {
@@ -20,11 +20,11 @@ public class Diff {
 		else {
 			if ((j>0) && ((i==0) || c[i][j-1] >= c[i-1][j])) {
 				d.add(diff(c, x, y, i, j-1));
-				d.add(new DiffLine(0, ADD_SYMBOL, y.getContent().get(j-1)));
+				d.add(new DiffLine(j, ADD_SYMBOL, y.getContent().get(j-1)));
 			}
 			else if ((i>0) && ((j==0) || c[i][j-1] < c[i-1][j])) {
 				d.add(diff(c, x, y, i-1, j));
-				d.add(new DiffLine(0, DEL_SYMBOL, x.getContent().get(i-1)));
+				d.add(new DiffLine(i, DEL_SYMBOL, x.getContent().get(i-1)));
 			}
 		}
 		return d;

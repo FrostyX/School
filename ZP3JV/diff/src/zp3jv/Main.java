@@ -15,7 +15,10 @@ public class Main {
 			IO.setColored(false);
 			IO.setNumberLines(false);
 
-			IO.write(Diff.compare(f4, f5));
+			IO.write(Diff.compare(f1, f2));
+			//IO.write(Diff.compare(f2, f3));
+			//IO.write(Diff.compare(f1, f3));
+			//IO.write(Diff.compare(f4, f5));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

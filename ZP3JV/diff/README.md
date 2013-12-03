@@ -21,6 +21,8 @@ Jakub Kadlčík &lt;[jakub.kadlcik01@upol.cz](mailto:jakub.kadlcik01@upol.cz)&gt
 ## Možnosti
 	`-nc`, `--no-color`
 	    Neobarví výstup
+	    (Obarvení výstupu je podporováno pouze pro UNIXové systémy.
+	    Na Windows nemá smysl tento přepínač použít.)
 	`-o`, `--output` soubor
 	    Zapíše výstup do souboru
 	`-u`
@@ -35,3 +37,4 @@ Jakub Kadlčík &lt;[jakub.kadlcik01@upol.cz](mailto:jakub.kadlcik01@upol.cz)&gt
 # Zdroje
 <https://github.com/FrostyX/School/blob/master/ZP3JV/diff/An-O(ND)-Difference-Algorithm-and-Its-Variations.pdf>
 <http://en.wikibooks.org/wiki/Algorithm_Implementation/Strings/Longest_common_subsequence#Python>
+<http://www.abclinuxu.cz/clanky/navody/unixove-nastroje-8-diff-a-patch>

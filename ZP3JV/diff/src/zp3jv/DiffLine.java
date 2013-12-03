@@ -95,6 +95,7 @@ public class DiffLine {
 	@Override
 	public String toString() {
 		return symbol + " " + text;
+		//return number + " " + symbol + " " + text;
 	}
 }
 
