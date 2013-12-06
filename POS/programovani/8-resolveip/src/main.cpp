@@ -24,8 +24,6 @@ int main (int argc, char * const argv[]) {
 			continue;
 		}
 
-		char **alternativy = h->h_aliases;
-
 		cout << "Hostname: " << h->h_name << endl << endl;
 		cout <<"Aliases: " << endl;
 
