@@ -1,5 +1,3 @@
-## INFO
-
 ## BUILD
 	cd build
 	cmake .
