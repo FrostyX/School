@@ -1,0 +1,4 @@
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
+PROJECT(2-pole)
+ADD_EXECUTABLE(../bin/2-pole ../src/main.cpp)
+ADD_DEFINITIONS("-std=c++11")
