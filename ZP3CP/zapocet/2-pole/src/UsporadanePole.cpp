@@ -78,14 +78,11 @@ class UsporadanePole
 
 		const T & aktual()
 		{
-			return pole[iter];
+			return pole[iter++];
 		}
 
 		bool dalsi()
 		{
-			bool r = iter<count;
-			if(r)
-				iter++;
-			return r;
+			return iter<count;
 		}
 };
