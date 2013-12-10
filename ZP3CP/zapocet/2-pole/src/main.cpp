@@ -30,11 +30,10 @@ int main(int argc, char **argv)
 	pz -= Z(2, 7);
 	cout << "pocet " << pz << endl;
 
-	//pz.prvni();
-	//do
-	//{
-		//pz.aktual();
-	//} while (pz.dalsi());
+	while (pz.dalsi())
+	{
+		pz.aktual()();
+	}
 
 	najit(pz, Z(1, 4));
 	najit(pz, Z(7, 2));

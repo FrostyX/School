@@ -7,6 +7,7 @@ class UsporadanePole
 	private:
 		T pole[n];
 		unsigned count = 0;
+		int iter = 0;
 
 		void sort()
 		{
@@ -71,13 +72,20 @@ class UsporadanePole
 
 		bool prvni()
 		{
+			iter = 0;
+			return iter < count;
 		}
 
 		const T & aktual()
 		{
+			return pole[iter];
 		}
 
 		bool dalsi()
 		{
+			bool r = iter<count;
+			if(r)
+				iter++;
+			return r;
 		}
 };
