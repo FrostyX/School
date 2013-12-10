@@ -1,3 +1,6 @@
+#include<iostream>
+using namespace std;
+
 template<class T, unsigned n>
 class UsporadanePole
 {
@@ -11,8 +14,7 @@ class UsporadanePole
 			{
 				for(int i=0; i<count-j-1; i++)
 				{
-					//if(pole[i]>pole[i+1])
-					if((pole[i]>pole[i+1]) || (pole[i]==NULL))
+					if((pole[i]>pole[i+1]) || (!pole[i]))
 					{
 						T tmp = pole[i+1];
 						pole[i+1] = pole[i];
@@ -36,22 +38,22 @@ class UsporadanePole
 
 		const T *najit(const T &value)
 		{
-			for(int i=0; i<count; i++)
+			for(int i=0; i<=count; i++)
 			{
 				if(pole[i] == value)
 					return &pole[i];
 			}
-			return NULL;
+			return nullptr;
 		}
 
 		bool operator -= (const T &p)
 		{
 			const T *del = najit(p);
-			if(del != NULL)
+			if(del)
 			{
-				del = NULL;
-				sort();
+				del = nullptr;
 				count--;
+				sort();
 			}
 		}
 

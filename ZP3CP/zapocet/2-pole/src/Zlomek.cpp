@@ -42,8 +42,13 @@ class Zlomek
 			return c*z.j > z.c*j;
 		}
 
-		bool operator == (const Zlomek &p)
+		bool operator == (const Zlomek &z)
                 {
-			return (p.c == c) && (p.j == j);
+			return (z.c == c) && (z.j == j);
                 }
+
+		bool operator ! ()
+		{
+			return (c == 0) && (j == 0);
+		}
 };

@@ -47,7 +47,7 @@ template<class T, unsigned n>
 void najit(UsporadanePole<T, n> &pz, const Zlomek &z)
 {
 	auto p = pz.najit(z);
-	if (p == NULL)
+	if (!p)
 	{
 		cout << "nenalezen: ";
 		z();
