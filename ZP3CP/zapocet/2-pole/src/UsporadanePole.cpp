@@ -38,10 +38,17 @@ class UsporadanePole
 
 		const T *najit(const T &value)
 		{
-			for(int i=0; i<=count; i++)
+			int k = 0;
+			int l = count;
+			while(k<=l)
 			{
-				if(pole[i] == value)
-					return &pole[i];
+				int s = (k+l) / 2;
+				if(pole[s] == value)
+					return &pole[s];
+				if(pole[s] > value)
+					l = s-1;
+				else
+					k = s+1;
 			}
 			return nullptr;
 		}
