@@ -26,9 +26,12 @@ int main(int argc, char **argv)
 	cout << "V tabulce je " << +hz << " zlomku." << endl;
 
 	hz.prvni();
-	//do
-		//hz.aktual()();
-	//while(hz.dalsi());
+	while(hz.dalsi())
+	{
+		Zlomek z = hz.aktual();
+		if(!!z)
+			z();
+	}
 
 	najit(hz, Z(3, 7));
 	najit(hz, Z(2, 5));
@@ -42,7 +45,7 @@ template<unsigned n>
 void najit(HashZlomky<n> &hz, const Zlomek &z)
 {
 	auto p = hz.najit(z);
-	if (!p)
+	if (p==nullptr)
 	{
 		cout << "nenalezen: ";
 		z();

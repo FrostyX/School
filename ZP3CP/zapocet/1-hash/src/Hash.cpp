@@ -5,10 +5,11 @@ using namespace std;
 template<class T, unsigned n>
 class Hash
 {
-	private:
-		T table[n];
+	protected:
+		T *table = new T[n]();
 		unsigned count = 0;
 		unsigned unsaved = 0;
+		int iter = 0;
 
 	public:
 		virtual unsigned h(const T &) const =0;
@@ -20,7 +21,7 @@ class Hash
 				unsaved++;
 			else
 			{
-				table[count] = value;
+				table[h(value)] = value;
 				count++;
 			}
 			return *this;
@@ -38,23 +39,24 @@ class Hash
 
 		const T * najit(const T &value)
 		{
-			for(int i=0; i<count; i++)
-			{
-				if(h(table[i]) == h(value))
-					return &table[i];
-			}
-			return NULL;
+			if(!table[h(value)])
+				return nullptr;
+			return &table[h(value)];
 		}
 
 		bool prvni()
 		{
+			iter = 0;
+			return iter < count;
 		}
 
 		const T & aktual()
 		{
+			return table[iter++];
 		}
 
 		bool dalsi()
 		{
+			return iter<n;
 		}
 };

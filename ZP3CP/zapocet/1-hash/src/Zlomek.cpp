@@ -36,4 +36,9 @@ class Zlomek
 		{
 			cout << c << '/' << j << endl;
 		}
+
+		bool operator ! ()
+		{
+			return (c == 0) && (j == 0);
+		}
 };
