@@ -42,7 +42,7 @@ template<unsigned n>
 void najit(HashZlomky<n> &hz, const Zlomek &z)
 {
 	auto p = hz.najit(z);
-	if (p == NULL)
+	if (!p)
 	{
 		cout << "nenalezen: ";
 		z();
