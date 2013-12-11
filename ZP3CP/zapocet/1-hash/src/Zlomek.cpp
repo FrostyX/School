@@ -41,4 +41,9 @@ class Zlomek
 		{
 			return (c == 0) && (j == 0);
 		}
-};
+
+		bool operator == (const Zlomek &z)
+		{
+			return (z.c == c) && (z.j == j);
+		}
+	};

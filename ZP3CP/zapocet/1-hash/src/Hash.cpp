@@ -15,15 +15,18 @@ class Hash
 		virtual unsigned h(const T &) const =0;
 		Hash & operator << (const T &value)
 		{
-			if(najit(value))
-				;
-			else if(count >= n)
-				unsaved++;
-			else
+			int h0 = h(value);
+			for(int i=0; i<n-1; i++)
 			{
-				table[h(value)] = value;
-				count++;
+				int h = (h0 + i*i) % n;
+				if(!table[h])
+				{
+					table[h] = value;
+					count++;
+					return *this;
+				}
 			}
+			unsaved++;
 			return *this;
 		}
 
@@ -39,9 +42,16 @@ class Hash
 
 		const T * najit(const T &value)
 		{
-			if(!table[h(value)])
-				return nullptr;
-			return &table[h(value)];
+			int h0 = h(value);
+			for(int i=0; i<n-1; i++)
+			{
+				int h = (h0 + i*i) % n;
+				if(!table[h])
+					break;
+				else if(table[h] == value)
+					return &table[h];
+			}
+			return nullptr;
 		}
 
 		bool prvni()

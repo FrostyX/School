@@ -28,9 +28,7 @@ int main(int argc, char **argv)
 	hz.prvni();
 	while(hz.dalsi())
 	{
-		Zlomek z = hz.aktual();
-		if(!!z)
-			z();
+		hz.aktual()();
 	}
 
 	najit(hz, Z(3, 7));
