@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<project name="diff" default="dist" basedir=".">
+
+	<description>Humble implementation of UNIX tool diff</description>
+
+	<property name="src" value="src" />
+	<property name="bin" value="bin" />
+	<property name="doc" value="doc" />
+	<property name="dist" value="dist" />
+
+	<property name="jar" value="diff.jar" />
+
+
+	<target name="init">
+	</target>
+
+	<target name="bin">
+		<mkdir dir="${bin}" />
+		<javac srcdir="${src}" destdir="${bin}" includeantruntime="false" />
+	</target>
+
+	<target name="dist" depends="bin">
+		<mkdir dir="${dist}" />
+		<jar jarfile="${dist}/${jar}" basedir="${bin}">
+		    <manifest>
+			<attribute name="Main-class" value="zp3jv.Main" />
+		    </manifest>
+		</jar>
+	</target>
+
+	<target name="doc" depends="bin">
+		<mkdir dir="${doc}" />
+		<javadoc sourcepath="${src}" destdir="${doc}" />
+	</target>
+
+	<target name="clean">
+		<delete dir="${bin}" />
+		<delete dir="${dist}" />
+		<delete dir="${doc}" />
+	</target>
+</project>

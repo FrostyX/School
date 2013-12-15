@@ -16,7 +16,11 @@ Jakub Kadlčík &lt;[jakub.kadlcik01@upol.cz](mailto:jakub.kadlcik01@upol.cz)&gt
 - Nápověda
 
 ## Použití
-	diff [možnosti] prvni-soubor druhy-soubor
+	# Sestavení
+	ant
+
+	# Spuštění
+	java -jar diff.jar [možnosti] prvni-soubor druhy-soubor
 
 ## Možnosti
 	`-nc`, `--no-color`

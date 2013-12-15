@@ -1,8 +1,11 @@
 package zp3jv;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.Writer;
 import java.util.ArrayList;
 
 public class IO {
@@ -17,24 +20,23 @@ public class IO {
 	 */
 	private static String output = null;
 
-
-	public static void write(DiffFile file) {
+	public static void write(DiffFile file) throws FileNotFoundException, IOException {
 		if(!colored) {
 			write(file.toString());
 		} else {
 			String s = "";
-			s+= Console.COLORS.get("RED");
 			for(DiffLine line : file.getContent())
-				s += line.toString() + System.getProperty("line.separator");
-
+				s += colorForSymbol(line.getSymbol())
+					+ line.toString() + System.getProperty("line.separator");
 			write(s);
 		}
 	}
 
-	public static void write(Object obj) {
+	public static void write(Object obj) throws FileNotFoundException, IOException {
 		if (output == null)
 			System.out.print(obj);
 		else {
+			write(obj, new PrintWriter(output));
 		}
 	}
 
@@ -48,6 +50,19 @@ public class IO {
 		}
 		reader.close();
 		return file;
+	}
+
+	private static void write(Object obj, Writer w) throws IOException {
+		Writer writer = w;
+		writer.write(obj.toString());
+		writer.close();
+	}
+
+	private static String colorForSymbol(String symbol) {
+		if(symbol == Diff.KEEP_SYMBOL) return Console.COLORS.get("RESET");
+		if(symbol == Diff.ADD_SYMBOL)  return Console.COLORS.get("GREEN");
+		if(symbol == Diff.DEL_SYMBOL)  return Console.COLORS.get("RED");
+		return null;
 	}
 
 	/**

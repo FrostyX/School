@@ -23,11 +23,17 @@ public class DiffFile {
 	}
 
 	@Override
-	public String toString()
-	{
-		//for(DiffLine l : content)
-			//System.out.println(l.getNumber());
+	public String toString() {
 
+		String s = "";
+		for(DiffLine line : content) {
+			s += line.toString() + System.getProperty("line.separator");
+		}
+		return s;
+	}
+
+
+	public String _toString() {
 		String s = "";
 		String lastSymbol = "";
 		String lastAction = "";
@@ -39,37 +45,33 @@ public class DiffFile {
 			if(line.getSymbol() == Diff.KEEP_SYMBOL)
 				continue;
 
-			//System.out.println("XY"+content.get(nextChangedLineNumber(i)).getSymbol());
 			//System.out.println(line.getNumber() + "vs" + next);
-
 			if((lastSymbol != line.getSymbol()) || (line.getNumber() > next)) {
-			//if((lastSymbol != line.getSymbol()) || (line.getNumber() > next)) {
-			//if(lastSymbol != line.getSymbol()) {
-				//System.out.println("XY"+content.get(nextChangedLineNumber(i)).getSymbol());
-				//if(content.get(i+1).getSymbol() == Diff.KEEP_SYMBOL) {
-				//System.out.println("X"+content.get(nextChangedLineNumber(i)).getSymbol());
-				//if(content.get(nextChangedLineNumber(i)).getSymbol() == Diff.KEEP_SYMBOL) {
-				//System.out.println(content.get(nextChangedLineNumber(i)).getSymbol() + "vs" + line.getSymbol());
-				//if((content.get(nextChangedLineNumber(i)).getSymbol() == Diff.KEEP_SYMBOL) || (false)) {
-				if((content.get(nextChangedLineNumber(i)).getSymbol() == Diff.KEEP_SYMBOL) || (((lastAction == "a") || (lastAction == "d")) && (content.get(nextChangedLineNumber(i)).getSymbol() == line.getSymbol()))) {
+				String nextSymbol = nextChangedSymbol(i);
+				//String nextSymbolWithoutKeep = nextChangedSymbolWithoutKeep(i);
+
+				// Tady to failne
+				//s += line.getNumber()-1-next+": if(("+nextSymbolWithoutKeep+"=="+Diff.KEEP_SYMBOL+") || ((("+lastAction+" == \"a\") || ("+lastAction+" == \"d\")) && ("+nextSymbol+" == "+line.getSymbol()+")))\n";
+				//if((nextSymbol == Diff.KEEP_SYMBOL) || (((lastAction == "a") || (lastAction == "d")) && (nextSymbol == line.getSymbol()))) {
+				//s+= line.getNumber()-1-next+
+				//s+= next-(line.getNumber()-1)+": if(("+nextSymbolWithoutKeep+".equals("+Diff.KEEP_SYMBOL+")) || ((("+lastAction+".equals(\"a\")) || ("+lastAction+".equals(\"d\"))) && ("+nextSymbol+".equals("+line.getSymbol()+"))))";
+				//if((nextSymbol.equals(Diff.KEEP_SYMBOL)) || (((lastAction.equals("a")) || (lastAction.equals("d"))) && (nextSymbol.equals(line.getSymbol())))) {
+				if((nextSymbol.equals(Diff.KEEP_SYMBOL)) || (((lastAction.equals("a")) || (lastAction.equals("d"))) && (nextSymbol.equals(line.getSymbol())))) {
 					s +=
 						line.getNumber()-1-next
 						+ "a"
 						+ line.getNumber()
-						+ (nextChangedLineNumber(i) > line.getNumber() ? "," + nextChangedLineNumber(i) : "")
+						+ (nextChangedLineNumber(i) > line.getNumber() ? "," + nextChangedLineNumber(i+1) : "")
 					;
 					lastAction = "a";
-					//next = nextChangedLineNumber(i);
 				}
 				else {
 					if(line.getNumber() > lastChangedLine) {
-						//s += line.getNumber()-next + "c" + line.getNumber() + "," + nextChangedLineNumber(i+1);
 						s +=
 							line.getNumber()-next
 							+ "c"
 							+ line.getNumber()
 							+ "," + nextChangedLineNumber(i+1)
-							//+ (nextChangedLineNumber(i) > line.getNumber() ? "," + nextChangedLineNumber(i) : "")
 						;
 						lastChangedLine = line.getNumber();
 						lastAction = "c";
@@ -83,31 +85,6 @@ public class DiffFile {
 
 			s += line.toString() + System.getProperty("line.separator");
 			lastSymbol = line.getSymbol();
-
-			//if(line.getNumber() > lastChangedLine) {
-			//	s += line.getNumber() + "c" + line.getNumber() + "," + nextChangedLineNumber(i) + System.getProperty("line.separator");
-			//}
-
-			/*
-			if((line.getNumber() == 1) || (line.getSymbol() != lastSymbol)) {
-				// Rozdělit přidávání a měnění
-
-				//System.out.println(nextChangedLineNumber(i+3));
-				//if(line.getNumber() == nextChangedLineNumber(i+1)) {
-					//System.out.println("FOO");
-				//}
-
-				if(line.getNumber() > lastChangedLine) {
-					s += line.getNumber() + "c" + line.getNumber() + "," + nextChangedLineNumber(i) + System.getProperty("line.separator");
-					lastChangedLine = line.getNumber();
-				} else {
-					s += "---" + System.getProperty("line.separator");
-				}
-			}
-			*/
-
-			//s += line.toString() + System.getProperty("line.separator");
-			//lastSymbol = line.getSymbol();
 		}
 		return s;
 	}
@@ -125,5 +102,28 @@ public class DiffFile {
 			}
 		}
 		return i-keep-1;
+	}
+
+	protected String nextChangedSymbol(int k) {
+		String symbol = content.get(k).getSymbol();
+		int i;
+		for(i = k; i < content.size()-1; i++) {
+			if(content.get(i).getSymbol() != symbol)
+				break;
+		}
+		return content.get(i).getSymbol();
+	}
+
+	protected String nextChangedSymbolWithoutKeep(int k) {
+		String symbol = content.get(k).getSymbol();
+		int i;
+		for(i = k; i < content.size()-1; i++) {
+			if(content.get(i).getSymbol() == Diff.KEEP_SYMBOL)
+				continue;
+
+			if(content.get(i).getSymbol() != symbol)
+				break;
+		}
+		return content.get(i).getSymbol();
 	}
 }
