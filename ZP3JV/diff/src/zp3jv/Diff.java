@@ -15,7 +15,7 @@ public class Diff {
 
 		if((i>0) && (j>0) && (x.getContent().get(i-1).equals(y.getContent().get(j-1)))) {
 			d.add(diff(c, x, y, i-1, j-1));
-			d.add(new DiffLine(0, KEEP_SYMBOL, x.getContent().get(i-1)));
+			d.add(new DiffLine(i, KEEP_SYMBOL, x.getContent().get(i-1)));
 		}
 		else {
 			if ((j>0) && ((i==0) || c[i][j-1] >= c[i-1][j])) {
