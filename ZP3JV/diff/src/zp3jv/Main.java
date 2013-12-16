@@ -1,34 +1,56 @@
 package zp3jv;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class Main {
 
 	public static void main(String[] args) {
 
-		String output = null;
-		if(false) {
-			output = "/home/frostyx/diff/output.diff";
-		}
-
 		try {
-			//File f1 = new File("/home/frostyx/diff/a");
-			//File f2 = new File("/home/frostyx/diff/b");
-			//File f3 = new File("/home/frostyx/diff/c");
-			File f4 = new File("/home/frostyx/diff/d");
-			File f5 = new File("/home/frostyx/diff/e");
+			if(args.length < 2)
+				throw new MissingArgumentException("Missing argument: What files do you want compare?");
 
-			IO.setColored(true);
-			IO.setNumberLines(false);
-			IO.setOutput(output);
+			IObyArguments(args);
 
-			//IO.write(Diff.compare(f1, f2));
-			//IO.write(Diff.compare(f2, f3));
-			//IO.write(Diff.compare(f1, f3));
-			IO.write(Diff.compare(f4, f5));
-			//IO.write(Diff.compare(f4, f5));
+			File f1 = new File(args[0]);
+			File f2 = new File(args[1]);
+			IO.write(Diff.compare(f1, f2));
+
+		} catch (FileNotFoundException e) {
+			System.out.println(IO.getOutput() + ": Permission denied");
 		} catch (IOException e) {
 			e.printStackTrace();
+		} catch (UnknownArgumentException e) {
+			System.out.println(e.getMessage());
+		} catch (MissingArgumentException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	public static void IObyArguments(String[] args)
+			throws MissingArgumentException, UnknownArgumentException {
+
+		for(int i=2; i<args.length; i++) {
+			if((i > 2) && (args[i-1].equals("-o")) || (args[i-1].equals("--output"))) {
+				continue;
+			}
+
+			if((args[i].equals("-nc")) || (args[i].equals("--no-color"))) {
+				IO.setColored(false);
+			}
+			else if((args[i].equals("-l")) || (args[i].equals("--number-lines"))) {
+				IO.setNumberLines(true);
+			}
+			else if((args[i].equals("-o")) || (args[i].equals("--output"))) {
+				if(i >= args.length-1) {
+					throw new MissingArgumentException("Missing argument for: --output");
+				}
+				IO.setOutput(args[i+1]);
+			}
+			else {
+				throw new UnknownArgumentException("Unknown argument: " + args[i]);
+			}
 		}
 	}
 }

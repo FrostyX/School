@@ -21,15 +21,17 @@ public class IO {
 	private static String output = null;
 
 	public static void write(DiffFile file) throws FileNotFoundException, IOException {
-		if(!colored) {
-			write(file.toString());
-		} else {
-			String s = "";
-			for(DiffLine line : file.getContent())
-				s += colorForSymbol(line.getSymbol())
-					+ line.toString() + System.getProperty("line.separator");
-			write(s);
+		String s = "";
+		for(DiffLine line : file.getContent()) {
+			if(colored) {
+				s += colorForSymbol(line.getSymbol());
+			}
+			if(numberLines) {
+				s += line.getNumber() + " ";
+			}
+			s += line.toString() + System.getProperty("line.separator");
 		}
+		write(s);
 	}
 
 	public static void write(Object obj) throws FileNotFoundException, IOException {
@@ -59,10 +61,9 @@ public class IO {
 	}
 
 	private static String colorForSymbol(String symbol) {
-		if(symbol == Diff.KEEP_SYMBOL) return Console.COLORS.get("RESET");
-		if(symbol == Diff.ADD_SYMBOL)  return Console.COLORS.get("GREEN");
-		if(symbol == Diff.DEL_SYMBOL)  return Console.COLORS.get("RED");
-		return null;
+		if(symbol.equals(Diff.ADD_SYMBOL)) return Console.Constants.GREEN;
+		if(symbol.equals(Diff.DEL_SYMBOL)) return Console.Constants.RED;
+		return Console.Constants.RESET;
 	}
 
 	/**
