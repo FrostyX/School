@@ -12,7 +12,7 @@ public class Main {
 	public static void main(String[] args) {
 
 		try {
-			if((args[0].equals("-h")) || (args[0].equals("--help"))) {
+			if((args.length > 0) && ((args[0].equals("-h")) || (args[0].equals("--help")))) {
 				printHelp();
 				return;
 			}
@@ -79,6 +79,27 @@ public class Main {
 	  * Vypíše nápovědu pro použití tohoto programu
 	  */
 	public static void printHelp() {
-		System.out.println("HELP ME!");
+
+		String help = new StringBuilder()
+			.append("## Info\n")
+			.append("Humble implementation of UNIX tool diff\n\n")
+
+			.append("## Author\n")
+			.append("Jakub Kadlčík [jakub.kadlcik01@upol.cz]\n\n")
+
+			.append("## Usage\n")
+			.append("`-nc`, `--no-color`\n")
+			.append("    Do not color the output\n")
+			.append("    (Colors are supported only for UNIX systems.\n")
+			.append("    That means this parameter do nothing on Windows.)\n\n")
+			.append("`-l`, `--number-lines`\n")
+			.append("    Print line numbers\n\n")
+			.append("`-o`, `--output` soubor\n")
+			.append("    Write output to text file\n\n")
+			.append("`-h`, `--help`\n")
+			.append("    Print this help text\n")
+			.toString();
+		;
+		System.out.print(help);
 	}
 }
