@@ -47,11 +47,10 @@ public class DiffFile {
 	  */
 	@Override
 	public String toString() {
-
-		String s = "";
+		StringBuilder s = new StringBuilder();
 		for(DiffLine line : content) {
-			s += line.toString() + System.getProperty("line.separator");
+			s.append(line.toString() + System.getProperty("line.separator"));
 		}
-		return s;
+		return s.toString();
 	}
 }

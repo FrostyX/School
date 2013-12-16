@@ -36,18 +36,18 @@ public class IO {
 		// http://stackoverflow.com/a/1306751
 		int width = (int)(Math.log10(file.getContent().get(file.getContent().size()-1).getNumber())+1);
 
-		String s = "";
+		StringBuilder s = new StringBuilder();
 		for(DiffLine line : file.getContent()) {
 			if(colored) {
-				s += colorForSymbol(line.getSymbol());
+				s.append(colorForSymbol(line.getSymbol()));
 			}
 			if(numberLines) {
 				// Zarovná čísla řádků do sloupečků (podle čísla s největším počtem cifer)
 				String f1 = !line.getSymbol().equals(Diff.ADD_SYMBOL) ? String.valueOf(line.getNumber()) : "";
 				String f2 = !line.getSymbol().equals(Diff.DEL_SYMBOL) ? String.valueOf(line.getNumber()) : "";
-				s += String.format("%-" + width + "s | %" + width + "s | ", f1, f2);
+				s.append(String.format("%-" + width + "s | %" + width + "s | ", f1, f2));
 			}
-			s += line.toString() + System.getProperty("line.separator");
+			s.append(line.toString() + System.getProperty("line.separator"));
 		}
 		write(s);
 	}

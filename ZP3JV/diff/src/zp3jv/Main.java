@@ -17,6 +17,9 @@ public class Main {
 				return;
 			}
 
+			// Nastaví výstupní parametry podle vstupních požadavků
+			IObyArguments(args);
+
 			// Nebyly předány dva soubory
 			if(args.length < 2)
 				throw new MissingArgumentException("Missing argument: What files do you want compare?");
@@ -25,11 +28,8 @@ public class Main {
 			File f2 = new File(args[1]);
 			IO.write(Diff.compare(f1, f2));
 
-			// Nastaví výstupní parametry podle vstupních požadavků
-			IObyArguments(args);
-
 		} catch (FileNotFoundException e) {
-			System.out.println(e.getMessage() + "FOO");
+			System.out.println(e.getMessage());
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
