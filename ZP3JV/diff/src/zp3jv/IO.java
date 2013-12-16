@@ -27,8 +27,8 @@ public class IO {
 	/**
 	  * Vypíše virtuální soubor diffu. Na základě hodnot třídy (ne)vypíše čísla řádků a barvičky
 	  * @param file - Vypisovaný soubor
-	  * @throws FileNotFoundException -
-	  * @throws IOException -
+	  * @throws FileNotFoundException - Soubor neexistuje, Nedostatečné oprávnění
+	  * @throws IOException
 	  */
 	public static void write(DiffFile file) throws FileNotFoundException, IOException {
 
@@ -56,8 +56,8 @@ public class IO {
 	  * Vypíše objekt na požadovaném rozhraní
 	  * Podporované: standardní výstup, textový soubor
 	  * @param obj - Vypisovaný objekt
-	  * @throws FileNotFoundException -
-	  * @throws IOException -
+	  * @throws FileNotFoundException - Soubor neexistuje, Nedostatečné oprávnění
+	  * @throws IOException
 	  */
 	public static void write(Object obj) throws FileNotFoundException, IOException {
 		if (output == null)
@@ -70,7 +70,7 @@ public class IO {
 	/**
 	  * Vrátí obsah textového souboru
 	  * @param path - Cesta k souboru
-	  * @throws IOException -
+	  * @throws IOException
 	  */
 	public static ArrayList<String> readFile(String path) throws IOException {
 		BufferedReader reader = new BufferedReader(new FileReader(path));
@@ -88,7 +88,7 @@ public class IO {
 	  * Zapíše objekt na rozhraní předepsane Writer-em
 	  * @param obj - Zapisovaný ojekt
 	  * @param w - Třída implementující rozhraní Writer {@link java.io.Writer}
-	  * @throws IOException -
+	  * @throws IOException
 	  */
 	private static void write(Object obj, Writer w) throws IOException {
 		Writer writer = w;

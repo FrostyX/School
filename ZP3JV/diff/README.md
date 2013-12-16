@@ -34,6 +34,6 @@ Jakub Kadlčík &lt;[jakub.kadlcik01@upol.cz](mailto:jakub.kadlcik01@upol.cz)&gt
 	    Vypíše nápovědu pro použití programu
 
 # Zdroje
-<https://github.com/FrostyX/School/blob/master/ZP3JV/diff/An-O(ND)-Difference-Algorithm-and-Its-Variations.pdf>
-<http://en.wikibooks.org/wiki/Algorithm_Implementation/Strings/Longest_common_subsequence#Python>
-<http://www.abclinuxu.cz/clanky/navody/unixove-nastroje-8-diff-a-patch>
+- <https://github.com/FrostyX/School/blob/master/ZP3JV/diff/An-O(ND)-Difference-Algorithm-and-Its-Variations.pdf>
+- <http://en.wikibooks.org/wiki/Algorithm_Implementation/Strings/Longest_common_subsequence#Python>
+- <http://www.abclinuxu.cz/clanky/navody/unixove-nastroje-8-diff-a-patch>

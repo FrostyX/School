@@ -55,7 +55,7 @@ public class Diff {
 	  * Řeší problém "the longest common subsequence" - tedy nalezení nejdelší společné subsekvence
 	  * @param x - První soubor
 	  * @param y - Druhý soubor
-	  * @return WTF
+	  * @return Už jen bůh ví, co přesně se vrátí
 	  */
 	private static int[][] lcs(File x, File y) {
 		int m = x.getContent().size();

@@ -29,7 +29,8 @@ public class Main {
 			IObyArguments(args);
 
 		} catch (FileNotFoundException e) {
-			System.out.println(e.getMessage());
+			System.out.println(e.getMessage() + "FOO");
+			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (UnknownArgumentException e) {
