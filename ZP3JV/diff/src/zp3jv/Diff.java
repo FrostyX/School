@@ -1,16 +1,37 @@
 package zp3jv;
 
+/*
+ * Implementace algoritmu "An-O(ND)-Difference-Algorithm" popsaného v PDF v kořenovém adresáři projektu
+ * https://github.com/FrostyX/School/blob/master/ZP3JV/diff/An-O(ND)-Difference-Algorithm-and-Its-Variations.pdf
+ * @author Jakub Kadlčík
+ * @version 1.0
+ */
 public class Diff {
 
 	public static final String ADD_SYMBOL = ">";
 	public static final String DEL_SYMBOL = "<";
 	public static final String KEEP_SYMBOL = " ";
 
+	/**
+	  * Porovná dva textové soubory a vrátí sadu řádků a jejich potřebných úprav pro vytvoření souboru Y ze souboru X
+	  * @param x - Původní textový soubor
+	  * @param y - Nový textový soubor
+	  * @return Sada změn pro vytvoření nového souboru z původního
+	  */
 	public static DiffFile compare(File x, File y) {
 		return diff(lcs(x, y), x, y, x.getContent().size(), y.getContent().size());
 	}
 
-	protected static DiffFile diff(int[][] c, File x, File y, int i, int j) {
+	/**
+	  * Na základě algoritmu "An-O(ND)-Difference-Algorithm" od E. W. MYERSe porovná dva textové soubory
+	  * @param c - Nejdelší společná subsekvence
+	  * @param x - Původní textový soubor
+	  * @param y - Nový textový soubor
+	  * @param i - WTF
+	  * @param j - WTF
+	  * @return Sada změn pro vytvoření nového souboru z původního
+	  */
+	private static DiffFile diff(int[][] c, File x, File y, int i, int j) {
 		DiffFile d = new DiffFile();
 
 		if((i>0) && (j>0) && (x.getContent().get(i-1).equals(y.getContent().get(j-1)))) {
@@ -30,7 +51,13 @@ public class Diff {
 		return d;
 	}
 
-	public static int[][] lcs(File x, File y) {
+	/**
+	  * Řeší problém "the longest common subsequence" - tedy nalezení nejdelší společné subsekvence
+	  * @param x - První soubor
+	  * @param y - Druhý soubor
+	  * @return WTF
+	  */
+	private static int[][] lcs(File x, File y) {
 		int m = x.getContent().size();
 		int n = y.getContent().size();
 
