@@ -1,0 +1,25 @@
+<project name="10-ant-knihovna" default="dist" basedir=".">
+
+	<property name="src" value="src" />
+	<property name="bin" value="bin" />
+	<property name="doc" value="doc" />
+	<property name="dist" value="dist" />
+
+	<property name="jar" value="10-ant-knihovna.jar" />
+
+	<target name="bin">
+		<mkdir dir="${bin}" />
+		<javac srcdir="${src}" destdir="${bin}" includeantruntime="false" />
+	</target>
+
+	<target name="dist" depends="bin">
+		<mkdir dir="${dist}" />
+		<jar jarfile="${dist}/${jar}" basedir="${bin}"></jar>
+	</target>
+
+	<target name="clean">
+		<delete dir="${bin}" />
+		<delete dir="${dist}" />
+		<delete dir="${doc}" />
+	</target>
+</project>
