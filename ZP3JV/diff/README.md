@@ -19,7 +19,7 @@ Jakub Kadlčík &lt;[jakub.kadlcik01@upol.cz](mailto:jakub.kadlcik01@upol.cz)&gt
 	ant
 
 	# Spuštění
-	java -jar diff.jar [možnosti] prvni-soubor druhy-soubor
+	java -jar diff.jar prvni-soubor druhy-soubor [možnosti]
 
 ## Možnosti
 	`-nc`, `--no-color`
