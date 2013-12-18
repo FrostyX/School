@@ -27,8 +27,8 @@ public class Diff {
 	  * @param c - Nejdelší společná subsekvence
 	  * @param x - Původní textový soubor
 	  * @param y - Nový textový soubor
-	  * @param i - WTF
-	  * @param j - WTF
+	  * @param i
+	  * @param j
 	  * @return Sada změn pro vytvoření nového souboru z původního
 	  */
 	private static DiffFile diff(int[][] c, File x, File y, int i, int j) {

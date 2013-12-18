@@ -19,7 +19,6 @@ public class DiffFile {
 	/**
 	  * Přidá řádek do virtuálního souboru
 	  * @param line - Přidávaný řádek
-	  * @return void
 	  */
 	public void add(DiffLine line) {
 		content.add(line);
@@ -28,7 +27,6 @@ public class DiffFile {
 	/**
 	  * Připojí jeden virtuální soubor na konec druhého
 	  * @param line - Přidávaný soubor
-	  * @return void
 	  */
 	public void add(DiffFile file) {
 		for(DiffLine line : file.getContent())
