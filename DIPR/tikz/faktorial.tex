@@ -1,0 +1,35 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,calc}
+\begin{document}
+	\pagestyle{empty}
+	
+	\begin{center}
+		Následující algoritmus popisuje výpočet n-tého faktoriálu iterativní metodou.
+	\end{center}		
+	\vspace{5em}
+
+	% Jak budou jednotlivé komponenty vypadat?
+	\tikzstyle{decision} = [diamond, draw, fill=blue!20, text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+	\tikzstyle{block} = [rectangle, draw, fill=blue!20, text width=5em, text centered, rounded corners, minimum height=4em]
+	\tikzstyle{line} = [draw, -latex']
+	\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm, minimum height=2em]
+
+
+	\begin{tikzpicture}[node distance = 2cm, auto]
+		% Vypsání bloků	
+		\node [block] (init) {fact = 1 \\ i = 1};
+		\node [decision, below of=init] (loop) {i \textless= n};
+		\node [block, right of=loop, node distance=5cm, text width=8em] (calc) {fact = i * fact \\ i = i + 1};	
+		\node [cloud, below of=loop] (print) {print fact};
+        
+		% Propojení bloků
+		\path [line] (init) -- node {} (loop);
+		\path [line] (loop) -- node {Ano} (calc);		
+		\path [line] (calc) |- ($(init)!.5!(loop)$);
+		\path [line] (loop) -- node {Ne} (print);
+	\end{tikzpicture}
+\end{document}
