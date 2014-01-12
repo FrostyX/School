@@ -1,27 +1,27 @@
 # Příprava ke zkoušce
 
 ## Zkouškové otázky
-1. Klasifikace (LAN/MAN/WAN) a služby sítí
-2. Referenční model ISO OSI a architektura TCP/IP
-3. Strukturovaná kabeláž a opakovač
-4. Ethernet (přepínaný)
-5. Wi-Fi a Bluetooth
-6. Modem, sítě xDSL a GSM, protokol PPP
-7. Protokol IP(v4): paket, adresa a síťová maska, lokální síť
-8. Protokol IP(v4): směrování
-9. Protokol IP(v4): IP fragmentace, protokoly ICMP a (R)ARP
-10. Protokol IP: IPv4 multicast, IPv6
-11. Transportní protokoly: transportní služby a protokol UDP,port,segment/datagram
-12. Protokol TCP: navázání a ukončení TCP spojení
-13. Protokol TCP: řízení toku dat, zpoždění odpovědi a posuvné okno,řešení zahlcení sítě
-14. Systém DNS: jmenné služby, architektura, domény a zóny
-15. Systém DNS: řešitel a jmenný server, překlad jména
-16. Systém DNS: protokol (operace Query), záznamy/věty
-17. Systém DNS: DNSSec, diagnostika, delegace a registrace domén,Internet Registry
-18. Protokol DHCP a směrovací protokoly
-19. Elektronická pošta (architektura, zpráva, protokoly)
-20. Protokoly HTTP a FTP
-21. Bezpečnost sítí (napříč vrstvami, útoky, firewall, NA(P)T, IPSec,VPN, SSL/TLS, proxy)
+1. [Klasifikace (LAN/MAN/WAN) a služby sítí](#1-klasifikace-lanmanwan-a-slu%C5%BEby-s%C3%ADt%C3%AD)
+2. [Referenční model ISO OSI a architektura TCP/IP](#2-referen%C4%8Dn%C3%AD-model-iso-osi-a-architektura-tcpip)
+3. [Strukturovaná kabeláž a opakovač](#3-strukturovan%C3%A1-kabel%C3%A1%C5%BE-a-opakova%C4%8D)
+4. [Ethernet (přepínaný)](#4-ethernet-p%C5%99ep%C3%ADnan%C3%BD)
+5. [Wi-Fi a Bluetooth](#5-wi-fi-a-bluetooth)
+6. [Modem, sítě xDSL a GSM, protokol PPP](#6-modem-s%C3%ADt%C4%9B-xdsl-a-gsm-protokol-ppp)
+7. [Protokol IP(v4): paket, adresa a síťová maska, lokální síť](#7-protokol-ipv4-paket-adresa-a-s%C3%AD%C5%A5ov%C3%A1-maska-lok%C3%A1ln%C3%AD-s%C3%AD%C5%A5)
+8. [Protokol IP(v4): směrování](#8-protokol-ipv4-sm%C4%9Brov%C3%A1n%C3%AD)
+9. [Protokol IP(v4): IP fragmentace, protokoly ICMP a (R)ARP](#9-protokol-ipv4-ip-fragmentace-protokoly-icmp-a-rarp)
+10. [Protokol IP: IPv4 multicast, IPv6](#10-protokol-ip-ipv4-multicast-ipv6)
+11. [Transportní protokoly: transportní služby a protokol UDP,port,segment/datagram](#11-transportn%C3%AD-protokoly-transportn%C3%AD-slu%C5%BEby-a-protokol-udpportsegmentdatagram)
+12. [Protokol TCP: navázání a ukončení TCP spojení](#12-protokol-tcp-nav%C3%A1z%C3%A1n%C3%AD-a-ukon%C4%8Den%C3%AD-tcp-spojen%C3%AD)
+13. [Protokol TCP: řízení toku dat, zpoždění odpovědi a posuvné okno,řešení zahlcení sítě](#13-protokol-tcp-%C5%99%C3%ADzen%C3%AD-toku-dat-zpo%C5%BEd%C4%9Bn%C3%AD-odpov%C4%9Bdi-a-posuvn%C3%A9-okno%C5%99e%C5%A1en%C3%AD-zahlcen%C3%AD-s%C3%ADt%C4%9B)
+14. [Systém DNS: jmenné služby, architektura, domény a zóny](#14-syst%C3%A9m-dns-jmenn%C3%A9-slu%C5%BEby-architektura-dom%C3%A9ny-a-z%C3%B3ny)
+15. [Systém DNS: řešitel a jmenný server, překlad jména](#15-syst%C3%A9m-dns-%C5%99e%C5%A1itel-a-jmenn%C3%BD-server-p%C5%99eklad-jm%C3%A9na)
+16. [Systém DNS: protokol (operace Query), záznamy/věty](#16-syst%C3%A9m-dns-protokol-operace-query-z%C3%A1znamyv%C4%9Bty)
+17. [Systém DNS: DNSSec, diagnostika, delegace a registrace domén,Internet Registry](#17-syst%C3%A9m-dns-dnssec-diagnostika-delegace-a-registrace-dom%C3%A9ninternet-registry)
+18. [Protokol DHCP a směrovací protokoly](#18-protokol-dhcp-a-sm%C4%9Brovac%C3%AD-protokoly)
+19. [Elektronická pošta (architektura, zpráva, protokoly)](#19-elektronick%C3%A1-po%C5%A1ta-architektura-zpr%C3%A1va-protokoly)
+20. [Protokoly HTTP a FTP](#20-protokoly-http-a-ftp)
+21. [Bezpečnost sítí (napříč vrstvami, útoky, firewall, NA(P)T, IPSec,VPN, SSL/TLS, proxy)](#21-bezpe%C4%8Dnost-s%C3%ADt%C3%AD-nap%C5%99%C3%AD%C4%8D-vrstvami-%C3%BAtoky-firewall-napt-ipsecvpn-ssltls-proxy)
 
 ### 1. Klasifikace (LAN/MAN/WAN) a služby sítí
 - Klasifikace podle rozlehlosti sítí
