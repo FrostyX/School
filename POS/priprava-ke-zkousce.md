@@ -68,12 +68,23 @@
 - Propojovací kabely
 	- Koaxiální kabel
 	- Kroucená dvojlinka (max 100m)
+		- UTP - nestíněná
+		- STP - stíněná
 	- Optická vlákna (dosah v řádu kilometrů nebo až desítek kilometrů)
+		- Dvě vrstvy - obal a jádro
+		- Princip - Jádrem se šíří světlo, které se na rozhraní jádra a obalu odráží
 - Opakovač
 	- Propojení několika segmentů (rozbočovač) - HUB
 	- Zopakování zeslabeného vstupního signálu
 
 ### 4. Ethernet (přepínaný)
+- Síť využívající switch pro propojení prvků sítě
+- Switch
+	- K přepínání využívá přepínací matici (tabulka fyzických portů a MAC adres)
+	- Dokáže propojit sítě s ruznými rychlostmi (vyrovnávací paměť)
+	- Metody přepínání
+		- Store-and-Forward - Každý rámec načte do vnitřní paměti (kontroluje jeho chybovost) a podle cílové adresy přepošle na odpovídající port
+		- Cut-Through - Do vnitřní paměti načítá pouze hlavičku rámce a podle cílové adresy přepošle na odpovídající port
 - Sdílené přenosové médium, v daném okamžiku ho využívá jeden uzel
 - Uzly samostatné, rovnocenné
 - Fast Ethernet -> Gigabitový Ethernet -> 10Gigabitový Ethernet
@@ -131,6 +142,10 @@
 - Směrování (routing) = odesílání paketů na další směrovač nebo cílový uzel
 - Předávání (forwarding) = předávání paketů mezi rozhraními konkrétního směrovače
 - Směrovací tabulka
+- Router
+	- Propojuje několik sítí
+	- Řeší směrování k dalšímu routeru, nebo koncovému uzlu (next hop)
+	- Předává pakety mezi síťovými rozhraními
 
 ### 9. Protokol IP(v4): IP fragmentace, protokoly ICMP a (R)ARP
 - Fragmentace
