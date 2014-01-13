@@ -128,11 +128,11 @@
 	- Dvě části adresy - adresa sítě a adresa uzlu
 	- Počet možných zařízení na síti: 2^(počet nul masky)
 	- Třídy
-		- A - 255.0.0.0
-		- B - 255.255.0.0
-		- C - 255.255.255.0 (/24)
-		- D
-		- E - Původně pro experimentální účely
+		- A - Rozmezí: 0-126, Maska: 255.0.0.0
+		- B - Rozmezí: 128-191, Maska: 255.255.0.0
+		- C - Rozmezí: 192-223, Maska: 255.255.255.0 (/24)
+		- D - Rozmezí: 224-239, Multicast
+		- E - Rozmezí: 240-255, Původně pro experimentální účely
 - Lokální síť (Intranet)
 	- Intranet = lokální síť (pro informační systém), obvykle uzavřená, nebo s omezením provozu z vnější sítě dovnitř (případně ven).
 	- Dynamické přidělování adres (DHCP)
