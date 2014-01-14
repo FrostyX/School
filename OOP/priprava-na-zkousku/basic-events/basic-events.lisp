@@ -1,19 +1,20 @@
 (load (current-pathname "micro-graphics/init.lisp"))
 
-(defmethod ev-mouse-down ((circle circle) sender origin button position)
-  (print "FOO")
-  (set-color sender :red))
+; Klikat lze pouze na obrázky!
 
-(defmethod set-value ((circle circle) value) 
-  (with-change (circle 'set-value value)
-    (set-color circle :red)
-    circle))
+(defmethod ev-mouse-down ((picture picture) sender origin button position)
+  (set-color sender :red))
 
 
 ; WINDOW musí být globální!
 (defvar *win*)
 (setf *win* (make-instance 'window))
 
-(let ((circle (make-circle (make-point 50 50) 30)))
-  (set-shape *win* circle)
+(let* ((picture (make-picture))
+       (circle (make-circle (make-point 50 50) 30)))
+
+  (set-thickness circle 10)
+  (set-filledp circle t)
+  (set-items picture (list circle))
+  (set-shape *win* picture)
   (redraw *win*))
