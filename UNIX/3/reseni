@@ -1,0 +1,12 @@
+# 1
+cat -n soubor |tail -n +10 |head -n 11 |tac
+
+# 2
+cat tabulka |sort -k 3 -r -n
+
+# 3
+paste <(cut -f2 tabulka) <(cut -f1 tabulka) <(cut -f3- tabulka)
+
+# 4
+
+# 5
