@@ -21,7 +21,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	printf("Max2: %i\n", max2(8, 6));
 	printf("Max3: %i\n", max3(3, 5, 1));
 	printf("Kladne: %i\n", kladne(3, 5, 0));
-	printf("Min4: %i\n", min4(2, 3, 4, 5));
+	printf("Min4: %i\n", min4(-2, 3, 4, 5));
 
 	system("PAUSE");
 	return 0;
@@ -159,21 +159,21 @@ unsigned int min4(unsigned int a, unsigned int b, unsigned int c, unsigned d)
 		mov ebx, b
 		cmp eax, ebx
 
-		jg less 
+		ja less 
 		jmp next
 
 		less: mov eax, ebx
 		next:
 			mov ebx, c
 			cmp eax, ebx
-			jg less2 
+			ja less2 
 			jmp next2
 
 		less2: mov eax, c
 		next2:
 			mov ebx, d
 			cmp eax, ebx
-			jg less3 
+			ja less3 
 			jmp end
 
 		less3: mov eax, d
