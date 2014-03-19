@@ -40,6 +40,6 @@ public class Activity {
 
 	@Override
 	public String toString() {
-		return "On " + date + " worked " + hours + " hours  -->  " + text;
+		return date;
 	}
 }

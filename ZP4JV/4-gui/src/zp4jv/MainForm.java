@@ -248,7 +248,6 @@ public class MainForm extends JFrame {
 		
 		activitiesTableModel = new MyTableModel(columns, values);
 		activitiesTable = new JTable(activitiesTableModel);
-		activitiesTable.addMouseListener(new TableRowSelectionListener());
 		activitiesTableScroll = new JScrollPane(activitiesTable);
 		activityPanel.add(activitiesTableScroll);
 		
@@ -338,7 +337,7 @@ public class MainForm extends JFrame {
 		for(Timesheet sheet : company.getTimesheets()) {
 			DefaultMutableTreeNode child = new DefaultMutableTreeNode(sheet);
 			for(Activity a : sheet.getActivities()) {
-				child.add(new DefaultMutableTreeNode(a.getDate()));;
+				child.add(new DefaultMutableTreeNode(a));;
 			}
 			root.add(child);
 		}
@@ -416,27 +415,6 @@ public class MainForm extends JFrame {
 		}
 	}
 
-
-	/*
-	private class ShowActivities implements ActionListener {
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			table.setVisible(false);
-			timesheetFormPanel.setVisible(false);
-			activityPanel.setVisible(true);
-
-			if (listTimesheets.getSelectedIndex() != -1) {
-				JFrame form = new ActivitiesForm(listTimesheets.getSelectedValue());
-				form.setVisible(true);
-			}
-			else {
-				showSelectTimesheetMessage();
-			}
-		}
-	}
-	*/
-	
 	private void showActivities() {
 		tableScroll.setVisible(false);
 		timesheetFormPanel.setVisible(false);
@@ -541,9 +519,19 @@ public class MainForm extends JFrame {
 	private class AddActivity implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			tDate.setText("");
-			tHours.setText("");
-			tText.setText("");
+
+			// Selected node
+			DefaultMutableTreeNode node = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
+			
+			if((node != null) && ((node.getUserObject() instanceof Timesheet) || (node.getUserObject() instanceof Activity))) {
+				tDate.setText("");
+				tHours.setText("");
+				tText.setText("");
+			}
+			else {
+				showSelectTimesheetMessage();
+			}
+
 		}
 	}
 
@@ -569,7 +557,6 @@ public class MainForm extends JFrame {
 			// Selected node
 			DefaultMutableTreeNode node = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
 
-			
 			if ((node == null) || (node.getUserObject() instanceof Company)) {
 				showTable(new Object());
 			}
@@ -579,7 +566,10 @@ public class MainForm extends JFrame {
 				populateTableWithActivities(sheet);
 			}
 			else if(node.getUserObject() instanceof Activity) {
-
+				DefaultMutableTreeNode parent = (DefaultMutableTreeNode) node.getParent();
+				showActivities();
+				Timesheet sheet = (Timesheet) parent.getUserObject();
+				populateTableWithActivities(sheet);
 			}
 		}
 	}
