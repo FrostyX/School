@@ -5,7 +5,8 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Arrays;
 import java.util.Enumeration;
 
@@ -22,8 +23,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JTree;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.table.AbstractTableModel;
@@ -36,35 +35,35 @@ public class MainForm extends JFrame {
 	private static final long serialVersionUID = -3489120285099256952L;
 
 	private JPanel mainPanel;
-	private JPanel controlsPanel;
 	private JPanel centerPanel;
-	//private JList<Timesheet> listTimesheets;
-	private JButton bAddActivity;
-	private JButton bAddTimesheet;
-	private JButton bEditTimesheet;
-	private JButton bDelTimesheet;
 	private JTree tree;
-	private ArrayList<Timesheet> timesheets;
+	private Company company;
 	private JTable table;
 	private MyTableModel tableModel;
+	private MyTableModel activitiesTableModel;
 	private JMenuBar mainMenu;
 	private JScrollPane tableScroll;
-	private JPanel formPanel;
-
+	private JPanel timesheetFormPanel;
 	private JTextField tName;
-
 	private JTextField tOccupation;
+	private JButton bSaveTimesheet;
+	private JButton bCancelTimesheet;
+	private JPanel activityPanel;
+	private JScrollPane activitiesTableScroll;
+	private JTable activitiesTable;
+	private JPanel activityFormPanel;
+	private JTextField tDate;
+	private JTextField tHours;
+	private JTextField tText;
+	private JButton bSaveActivity;
+	private JButton bCancelActivity;
 
-	private JButton bSave;
 
-	private JButton bCancel;
-
-
-	public MainForm(ArrayList<Timesheet> timesheets) {
+	public MainForm(Company company) {
 		super();
 		
 		// Stored data
-		this.timesheets = timesheets;
+		this.company = company;
 
 		// Panels
 		mainPanel = new JPanel();
@@ -77,17 +76,15 @@ public class MainForm extends JFrame {
 		initializeMainMenu();
 		initializeTree();
 		initializeTable();
-		initializeControlsPanel();
 		initializeTimesheetForm(new Timesheet());
+		initializeActivityForm(new Activity());
+
 		showTable(new Object());
 		
 		// Populate components
 		populateTree();
 		populateTableWithTimesheets();
 
-		// Add content to main panel
-		mainPanel.add(controlsPanel, BorderLayout.SOUTH);
-		
 		// Configure the window
 		this.setTitle("Timesheets");
 		this.setPreferredSize(new Dimension(450, 400));
@@ -129,43 +126,13 @@ public class MainForm extends JFrame {
 
 		// Add activity
 		JMenuItem menuItemAddActivity = new JMenuItem("Add");
-		//menuItemAddActivity.addActionListener(new AddTimesheet());
+		menuItemAddActivity.addActionListener(new AddActivity());
 		menuActivity.add(menuItemAddActivity);
-
-		// Edit activity 
-		JMenuItem menuItemEditActivity = new JMenuItem("Edit");
-		//menuItemEditActivity.addActionListener(new EditTimesheet());
-		menuActivity.add(menuItemEditActivity);
-
-		// Delete activity 
-		JMenuItem menuItemDelActivity = new JMenuItem("Delete");
-		//menuItemDelActivity.addActionListener(new DelTimesheet());
-		menuActivity.add(menuItemDelActivity);
-
-
 
 		// Set as main menu
 		setJMenuBar(mainMenu);
 	}
 
-	private void initializeControlsPanel() {
-		bAddActivity = new JButton("Add Activity");
-		bAddTimesheet = new JButton("Add");
-		bEditTimesheet = new JButton("Edit");
-		bDelTimesheet = new JButton("Delete");
-
-		bAddActivity.addActionListener(new ShowActivities());
-		bAddTimesheet.addActionListener(new AddTimesheet());
-		bEditTimesheet.addActionListener(new EditTimesheet());
-		bDelTimesheet.addActionListener(new DelTimesheet());
-
-		controlsPanel = new JPanel();
-		controlsPanel.add(bAddActivity);
-		controlsPanel.add(bAddTimesheet);
-		controlsPanel.add(bEditTimesheet);
-		controlsPanel.add(bDelTimesheet);
-	}
-	
 	private void initializeTable() {
 
 		String[] columns = new String[] {};
@@ -173,8 +140,7 @@ public class MainForm extends JFrame {
 		
 		tableModel = new MyTableModel(columns, values);
 		table = new JTable(tableModel);
-		table.getSelectionModel().addListSelectionListener(new TableRowSelectionListener());
-
+		table.addMouseListener(new TableRowSelectionListener());
 		tableScroll = new JScrollPane(table);
 		
 		centerPanel.add(tableScroll);
@@ -187,42 +153,106 @@ public class MainForm extends JFrame {
 		tableModel.setColumns(columns);
 
 		int i = 1;
-		for(Timesheet sheet : timesheets) {
+		for(Timesheet sheet : company.getTimesheets()) {
 			tableModel.addRow(i, sheet.getName(), sheet.getOccupation());
+			i++;
+		}
+	}
+
+	private void populateTableWithActivities(Timesheet selectedTimesheet) {
+		activitiesTableModel.clear(); 
+		int i = 1;
+		for(Activity a : selectedTimesheet.getActivities()) {
+			activitiesTableModel.addRow(i, a.getDate(), a.getHours(), a.getText());
 			i++;
 		}
 	}
 	
 	private void initializeTimesheetForm(Timesheet sheet) {
-		formPanel = new JPanel();
-		formPanel.setLayout(new FlowLayout());
+		timesheetFormPanel = new JPanel();
+		timesheetFormPanel.setLayout(new FlowLayout());
 		
 		// Name
 		JLabel lName = new JLabel("Name:", JLabel.TRAILING);
 		tName = new JTextField(20);
 		lName.setLabelFor(tName);
-		formPanel.add(lName);
-		formPanel.add(tName);
+		timesheetFormPanel.add(lName);
+		timesheetFormPanel.add(tName);
 
 		// Occupation
 		JLabel lOccupation = new JLabel("Occupation:", JLabel.TRAILING);
 		tOccupation = new JTextField(20);
 		lName.setLabelFor(tOccupation);
-		formPanel.add(lOccupation);
-		formPanel.add(tOccupation);
+		timesheetFormPanel.add(lOccupation);
+		timesheetFormPanel.add(tOccupation);
 		
 		// Save
-		bSave = new JButton("Save");
-		bSave.addActionListener(new SaveTimesheet());
-		formPanel.add(bSave);
+		bSaveTimesheet = new JButton("Save");
+		bSaveTimesheet.addActionListener(new SaveTimesheet());
+		timesheetFormPanel.add(bSaveTimesheet);
 
 		// Cancel
-		bCancel = new JButton("Cancel");
-		bCancel.addActionListener(new CancelSaveTimesheet());
-		formPanel.add(bCancel);
+		bCancelTimesheet = new JButton("Cancel");
+		bCancelTimesheet.addActionListener(new CancelSaveTimesheet(sheet));
+		timesheetFormPanel.add(bCancelTimesheet);
+		
+		centerPanel.add(timesheetFormPanel);
+	}
+
+	private void initializeActivityForm(Activity activity) {
+
+		activityPanel = new JPanel();
+		activityPanel.setLayout(new BoxLayout(activityPanel, BoxLayout.PAGE_AXIS));;
+		
+		// Form for adding/editing activity
+		activityFormPanel = new JPanel();
+		activityFormPanel.setLayout(new BoxLayout(activityFormPanel, BoxLayout.PAGE_AXIS));;
+		
+		// Date
+		JLabel lDate = new JLabel("Date:", JLabel.TRAILING);
+		tDate = new JTextField(20);
+		lDate.setLabelFor(tDate);
+		activityFormPanel.add(lDate);
+		activityFormPanel.add(tDate);
+
+		// Hours
+		JLabel lHours = new JLabel("Hours:", JLabel.TRAILING);
+		tHours = new JTextField(2);
+		lHours.setLabelFor(tHours);
+		activityFormPanel.add(lHours);
+		activityFormPanel.add(tHours);
+
+		// Text
+		JLabel lText = new JLabel("Text:", JLabel.TRAILING);
+		tText = new JTextField(20);
+		lText.setLabelFor(tOccupation);
+		activityFormPanel.add(lText);
+		activityFormPanel.add(tText);
+		
+		// Save
+		bSaveActivity = new JButton("Save");
+		bSaveActivity.addActionListener(new SaveActivity());
+		activityFormPanel.add(bSaveActivity);
+
+		// Cancel
+		bCancelActivity = new JButton("Cancel");
+		bCancelActivity.addActionListener(new CancelSaveActivity());
+		activityFormPanel.add(bCancelActivity);
+		
+		activityPanel.add(activityFormPanel);
 		
 		
-		centerPanel.add(formPanel);
+		// Table of activities
+		String[] columns = new String[] {"", "Date", "Hours", "Text"};
+		Object[][] values = new Object[][] {};
+		
+		activitiesTableModel = new MyTableModel(columns, values);
+		activitiesTable = new JTable(activitiesTableModel);
+		activitiesTable.addMouseListener(new TableRowSelectionListener());
+		activitiesTableScroll = new JScrollPane(activitiesTable);
+		activityPanel.add(activitiesTableScroll);
+		
+		centerPanel.add(activityPanel);
 	}
 	
 	private final class MyTableModel extends AbstractTableModel {
@@ -258,7 +288,6 @@ public class MainForm extends JFrame {
 
 		@Override
 		public boolean isCellEditable(int rowIndex, int columnIndex) {
-			if (columnIndex >= 1) return true;
 			return false;
 		}
 
@@ -278,6 +307,12 @@ public class MainForm extends JFrame {
 			values[values.length - 1] = new Object[] {i, name, occupation};
 			fireTableStructureChanged();
 		}
+
+		public void addRow(int i, String date, int hours, String text) {
+			values = Arrays.copyOf(values, values.length + 1);
+			values[values.length - 1] = new Object[] {i, date, hours, text};
+			fireTableStructureChanged();
+		}
 		
 		public void clear() {
 			values = new Object[][] {};
@@ -287,7 +322,7 @@ public class MainForm extends JFrame {
 	}
 	
 	private void initializeTree() {
-		final DefaultMutableTreeNode root = new DefaultMutableTreeNode("Company");
+		final DefaultMutableTreeNode root = new DefaultMutableTreeNode(company);
 		final DefaultTreeModel model = new DefaultTreeModel(root);
 		tree = new JTree(model);
 		tree.addTreeSelectionListener(new MyTreeSelectionListener());
@@ -300,7 +335,7 @@ public class MainForm extends JFrame {
 		DefaultMutableTreeNode root = (DefaultMutableTreeNode)model.getRoot();
 		root.removeAllChildren();
 		
-		for(Timesheet sheet : timesheets) {
+		for(Timesheet sheet : company.getTimesheets()) {
 			DefaultMutableTreeNode child = new DefaultMutableTreeNode(sheet);
 			for(Activity a : sheet.getActivities()) {
 				child.add(new DefaultMutableTreeNode(a.getDate()));;
@@ -312,12 +347,14 @@ public class MainForm extends JFrame {
 	
 	private void showTable(Object o) {
 		tableScroll.setVisible(true);
-		formPanel.setVisible(false);
+		timesheetFormPanel.setVisible(false);
+		activityPanel.setVisible(false);
 	}
 	
-	private void showForm(Object o) {
+	private void showTimesheetForm(Object o) {
 		tableScroll.setVisible(false);
-		formPanel.setVisible(true);
+		timesheetFormPanel.setVisible(true);
+		activityPanel.setVisible(false);
 
 		if(o instanceof Timesheet) {
 			Timesheet sheet = (Timesheet) o;
@@ -325,10 +362,16 @@ public class MainForm extends JFrame {
 			tOccupation.setText(sheet.getOccupation());
 
 			// Change ActionListener (give argument to SaveTimesheet)
-			for(ActionListener l : bSave.getActionListeners()) {
-				bSave.removeActionListener(l);
+			for(ActionListener l : bSaveTimesheet.getActionListeners()) {
+				bSaveTimesheet.removeActionListener(l);
 			}
-			bSave.addActionListener(new SaveTimesheet(sheet));
+			bSaveTimesheet.addActionListener(new SaveTimesheet(sheet));
+
+			// Change ActionListener (give argument to CancelSaveTimesheet)
+			for(ActionListener l : bCancelTimesheet.getActionListeners()) {
+				bCancelTimesheet.removeActionListener(l);
+			}
+			bCancelTimesheet.addActionListener(new CancelSaveTimesheet(sheet));
 		}
 	}
 
@@ -336,7 +379,7 @@ public class MainForm extends JFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			showForm(new Timesheet());
+			showTimesheetForm(new Timesheet());
 		}
 	}
 
@@ -351,7 +394,7 @@ public class MainForm extends JFrame {
 			else {
 				DefaultMutableTreeNode node = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
 				Timesheet s = (Timesheet) node.getUserObject();
-				showForm(s);
+				showTimesheetForm(s);
 			}
 		}
 	}
@@ -366,18 +409,23 @@ public class MainForm extends JFrame {
 			else {
 				DefaultMutableTreeNode node = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
 				Timesheet s = (Timesheet) node.getUserObject();
-				Main.timesheets.remove(s);
+				Main.company.remove(s);
 				populateTree();
 				populateTableWithTimesheets();
 			}
 		}
 	}
 
+
+	/*
 	private class ShowActivities implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			/*
+			table.setVisible(false);
+			timesheetFormPanel.setVisible(false);
+			activityPanel.setVisible(true);
+
 			if (listTimesheets.getSelectedIndex() != -1) {
 				JFrame form = new ActivitiesForm(listTimesheets.getSelectedValue());
 				form.setVisible(true);
@@ -385,8 +433,14 @@ public class MainForm extends JFrame {
 			else {
 				showSelectTimesheetMessage();
 			}
-			*/
 		}
+	}
+	*/
+	
+	private void showActivities() {
+		tableScroll.setVisible(false);
+		timesheetFormPanel.setVisible(false);
+		activityPanel.setVisible(true);
 	}
 
 	private class SaveTimesheet implements ActionListener {
@@ -404,13 +458,13 @@ public class MainForm extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			Timesheet sheet = new Timesheet(tName.getText(), tOccupation.getText());
 			
-			System.out.println(old);
-			if(Main.timesheets.contains(old)) {
-				int index = Main.timesheets.indexOf(old);
-				Main.timesheets.set(index, sheet);
+			if(Main.company.contains(old)) {
+				int index = Main.company.indexOf(old);
+				Main.company.get(index).setName(tName.getText());
+				Main.company.get(index).setOccupation(tOccupation.getText());
 			}
 			else {
-				Main.timesheets.add(sheet);
+				Main.company.add(sheet);
 			}
 
 			populateTableWithTimesheets();
@@ -420,10 +474,92 @@ public class MainForm extends JFrame {
 	}
 
 	private class CancelSaveTimesheet implements ActionListener {
+		private Timesheet old = null;
+		
+		public CancelSaveTimesheet(Timesheet old) {
+			super();
+			if((old.getActivities() != null) && (old.getName() != null))
+				this.old = old;
+		}
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			showTable(new Object());
+			System.out.println(old);
+			if(old == null)
+				showTable(new Object());
+			else {
+				showActivities();
+				populateTableWithActivities(old);
+			}
+		}
+	}
+
+	private class SaveActivity implements ActionListener {
+		private Activity old = null;
+		
+		public SaveActivity() {
+			super();
+		}
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			if (tree.getSelectionPath() == null) {
+				showSelectTimesheetMessage();
+			}
+			else {
+				// Find proper timesheet
+				Timesheet sheet;
+				DefaultMutableTreeNode node = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
+				if(node.getUserObject() instanceof Timesheet) {
+					sheet = (Timesheet) node.getUserObject();
+				}
+				else if(true) {
+					sheet = new Timesheet();
+					System.out.println(node.getParent());
+				}
+				
+				// Create activity object from form
+				Activity activity = new Activity(tDate.getText(), Integer.valueOf(tHours.getText()), tText.getText());
+
+				// Save activity
+				if(Main.company.get(Main.company.indexOf(sheet)).getActivities().contains(old)) {
+					int index = Main.company.get(Main.company.indexOf(sheet)).getActivities().indexOf(old);
+					Main.company.get(Main.company.indexOf(sheet)).getActivities().set(index, activity);
+				}
+				else {
+					Main.company.get(Main.company.indexOf(sheet)).getActivities().add(activity);
+				}
+				
+				populateTableWithActivities(sheet);
+				tDate.setText("");
+				tHours.setText("");
+				tText.setText("");
+			}
+		}
+	}
+
+	private class AddActivity implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			tDate.setText("");
+			tHours.setText("");
+			tText.setText("");
+		}
+	}
+
+	private class CancelSaveActivity implements ActionListener {
+
+		private Activity old = new Activity();
+		
+		public CancelSaveActivity() {
+			super();
+		}
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			tDate.setText(old.getDate());
+			tHours.setText(old.getHours() == 0 ? "" : String.valueOf(old.getHours()));
+			tText.setText(old.getText());
 		}
 	}
 	
@@ -433,61 +569,57 @@ public class MainForm extends JFrame {
 			// Selected node
 			DefaultMutableTreeNode node = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
 
-			// If nothing is selected 
-			if (node == null)
-				return;
 			
-			try {
-				Timesheet sheet = (Timesheet) node.getUserObject();
-				
-				for(int i = 0; i < tableModel.getRowCount(); i++) {
-					Timesheet rowSheet = new Timesheet(
-						(String) tableModel.getValueAt(i, 1), 
-						(String) tableModel.getValueAt(i, 2)
-					);
-					if(sheet.equals(rowSheet)) {
-						table.setRowSelectionInterval(i, i);
-						break;
-					}
-				}
+			if ((node == null) || (node.getUserObject() instanceof Company)) {
+				showTable(new Object());
 			}
-			catch(Exception ex) {
-				// Its an activity
+			else if(node.getUserObject() instanceof Timesheet) {
+				showActivities();
+				Timesheet sheet = (Timesheet) node.getUserObject();
+				populateTableWithActivities(sheet);
+			}
+			else if(node.getUserObject() instanceof Activity) {
+
 			}
 		}
 	}
 	
-	private class TableRowSelectionListener implements ListSelectionListener {
-		public void valueChanged(ListSelectionEvent event) {
-			
-			// If no row is selected
-			if(table.getSelectedRow() == -1) {
-				return;
-			}
+	private class TableRowSelectionListener extends MouseAdapter {
+		
+		public void mouseClicked(MouseEvent e) {
+			if (e.getClickCount() == 2) {
+				JTable target = (JTable)e.getSource();
+				int row = target.getSelectedRow();
 
-			Timesheet sheet = new Timesheet(
-				(String) tableModel.getValueAt(table.getSelectedRow(), 1),
-				(String) tableModel.getValueAt(table.getSelectedRow(), 2)
-			);
-			
-			
-			DefaultMutableTreeNode root = (DefaultMutableTreeNode)tree.getModel().getRoot();
-			Enumeration e = root.preorderEnumeration();
-		    while(e.hasMoreElements()){
-		    	
-		    	DefaultMutableTreeNode node = (DefaultMutableTreeNode) e.nextElement();
-		        try {
-					Timesheet sheetRow = (Timesheet) node.getUserObject();
-					if(sheet.equals(sheetRow)) {
-						tree.setSelectionPath(new TreePath(node.getPath()));
-						break;
+				// Find selected timesheet (we need activities list too)
+				Timesheet sheet = new Timesheet(
+					(String) tableModel.getValueAt(row, 1),
+					(String) tableModel.getValueAt(row, 2)
+				);
+
+				// Print table of activities
+				for(Timesheet s : company.getTimesheets()) {
+					if(sheet.equals(s)) {
+						showActivities();
+						populateTableWithActivities(s);
 					}
-		        }
-		        catch(Exception ex) {
-		        	// Activity
-		        	continue;
-		        }
-		    }
+				}
+				
+				// Select timesheet in tree
+				DefaultMutableTreeNode root = (DefaultMutableTreeNode)tree.getModel().getRoot();
+				Enumeration<?> enumerator = root.preorderEnumeration();
+				while(enumerator.hasMoreElements()){
+					
+					DefaultMutableTreeNode node = (DefaultMutableTreeNode) enumerator.nextElement();
+					if(node.getUserObject() instanceof Timesheet) {
+						Timesheet sheetRow = (Timesheet) node.getUserObject();
+						if(sheet.equals(sheetRow)) {
+							tree.setSelectionPath(new TreePath(node.getPath()));
+							break;
+						}
+					}
+				}
+			}
 		}
 	}
 	
