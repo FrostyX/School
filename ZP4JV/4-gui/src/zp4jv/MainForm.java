@@ -462,7 +462,6 @@ public class MainForm extends JFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			System.out.println(old);
 			if(old == null)
 				showTable(new Object());
 			else {
@@ -493,7 +492,6 @@ public class MainForm extends JFrame {
 				}
 				else if(true) {
 					sheet = new Timesheet();
-					System.out.println(node.getParent());
 				}
 				
 				// Create activity object from form
