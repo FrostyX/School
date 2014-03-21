@@ -1,0 +1,53 @@
+% Nastavíme si barvičky dle libosti
+\usepackage{color}
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+
+% Konfigurace prostředí pro sazbu zdrojových kódů
+\usepackage{listings}
+\lstset
+{
+	%
+	% Základní nastavení
+	%
+	basicstyle=\footnotesize,      % Styl a typ písma
+	captionpos=b,                  % Pozice popisku
+	showstringspaces=false,        % Když true, oddělí slova podtržítky e.g. "Hello_world"
+	tabsize=4,                     % Velikost tabulátoru (počet mezer)
+	%
+	% Barvičky
+	%
+	backgroundcolor=\color{white}, % Pozadí
+	commentstyle=\color{mygreen},  % Komentáře
+	keywordstyle=\color{blue},     % Klíčová slova jazyka
+	stringstyle=\color{mymauve},   % Řetězce
+	%
+	% Podpora českých znaků
+	%
+	literate=%
+		{á}{{\'a}}1     {í}{{\'i}}1     {é}{{\'e}}1
+		{ý}{{\'y}}1     {ú}{{\'u}}1     {ó}{{\'o}}1
+		{ě}{{\v{e}}}1   {š}{{\v{s}}}1   {č}{{\v{c}}}1
+		{ř}{{\v{r}}}1   {ž}{{\v{z}}}1   {ď}{{\v{d}}}1
+		{ť}{{\v{t}}}1   {ň}{{\v{n}}}1   {ů}{{\r{u}}}1
+		{Á}{{\'A}}1     {Í}{{\'I}}1     {É}{{\'E}}1
+		{Ý}{{\'Y}}1     {Ú}{{\'U}}1     {Ó}{{\'O}}1
+		{Ě}{{\v{E}}}1   {Š}{{\v{S}}}1   {Č}{{\v{C}}}1
+		{Ř}{{\v{R}}}1   {Ž}{{\v{Z}}}1   {Ď}{{\v{D}}}1
+		{Ť}{{\v{T}}}1   {Ň}{{\v{N}}}1   {Ů}{{\r{U}}}1
+	,
+}
+
+
+\begin{document}
+	\begin{lstlisting}[language=C, gobble=8]
+	int main(int argc, char **argv)
+	{
+		// Just print "Hello world" string to standard output
+		printf("Hello world");
+		return 0;
+	}
+	\end{lstlisting}
+\end{document}

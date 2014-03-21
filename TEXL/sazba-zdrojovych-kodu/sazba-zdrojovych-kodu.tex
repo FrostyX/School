@@ -1,0 +1,230 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[czech]{babel}
+\usepackage[T1]{fontenc}
+
+\usepackage{verbatim}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{textcomp}
+\usepackage{url}
+
+\title{Sazba zdrojových kódů}
+\author{Jakub Kadlčík}
+\date{20. 03. 2014}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstdefinestyle{sources}
+{
+	backgroundcolor=\color{white},   % Pozadí
+	commentstyle=\color{mygreen},    % Komentáře
+	keywordstyle=\color{blue},       % Klíčová slova jazyka
+	stringstyle=\color{mymauve},     % Řetězce
+}
+
+\lstset
+{
+	%
+	% Základní nastavení
+	%
+	basicstyle=\footnotesize,        % Styl a typ písma
+	captionpos=b,                    % Pozice popisku
+	showstringspaces=false,          % Když true, místo mezer se vypíše podtržítko. e.g. "Hello_world"
+	title=\lstname,                  % Při výpisu zdrojového kódu ze souboru, nastaví název souboru jako popisek
+	tabsize=4,                       % Velikost tabulátoru (počet mezer)
+	style=sources,
+	%
+	% Podpora českých znaků
+	% http://tex.stackexchange.com/questions/30512/how-to-insert-code-with-accents-with-listings/85947#85947
+	%
+	literate=
+		{á}{{\'a}}1     {í}{{\'i}}1     {é}{{\'e}}1
+		{ý}{{\'y}}1     {ú}{{\'u}}1     {ó}{{\'o}}1
+		{ě}{{\v{e}}}1   {š}{{\v{s}}}1   {č}{{\v{c}}}1
+		{ř}{{\v{r}}}1   {ž}{{\v{z}}}1   {ď}{{\v{d}}}1
+		{ť}{{\v{t}}}1   {ň}{{\v{n}}}1   {ů}{{\r{u}}}1
+		{Á}{{\'A}}1     {Í}{{\'I}}1     {É}{{\'E}}1
+		{Ý}{{\'Y}}1     {Ú}{{\'U}}1     {Ó}{{\'O}}1
+		{Ě}{{\v{E}}}1   {Š}{{\v{S}}}1   {Č}{{\v{C}}}1
+		{Ř}{{\v{R}}}1   {Ž}{{\v{Z}}}1   {Ď}{{\v{D}}}1
+		{Ť}{{\v{T}}}1   {Ň}{{\v{N}}}1   {Ů}{{\r{U}}}1
+	,
+}
+
+% Solarized
+\definecolor{solarized@base03}{HTML}{002B36}
+\definecolor{solarized@base02}{HTML}{073642}
+\definecolor{solarized@base01}{HTML}{586e75}
+\definecolor{solarized@base00}{HTML}{657b83}
+\definecolor{solarized@base0}{HTML}{839496}
+\definecolor{solarized@base1}{HTML}{93a1a1}
+\definecolor{solarized@base2}{HTML}{EEE8D5}
+\definecolor{solarized@base3}{HTML}{FDF6E3}
+\definecolor{solarized@yellow}{HTML}{B58900}
+\definecolor{solarized@orange}{HTML}{CB4B16}
+\definecolor{solarized@red}{HTML}{DC322F}
+\definecolor{solarized@magenta}{HTML}{D33682}
+\definecolor{solarized@violet}{HTML}{6C71C4}
+\definecolor{solarized@blue}{HTML}{268BD2}
+\definecolor{solarized@cyan}{HTML}{2AA198}
+\definecolor{solarized@green}{HTML}{859900}
+
+\lstdefinestyle{solarized-light}
+{
+	basicstyle=\footnotesize\ttfamily\color{solarized@base00},
+	backgroundcolor=\color{solarized@base3},
+	rulesepcolor=\color{solarized@base3},
+	numberstyle=\tiny\color{solarized@base1},
+	keywordstyle=\color{solarized@green},
+	stringstyle=\color{solarized@cyan}\ttfamily,
+	identifierstyle=\color{solarized@blue},
+	commentstyle=\color{solarized@base1},
+	emphstyle=\color{solarized@red},
+}
+
+\lstdefinestyle{solarized-dark}
+{
+	basicstyle=\footnotesize\ttfamily\color{solarized@base0},
+	backgroundcolor=\color{solarized@base03},
+	rulesepcolor=\color{solarized@base03},
+	numberstyle=\tiny\color{solarized@base01},
+	keywordstyle=\color{solarized@green},
+	stringstyle=\color{solarized@cyan}\ttfamily,
+	identifierstyle=\color{solarized@blue},
+	commentstyle=\color{solarized@base01},
+	emphstyle=\color{solarized@red},
+}
+
+
+\begin{document}
+
+	\maketitle
+	\newpage
+
+	\tableofcontents
+	\newpage
+
+	\section{Základní prostředí - verbatim}
+
+		Základní, LaTeXem nabízené, prostředí pro sazbu zdrojových kódu se nazývá \texttt{verbatim}. Nevyžaduje vůbec žádnou konfiguraci a lze ho okamžitě použít. Každá mince má ale dvě strany a \texttt{verbatim} díky své jednoduchosti nepodporuje zvýrazňování syntaxe, ani přílišné možnosti konfigurace. Hodí se spíše pro černobíle tištěné texty.
+
+		% Ukázka zdrojového kódu
+		\vspace{10pt}
+		\lstinputlisting
+		[
+			language={[LaTeX]TeX},
+			label=verbatim-source,
+			caption={Ukázka zdrojového kódu: verbatim}
+		] {sources/verbatim.tex}
+		\vspace{10pt}
+
+		% Ukázka výsledku
+		\verbatiminput{sources/main.c}
+		\vspace{10pt}
+
+		Sázený zdrojový kód musí byt odsazován mezerami, nikoliv tabulátory.
+
+	\section{Balíček listings}
+
+		Balíček \texttt{listings} naopak nabízí rozmanité možnosti nastavení, zvýrazňování syntaxe mnoha různých jazyků, výběr barev, vysázení kódu z externího souboru a další zajímavé vlastnosti. Ve výchozím nastavení se příliš neliší od prostředí \texttt{verbatim} a jeho použití tedy není o moc složitější.
+		\\
+		\\
+		Nejdříve je potřeba načíst balíček \texttt{listings}, nastavit jej dle svých představ pomocí \texttt{lstset} a poté použít prostředí \texttt{lstlistings} podobně jako \texttt{verbatim}. Balíček bohužel ve výchozím nastavení nepodporuje kódování utf8, takže pokud plánujeme sázet Non-ASCII znaky, musíme si je nejdříve definovat pomocí volby \texttt{literate}.
+
+		% Ukázka zdrojového kódu
+		\lstinputlisting
+		[
+			language={[LaTeX]TeX},
+			label=lstlisting-source,
+			caption={Ukázka zdrojového kódu: lstlisting}
+		] {sources/lstlisting.tex}
+		\vspace{10pt}
+
+		% Ukázka výsledku
+		\lstinputlisting
+		[
+			language=C,
+			label=lstlisting-output,
+			caption={Vysázení zdrojového kódu č.\ref{lstlisting-source}}
+		] {sources/main.c}
+		\vspace{10pt}
+
+		Pokud máme zdrojový kód dokumentu odsazovaný pomocí tabulátorů nebo mezer na začátku řádků, jakože asi máme, prostředí bude poněkud více posunuté směrem doprava (právě o úroveň odsazení v dokumentu). To lze vyřešit pomocí volby \texttt{gobble}. Ta ze začátku každého řádku smaže daný počet znaků.
+
+	\newpage
+	\section{Sazba kódu z externího souboru}
+
+		Balíček \texttt{listings} také podporuje vysázení zdrojového kódu z externího souboru. Zřejmě si dovedete představit, že to zejména v případě delších kódů výrazně zlepšuje přehlednost zdrojového souboru dokumentu.\\
+
+		% Ukázka zdrojového kódu
+		\lstinputlisting
+		[
+			language={[LaTeX]TeX},
+			label=lstinputlisting-source,
+			caption={Ukázka zdrojového kódu: lstinputlisting}
+		] {sources/lstinputlisting.tex}
+		\vspace{10pt}
+
+
+	\section{Téma Solarized}
+		\texttt{Solarized} je oblíbené barevné téma používané zejména v linuxových konzolích a textových editorech. Téma se skládá z dvou perfektně vyladěných palet pro světlý i tmavý podklad. Nyní si vytvoříme obě témata jako styly pro \texttt{listings}. Mezi takovýmito styly je možné se libovolně přepínat a používat je napříč mnoha dokumenty.\\
+
+		\lstinputlisting
+		[
+			language={[LaTeX]TeX},
+			label=solarized-colors,
+			caption={Definice Solarized barev}
+		] {sources/solarized_colors.tex}
+		\vspace{10pt}
+
+		\newpage
+		\subsection{Solarized light}
+
+			% Ukázka zdrojového kódu
+			\lstinputlisting[language={[LaTeX]TeX}, label=solarized-light, caption={Téma Solarized light - zdrojový kód}]{sources/solarized_light.tex}
+			\vspace{10pt}
+
+			% Ukázka výsledku
+			\lstinputlisting
+			[
+				language=C,
+				label=solarized-light,
+				caption={Téma Solarized light - vysázené},
+				style=solarized-light
+			] {sources/main.c}
+			\vspace{10pt}
+
+
+		\newpage
+		\subsection{Solarized dark}
+
+			% Ukázka zdrojového kódu
+			\lstinputlisting[language={[LaTeX]TeX}, label=solarized-dark, caption={Téma Solarized dark - zdrojový kód}]{sources/solarized_dark.tex}
+			\vspace{10pt}
+
+			% Ukázka výsledku
+			\lstinputlisting
+			[
+				language=C,
+				label=solarized-dark,
+				caption={Téma Solarized dark - vysázené},
+				style=solarized-dark
+			] {sources/main.c}
+			\vspace{10pt}
+
+
+	\newpage
+	\begin{thebibliography}{}
+		\bibitem{the-listings-package}{\em C.~Heinz, B.~Moses, J.~Hoffmann:} The Listings Package \url{ftp://ftp.tex.ac.uk/tex-archive/macros/latex/contrib/listings/listings.pdf}
+
+		\bibitem{wikibooks-latex}{} \url{http://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings}
+
+		\bibitem{lstlisting-utf8}{} \url{http://tex.stackexchange.com/questions/30512/how-to-insert-code-with-accents-with-listings/85947#85947}
+		\bibitem{solarized}{} \url{http://ethanschoonover.com/solarized}
+	\end{thebibliography}
+
+\end{document}

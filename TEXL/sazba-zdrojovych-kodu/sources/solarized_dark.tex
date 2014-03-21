@@ -1,0 +1,21 @@
+% Definice stylu
+\lstdefinestyle{solarized-dark}
+{
+	basicstyle=\footnotesize\ttfamily\color{solarized@base0},
+	backgroundcolor=\color{solarized@base03},
+	rulesepcolor=\color{solarized@base03},
+	numberstyle=\tiny\color{solarized@base01},
+	keywordstyle=\color{solarized@green},
+	stringstyle=\color{solarized@cyan}\ttfamily,
+	identifierstyle=\color{solarized@blue},
+	commentstyle=\color{solarized@base01},
+	emphstyle=\color{solarized@red},
+}
+
+
+% Vysázení kódu s použitím stylu solarized-dark
+\lstinputlisting
+[
+	language=C,
+	style=solarized-dark
+] {sources/main.c}
