@@ -1,0 +1,184 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[czech]{babel}
+\usepackage[T1]{fontenc} 
+
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{listings}
+
+
+\title{Oddělení aplikační logiky od vzhledu stránky}
+\author{Jakub Kadlčík}
+\date{22. 03. 2014}
+
+% Hyperlink
+\definecolor{dark-red}{rgb}{0.4,0.15,0.15}
+\definecolor{dark-blue}{rgb}{0.15,0.15,0.4}
+\definecolor{medium-blue}{rgb}{0,0,0.5}
+\hypersetup{
+    colorlinks, linkcolor={dark-red},
+    citecolor={dark-blue}, urlcolor={medium-blue}
+}
+
+% Solarized
+\definecolor{solarized@base03}{HTML}{002B36}
+\definecolor{solarized@base02}{HTML}{073642}
+\definecolor{solarized@base01}{HTML}{586e75}
+\definecolor{solarized@base00}{HTML}{657b83}
+\definecolor{solarized@base0}{HTML}{839496}
+\definecolor{solarized@base1}{HTML}{93a1a1}
+\definecolor{solarized@base2}{HTML}{EEE8D5}
+\definecolor{solarized@base3}{HTML}{FDF6E3}
+\definecolor{solarized@yellow}{HTML}{B58900}
+\definecolor{solarized@orange}{HTML}{CB4B16}
+\definecolor{solarized@red}{HTML}{DC322F}
+\definecolor{solarized@magenta}{HTML}{D33682}
+\definecolor{solarized@violet}{HTML}{6C71C4}
+\definecolor{solarized@blue}{HTML}{268BD2}
+\definecolor{solarized@cyan}{HTML}{2AA198}
+\definecolor{solarized@green}{HTML}{859900}
+
+\lstdefinestyle{solarized-dark}
+{
+	basicstyle=\footnotesize\ttfamily\color{solarized@base0},
+	backgroundcolor=\color{solarized@base03},
+	rulesepcolor=\color{solarized@base03},
+	numberstyle=\tiny\color{solarized@base01},
+	keywordstyle=\color{solarized@green},
+	stringstyle=\color{solarized@cyan}\ttfamily,
+	identifierstyle=\color{solarized@blue},
+	commentstyle=\color{solarized@base01},
+	emphstyle=\color{solarized@red},
+}
+
+\lstdefinestyle{solarized-light}
+{
+	basicstyle=\footnotesize\ttfamily\color{solarized@base00},
+	backgroundcolor=\color{solarized@base3},
+	rulesepcolor=\color{solarized@base3},
+	numberstyle=\tiny\color{solarized@base1},
+	keywordstyle=\color{solarized@green},
+	stringstyle=\color{solarized@cyan}\ttfamily,
+	identifierstyle=\color{solarized@blue},
+	commentstyle=\color{solarized@base1},
+	emphstyle=\color{solarized@red},
+}
+
+\lstset
+{
+	%
+	% Základní nastavení
+	%
+	basicstyle=\footnotesize,        % Styl a typ písma
+	captionpos=b,                    % Pozice popisku
+	showstringspaces=false,          % Když true, místo mezer se vypíše podtržítko. e.g. "Hello_world"
+	title=\lstname,                  % Při výpisu zdrojového kódu ze souboru, nastaví název souboru jako popisek
+	tabsize=4,                       % Velikost tabulátoru (počet mezer)
+	style=solarized-light,
+	%
+	% Podpora českých znaků
+	% http://tex.stackexchange.com/questions/30512/how-to-insert-code-with-accents-with-listings/85947#85947
+	%
+	literate=
+		{á}{{\'a}}1     {í}{{\'i}}1     {é}{{\'e}}1
+		{ý}{{\'y}}1     {ú}{{\'u}}1     {ó}{{\'o}}1
+		{ě}{{\v{e}}}1   {š}{{\v{s}}}1   {č}{{\v{c}}}1
+		{ř}{{\v{r}}}1   {ž}{{\v{z}}}1   {ď}{{\v{d}}}1
+		{ť}{{\v{t}}}1   {ň}{{\v{n}}}1   {ů}{{\r{u}}}1
+		{Á}{{\'A}}1     {Í}{{\'I}}1     {É}{{\'E}}1
+		{Ý}{{\'Y}}1     {Ú}{{\'U}}1     {Ó}{{\'O}}1
+		{Ě}{{\v{E}}}1   {Š}{{\v{S}}}1   {Č}{{\v{C}}}1
+		{Ř}{{\v{R}}}1   {Ž}{{\v{Z}}}1   {Ď}{{\v{D}}}1
+		{Ť}{{\v{T}}}1   {Ň}{{\v{N}}}1   {Ů}{{\r{U}}}1
+	,
+}
+
+
+\begin{document}
+
+	\maketitle
+	\newpage
+	
+	\tableofcontents
+	\newpage
+	
+	\section{Úvod}
+	\label{uvod}
+	Dalo by se říci, že tvorba webových stránek v dnešní době téměř patří mezi základní schopnosti práce s pc. Ne tak docela, k čemu by pak byli v této oblasti profesionálové, ale základy \texttt{HTML} a \texttt{CSS} jsou vyučovány už na základních školách. Často jsou však opomíjeny standardy, či dobré mravy a návyky pro psaní kódu celkově. Už pomocí těchto dvou jazyků lze vykouzlit velmi zapáchající kód, ale v kombinaci s \texttt{PHP}, které se studenti často učí na střední škole, lze vytvořit něco tak odporného, že už to ani sám autor nebude chtít nikdy vidět.
+	\\
+	\\
+	Jako ilustrační příklad si ukážeme kód pro přihlašování uživatelů do systému. Bylo by hezké uvést příklad přímo z nějakého produkčního webu, ale bohužel se v rámci dokumentu musíme držet pokud možná co nejkratších kódů, takže jsem si pro vás jeden vymyslel. Jedná se pouze o osekanou verzi nejspíše obsahující několik bezpečnostních chyb. Pominete-li to, možná na první pohled žádný jiný problém nevidíte. Možná ani na druhý. Tak se prosím pohodlně usaďte a jdeme na to.
+	
+	\lstinputlisting
+	[
+		language=PHP,
+		label=login-mess,
+		caption={Běžný kód mnoha webových vývojářů},
+	] {sources/login_mess.php}
+	
+	Připadá vám tento kód v pořádku? Zkuste si položit následující otázky. Design webů se přizpůsobuje dobovým trendům, bude možné bezpečně bezpečně redesignovat? Je dobrý nápad, aby kód, který se vykonává na straně server, byl dostupný i uživateli? Potřebuje \texttt{CSS} kóder vidět, jakým způsobem aplikace přistupuje k databázi? Naopak, obejde se \texttt{PHP} programátor bez toho, jakým způsobem jsou formátovány jeho výstupy?
+	\\
+	\\
+	Myslím, že chápete co se snažím naznačit, ale pro jistotu si to rozebereme. Tento kód není v pořádku a to z několika důvodů. Redesign by na tomto malém útržku kódu možný byl, ale představte si, že chcete upravit vzhled webové stránky, která se skládá ze sta podobných útržků. Chyba se snadno vyskytne. Stačí nechtěně umazat někde o pár znaků víc a nechtěně způsobíme programátorům \uv{příjemný} večer nad hledáním problému. Mít \texttt{PHP} soubory přístupné skrz webový prohlížeč také není moc dobrý nápad. Jedná se o závažné bezpečnostní riziko. Nakonec, nezáleží na tom, zda stránku spravuje tým mnoha lidí, či pouze jeden člověk. V jednu chvíli bude chtít přistupovat k jedné konkrétní věci která ho zajímá a všechno ostatní mu bude pouze překážet.
+	\\ Dobrá, všechno je špatně, ale co teď s tím, říkáte si? Všechny zmíněné problémy lze vyřešit nasazením šablonovacího systému.
+
+	\section{Šablonovací systém}
+		Šablonovací systém je nástroj poskytující aplikační vrstvě rozhraní pro předání dat do požadované šablony a její vysázení. Šablonou pak nazveme obyčejný \texttt{HTML} soubor, rozšířený o syntaxi jazyka poskytovaného šablonovacím systémem. Elegantně se tak vyřeší problémy zmíněné na konci kapitoly č.\ref{uvod}, protože v \texttt{PHP} už nebude jediné \texttt{echo}, ani žádný \texttt{HTML} tag. Naproti tomu v šabloně budeme pracovat pouze s předanými daty, nemusí nás vůbec zajímat jakým způsobem byly získány a nemáme šanci jej rozbít.
+		\\
+		\\
+		Šablonovacích systémů existuje nepřeberné množství pro celou řádku programovacích jazyků. Mohou pracovat různými způsoby, mohou být více, či méně paměťově náročné a rychlost vykreslení se může systém od systému také značně lišit. Nicméně práce s nimi je vždy téměř stejná. Na následujícím příkladu si postupně uvedeme tři systémy. Uvedeme si postupně tři systémy. První dva budou pro jazyk \texttt{PHP}, třetí pro \texttt{Python} --- aby bylo zřejmé, že se v žádném případě nejedná o specialitu \texttt{PHP}. Jako ilustrační příklad použijeme výpis příspěvků na blogu.
+		\\
+		\\
+		Ještě než se do toho pustíme, chtěl bych říci, že zde nebudu popisovat, jak následující systémy nainstalovat, případně přepisovat referenční příručku a popisovat každou jejich funkci. Tento text si klade za cíl informovat čtenáře o jejich existenci a předvést základní použití. Pro více informací vás tímto odkazuji na stránky projektů a jejich dokumentaci.
+		
+		\newpage
+		\subsection{Smarty}
+			\href{http://www.smarty.net}{Smarty} je jeden z nejvíce používaných šablonovacích systémů pro jazyk \texttt{PHP}. Skládá se z jedné třídy a dodatečných pluginů, dohromady o velikosti 950~kB. Jeho použití už nemůže být jednodušší.
+			\\
+			\\
+			Následující \texttt{PHP} kód se skládá ze tří oddělených částí. Začíná načtením knihovny \texttt{Smarty}, následuje získání chtěných dat, a nakonec vytvoření objektu šablony, předání dat a vykreslení.
+			
+			\lstinputlisting
+			[
+				language=PHP,
+				label=posts-smarty,
+				caption={Smarty - logika aplikace},
+			] {sources/posts_smarty.php}
+
+			V kódu o pár řádků výše jsme do šablonové proměnné \texttt{posts} předali pole příspěvků. Nyní za pomocí konstrukce \texttt{foreach}, obsažené v jazyku šablony, můžeme celé pole projít a vypsat.
+			
+			\lstinputlisting
+			[
+				language=HTML,
+				label=posts-smarty-template,
+				caption={Smarty - šablona},
+			] {sources/templates/posts.tpl}
+		
+		
+		\subsection{Blade}
+		% Laravel
+
+		\subsection{Jinja2}
+
+		
+	\section{MVC}
+
+		\subsection{Model}
+
+		\subsection{View}
+
+		\subsection{Controller (Presenter)}
+
+
+	\section{Závěr}
+	
+	\newpage
+	\begin{thebibliography}{}
+		\bibitem{docs-laravel}{} \url{http://laravel.com/docs/}
+	\end{thebibliography}
+	
+	
+\end{document}
