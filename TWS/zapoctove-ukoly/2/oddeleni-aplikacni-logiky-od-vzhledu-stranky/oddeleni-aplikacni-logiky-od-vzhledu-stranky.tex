@@ -1,7 +1,7 @@
 \documentclass[10pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[czech]{babel}
-\usepackage[T1]{fontenc} 
+\usepackage[T1]{fontenc}
 
 \usepackage{hyperref}
 \usepackage{url}
@@ -101,17 +101,17 @@
 
 	\maketitle
 	\newpage
-	
+
 	\tableofcontents
 	\newpage
-	
+
 	\section{Úvod}
 	\label{uvod}
-	Dalo by se říci, že tvorba webových stránek v dnešní době téměř patří mezi základní schopnosti práce s pc. Ne tak docela, k čemu by pak byli v této oblasti profesionálové, ale základy \texttt{HTML} a \texttt{CSS} jsou vyučovány už na základních školách. Často jsou však opomíjeny standardy, či dobré mravy a návyky pro psaní kódu celkově. Už pomocí těchto dvou jazyků lze vykouzlit velmi zapáchající kód, ale v kombinaci s \texttt{PHP}, které se studenti často učí na střední škole, lze vytvořit něco tak odporného, že už to ani sám autor nebude chtít nikdy vidět.
+	Dalo by se říci, že tvorba webových stránek v dnešní době téměř patří mezi základní schopnosti práce s pc. Ne tak docela, k čemu by pak byli v této oblasti profesionálové, ale základy \texttt{HTML} a \texttt{CSS} jsou vyučovány už na základních školách. Často jsou však opomíjeny standardy, či celkově dobré mravy a návyky pro psaní kódu. Už pomocí těchto dvou jazyků lze vykouzlit velmi zapáchající kód, ale v kombinaci s \texttt{PHP}, které se studenti často učí na střední škole, lze vytvořit něco tak odporného, že už to ani sám autor nebude chtít nikdy vidět.
 	\\
 	\\
-	Jako ilustrační příklad si ukážeme kód pro přihlašování uživatelů do systému. Bylo by hezké uvést příklad přímo z nějakého produkčního webu, ale bohužel se v rámci dokumentu musíme držet pokud možná co nejkratších kódů, takže jsem si pro vás jeden vymyslel. Jedná se pouze o osekanou verzi nejspíše obsahující několik bezpečnostních chyb. Pominete-li to, možná na první pohled žádný jiný problém nevidíte. Možná ani na druhý. Tak se prosím pohodlně usaďte a jdeme na to.
-	
+	Jako ilustrační příklad si ukážeme kód pro přihlašování uživatelů do systému. Bylo by hezké uvést příklad přímo z nějakého produkčního webu, ale bohužel se v rámci dokumentu musíme držet pokud možná co nejkratších kódů, takže jsem si pro vás jeden vymyslel. Jedná se pouze o osekanou verzi nejspíše obsahující několik bezpečnostních chyb. Pominete-li to, možná na první pohled žádný jiný problém neuvidíte. Možná ani na druhý. Tak se prosím pohodlně usaďte a jdeme na to.
+
 	\lstinputlisting
 	[
 		language=PHP,
@@ -119,29 +119,31 @@
 		caption={Běžný kód mnoha webových vývojářů},
 	] {sources/login_mess.php}
 	\vspace{10pt}
-	
-	Připadá vám tento kód v pořádku? Zkuste si položit následující otázky. Design webů se přizpůsobuje dobovým trendům, bude možné bezpečně bezpečně redesignovat? Je dobrý nápad, aby kód, který se vykonává na straně server, byl dostupný i uživateli? Potřebuje \texttt{CSS} kóder vidět, jakým způsobem aplikace přistupuje k databázi? Naopak, obejde se \texttt{PHP} programátor bez toho, jakým způsobem jsou formátovány jeho výstupy?
+
+	Připadá vám tento kód v pořádku? Zkuste si položit následující otázky. Design webů se přizpůsobuje dobovým trendům, bude možné bezpečně redesignovat? Je dobrý nápad, aby kód, který se vykonává na straně serveru, byl dostupný i uživateli? Potřebuje \texttt{CSS} kóder vidět, jakým způsobem aplikace přistupuje k databázi? Naopak, obejde se \texttt{PHP} programátor bez toho, jakým způsobem budou formátovány jeho výstupy?
 	\\
 	\\
-	Myslím, že chápete co se snažím naznačit, ale pro jistotu si to rozebereme. Tento kód není v pořádku a to z několika důvodů. Redesign by na tomto malém útržku kódu možný byl, ale představte si, že chcete upravit vzhled webové stránky, která se skládá ze sta podobných útržků. Chyba se snadno vyskytne. Stačí nechtěně umazat někde o pár znaků víc a nechtěně způsobíme programátorům \uv{příjemný} večer nad hledáním problému. Mít \texttt{PHP} soubory přístupné skrz webový prohlížeč také není moc dobrý nápad. Jedná se o závažné bezpečnostní riziko. Nakonec, nezáleží na tom, zda stránku spravuje tým mnoha lidí, či pouze jeden člověk. V jednu chvíli bude chtít přistupovat k jedné konkrétní věci která ho zajímá a všechno ostatní mu bude pouze překážet.
-	\\ Dobrá, všechno je špatně, ale co teď s tím, říkáte si? Všechny zmíněné problémy lze vyřešit nasazením šablonovacího systému.
+	Myslím, že chápete co se snažím naznačit, ale pro jistotu si to rozebereme. Tento kód není v pořádku a to hned z několika důvodů. Redesign by na tomto malém útržku kódu možný byl, ale představte si, že chcete upravit vzhled webové stránky, která se skládá ze sta podobných útržků. Chyba se snadno vyskytne, stačí omylem umazat někde o pár znaků víc a nechtěně způsobíme programátorům \uv{příjemný} večer nad hledáním problému. Mít \texttt{PHP} soubory přístupné skrz webový prohlížeč také není moc dobrý nápad. Jedná se o závažné bezpečnostní riziko. Konečně, nezáleží na tom, zda stránku spravuje tým mnoha lidí, či pouze jeden člověk. V jednu chvíli bude chtít přistupovat k jedné konkrétní věci která ho zajímá a všechno ostatní mu bude pouze překážet.
+	\\
+	\\
+	Dobrá, všechno je špatně, ale co teď s tím, říkáte si? Všechny zmíněné problémy lze vyřešit nasazením šablonovacího systému.
 
 	\section{Šablonovací systém}
-		Šablonovací systém je nástroj poskytující aplikační vrstvě rozhraní pro předání dat do požadované šablony a její vysázení. Šablonou pak nazveme obyčejný \texttt{HTML} soubor, rozšířený o syntaxi jazyka poskytovaného šablonovacím systémem. Elegantně se tak vyřeší problémy zmíněné na konci kapitoly č.\ref{uvod}, protože v \texttt{PHP} už nebude jediné \texttt{echo}, ani žádný \texttt{HTML} tag. Naproti tomu v šabloně budeme pracovat pouze s předanými daty, nemusí nás vůbec zajímat jakým způsobem byly získány a nemáme šanci jej rozbít.
+		Šablonovací systém je nástroj poskytující aplikační vrstvě rozhraní pro předání dat do požadované šablony a její následné vysázení. Šablonou pak nazveme obyčejný \texttt{HTML} soubor, rozšířený o syntaxi jazyka poskytovaného šablonovacím systémem. Elegantně se tak vyřeší problémy zmíněné na konci kapitoly č.\ref{uvod}, protože v \texttt{PHP} už nebude jediné \texttt{echo}, ani žádný \texttt{HTML} tag. Naproti tomu v šabloně budeme pracovat pouze s předanými daty, nemusí nás vůbec zajímat jakým způsobem byly získány a nemáme šanci jej narušit.
 		\\
 		\\
-		Šablonovacích systémů existuje nepřeberné množství pro celou řádku programovacích jazyků. Mohou pracovat různými způsoby, mohou být více, či méně paměťově náročné a rychlost vykreslení se může systém od systému také značně lišit. Nicméně práce s nimi je vždy téměř stejná. Na následujícím příkladu si postupně uvedeme tři systémy. Uvedeme si postupně tři systémy. První dva budou pro jazyk \texttt{PHP}, třetí pro \texttt{Python} --- aby bylo zřejmé, že se v žádném případě nejedná o specialitu \texttt{PHP}. Jako ilustrační příklad použijeme výpis příspěvků na blogu.
+		Šablonovacích systémů existuje nepřeberné množství pro celou řádku programovacích jazyků. Mohou pracovat různými způsoby, mohou být více, či méně paměťově náročné a rychlost vykreslení se může systém od systému také značně lišit. Nicméně práce s nimi je vždy téměř stejná. Na následujícím příkladu si postupně uvedeme tři systémy. První dva budou pro jazyk \texttt{PHP}, třetí pro \texttt{Python} --- aby bylo zřejmé, že se v žádném případě nejedná o specialitu \texttt{PHP}. Jako ilustrační příklad použijeme výpis příspěvků na blogu.
 		\\
 		\\
 		Ještě než se do toho pustíme, chtěl bych říci, že zde nebudu popisovat, jak následující systémy nainstalovat, případně přepisovat referenční příručku a popisovat každou jejich funkci. Tento text si klade za cíl informovat čtenáře o jejich existenci a předvést základní použití. Pro více informací vás tímto odkazuji na stránky projektů a jejich dokumentaci.
-		
+
 		\newpage
 		\subsection{Smarty}
 			\href{http://www.smarty.net}{Smarty} je jeden z nejvíce používaných šablonovacích systémů pro jazyk \texttt{PHP}. Skládá se z jedné třídy a dodatečných pluginů, dohromady o velikosti 950~kB. Jeho použití už nemůže být jednodušší.
 			\\
 			\\
 			Následující \texttt{PHP} kód se skládá ze tří oddělených částí. Začíná načtením knihovny \texttt{Smarty}, následuje získání chtěných dat, a nakonec vytvoření objektu šablony, předání dat a vykreslení.
-			
+
 			\lstinputlisting
 			[
 				language=PHP,
@@ -151,7 +153,7 @@
 			\vspace{10pt}
 
 			V kódu o pár řádků výše jsme do šablonové proměnné \texttt{posts} předali pole příspěvků. Nyní za pomocí konstrukce \texttt{foreach}, obsažené v jazyku šablony, můžeme celé pole projít a vypsat.
-			
+
 			\lstinputlisting
 			[
 				language=HTML,
@@ -159,12 +161,12 @@
 				caption={Smarty - šablona},
 			] {sources/templates/posts.tpl}
 			\vspace{10pt}
-		
-		
+
+
 		\newpage
 		\subsection{Blade}
 			Za tímto ostrým názvem stojí šablonovací systém \texttt{PHP} frameworku \href{http://laravel.com/}{Laravel}. Používá se výhradně tam a pro přesné pochopení následujícího kódu je potřeba \texttt{Laravel} znát. To však není našim cílem. Uspokojivě postačí, když zmíním, že následující kód se postará o vykreslení šablony \texttt{posts.index}, do které dosadí seznam všech příspěvků jako proměnnou \texttt{posts}.
-			
+
 			\lstinputlisting
 			[
 				language=PHP,
@@ -172,7 +174,7 @@
 				caption={Blade - logika aplikace},
 			] {sources/posts_blade.php}
 			\vspace{10pt}
-			
+
 			Srovnejme následující kód s příkladem č.\ref{posts-smarty-template}. Můžeme si všimnout, že v syntaxi je jen zanedbatelný rozdíl, takže ovládnout více šablonovacích systémů nezabere až tak moc času.
 			\lstinputlisting
 			[
@@ -185,8 +187,8 @@
 
 		\newpage
 		\subsection{Jinja2}
-			Abychom pořád nezůstávali u \texttt{PHP}, podíváme se také na \texttt{Python} a výborný balíček \href{http://jinja.pocoo.org/}{Jinja2}.
-		
+			Abychom pořád nezůstávali jen a pouze u \texttt{PHP}, podíváme se také na \texttt{Python} a výborný balíček \href{http://jinja.pocoo.org/}{Jinja2}.
+
 			\lstinputlisting
 			[
 				language=Python,
@@ -194,7 +196,7 @@
 				caption={Jinja2 - logika aplikace},
 			] {sources/posts_jinja.py}
 			\vspace{10pt}
-			
+
 			\lstinputlisting
 			[
 				language=HTML,
@@ -202,47 +204,50 @@
 				caption={Jinja2 - šablona},
 			] {sources/templates/posts.jinja2}
 			\vspace{10pt}
-			
+
 			Princip je pořád úplně stejný, nemá tedy moc význam to dále rozpitvávat.
-			
+
 		\subsection{Zhodnocení}
 			Viděli jsme ukázku tří šablonovacích systémů. Mohli jsme vidět, že oddělují aplikační logiku od výstupu velmi dobře. Máme tedy vyhráno? Ano. Můžeme kód ještě zpřehlednit? Opět ano.
 			\\
 			\\
-			Jeden z uvedených příkladů se v něčem výrazně liší. Ukázali jsme si, že šablony jsou téměř stejné, takže rozdíl musíme hledat v aplikační části. Projdeme-li kódy, můžeme si všimnout, že \texttt{Laravel} získal seznam příspěvků nějakým magickým způsobem, na rozdíl od ostatních dvou, kde byl získán pomocí zadaného \texttt{SQL} dotazu. \texttt{Laravel} totiž používá návrhový vzor \texttt{MVC}.
+			Jeden z uvedených příkladů se v něčem výrazně liší. Ukázali jsme si, že šablony jsou téměř stejné, takže rozdíl musíme hledat v aplikační části. Projdeme-li kódy, můžeme si všimnout, že \texttt{Laravel} získal seznam příspěvků nějakým magickým způsobem na rozdíl od ostatních dvou, kde byl získán pomocí zadaného \texttt{SQL} dotazu. \texttt{Laravel} totiž používá návrhový vzor \texttt{MVC}.
 
-		
+
 	\newpage
 	\section{MVC}
 		\texttt{MVC}, celým názvem \texttt{Model-View-Controller} je návrhový vzor popisující architekturu (strukturu) software s uživatelským rozhraním. A to tak, že veškeré komponenty\footnote{Nepočítáme mezi ně konfigurační a datové soubory, nebo věci spouštěné na straně klienta (Javascript, CSS, obrázky, etc)} rozděluje na tři skupiny. Z názvu už musí být jasné, jaké to jsou.
 
-		
+
 		\subsection{Model}
 			Model se používá zejména pro práci s daty. Ať už jde o získání dat z \texttt{XML} souboru, systémové aplikace, textového souboru, či databáze, použijeme k tomu model. Rovněž pro ukládání dat užijeme modelu.
 			\\
 			\\
-			Právě touto komponentou se příklad s Laravelem lišil od ostatních. 
+			Právě touto komponentou se příklad s Laravelem lišil od ostatních.
 
 		\subsection{View}
 			View není nic jiného než šablona. V tomto dokumentu jsme se setkali se třemi různými, takže v těch už jsme docela ostřílení.
 
 		\subsection{Controller (Presenter)}
-			Controller nechává zobrazit to co chceme zobrazit ve chvíli, kdy to chceme zobrazit. Reaguje na požadavky ze šablony (například z formulářů) a komunikuje s modely. Stává se prostředníkem mezi model a šablonou.
+			Controller nechává zobrazit to, co chceme zobrazit, ve chvíli, kdy to chceme zobrazit. Reaguje na požadavky ze šablony (například z formulářů) a komunikuje s modely. Stává se tak prostředníkem mezi modelem a šablonou.
 
 		\subsection{Důsledky}
-			Architektura popsaná tímto vzorem přináší obrovské výhody a téměř žádné nevýhody. Dovolí nám například naprosto bezpečně měnit jednotlivé komponenty, aniž bychom rozbili něco co nechceme. Chceme-li redesignovat vzhled stránky, jednoduše přepíšeme view komponenty. Rozhodneme-li se přejít z \texttt{MySQL} na \texttt{PostgreSQL}, nemusíme procházet každý soubor a kontrolovat, jestli náhodou nevyužívá některou funkci pro práci s \texttt{MySQL}. Prostě jednoduše přepíšeme modely.
+			Architektura popsaná tímto vzorem přináší obrovské výhody a téměř žádné nevýhody. Dovolí nám například naprosto bezpečně měnit jednotlivé komponenty, aniž bychom ovlivnili něco, co nechceme. Chceme-li redesignovat vzhled stránky, jednoduše přepíšeme view komponenty. Rozhodneme-li se přejít z \texttt{MySQL} na \texttt{PostgreSQL}, nemusíme procházet každý soubor a kontrolovat, jestli náhodou nevyužívá některou funkci pro práci s \texttt{MySQL}. Prostě jednoduše přepíšeme modely. Dalšími výhodami potom může být snazší práce v týmu, či lokalizace do více jazyků.
 
 	\newpage
 	\section{Závěr}
-	Ukázali jsme si příklad toho, jak vypadá kód běžné webové stránky a řekli jsme si, co na tom není v pořádku. Pokusil jsem se nastínit možné řešení a potom jsme si společně prošli tři ukázky. Všimli jsme si, že jedna z nich vyniká svou čistotou a zdůvodnili jsme si, proč tomu tak je. Až budete tvořit nějakou aplikaci, či webovou stránku, zkuste si vzpomenout, o čem jsme dnes hovořili. Nepochybně to oceníte, až budete po čase pracovat se svým starým kódem.
-	
+	Ukázali jsme si příklad toho, jak vypadá kód běžné webové stránky a řekli jsme si, co na tom není v pořádku. Pokusil jsem se nastínit možné řešení a potom jsme si společně prošli tři ukázky konkrétních šablonovacích systémů. Všimli jsme si, že jedna z nich vyniká svou čistotou a zdůvodnili jsme si, proč tomu tak je. Následně jsme se naučili základní principy návrhového vzoru \texttt{MVC}, abychom také byli schopni psát čistý kód.
+	\\
+	\\
+	Až budete tvořit nějakou aplikaci, či webovou stránku, zkuste si vzpomenout, o čem jsme dnes hovořili. Nepochybně to oceníte, až budete po čase pracovat se svým starým kódem.
+
 
 	\begin{thebibliography}{}
+		\bibitem{smarty}{} \url{http://www.smarty.net/}
 		\bibitem{docs-laravel}{} \url{http://laravel.com/docs/}
 		\bibitem{jinja}{} \url{http://jinja.pocoo.org/}
-		\bibitem{smarty}{} \url{http://jinja.pocoo.org/}
 		\bibitem{mvc}{} \url{http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller}
 	\end{thebibliography}
-	
-	
+
+
 \end{document}
