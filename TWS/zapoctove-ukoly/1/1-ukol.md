@@ -21,4 +21,4 @@ Můj osobní blog týkající se GNU/Linuxu, otevřeného software, tvorby webov
 - Login
 
 ### Správa příspěvků
-	- Přidávání a editace příspěvků ve formátu Markdown
+- Přidávání a editace příspěvků ve formátu Markdown
