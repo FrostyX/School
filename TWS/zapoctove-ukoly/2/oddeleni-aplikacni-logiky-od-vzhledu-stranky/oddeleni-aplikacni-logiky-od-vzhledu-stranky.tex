@@ -118,6 +118,7 @@
 		label=login-mess,
 		caption={Běžný kód mnoha webových vývojářů},
 	] {sources/login_mess.php}
+	\vspace{10pt}
 	
 	Připadá vám tento kód v pořádku? Zkuste si položit následující otázky. Design webů se přizpůsobuje dobovým trendům, bude možné bezpečně bezpečně redesignovat? Je dobrý nápad, aby kód, který se vykonává na straně server, byl dostupný i uživateli? Potřebuje \texttt{CSS} kóder vidět, jakým způsobem aplikace přistupuje k databázi? Naopak, obejde se \texttt{PHP} programátor bez toho, jakým způsobem jsou formátovány jeho výstupy?
 	\\
@@ -147,6 +148,7 @@
 				label=posts-smarty,
 				caption={Smarty - logika aplikace},
 			] {sources/posts_smarty.php}
+			\vspace{10pt}
 
 			V kódu o pár řádků výše jsme do šablonové proměnné \texttt{posts} předali pole příspěvků. Nyní za pomocí konstrukce \texttt{foreach}, obsažené v jazyku šablony, můžeme celé pole projít a vypsat.
 			
@@ -156,28 +158,90 @@
 				label=posts-smarty-template,
 				caption={Smarty - šablona},
 			] {sources/templates/posts.tpl}
+			\vspace{10pt}
 		
 		
+		\newpage
 		\subsection{Blade}
-		% Laravel
+			Za tímto ostrým názvem stojí šablonovací systém \texttt{PHP} frameworku \href{http://laravel.com/}{Laravel}. Používá se výhradně tam a pro přesné pochopení následujícího kódu je potřeba \texttt{Laravel} znát. To však není našim cílem. Uspokojivě postačí, když zmíním, že následující kód se postará o vykreslení šablony \texttt{posts.index}, do které dosadí seznam všech příspěvků jako proměnnou \texttt{posts}.
+			
+			\lstinputlisting
+			[
+				language=PHP,
+				label=posts-blade,
+				caption={Blade - logika aplikace},
+			] {sources/posts_blade.php}
+			\vspace{10pt}
+			
+			Srovnejme následující kód s příkladem č.\ref{posts-smarty-template}. Můžeme si všimnout, že v syntaxi je jen zanedbatelný rozdíl, takže ovládnout více šablonovacích systémů nezabere až tak moc času.
+			\lstinputlisting
+			[
+				language=HTML,
+				label=posts-blade-template,
+				caption={Blade - šablona},
+			] {sources/templates/posts.php}
+			\vspace{10pt}
 
+
+		\newpage
 		\subsection{Jinja2}
+			Abychom pořád nezůstávali u \texttt{PHP}, podíváme se také na \texttt{Python} a výborný balíček \href{http://jinja.pocoo.org/}{Jinja2}.
+		
+			\lstinputlisting
+			[
+				language=Python,
+				label=posts-jinja,
+				caption={Jinja2 - logika aplikace},
+			] {sources/posts_jinja.py}
+			\vspace{10pt}
+			
+			\lstinputlisting
+			[
+				language=HTML,
+				label=posts-jinja-template,
+				caption={Jinja2 - šablona},
+			] {sources/templates/posts.jinja2}
+			\vspace{10pt}
+			
+			Princip je pořád úplně stejný, nemá tedy moc význam to dále rozpitvávat.
+			
+		\subsection{Zhodnocení}
+			Viděli jsme ukázku tří šablonovacích systémů. Mohli jsme vidět, že oddělují aplikační logiku od výstupu velmi dobře. Máme tedy vyhráno? Ano. Můžeme kód ještě zpřehlednit? Opět ano.
+			\\
+			\\
+			Jeden z uvedených příkladů se v něčem výrazně liší. Ukázali jsme si, že šablony jsou téměř stejné, takže rozdíl musíme hledat v aplikační části. Projdeme-li kódy, můžeme si všimnout, že \texttt{Laravel} získal seznam příspěvků nějakým magickým způsobem, na rozdíl od ostatních dvou, kde byl získán pomocí zadaného \texttt{SQL} dotazu. \texttt{Laravel} totiž používá návrhový vzor \texttt{MVC}.
 
 		
+	\newpage
 	\section{MVC}
+		\texttt{MVC}, celým názvem \texttt{Model-View-Controller} je návrhový vzor popisující architekturu (strukturu) software s uživatelským rozhraním. A to tak, že veškeré komponenty\footnote{Nepočítáme mezi ně konfigurační a datové soubory, nebo věci spouštěné na straně klienta (Javascript, CSS, obrázky, etc)} rozděluje na tři skupiny. Z názvu už musí být jasné, jaké to jsou.
 
+		
 		\subsection{Model}
+			Model se používá zejména pro práci s daty. Ať už jde o získání dat z \texttt{XML} souboru, systémové aplikace, textového souboru, či databáze, použijeme k tomu model. Rovněž pro ukládání dat užijeme modelu.
+			\\
+			\\
+			Právě touto komponentou se příklad s Laravelem lišil od ostatních. 
 
 		\subsection{View}
+			View není nic jiného než šablona. V tomto dokumentu jsme se setkali se třemi různými, takže v těch už jsme docela ostřílení.
 
 		\subsection{Controller (Presenter)}
+			Controller nechává zobrazit to co chceme zobrazit ve chvíli, kdy to chceme zobrazit. Reaguje na požadavky ze šablony (například z formulářů) a komunikuje s modely. Stává se prostředníkem mezi model a šablonou.
 
+		\subsection{Důsledky}
+			Architektura popsaná tímto vzorem přináší obrovské výhody a téměř žádné nevýhody. Dovolí nám například naprosto bezpečně měnit jednotlivé komponenty, aniž bychom rozbili něco co nechceme. Chceme-li redesignovat vzhled stránky, jednoduše přepíšeme view komponenty. Rozhodneme-li se přejít z \texttt{MySQL} na \texttt{PostgreSQL}, nemusíme procházet každý soubor a kontrolovat, jestli náhodou nevyužívá některou funkci pro práci s \texttt{MySQL}. Prostě jednoduše přepíšeme modely.
 
-	\section{Závěr}
-	
 	\newpage
+	\section{Závěr}
+	Ukázali jsme si příklad toho, jak vypadá kód běžné webové stránky a řekli jsme si, co na tom není v pořádku. Pokusil jsem se nastínit možné řešení a potom jsme si společně prošli tři ukázky. Všimli jsme si, že jedna z nich vyniká svou čistotou a zdůvodnili jsme si, proč tomu tak je. Až budete tvořit nějakou aplikaci, či webovou stránku, zkuste si vzpomenout, o čem jsme dnes hovořili. Nepochybně to oceníte, až budete po čase pracovat se svým starým kódem.
+	
+
 	\begin{thebibliography}{}
 		\bibitem{docs-laravel}{} \url{http://laravel.com/docs/}
+		\bibitem{jinja}{} \url{http://jinja.pocoo.org/}
+		\bibitem{smarty}{} \url{http://jinja.pocoo.org/}
+		\bibitem{mvc}{} \url{http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller}
 	\end{thebibliography}
 	
 	
