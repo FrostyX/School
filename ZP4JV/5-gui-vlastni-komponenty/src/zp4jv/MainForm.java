@@ -28,7 +28,7 @@ public class MainForm extends JDialog {
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("ConsoleOutputActionListener");
 		}
-    }
+	}
 
 	private class MessageBoxActionListener implements ActionListener {
 
@@ -36,5 +36,5 @@ public class MainForm extends JDialog {
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("MessageBox");
 		}
-    }
+	}
 }
