@@ -23,6 +23,13 @@
 - `DIV zdroj` - registr AX, (nebo DX AX, nebo EDX EAX) vyděl zdrojem a podíl ulož do AL (nebo AX, nebo EAX) a zbytek po dělení do AH (nebo DX, nebo EDX)
 - `IDIV zdroj` - jako DIV ale dělení se znaménkem
 
+### Bitové operace
+- `AND cíl, zdroj` - Bitový součin
+- `OR cíl, zdroj` - Bitový součet
+- `NOT cíl` - Negace po bitech
+- `SHR cíl, počet` - Bitový posun doprava (z leva se přidají nuly)
+- `SHL cíl, počet` - Bitový posun doleva (z prava se přidají nuly)
+
 ### Převod mezi datovými typy
 - `MOVSX cíl, zdroj` - rozšíření hodnoty z menší na vetší
 
