@@ -9,19 +9,20 @@ import javax.swing.JDialog;
 public class MainForm extends JDialog {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	public MainForm() {
 		super();
-		
+
 		JDial dial = new JDial();
 		dial.addActionListener(new ConsoleOutputActionListener());
 		dial.addActionListener(new MessageBoxActionListener());
 		getContentPane().add(dial);
 
 		setPreferredSize(new Dimension(209, 280));
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		pack();
 	}
-	
+
 	private class ConsoleOutputActionListener implements ActionListener {
 
 		@Override
