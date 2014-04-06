@@ -1,0 +1,4 @@
+http://phoenix.inf.upol.cz/~krajcap/courses/2014LS/ZP4JV/assignment-07.htm
+http://docs.oracle.com/javase/tutorial/networking/sockets/index.html
+http://stackoverflow.com/questions/5694385/getting-the-filenames-of-all-files-in-a-folder
+http://stackoverflow.com/questions/15695984/java-print-contents-of-text-file-to-screen
