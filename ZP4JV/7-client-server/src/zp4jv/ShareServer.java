@@ -33,7 +33,10 @@ public class ShareServer {
 			
 			while (!stopClient) {
 				String line = rd.readLine();
-				System.out.println(line);
+				
+				if(line == null)
+					continue;
+				
 				respond(parseCmd(line));
 				wr.flush();
 			}
@@ -49,6 +52,9 @@ public class ShareServer {
 	}
 	
 	private static void respond(String[] cmd) throws IOException {
+		if(cmd == null)
+			return;
+
 		switch(cmd[0]) {
 			case "quit": {
 				stopClient = true; 
@@ -86,15 +92,13 @@ public class ShareServer {
 			}
 			
 			default: {
-				wr.write(cmd + ": Command not found\n");
+				wr.write(cmd[0] + ": Command not found\n");
 			}
 		}
 		
 	}
 	
 	private static String[] parseCmd(String cmd) {
-		//if(cmd.isEmpty())
-			//return new String[] {""};
 		return cmd.split(" ");
 	}
 	

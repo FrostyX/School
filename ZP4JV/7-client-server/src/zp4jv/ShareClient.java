@@ -32,31 +32,26 @@ public class ShareClient {
 		
 		while(true) {
 			
-			
+			// Přečtení příkazu z konzole
+			System.out.print(prompt);
 			String line = cin.nextLine();
 
+			// Zaslání příkazu na server
+			wr.write(line + "\n");
+			wr.flush();
 			
-			//String line = console.readLine();
-			//String line = System.console().readLine();
+			// Vypsání odpovědi serveru
+			String output = null;
+			while ((output = rd.readLine()) != null) {
+				
+				System.out.println(output);
+				if (!rd.ready())
+					break;
+			}
+
 			if(line.equals("quit")) {
 				break;
 			}
-			
-			wr.write(line + "\n");
-			wr.flush();
-
-			
-			String output = null;
-			while ((output = rd.readLine()) != null)
-				System.out.println(output);
-			
-			System.out.println("FOO");
-
-
-			//System.out.println(rd.readLine());
-			//System.out.println(line);
-			//System.out.println("Foo");
-			
 		}
 
 		cin.close();
