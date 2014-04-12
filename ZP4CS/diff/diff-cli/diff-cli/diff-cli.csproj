@@ -48,6 +48,7 @@
     <Compile Include="DiffLine.cs" />
     <Compile Include="File.cs" />
     <Compile Include="IO.cs" />
+    <Compile Include="IO_lib.cs" />
     <Compile Include="MissingArgumentException.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

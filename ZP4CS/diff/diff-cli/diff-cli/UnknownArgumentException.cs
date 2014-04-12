@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace diff_cli
+namespace Diff
 {
 	class UnknownArgumentException : Exception
 	{

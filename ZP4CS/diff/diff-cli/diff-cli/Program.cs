@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Diff;
 
 namespace diff_cli
 {
@@ -26,7 +27,7 @@ namespace diff_cli
 
 				File f1 = new File(args[0]);
 				File f2 = new File(args[1]);
-				IO.write(Diff.compare(f1, f2));
+				IO.write(Diff.Diff.compare(f1, f2));
 			}
 			catch (System.IO.FileNotFoundException e)
 			{

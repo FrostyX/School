@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace diff_cli
+namespace Diff
 {
 	/* Reprezentuje virtuální soubor jež je výsledkem porovnání dvou textových souborů
 	 * @author Jakub Kadlčík
