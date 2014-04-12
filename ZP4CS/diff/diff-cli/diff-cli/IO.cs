@@ -30,20 +30,31 @@ namespace diff_cli
 			// http://stackoverflow.com/a/1306751
 			int width = (int)(Math.Log10(file.Content[file.Content.Count-1].Number)+1);
 
-			StringBuilder s = new StringBuilder();
+			// Pro vytvoření řetězce k uložení do souboru
+			// Pokud jde výpis na STDOUT, rovnou se vypisuje
+			//    (Příkazová řádká windows nepodporuje ANSI řídící znaky pro barvy,
+			//     pouze přímou změnu barvy v konzoli)
+			StringBuilder sb = new StringBuilder();
+
 			foreach(DiffLine line in file.Content) {
 				if(colored) {
-					s.Append(colorForSymbol(line.Symbol));
+					Console.ForegroundColor = colorForSymbol(line.Symbol);
 				}
 				if(numberLines) {
 					// Zarovná čísla řádků do sloupečků (podle čísla s největším počtem cifer)
-					String f1 = !line.Symbol.Equals(Diff.ADD_SYMBOL) ? Convert.ToString(line.Number) : "";
-					String f2 = !line.Symbol.Equals(Diff.DEL_SYMBOL) ? Convert.ToString(line.Number) : "";
-					s.Append(String.Format("%-" + width + "s | %" + width + "s | ", f1, f2));
+					String f1 = line.Symbol.Equals(Diff.ADD_SYMBOL) ? "" : Convert.ToString(line.Number);
+					String f2 = line.Symbol.Equals(Diff.DEL_SYMBOL) ? "" : Convert.ToString(line.Number);
+					String s = String.Format("{0,-" + width + "} | {1,-" + width + "} | ", f1, f2);
+
+					if(output == null) write(s);
+					else sb.Append(s);
 				}
-				s.Append(line.ToString() + Environment.NewLine);
+				
+				if(output == null) write(line.ToString() + Environment.NewLine);
+				else sb.Append(line.ToString() + Environment.NewLine);
 			}
-			write(s);
+			if (output != null)
+				writeToFIle(sb.ToString(), output);
 		}
 
 		/**
@@ -55,11 +66,19 @@ namespace diff_cli
 		  */
 		public static void write(Object obj)
 		{
-			if (output == null)
-				Console.Write(obj.ToString());
-			else {
-				//write(obj, new PrintWriter(output));
-			}
+			Console.Write(obj.ToString());
+		}
+
+		/**
+		  * Vypíše objekt do textového souboru
+		  * @param obj - Vypisovaný objekt
+		  * @param path - Cesta k souboru
+		  */
+		public static void writeToFIle(Object obj, string path)
+		{
+			System.IO.StreamWriter file = new System.IO.StreamWriter(path);
+			file.WriteLine(obj.ToString());
+			file.Close();
 		}
 
 		/**
@@ -89,11 +108,12 @@ namespace diff_cli
 		  * @see zp3jv.Console.Constants
 		  * @see zp3jv.Diff
 		  */
-		private static String colorForSymbol(string symbol) {
-			//if(symbol.Equals(Diff.ADD_SYMBOL)) return Console.Constants.GREEN;
-			//if(symbol.Equals(Diff.DEL_SYMBOL)) return Console.Constants.RED;
-			//return Console.Constants.RESET;
-			return "";
+		private static ConsoleColor colorForSymbol(string symbol) {
+			if(symbol.Equals(Diff.ADD_SYMBOL)) return ConsoleColor.Green;
+			if(symbol.Equals(Diff.DEL_SYMBOL)) return ConsoleColor.Red;
+
+			Console.ResetColor();
+			return Console.ForegroundColor;
 		}
 
 		public static bool Colored
