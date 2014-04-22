@@ -13,7 +13,7 @@ while read line; do
 	fi
 
 	memory[$user]=$(($cur + $mem))
-done < <(ps aux)
+done < <(ps aux |tail -n +2)
 
 # Print it
 for user in "${!memory[@]}"; do
