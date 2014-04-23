@@ -9,7 +9,7 @@ namespace Diff
 	 * @author Jakub Kadlčík
 	 * @version 1.0
 	 */
-	class DiffFile
+	public class DiffFile
 	{
 		private List<DiffLine> content = new List<DiffLine>();
 

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Diff
 {
-	class IO
+	public class IO
 	{
 		protected static bool colored = true;
 		protected static bool numberLines = false;

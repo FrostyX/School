@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Diff
 {
-	class DiffLine
+	public class DiffLine
 	{
 		private int number;
 		private string symbol;

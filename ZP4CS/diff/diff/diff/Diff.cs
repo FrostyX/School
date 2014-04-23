@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Diff
 {
-	class Diff
+	public class Diff
 	{
 		public static readonly string ADD_SYMBOL = ">";
 		public static readonly string DEL_SYMBOL = "<";

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Diff
 {
-	class MissingArgumentException : Exception
+	public class MissingArgumentException : Exception
 	{
 		public MissingArgumentException(string message) : base(message)
 		{

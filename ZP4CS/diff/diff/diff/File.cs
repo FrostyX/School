@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Diff
 {
-	class File
+	public class File
 	{
 		private string path = "";
 		private List<string> content = new List<string>();
