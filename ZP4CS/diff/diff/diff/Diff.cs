@@ -12,26 +12,22 @@ namespace Diff
 		public static readonly string KEEP_SYMBOL = " ";
 
 
-		/**
-		  * Porovná dva textové soubory a vrátí sadu řádků a jejich potřebných úprav pro vytvoření souboru Y ze souboru X
-		  * @param x - Původní textový soubor
-		  * @param y - Nový textový soubor
-		  * @return Sada změn pro vytvoření nového souboru z původního
-		  */
+		/// <summary>Porovná dva textové soubory a vrátí sadu řádků a jejich potřebných úprav pro vytvoření souboru Y ze souboru X</summary>
+		/// <param name="x">Původní textový soubor</param>
+		/// <param name="y">Nový textový soubor</param>
+		/// <returns>Sada změn pro vytvoření nového souboru z původního</returns>
 		public static DiffFile compare(File x, File y)
 		{
 			return diff(lcs(x, y), x, y, x.Content.Count, y.Content.Count);
 		}
 
-		/**
-		  * Na základě algoritmu "An-O(ND)-Difference-Algorithm" od E. W. MYERSe porovná dva textové soubory
-		  * @param c - Nejdelší společná subsekvence
-		  * @param x - Původní textový soubor
-		  * @param y - Nový textový soubor
-		  * @param i
-		  * @param j
-		  * @return Sada změn pro vytvoření nového souboru z původního
-		  */
+		/// <summary>Na základě algoritmu "An-O(ND)-Difference-Algorithm" od E. W. MYERSe porovná dva textové soubory</summary>
+		/// <param name="c">Nejdelší společná subsekvence</param>
+		/// <param name="x">Původní textový soubor</param>
+		/// <param name="y">Nový textový soubor</param>
+		/// <param name="i"></param>
+		/// <param name="j"></param>
+		/// <returns>Sada změn pro vytvoření nového souboru z původního</returns>
 		private static DiffFile diff(int[][] c, File x, File y, int i, int j)
 		{
 			DiffFile d = new DiffFile();
@@ -57,12 +53,10 @@ namespace Diff
 			return d;
 		}
 
-		/**
-		  * Řeší problém "the longest common subsequence" - tedy nalezení nejdelší společné subsekvence
-		  * @param x - První soubor
-		  * @param y - Druhý soubor
-		  * @return Už jen bůh ví, co přesně se vrátí
-		  */
+		/// <summary>Řeší problém "the longest common subsequence" - tedy nalezení nejdelší společné subsekvence</summary>
+		/// <param name="x">První soubor</param>
+		/// <param name="y">Druhý soubor</param>
+		/// <returns>Už jen bůh ví, co přesně se vrátí</returns>
 		private static int[][] lcs(File x, File y)
 		{
 			int m = x.Content.Count;

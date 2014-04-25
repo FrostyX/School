@@ -5,27 +5,21 @@ using System.Text;
 
 namespace Diff
 {
-	/* Reprezentuje virtuální soubor jež je výsledkem porovnání dvou textových souborů
-	 * @author Jakub Kadlčík
-	 * @version 1.0
-	 */
+	/// <summary>Reprezentuje virtuální soubor jež je výsledkem porovnání dvou textových souborů</summary>
 	public class DiffFile
 	{
 		private List<DiffLine> content = new List<DiffLine>();
 
-		/**
-		  * Přidá řádek do virtuálního souboru
-		  * @param line - Přidávaný řádek
-		  */
+		
+		/// <summary>Přidá řádek do virtuálního souboru</summary>
+		/// <param name="line">Přidávaný řádek</param>
 		public void add(DiffLine line)
 		{
 			content.Add(line);
 		}
 
-		/**
-		  * Připojí jeden virtuální soubor na konec druhého
-		  * @param line - Přidávaný soubor
-		  */
+		/// <summary>Připojí jeden virtuální soubor na konec druhého</summary>
+		/// <param name="file">Přidávaný soubor</param>
 		public void add(DiffFile file) {
 			foreach(DiffLine line in file.Content)
 				content.Add(line);
@@ -36,9 +30,7 @@ namespace Diff
 			get { return content; }
 		}
 
-		/**
-		  * Vrátí obsah celého souboru jako řetězec.
-		  */
+		/// <summary>Vrátí obsah celého souboru jako řetězec.</summary>
 		public override string ToString() {
 			StringBuilder s = new StringBuilder();
 			foreach(DiffLine line in content) {

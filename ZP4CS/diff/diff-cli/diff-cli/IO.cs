@@ -8,25 +8,19 @@ namespace diff_cli
 {
 	class IO : Diff.IO
 	{
-		/**
-		  * Vypíše objekt na požadovaném rozhraní
-		  * Podporované: standardní výstup, textový soubor
-		  * @param obj - Vypisovaný objekt
-		  * @throws FileNotFoundException - Soubor neexistuje, Nedostatečné oprávnění
-		  * @throws IOException
-		  */
+		/// <summary>
+		/// Vypíše objekt na požadovaném rozhraní
+		/// Podporované: standardní výstup, textový soubor
+		/// </summary>
+		/// <param name="obj">Vypisovaný objekt</param>
 		public static void write(Object obj)
 		{
 			Console.Write(obj.ToString());
 		}
 
-		/**
-		  * Vrátí obarvení textu podle symbolu operace
-		  * @param symbol - Symbol operace
-		  * @return Řetězec obarvující konzoli daného OS
-		  * @see zp3jv.Console.Constants
-		  * @see zp3jv.Diff
-		  */
+		/// <summary>Vrátí obarvení textu podle symbolu operace</summary>
+		/// <param name="symbol">Symbol operace</param>
+		/// <returns>Barva písma</returns>
 		private static ConsoleColor colorForSymbol(string symbol) {
 			if(symbol.Equals(Diff.Diff.ADD_SYMBOL)) return ConsoleColor.Green;
 			if(symbol.Equals(Diff.Diff.DEL_SYMBOL)) return ConsoleColor.Red;
@@ -35,12 +29,8 @@ namespace diff_cli
 			return Console.ForegroundColor;
 		}
 
-		/**
-		  * Vypíše virtuální soubor diffu. Na základě hodnot třídy (ne)vypíše čísla řádků a barvičky
-		  * @param file - Vypisovaný soubor
-		  * @throws FileNotFoundException - Soubor neexistuje, Nedostatečné oprávnění
-		  * @throws IOException
-		  */
+		/// <summary>Vypíše virtuální soubor diffu. Na základě hodnot třídy (ne)vypíše čísla řádků a barvičky</summary>
+		/// <param name="file">Vypisovaný soubor</param>
 		public static void write(Diff.DiffFile file)
 		{
 			// Počet cifer posledního číslá řádku

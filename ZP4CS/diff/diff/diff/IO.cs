@@ -10,19 +10,17 @@ namespace Diff
 		protected static bool colored = true;
 		protected static bool numberLines = false;
 
-		/**
-		 * Výstupní zařízení.
-		 * Podporované: standardní výstup, textový soubor
-		 * Pro výstup do souboru, nastavte do této proměnné cestu
-		 */
+		/// <summary>
+		/// Výstupní zařízení.
+		/// Podporované: standardní výstup, textový soubor
+		/// Pro výstup do souboru, nastavte do této proměnné cestu
+		/// </summary>
 		protected static String output = null;
 
 
-		/**
-		  * Vypíše objekt do textového souboru
-		  * @param obj - Vypisovaný objekt
-		  * @param path - Cesta k souboru
-		  */
+		/// <summary>Vypíše objekt do textového souboru</summary>
+		/// <param name="obj">Vypisovaný objekt</param>
+		/// <param name="path">Cesta k souboru</param>
 		public static void writeToFIle(Object obj, string path)
 		{
 			System.IO.StreamWriter file = new System.IO.StreamWriter(path);
@@ -30,11 +28,8 @@ namespace Diff
 			file.Close();
 		}
 
-		/**
-		  * Vrátí obsah textového souboru
-		  * @param path - Cesta k souboru
-		  * @throws IOException
-		  */
+		/// <summary>Vrátí obsah textového souboru</summary>
+		/// <param name="path">Cesta k souboru</param>
 		public static List<string> readFile(string path)
 		{
 			List<string> file = new List<string>();

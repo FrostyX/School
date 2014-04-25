@@ -48,15 +48,10 @@ namespace diff_cli
 		}
 
 
-		/**
-		  * Nastaví výstupní parametry podle argumentů předaných při spuštění
-		  * @param args - Proměnná funkce main - String[] args
-		  * @throws MissingArgumentException - Chybějící hodnota pro parametr, který ji vyžaduje
-		  * @throws UnknownArgumentException - Neexistující parametr
-		  */
+		/// <summary>Nastaví výstupní parametry podle argumentů předaných při spuštění</summary>
+		/// <param name="args">Proměnná funkce main - String[] args</param>
 		public static void IObyArguments(String[] args)
 		{
-
 			// Na indexech 0 a 1 jsou vždy soubory, které se mají porovnat
 			for(int i=2; i<args.Length; i++)
 			{
@@ -83,10 +78,7 @@ namespace diff_cli
 			}
 		}
 
-
-		/**
-		  * Vypíše nápovědu pro použití tohoto programu
-		  */
+		/// <summary>Vypíše nápovědu pro použití tohoto programu</summary>
 		public static void printHelp()
 		{
 			String help = new StringBuilder()

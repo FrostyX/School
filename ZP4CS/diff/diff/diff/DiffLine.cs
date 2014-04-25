@@ -11,12 +11,10 @@ namespace Diff
 		private string symbol;
 		private string text;
 
-		/**
-		 * Vytvoří nový řádek virtualního souboru diffu
-		 * @param number - Číslo řádku
-		 * @param symbol - Symbol prováděné operace {@link zp3jv.Diff.KEEP_SYMBOL}, {@link zp3jv.Diff.ADD_SYMBOL}, {@link zp3jv.Diff.DEL_SYMBOL}
-		 * @param text - Text řádku
-		 */
+		/// <summary>Vytvoří nový řádek virtualního souboru diffu</summary>
+		/// <param name="number">Číslo řádku</param>
+		/// <param name="symbol">Symbol prováděné operace (Diff.KEEP_SYMBOL, Diff.ADD_SYMBOL, Diff.DEL_SYMBOL)</param>
+		/// <param name="text">Text řádku</param>
 		public DiffLine(int number, string symbol, string text)
 		{
 			this.number = number;
