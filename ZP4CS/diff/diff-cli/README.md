@@ -75,6 +75,6 @@ Výstup porovnání dvou textových souborů s použitím přepínače --number-
 	   | 13 | >
 
 # Zdroje
-- <https://github.com/FrostyX/School/blob/master/ZP3CS/diff/An-O(ND)-Difference-Algorithm-and-Its-Variations.pdf>
+- <https://github.com/FrostyX/School/blob/master/ZP4CS/diff/diff/An-O(ND)-Difference-Algorithm-and-Its-Variations.pdf>
 - <http://en.wikibooks.org/wiki/Algorithm_Implementation/Strings/Longest_common_subsequence#Python>
 - <http://www.abclinuxu.cz/clanky/navody/unixove-nastroje-8-diff-a-patch>
