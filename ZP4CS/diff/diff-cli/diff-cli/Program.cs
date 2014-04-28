@@ -91,8 +91,6 @@ namespace diff_cli
 				.Append("## Usage\n")
 				.Append("`-nc`, `--no-color`\n")
 				.Append("    Do not color the output\n")
-				.Append("    (Colors are supported only for UNIX systems.\n")
-				.Append("    That means this parameter do nothing on Windows.)\n\n")
 				.Append("`-l`, `--number-lines`\n")
 				.Append("    Print line numbers\n\n")
 				.Append("`-o`, `--output` soubor\n")
