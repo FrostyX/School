@@ -15,8 +15,6 @@ public class Markdown {
 	}
 	
 	public static Markdown fromFile(String file) throws IOException {
-		// @TODO Ověřit jestli je to md soubor a pokud ne, vyhodit vyjímku
-
 		StringBuilder sb = new StringBuilder();
 		BufferedReader reader = new BufferedReader(new FileReader(file));
 		

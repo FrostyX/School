@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+   - config.xml
+   - Configuration file for MarkdownWebServer
+   - 
+   - Syntax:
+   -     <vhost port="..." name="..." documentRoot="..." />
+   -
+  -->
+
+<vhosts>
+	<vhost port="7474" name="wiki" documentRoot="/home/frostyx/tracer.wiki" />
+	<vhost port="7475" name="tmp" documentRoot="/tmp/markdown" />
+</vhosts> 
