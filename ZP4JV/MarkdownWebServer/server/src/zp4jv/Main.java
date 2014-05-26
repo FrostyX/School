@@ -15,7 +15,8 @@ public class Main {
 
 			System.out.println("Starting MarkdownWebServer");
 
-			for(VHostConfig vhost : Config.getVHosts()) {
+			Config config = new Config(Config.DEFAULT_PATH);
+			for(VHostConfig vhost : config.getVHosts()) {
 				System.out.println("Starting VHost: " + vhost.getName());
 				(new VHostThread(vhost)).start();
 			}

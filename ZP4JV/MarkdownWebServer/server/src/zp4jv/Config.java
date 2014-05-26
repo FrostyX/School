@@ -18,13 +18,17 @@ import org.xml.sax.SAXException;
 
 public class Config {
 	
-	public static final String DEFAULT_CONFIG = "config.xml";
+	public static final String DEFAULT_PATH = "../config.xml";
+	private String path = null;
 	
+	public Config(String path) {
+		this.path = path;
+	}
 
-	public static ArrayList<VHostConfig> getVHosts() throws FileNotFoundException, SAXException, IOException, ParserConfigurationException {
+	public ArrayList<VHostConfig> getVHosts() throws FileNotFoundException, SAXException, IOException, ParserConfigurationException {
 		DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
-		Document doc = documentBuilder.parse(new DataInputStream(new FileInputStream(DEFAULT_CONFIG)));
+		Document doc = documentBuilder.parse(new DataInputStream(new FileInputStream(path)));
 
 		ArrayList<VHostConfig> vhosts = new ArrayList<VHostConfig>();
 		NodeList nList = doc.getElementsByTagName("vhost");
@@ -43,5 +47,13 @@ public class Config {
 			}
 		}
 		return vhosts;
+	}
+
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
 	}
 }
