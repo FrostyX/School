@@ -9,6 +9,6 @@
   -->
 
 <vhosts>
-	<vhost port="7474" name="tracer" documentRoot="/home/frostyx/docs/skola/upol/ZP4JV/MarkdownWebServer/data/tracer.wiki/" />
-	<vhost port="7475" name="neo4j-browser" documentRoot="/home/frostyx/docs/skola/upol/ZP4JV/MarkdownWebServer/data/neo4j-browser.wiki/" />
+	<vhost port="7474" name="tracer" documentRoot="/tmp/MarkdownWebServer/data/tracer.wiki/" />
+	<vhost port="7475" name="neo4j-browser" documentRoot="/tmp/MarkdownWebServer/data/neo4j-browser.wiki/" />
 </vhosts>

@@ -9,12 +9,12 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		Config config = new Config(Config.DEFAULT_PATH);
-		if(args.length > 0) {
-			config.setPath(args[0]);
-		}
-		
 		try {
+
+			Config config = new Config(Config.DEFAULT_PATH);
+			if(args.length > 0) {
+				config.setPath(args[0]);
+			}
 
 			System.out.println("Starting MarkdownWebServer");
 
@@ -27,7 +27,7 @@ public class Main {
 		catch(RuntimeException e) {
 			e.printStackTrace();
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			System.out.println("[ERROR] Config not found");
 		} catch (SAXException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

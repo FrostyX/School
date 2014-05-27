@@ -6,7 +6,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -25,7 +24,7 @@ import org.xml.sax.SAXException;
 
 public class Config {
 	
-	public static final String DEFAULT_PATH = System.getProperty("user.dir") + "/../config.xml";
+	public static final String DEFAULT_PATH = "/tmp/MarkdownWebServer/config.xml";
 	private String path = null;
 	
 	public Config(String path) {
@@ -115,7 +114,7 @@ public class Config {
 		StreamResult result = new StreamResult(new File(path));
 		transformer.transform(source, result);
 	}
-
+	
 	public String getPath() {
 		return path;
 	}
