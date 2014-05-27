@@ -23,18 +23,24 @@ public class LoadConfig implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		try {
+			config.setPath(chooseFile());
+			populate();
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+		} catch (FileNotChoosedException e1) {
+		}
+	}
+	
+	public void populate() {
 		try {	
-			
-			if(config.getPath() == null) {
-				config.setPath(chooseFile());
-			}
-
 			VHostsTableModel model = (VHostsTableModel) table.getModel();
 			model.clear();
 
 			for(VHostConfig vhost : config.getVHosts()) {
 				model.addRow(new VHostConfig(vhost.getPort(), vhost.getName(), vhost.getDocumentRoot()));
 			}
+			MainForm.setHeader(config.getName());
 
 		} catch (FileNotFoundException e1) {
 			JOptionPane.showMessageDialog(null, "File not found");
@@ -44,7 +50,6 @@ public class LoadConfig implements ActionListener {
 			e1.printStackTrace();
 		} catch (ParserConfigurationException e1) {
 			e1.printStackTrace();
-		} catch (FileNotChoosedException e1) {
 		}
 	}
 	

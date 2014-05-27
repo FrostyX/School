@@ -8,7 +8,7 @@ public class NewVHost implements ActionListener {
 	
 	private JTable table = null;
 
-	public NewVHost(JTable vHostsTable) {
+	public NewVHost(JTable vHostsTable, Config config) {
 		this.table = vHostsTable;
 	}
 

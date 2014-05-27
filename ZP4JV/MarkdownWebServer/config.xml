@@ -1,14 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- 
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
    - config.xml
    - Configuration file for MarkdownWebServer
-   - 
+   -
    - Syntax:
    -     <vhost port="..." name="..." documentRoot="..." />
    -
   -->
 
 <vhosts>
-	<vhost port="7474" name="wiki" documentRoot="/home/frostyx/tracer.wiki" />
-	<vhost port="7475" name="tmp" documentRoot="/tmp/markdown" />
-</vhosts> 
+	<vhost port="7474" name="tracer" documentRoot="/home/frostyx/docs/skola/upol/ZP4JV/MarkdownWebServer/data/tracer.wiki/" />
+	<vhost port="7475" name="neo4j-browser" documentRoot="/home/frostyx/docs/skola/upol/ZP4JV/MarkdownWebServer/data/neo4j-browser.wiki/" />
+</vhosts>

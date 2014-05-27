@@ -11,15 +11,15 @@ import java.net.Socket;
 
 public class VHostThread extends Thread {
 	
-	private VHostConfig config;
+	private VHostConfig vhost;
 	
-	public VHostThread(VHostConfig config) {
-		this.config = config;
+	public VHostThread(VHostConfig vhost) {
+		this.vhost = vhost;
 	}
 
 	public void run() {
 		try {
-			ServerSocket srvSocket = new ServerSocket(config.getPort());
+			ServerSocket srvSocket = new ServerSocket(vhost.getPort());
 			
 			boolean stopServer = false;
 			while (!stopServer) {
@@ -43,13 +43,13 @@ public class VHostThread extends Thread {
 			System.out.println("Shutting down");
 			srvSocket.close();
 		}
-		catch(Exception e) {
-			throw new RuntimeException(e);
+		catch (Exception e) {
+			System.out.println(String.format("[FAIL] VHost %s - %s", e.getMessage(), vhost.getName()));
 		}
     }
 
 	private void respond(String[] request, BufferedWriter wr) throws IOException, MarkdownException {
-		String path = config.getDocumentRoot() + request[1];
+		String path = vhost.getDocumentRoot() + request[1];
 		File file = new File(path);
 		if(!file.exists()) {
 			Response r = new Response(StatusCode.NotFound, "Page not found");
@@ -64,9 +64,13 @@ public class VHostThread extends Thread {
 			Response r = new Response(StatusCode.OK, sb.toString());
 			wr.write(r.toString());
 		}
-		else {
+		else if(file.getName().endsWith(".md")) {
 			Markdown m = Markdown.fromFile(path);
 			Response r = new Response(StatusCode.OK, m.toHtml());
+			wr.write(r.toString());
+		}
+		else {
+			Response r = new Response(StatusCode.NotImplemented, "Not a markdown file!");
 			wr.write(r.toString());
 		}
 	}

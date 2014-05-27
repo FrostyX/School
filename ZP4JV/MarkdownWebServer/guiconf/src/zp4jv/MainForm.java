@@ -1,13 +1,14 @@
 package zp4jv;
 
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-
 
 public class MainForm extends JDialog {
 	
@@ -16,18 +17,31 @@ public class MainForm extends JDialog {
 	private VHostsTableModel vHostsModel;
 	private JTable vHostsTable;
 	private Config config;
+	private static JLabel lHeader;
 
 	public MainForm() {
 		initializeComponents();
+		this.setTitle("MarkdownWebServer GUIConf");
 		this.setPreferredSize(new Dimension(450, 400));
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.pack();
 	}
-
+	
+	public static void setHeader(String header) {
+		lHeader.setText(header);
+	}
+	
 	private void initializeComponents() {
+		getContentPane().setLayout(new FlowLayout());
+		initializeHeader();
 		initializeVhosts();
 		populateVhosts();
 		initializeMainMenu();
+	}
+	
+	private void initializeHeader() {
+		lHeader = new JLabel();
+		getContentPane().add(lHeader);
 	}
 	
 	private void initializeMainMenu() {
@@ -49,12 +63,10 @@ public class MainForm extends JDialog {
 
 		// Save config
 		JMenuItem menuItemSave = new JMenuItem("Save");
-		System.out.println(config);
 		menuItemSave.addActionListener(new SaveConfig(vHostsTable, config));
 		menuConfig.add(menuItemSave);
 
 		// Load config
-		config = new Config(null);
 		JMenuItem menuItemLoad = new JMenuItem("Load");
 		menuItemLoad.addActionListener(new LoadConfig(vHostsTable, config));
 		menuConfig.add(menuItemLoad);
@@ -66,8 +78,13 @@ public class MainForm extends JDialog {
 
 		// New VHost
 		JMenuItem menuItemNew = new JMenuItem("New");
-		menuItemNew.addActionListener(new NewVHost(vHostsTable));
+		menuItemNew.addActionListener(new NewVHost(vHostsTable, config));
 		menuVHost.add(menuItemNew);
+
+		// Remove VHost
+		JMenuItem menuItemRemove = new JMenuItem("Remove");
+		menuItemRemove.addActionListener(new RemoveVHost(vHostsTable, config));
+		menuVHost.add(menuItemRemove);
 	}
 
 	private void initializeMainMenuHelp() {
@@ -81,6 +98,7 @@ public class MainForm extends JDialog {
 	}
 
 	private void initializeVhosts() {
+		config = new Config(Config.DEFAULT_PATH);
 		
 		String[] columns = new String[] {"Port", "Name", "DocumentRoot"};
 		Object[][] values = new Object[][] {};
@@ -99,7 +117,6 @@ public class MainForm extends JDialog {
 	}
 	
 	private void populateVhosts() {
-		config = new Config(Config.DEFAULT_PATH);
-		new LoadConfig(vHostsTable, config).actionPerformed(null);
+		new LoadConfig(vHostsTable, config).populate();
 	}
 }

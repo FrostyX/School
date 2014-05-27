@@ -1,5 +1,6 @@
 package zp4jv;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 
@@ -54,13 +55,29 @@ public class VHostsTableModel extends AbstractTableModel implements Iterable<VHo
 
 	public void addRow(VHostConfig vhost) {
 		values = Arrays.copyOf(values, values.length + 1);
-		values[values.length - 1] = new Object[] {vhost.getPort(), vhost.getName(), vhost.getDocumentRoot()};
+		String port = vhost.getPort() < 0 ? "" : String.valueOf(vhost.getPort());
+		values[values.length - 1] = new Object[] {port, vhost.getName(), vhost.getDocumentRoot()};
 		fireTableStructureChanged();
+	}
+	
+	public void removeRow(int index) {
+		ArrayList<Object[]> a = new ArrayList<Object[]>(Arrays.asList(values));
+		a.remove(index);
+		values = new Object[a.size()][];
+		a.toArray(values);
 	}
 
 	public void clear() {
 		values = new Object[][] {};
 		fireTableStructureChanged();
+	}
+	
+	public ArrayList<VHostConfig> getAll() {
+		ArrayList<VHostConfig> vhosts = new ArrayList<VHostConfig>();
+		for(VHostConfig vhost : this) {
+			vhosts.add(vhost);
+		}
+		return vhosts;
 	}
 
 	@Override
@@ -76,8 +93,27 @@ public class VHostsTableModel extends AbstractTableModel implements Iterable<VHo
 	
 			@Override
 			public VHostConfig next() {
+				
+				int port = 0;
+				try {
+					// Manually edited ports in table are String
+					if(values[row][0].getClass().equals(String.class)) {
+						port = Integer.valueOf((String) values[row][0]);
+					}
+					else if(values[row][0].getClass().equals(Integer.class)) {
+						port = (Integer)values[row][0];
+					}
+				}
+				catch(Exception e) {
+					throw new NumberFormatException("Incorrect port number: " + (String)values[row][0]);
+				}
+
+				VHostConfig vhost = new VHostConfig(
+						port,
+						(String)values[row][1],
+						(String)values[row][2]);
 				row ++;
-				return null;
+				return vhost;
 			}
 	
 			@Override
