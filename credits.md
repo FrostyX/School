@@ -217,5 +217,5 @@
 ###### Total
 <table>
 	<tr><th>A</th><th>B</th><th>C</th><th></th><th>Total</th></tr>
-	<tr><td>96</td><td>23</td><td>10</td><td></td><td>128</td></tr>
+	<tr><td>96</td><td>23</td><td>10</td><td></td><td>129</td></tr>
 </table>
