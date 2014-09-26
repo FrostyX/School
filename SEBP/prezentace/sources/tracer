@@ -1,0 +1,10 @@
+$[FrostyX  ~]-> sudo tracer -e
+You should restart:
+  * Some applications using:
+      sudo service samba restart
+      sudo service mpd restart
+      sudo service nmbd restart
+
+  * These applications manually:
+      urxvt
+      gvim

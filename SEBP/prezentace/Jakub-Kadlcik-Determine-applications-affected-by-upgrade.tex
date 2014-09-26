@@ -11,19 +11,110 @@
 \institute[UPOL]{Univerzita Palackého v Olomouci}
 \date{25.~9.~2014}
 
+\usepackage{listings}
+\input{solarized}
+
+\newcommand{\separator}{\vspace{15pt}}
+
 \begin{document}
+
 	\begin{frame}
 		\titlepage
 	\end{frame}
 
-	\begin{frame}
-		\frametitle{BAR}
-		FOOO
+	\begin{frame}{Správa software v GNU/Linux}
+		\begin{itemize}
+			\item Spousta distribucí
+			\item Balíčkovací systémy (dnf, yum, apt, \dots)
+			\item Různé typy balíčků (rpm, deb, \dots)
+			\item Repozitáře s balíčky
+		\end{itemize}
 	\end{frame}
 
-	\begin{frame}
-		\frametitle{BaZ}
-		Qux
+	\begin{frame}{Problém}
+		Scénář:
+		\begin{enumerate}
+			\item Uživatel spustí aplikaci
+			\item Aplikace načte do paměti všechny soubory potřebné k běhu
+			\item Aplikace nadále pracuje se soubory v paměti
+			\item \dots
+			\item Uživatel spustí aktualizaci systému, která aplikaci ovlivní
+			\item Spuštěná aplikace není ovlivněna - je potřeba ji restartovat
+		\end{enumerate}
+	\end{frame}
+
+	\begin{frame}{Důsledky}
+		\begin{itemize}
+			\item Zdpozdění nové funkcionality
+			\item Zpozdění záplat chyb
+			\item Problémy s konfigurací
+			\item Nejistota opětovného startu aplikace
+		\end{itemize}
+	\end{frame}
+
+	\begin{frame}{Zadání}
+		\begin{itemize}
+			\item Nalezení aktualizacemi ovlivněných aplikací
+			\item Vypsání nápovědy, jak aplikace restartovat
+		\end{itemize}
+
+		\begin{itemize}
+			\item Podpora distribuce Fedora
+			\item Modul do balíčkovacího systému DNF
+			\item Textové uživatelské rozhraní
+			\item Implementace v jazyce Python
+		\end{itemize}
+	\end{frame}
+
+	\begin{frame}{Vyhledání ovlivněných aplikací}
+		Algoritmus:
+		\begin{enumerate}
+			\item Získáme seznam všech balíčků modifikovaných od spuštění systému
+			\item Získáme seznam všech spuštěných procesů
+			\item Pro každý balíček a každý proces uděláme množinový průnik jejich souborů
+			\item Neprázdný průnik znamená, že proces byl daným balíčkem ovlivněný
+		\end{enumerate}
+		\separator
+		\begin{itemize}
+			\item Příšerná časová složitost
+		\end{itemize}
+	\end{frame}
+
+	\begin{frame}{Vyhledání ovlivněných aplikací - Vylepšení}
+		Úpravy:
+		\begin{itemize}
+			\item Mnoho procesů využívá stejné soubory (knihovny, etc)
+			\item Nebudeme zkoumat proces po procesu, ale sjednocení jejich souborů
+			\item Struktura \texttt{\{ soubor1 : [proces1, proces2, \dots], \dots \}}
+		\end{itemize}
+		\separator
+		Vylepšený algoritmus:
+		\begin{enumerate}
+			\item Získáme seznam všech balíčků modifikovaných od spuštění systému
+			\item Získáme strukturu souborů a procesů
+			\item Každý soubor poskytovaný balíčkem hledáme ve struktuře
+			\item Nalezená shoda znamená, že balíček ovlivnil nalezené procesy
+		\end{enumerate}
+	\end{frame}
+
+	\begin{frame}{Ukázka}
+		\lstinputlisting{sources/tracer}
+	\end{frame}
+
+	\begin{frame}{Ukázka - Informace o aplikaci}
+		\lstinputlisting{sources/helper}
+	\end{frame}
+
+	\begin{frame}{Závěr}
+		Odkazy:
+		\begin{itemize}
+			\item https://github.com/FrostyX/tracer
+			\item https://github.com/FrostyX/tracer/wiki
+			\item https://github.com/FrostyX/tracer/issues
+			\item https://copr.fedoraproject.org/coprs/frostyx/tracer/
+		\end{itemize}
+		\vspace{70pt}
+		\centerline{\textbf{Děkuji za pozornost.} Máte nějaké dotazy?}
 	\end{frame}
 
 \end{document}

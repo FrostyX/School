@@ -1,0 +1,10 @@
+$[FrostyX  ~]-> sudo tracer -s mpd
+* mpd
+    Package:     media-sound/mpd
+    Description: The Music Player Daemon (mpd)
+    Type:        Daemon
+    State:       mpd has been started by frostyx 4 days ago.
+
+    How to restart:
+        service mpd restart
+
