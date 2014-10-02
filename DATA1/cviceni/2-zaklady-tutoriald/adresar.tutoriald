@@ -1,0 +1,42 @@
+/*
+DROP TYPE Jmeno;
+DROP TYPE Datum;
+DROP TYPE Pohlavi;
+DROP TYPE Povolani;
+DROP TYPE Plat;
+DROP TYPE Vek;
+DROP TYPE Dite;
+
+DROP VAR adresar;
+*/
+
+TYPE Jmeno POSSREP {jmeno CHAR, prijmeni CHAR};
+TYPE Datum POSSREP {den INTEGER, mesic INTEGER, rok INTEGER};
+TYPE Pohlavi POSSREP {pohlavi CHAR};
+TYPE Povolani POSSREP {povolani CHAR};
+TYPE Plat POSSREP {plat RATIONAL};
+TYPE Vek POSSREP {vek INTEGER};
+TYPE Dite POSSREP {jmeno Jmeno, vek Vek};
+
+VAR adresar BASE RELATION {
+    jmeno Jmeno,
+    narozen Datum,
+    pohlavi Pohlavi,
+    povolani Povolani,
+    plat Plat,
+    deti RELATION {dite Dite}
+} KEY {jmeno};
+
+adresar := RELATION {
+    TUPLE {
+        jmeno Jmeno("Jakub", "Kadlcik"),
+        narozen Datum(4, 5, 1993),
+        pohlavi Pohlavi("muz"),
+        povolani Povolani("student"),
+        plat Plat(9000.0),
+        deti RELATION {
+            TUPLE {dite Dite(Jmeno("Foo", "Bar"), Vek(10))},
+            TUPLE {dite Dite(Jmeno("Baz", "Qux"), Vek(15))}
+        }
+    }
+};
