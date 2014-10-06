@@ -83,22 +83,22 @@
 		\end{itemize}
 	\end{frame}
 
-	\begin{frame}{Vyhledání ovlivněných aplikací - Vylepšení}
-		Úpravy:
-		\begin{itemize}
-			\item Mnoho procesů využívá stejné soubory (knihovny, etc)
-			\item Nebudeme zkoumat proces po procesu, ale sjednocení jejich souborů
-			\item Struktura \texttt{\{ soubor1 : [proces1, proces2, \dots], \dots \}}
-		\end{itemize}
-		\separator
-		Vylepšený algoritmus:
-		\begin{enumerate}
-			\item Získáme seznam všech balíčků modifikovaných od spuštění systému
-			\item Získáme strukturu souborů a procesů
-			\item Každý soubor poskytovaný balíčkem hledáme ve struktuře
-			\item Nalezená shoda znamená, že balíček ovlivnil nalezené procesy
-		\end{enumerate}
-	\end{frame}
+	% \begin{frame}{Vyhledání ovlivněných aplikací - Vylepšení}
+	% 	Úpravy:
+	% 	\begin{itemize}
+	% 		\item Mnoho procesů využívá stejné soubory (knihovny, etc)
+	% 		\item Nebudeme zkoumat proces po procesu, ale sjednocení jejich souborů
+	% 		\item Struktura \texttt{\{ soubor1 : [proces1, proces2, \dots], \dots \}}
+	% 	\end{itemize}
+	% 	\separator
+	% 	Vylepšený algoritmus:
+	% 	\begin{enumerate}
+	% 		\item Získáme seznam všech balíčků modifikovaných od spuštění systému
+	% 		\item Získáme strukturu souborů a procesů
+	% 		\item Každý soubor poskytovaný balíčkem hledáme ve struktuře
+	% 		\item Nalezená shoda znamená, že balíček ovlivnil nalezené procesy
+	% 	\end{enumerate}
+	% \end{frame}
 
 	\begin{frame}{Ukázka}
 		\lstinputlisting{sources/tracer}
