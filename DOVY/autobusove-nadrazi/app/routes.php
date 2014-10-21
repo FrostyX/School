@@ -11,7 +11,9 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+Route::get('/', 'HomeController@getIndex');
+Route::get('/ridici', 'RidiciController@getIndex');
+Route::get('/autobusy', 'AutobusyController@getIndex');
+Route::get('/spoje', 'SpojeController@getIndex');
+Route::get('/trzba', 'TrzbaController@getIndex');
+Route::get('/spotreba', 'SpotrebaController@getIndex');

@@ -12,6 +12,7 @@ class MySeeder extends Seeder
 		DB::table('ridic')->delete();
 		DB::table('spoj')->delete();
 		DB::table('zastavka')->delete();
+		DB::table('jizda')->delete();
 
 		DB::table('ridic')->insert(array(
 			array('id' => '1', 'jmeno' => 'Jan', 'prijmeni' => 'Novák'),
@@ -88,6 +89,14 @@ class MySeeder extends Seeder
 			array('id' => '5', 'vzdalenost' => 14, 'cena' => 15, 'linka_id' => 1, 'odkud' => 5, 'kam' => 6, 'odjezd' => '11:06', 'prijezd' => '10:12'),
 			array('id' => '6', 'vzdalenost' => 19, 'cena' => 20, 'linka_id' => 1, 'odkud' => 6, 'kam' => 7, 'odjezd' => '10:15', 'prijezd' => '11:22'),
 			array('id' => '7', 'vzdalenost' => 17, 'cena' => 18, 'linka_id' => 1, 'odkud' => 7, 'kam' => 8, 'odjezd' => '11:22', 'prijezd' => '11:40'),
+		));
+
+		DB::table('jizda')->insert(array(
+			array('id' => '1', 'autobus_id' => 1, 'ridic_id' => 1, 'linka_id' => 1),
+			array('id' => '2', 'autobus_id' => 1, 'ridic_id' => 2, 'linka_id' => 1),
+			array('id' => '3', 'autobus_id' => 2, 'ridic_id' => 1, 'linka_id' => 1),
+			array('id' => '4', 'autobus_id' => 2, 'ridic_id' => 2, 'linka_id' => 1),
+			array('id' => '5', 'autobus_id' => 3, 'ridic_id' => 1, 'linka_id' => 1),
 		));
 	}
 }
