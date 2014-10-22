@@ -13,6 +13,7 @@ class CreateJizdaTable extends Migration {
 			$table->integer('ridic_id')->unsigned();
 			$table->integer('autobus_id')->unsigned();
 			$table->integer('linka_id')->unsigned();
+			$table->date('datum');
 
 			$table->foreign('ridic_id')->references('id')->on('ridic');
 			$table->foreign('autobus_id')->references('id')->on('autobus');

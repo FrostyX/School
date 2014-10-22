@@ -1,3 +1,3 @@
 ## Vytvoření a naplnění tabulek
 
-	php artisan migrate:refresh --seed
+	php artisan migrate:refresh --seed --force

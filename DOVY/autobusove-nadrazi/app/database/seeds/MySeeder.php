@@ -92,11 +92,11 @@ class MySeeder extends Seeder
 		));
 
 		DB::table('jizda')->insert(array(
-			array('id' => '1', 'autobus_id' => 1, 'ridic_id' => 1, 'linka_id' => 1),
-			array('id' => '2', 'autobus_id' => 1, 'ridic_id' => 2, 'linka_id' => 1),
-			array('id' => '3', 'autobus_id' => 2, 'ridic_id' => 1, 'linka_id' => 1),
-			array('id' => '4', 'autobus_id' => 2, 'ridic_id' => 2, 'linka_id' => 1),
-			array('id' => '5', 'autobus_id' => 3, 'ridic_id' => 1, 'linka_id' => 1),
+			array('id' => '1', 'autobus_id' => 1, 'ridic_id' => 1, 'linka_id' => 1, 'datum' => '2014-10-20'),
+			array('id' => '2', 'autobus_id' => 1, 'ridic_id' => 2, 'linka_id' => 1, 'datum' => '2014-10-21'),
+			array('id' => '3', 'autobus_id' => 2, 'ridic_id' => 1, 'linka_id' => 1, 'datum' => '2014-10-22'),
+			array('id' => '4', 'autobus_id' => 2, 'ridic_id' => 2, 'linka_id' => 1, 'datum' => '2014-10-23'),
+			array('id' => '5', 'autobus_id' => 3, 'ridic_id' => 1, 'linka_id' => 1, 'datum' => '2014-10-24'),
 		));
 	}
 }
