@@ -53,8 +53,8 @@ class MySeeder extends Seeder
 		));
 
 		DB::table('linka')->insert(array(
-			array('id' => '1', 'cislo' => '890706'),
-			array('id' => '2', 'cislo' => ''),
+			array('id' => '1', 'cislo' => 890706),
+			array('id' => '2', 'cislo' => 890706),
 			array('id' => '3', 'cislo' => ''),
 			array('id' => '4', 'cislo' => ''),
 			array('id' => '5', 'cislo' => ''),
@@ -89,6 +89,13 @@ class MySeeder extends Seeder
 			array('id' => '5', 'vzdalenost' => 14, 'cena' => 15, 'linka_id' => 1, 'odkud' => 5, 'kam' => 6, 'odjezd' => '11:06', 'prijezd' => '10:12'),
 			array('id' => '6', 'vzdalenost' => 19, 'cena' => 20, 'linka_id' => 1, 'odkud' => 6, 'kam' => 7, 'odjezd' => '10:15', 'prijezd' => '11:22'),
 			array('id' => '7', 'vzdalenost' => 17, 'cena' => 18, 'linka_id' => 1, 'odkud' => 7, 'kam' => 8, 'odjezd' => '11:22', 'prijezd' => '11:40'),
+
+			array('id' => 8,   'vzdalenost' => 17, 'cena' => 18, 'linka_id' => 2, 'odkud' => 8, 'kam' => 1, 'odjezd' => '10:25', 'prijezd' => '11:20'),
+			array('id' => 9,   'vzdalenost' => 17, 'cena' => 18, 'linka_id' => 2, 'odkud' => 8, 'kam' => 1, 'odjezd' => '10:40', 'prijezd' => '11:05'),
+			array('id' => 10,  'vzdalenost' => 17, 'cena' => 18, 'linka_id' => 2, 'odkud' => 8, 'kam' => 1, 'odjezd' => '12:40', 'prijezd' => '13:40'),
+			array('id' => 11,  'vzdalenost' => 17, 'cena' => 18, 'linka_id' => 2, 'odkud' => 8, 'kam' => 1, 'odjezd' => '14:10', 'prijezd' => '15:00'),
+			array('id' => 12,  'vzdalenost' => 17, 'cena' => 18, 'linka_id' => 2, 'odkud' => 8, 'kam' => 1, 'odjezd' => '15:55', 'prijezd' => '16:50'),
+			array('id' => 13,  'vzdalenost' => 17, 'cena' => 18, 'linka_id' => 2, 'odkud' => 8, 'kam' => 1, 'odjezd' => '17:05', 'prijezd' => '18:10'),
 		));
 
 		DB::table('jizda')->insert(array(
