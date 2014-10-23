@@ -4,8 +4,8 @@ class SpojeController extends BaseController {
 
 	public function getIndex()
 	{
-		$odkud = Spoj::find(8);
-		$kam = Spoj::find(1);
+		$odkud = Zastavka::find(8);
+		$kam = Zastavka::find(1);
 
 		$spoje = Spoj::between($odkud->id, $kam->id);
 

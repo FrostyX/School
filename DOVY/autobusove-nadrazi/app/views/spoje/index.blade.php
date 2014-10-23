@@ -2,7 +2,7 @@
 @section('content')
 	<h1>Spoje</h1>
 	<div class="panel panel-default">
-		<div class="panel-heading">{{ $odkud->id }} -> {{ $kam->id }}</div>
+		<div class="panel-heading">{{ $odkud->nazev }} -> {{ $kam->nazev }}</div>
 		<table class="table table-striped">
 		<thead>
 			<tr>
