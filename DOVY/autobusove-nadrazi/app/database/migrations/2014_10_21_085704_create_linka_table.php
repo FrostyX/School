@@ -10,7 +10,7 @@ class CreateLinkaTable extends Migration {
 		Schema::create('linka', function($table)
 		{
 			$table->increments('id');
-			$table->integer('cislo');
+			$table->integer('cislo')->unique();
 			// $table->integer('odkud')->unsigned();
 			// $table->integer('kam')->unsigned();
                         //

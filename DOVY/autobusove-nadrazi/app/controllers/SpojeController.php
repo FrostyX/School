@@ -10,6 +10,7 @@ class SpojeController extends BaseController {
 		$spoje = Spoj::between($odkud->id, $kam->id);
 
 		return View::make('spoje.index')
+			->with('title', 'Spoje')
 			->with('odkud', $odkud)
 			->with('kam', $kam)
 			->with('spoje', $spoje);

@@ -54,11 +54,11 @@ class MySeeder extends Seeder
 
 		DB::table('linka')->insert(array(
 			array('id' => '1', 'cislo' => 890706),
-			array('id' => '2', 'cislo' => 890706),
-			array('id' => '3', 'cislo' => ''),
-			array('id' => '4', 'cislo' => ''),
-			array('id' => '5', 'cislo' => ''),
-			array('id' => '6', 'cislo' => ''),
+			array('id' => '2', 'cislo' => 890705),
+			// array('id' => '3', 'cislo' => ''),
+			// array('id' => '4', 'cislo' => ''),
+			// array('id' => '5', 'cislo' => ''),
+			// array('id' => '6', 'cislo' => ''),
 		));
 
 		DB::table('autobus_linka')->insert(array(
@@ -99,11 +99,11 @@ class MySeeder extends Seeder
 		));
 
 		DB::table('jizda')->insert(array(
-			array('id' => '1', 'autobus_id' => 1, 'ridic_id' => 1, 'linka_id' => 1, 'datum' => '2014-10-20'),
-			array('id' => '2', 'autobus_id' => 1, 'ridic_id' => 2, 'linka_id' => 1, 'datum' => '2014-10-21'),
-			array('id' => '3', 'autobus_id' => 2, 'ridic_id' => 1, 'linka_id' => 1, 'datum' => '2014-10-22'),
-			array('id' => '4', 'autobus_id' => 2, 'ridic_id' => 2, 'linka_id' => 1, 'datum' => '2014-10-23'),
-			array('id' => '5', 'autobus_id' => 3, 'ridic_id' => 1, 'linka_id' => 1, 'datum' => '2014-10-24'),
+			array('id' => '1', 'autobus_id' => 1, 'ridic_id' => 1, 'linka_id' => 1, 'trzba' => 250, 'datum' => '2014-10-20'),
+			array('id' => '2', 'autobus_id' => 1, 'ridic_id' => 2, 'linka_id' => 1, 'trzba' => 350, 'datum' => '2014-10-21'),
+			array('id' => '3', 'autobus_id' => 2, 'ridic_id' => 1, 'linka_id' => 1, 'trzba' => 450, 'datum' => '2014-10-22'),
+			array('id' => '4', 'autobus_id' => 2, 'ridic_id' => 2, 'linka_id' => 1, 'trzba' => 250, 'datum' => '2014-10-23'),
+			array('id' => '5', 'autobus_id' => 3, 'ridic_id' => 1, 'linka_id' => 1, 'trzba' => 150, 'datum' => '2014-10-24'),
 		));
 	}
 }

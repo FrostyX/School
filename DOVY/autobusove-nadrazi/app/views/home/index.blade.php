@@ -17,7 +17,6 @@
 		<li><a href="/autobusy">Přehled autobusů</a> a jejich ujeté kilometry za zvolené časové období (od data po datum), seřazené volitelně podle označení autobusů nebo podle ujetých kilometrů</li>
 		<li><a href="/spoje">Výpis všech přímých spojů</a> mezi dvěma zvolenými zastávkami</li>
 		<li><a href="/trzba">Přehled o tržbách</a> na jednotlivých linkách za zvolený den</li>
-		<li><a href="/spotreba">Průměrná spotřeba paliva</a> jednotlivých autobusů</li>
+		<li><a href="/autobusy">Průměrná spotřeba paliva</a> jednotlivých autobusů</li>
 	</ul>
-
 @stop

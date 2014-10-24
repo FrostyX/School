@@ -9,11 +9,14 @@ class BaseModel
 		$table = static::$table;
 		$sql = "SELECT * FROM `$table` WHERE `id`=$id";
 		$results = DB::select($sql);
-		return static::setProperties($results[0]);
+		return $results[0];
+		//return static::setProperties($results[0]);
 	}
 
+	/*
 	protected static function setProperties($obj)
 	{
 		return $obj;
 	}
+	*/
 }

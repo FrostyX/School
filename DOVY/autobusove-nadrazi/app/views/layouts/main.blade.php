@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Bootstrap 101 Template</title>
+		<title>{{ $title }} | Autobusové nádraží</title>
 
 		<!-- Bootstrap -->
 		<link href="bundle/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -30,7 +30,7 @@
 						<li><a href="/autobusy">Autobusy</a></li>
 						<li><a href="/spoje">Spoje</a></li>
 						<li><a href="/trzba">Tržba</a></li>
-						<li><a href="/spotreba">Spotřeba</a></li>
+						<li><a href="/autobusy">Spotřeba</a></li>
 					</ul>
 				</div>
 			</div>
