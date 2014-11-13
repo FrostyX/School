@@ -12,7 +12,9 @@
 */
 
 Route::get('/', 'HomeController@getIndex');
-Route::get('/ridici', 'RidiciController@getIndex');
-Route::get('/autobusy', 'AutobusyController@getIndex');
+Route::get('/ridici/{sort?}/{id?}', 'RidiciController@getIndex');
+Route::get('/autobusy/{sort?}', 'AutobusyController@getIndex');
 Route::get('/spoje', 'SpojeController@getIndex');
 Route::get('/trzba', 'TrzbaController@getIndex');
+
+Route::post('/ridici/{sort?}/{id?}', 'RidiciController@postIndex');

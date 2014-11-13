@@ -2,12 +2,12 @@
 
 class AutobusyController extends BaseController {
 
-	public function getIndex()
+	public function getIndex($sort='id')
 	{
 		$od = '2014-10-20';
 		$do = '2014-10-22';
 
-		$autobusy = Autobus::all($od, $do);
+		$autobusy = Autobus::all($sort, $od, $do);
 
 		return View::make('autobusy.index')
 			->with('title', 'Autobusy')

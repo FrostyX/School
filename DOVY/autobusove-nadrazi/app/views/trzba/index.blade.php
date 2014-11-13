@@ -7,6 +7,8 @@
 		<thead>
 			<tr>
 				<th>Číslo linky</th>
+				<th>Odkud</th>
+				<th>Kam</th>
 				<th>Tržba</th>
 			</tr>
 		</thead>
@@ -14,6 +16,8 @@
 			@foreach($linky as $linka)
 			<tr>
 				<td>{{ $linka->cislo }}</td>
+				<td>{{ $linka->odkud->nazev }}</td>
+				<td>{{ $linka->kam->nazev }}</td>
 				<td>{{ $linka->trzba }} kč</td>
 			</tr>
 			@endforeach

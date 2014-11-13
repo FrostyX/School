@@ -7,9 +7,9 @@
 		<title>{{ $title }} | Autobusové nádraží</title>
 
 		<!-- Bootstrap -->
-		<link href="bundle/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="/bundle/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-		<link href="css/main.css" rel="stylesheet">
+		<link href="/css/main.css" rel="stylesheet">
 
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -43,8 +43,8 @@
 		</div>
 
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="bundle/jquery/js/jquery.min.js"></script>
+		<script src="/bundle/jquery/js/jquery.min.js"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="bundle/bootstrap/js/bootstrap.min.js"></script>
+		<script src="/bundle/bootstrap/js/bootstrap.min.js"></script>
 	</body>
 </html>

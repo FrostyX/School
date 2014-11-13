@@ -6,10 +6,10 @@
 		<table class="table table-striped">
 		<thead>
 			<tr>
-				<th>SPZ</th>
-				<th>Spotřeba</th>
-				<th>Ujel</th>
-				<th>Průměrná spotřeba</th>
+				<th><a href="/autobusy/spz">SPZ</a></th>
+				<th><a href="/autobusy/spotreba">Spotřeba</a></th>
+				<th><a href="/autobusy/ujel">Ujel</a></th>
+				<th><a href="/autobusy/prumernaSpotreba">Průměrná spotřeba</a></th>
 			</tr>
 		</thead>
 		<tbody>

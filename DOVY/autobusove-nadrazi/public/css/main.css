@@ -7,3 +7,8 @@ body
 	width: 800px;
 	margin: 0 auto;
 }
+
+span.thin
+{
+	font-weight: normal !important;
+}

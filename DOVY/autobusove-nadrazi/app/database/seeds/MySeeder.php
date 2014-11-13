@@ -75,10 +75,10 @@ class MySeeder extends Seeder
 			array('id' => '6',  'linka_id' => 1, 'zastavka_id' => 6, 'poradi' => 6),
 			array('id' => '7',  'linka_id' => 1, 'zastavka_id' => 7, 'poradi' => 7),
 			array('id' => '8',  'linka_id' => 1, 'zastavka_id' => 8, 'poradi' => 8),
-			// array('id' => '9',  'linka_id' => 1, 'zastavka_id' => 9),
-			// array('id' => '10', 'linka_id' => 1, 'zastavka_id' => 3),
-			// array('id' => '11', 'linka_id' => 1, 'zastavka_id' => 3),
-			// array('id' => '12', 'linka_id' => 1, 'zastavka_id' => 3),
+
+			array('id' => '9',  'linka_id' => 2, 'zastavka_id' => 8, 'poradi' => 1),
+			array('id' => '10', 'linka_id' => 2, 'zastavka_id' => 1, 'poradi' => 2),
+			array('id' => '11', 'linka_id' => 2, 'zastavka_id' => 9, 'poradi' => 3),
 		));
 
 		DB::table('spoj')->insert(array(
