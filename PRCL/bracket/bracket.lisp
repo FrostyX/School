@@ -33,15 +33,13 @@
         (format t "      License: ~a~%" (getf pkg :license))))))
 
 (defun render-help ()
-  (print "Usage:")
-  (print "  bracket install <pkgname>")
-  (print "  bracket remove <pkgname>")
-  (print "")
-  (print "  bracket show <pkgname>")
-  (print "  bracket installed")
-  (print "  bracket available")
-  (print "")
-  (print "  bracket log"))
+  (format t "Usage:~%")
+  (format t "  bracket install <pkgname>     Install specified package to the system~%")
+  (format t "  bracket remove <pkgname>      Remove specified package from the system~%~%")
+  (format t "  bracket show <pkgname>        Show informations about the package~%")
+  (format t "  bracket installed             List all installed packages~%")
+  (format t "  bracket available             List all available packages~%~%")
+  (format t "  bracket log                   Show bracket log~%"))
 
 
 ;;; Router
