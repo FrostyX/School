@@ -18,7 +18,7 @@
   (let ((spec (format nil "~a~a.lisp" *bracket-packages* pkg-name)))
     (if (not (probe-file spec))
         nil
-      (progn (load spec) *pkg*))))
+      (progn (setf *pkg* '()) (load spec :verbose nil) *pkg*))))
 
 (defun bracket-available ()
   "Return a names of available packages"
