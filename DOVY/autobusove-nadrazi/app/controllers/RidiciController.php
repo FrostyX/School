@@ -9,7 +9,7 @@ class RidiciController extends BaseController {
 
 		$ridici = Ridic::all($sort, $od, $do);
 		$ridic = Ridic::find($ridic_id);
-		$autobusy = Autobus::all($sort, $od, $do);
+		$autobusy = Autobus::all('id', $od, $do);
 
 		return View::make('ridici.index')
 			->with('title', 'Řidiči')
