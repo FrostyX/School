@@ -2,11 +2,15 @@
 (defvar *posix-argv*)
 (setf *posix-argv* 
       ;'(bracket show "foo")
-      '(bracket available)
+      ;'(bracket available)
+      '(bracket installed)
 )
 
 (defvar *bracket-packages*)
 (setf *bracket-packages* "/home/frostyx/docs/skola/upol/PRCL/bracket-packages/")
+
+(defvar *installed*)
+(setf *installed* "/home/frostyx/docs/skola/upol/PRCL/bracket/installed")
 
 (defvar *prefix*)
 (setf *prefix* "/home/frostyx/docs/skola/upol/PRCL/prefix")
@@ -26,6 +30,19 @@
    (mapcar (lambda (file) (pathname-name file)) 
            (directory *bracket-packages*)) 
    :test #'equal))
+
+(defun bracket-installed ()
+  (labels
+   ((parse (file)
+     "Load list of installed packages and their versions"
+     "Format: ((foo 1.0) (bar 2.1) (baz 0.2))"
+     "Inspired by https://groups.google.com/d/msg/comp.lang.lisp/dh_oJ8jJ6l4/CHKLqTJHA0oJ"
+     (with-open-file (in file)
+       (loop for line = (read-line in nil nil)
+             :while line
+             :collect (read-from-string (concatenate 'string "(" line ")"))))))
+
+  (parse *installed*)))
 
 
 ;;; Renderers
@@ -48,6 +65,13 @@
     (let ((pkg (bracket-show pkg-name)))
       (format t "  ~a  -  ~a~%" pkg-name (getf pkg :description)))))
 
+(defun render-installed ()
+  (format t "Installed packages:~%")
+  (dolist (pkg-cons (bracket-installed))
+    (let ((pkg (bracket-show (car pkg-cons))))
+      (format t "  ~a  -  ~a~%" (car pkg-cons) (getf pkg :description)))))
+
+
 (defun render-help ()
   (format t "Usage:~%")
   (format t "  bracket install <pkgname>     Install specified package to the system~%")
@@ -62,6 +86,7 @@
 (let ((renderer (case (cadr *posix-argv*)
                   ('show       #'render-show-package)
                   ('available  #'render-available)
+                  ('installed  #'render-installed)
                   ('help       #'render-help)
                   (otherwise   #'render-help))))
   (funcall renderer))
