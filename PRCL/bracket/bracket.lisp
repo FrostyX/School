@@ -1,6 +1,9 @@
 ;;; TODO - Use real argv instead
 (defvar *posix-argv*)
-(setf *posix-argv* '(bracket show "foo"))
+(setf *posix-argv* 
+      ;'(bracket show "foo")
+      '(bracket available)
+)
 
 (defvar *bracket-packages*)
 (setf *bracket-packages* "/home/frostyx/docs/skola/upol/PRCL/bracket-packages/")
@@ -17,6 +20,13 @@
         nil
       (progn (load spec) *pkg*))))
 
+(defun bracket-available ()
+  "Return a names of available packages"
+  (remove-duplicates 
+   (mapcar (lambda (file) (pathname-name file)) 
+           (directory *bracket-packages*)) 
+   :test #'equal))
+
 
 ;;; Renderers
 (defun render-show-package ()
@@ -32,6 +42,12 @@
         (format t "      Homepage: ~a~%" (getf pkg :homepage))
         (format t "      License: ~a~%" (getf pkg :license))))))
 
+(defun render-available ()
+  (format t "Available packages:~%")
+  (dolist (pkg-name (bracket-available))
+    (let ((pkg (bracket-show pkg-name)))
+      (format t "  ~a  -  ~a~%" pkg-name (getf pkg :description)))))
+
 (defun render-help ()
   (format t "Usage:~%")
   (format t "  bracket install <pkgname>     Install specified package to the system~%")
@@ -44,7 +60,8 @@
 
 ;;; Router
 (let ((renderer (case (cadr *posix-argv*)
-                  ('show     #'render-show-package)
-                  ('help     #'render-help)
-                  (otherwise #'render-help))))
+                  ('show       #'render-show-package)
+                  ('available  #'render-available)
+                  ('help       #'render-help)
+                  (otherwise   #'render-help))))
   (funcall renderer))
