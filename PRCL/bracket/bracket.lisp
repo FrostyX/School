@@ -61,16 +61,16 @@
 
 (defun render-available ()
   (format t "Available packages:~%")
-  (dolist (pkg-name (bracket-available))
-    (let ((pkg (bracket-show pkg-name)))
-      (format t "  ~a  -  ~a~%" pkg-name (getf pkg :description)))))
+  (render-list-oneline-packages (bracket-available)))
 
 (defun render-installed ()
   (format t "Installed packages:~%")
-  (dolist (pkg-cons (bracket-installed))
-    (let ((pkg (bracket-show (car pkg-cons))))
-      (format t "  ~a  -  ~a~%" (car pkg-cons) (getf pkg :description)))))
+  (render-list-oneline-packages (mapcar #'car (bracket-installed))))
 
+(defun render-list-oneline-packages (packages)
+  (dolist (pkg-name packages)
+    (let ((pkg (bracket-show pkg-name)))
+      (format t "  ~a  -  ~a~%" pkg-name (getf pkg :description)))))
 
 (defun render-help ()
   (format t "Usage:~%")
