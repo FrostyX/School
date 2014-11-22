@@ -1,3 +1,5 @@
+;;;; Bracket - The source based package manager written in Lisp
+
 ;;; TODO - Use real argv instead
 (defvar *posix-argv*)
 (setf *posix-argv*
