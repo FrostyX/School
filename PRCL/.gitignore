@@ -5,3 +5,5 @@
 *.lisp-temp
 *.lib
 *.*~
+
+bracket/installed
