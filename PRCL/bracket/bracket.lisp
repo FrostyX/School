@@ -1,9 +1,10 @@
 ;;; TODO - Use real argv instead
 (defvar *posix-argv*)
-(setf *posix-argv* 
+(setf *posix-argv*
+      '(bracket help)
       ;'(bracket show "foo")
       ;'(bracket available)
-      '(bracket installed)
+      ;'(bracket installed)
 )
 
 (defvar *bracket-packages*)
@@ -73,6 +74,8 @@
       (format t "  ~a  -  ~a~%" pkg-name (getf pkg :description)))))
 
 (defun render-help ()
+  (format t "Bracket~%")
+  (format t "  The source based package manager written in Lisp~%~%")
   (format t "Usage:~%")
   (format t "  bracket install <pkgname>     Install specified package to the system~%")
   (format t "  bracket remove <pkgname>      Remove specified package from the system~%~%")
