@@ -3,7 +3,8 @@
 ;;; TODO - Use real argv instead
 (defvar *posix-argv*)
 (setf *posix-argv*
-      '(bracket help)
+      '(bracket install "foo")
+      ;'(bracket help)
       ;'(bracket show "foo")
       ;'(bracket available)
       ;'(bracket installed)
@@ -25,7 +26,8 @@
   (let ((spec (format nil "~a~a.lisp" *bracket-packages* pkg-name)))
     (if (not (probe-file spec))
         nil
-      (progn (setf *pkg* '()) (load spec :verbose nil) *pkg*))))
+      (with-open-file (in spec)
+        (eval (read in))))))
 
 (defun bracket-available ()
   "Return a names of available packages"
@@ -47,14 +49,33 @@
 
   (parse *installed*)))
 
+(defun bracket-calculate-dependencies (packages)
+  "Return list of package names to which given packages depends on"
+  "packages -- list of package names"
+  (labels
+      ((direct-dependencies (packages)
+         (apply #'append 
+                (mapcar (lambda (pkg-name) 
+                          (getf (bracket-show pkg-name) :dependencies))
+                        packages))))
+    
+    ; TODO Implement recursive dependencies calculation
+    (remove-duplicates (direct-dependencies packages) :test #'equal)))
+
 
 ;;; Renderers
+(defun render-install ()
+  (let ((dependencies (bracket-calculate-dependencies (list (caddr *posix-argv*)))))
+    (format t "These packages will be installed:~%")    
+    (render-list-oneline-packages dependencies)
+    (print "INSTALLING")))
+
 (defun render-show-package ()
   (let* ((pkg-name (caddr *posix-argv*))
          (pkg (bracket-show pkg-name)))
 
     (if (not pkg)
-        (format nil "Package ~a not found" pkg-name)
+        (format t "Package ~a not found" pkg-name)
       (progn
         (format t "*  ~a~%" pkg-name)
         (format t "      Version: ~a~%" (getf pkg :version))
@@ -89,6 +110,7 @@
 
 ;;; Router
 (let ((renderer (case (cadr *posix-argv*)
+                  ('install    #'render-install)
                   ('show       #'render-show-package)
                   ('available  #'render-available)
                   ('installed  #'render-installed)
