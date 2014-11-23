@@ -60,7 +60,7 @@
                         packages))))
     
     ; TODO Implement recursive dependencies calculation
-    (remove-duplicates (direct-dependencies packages) :test #'equal)))
+    (reverse (remove-duplicates (append packages (direct-dependencies packages)) :test #'equal))))
 
 
 ;;; Renderers
