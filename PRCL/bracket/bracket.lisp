@@ -59,7 +59,7 @@
                           (getf (bracket-show pkg-name) :dependencies))
                         packages))))
     
-    ; TODO Implement recursive dependencies calculation
+    ;; TODO Implement recursive dependencies calculation
     (reverse (remove-duplicates (append packages (direct-dependencies packages)) :test #'equal))))
 
 
