@@ -28,9 +28,7 @@ int main()
 			cin >> input;
 
 			// Send to server
-			//write(pipeOut, input.c_str(), 1);
-			size_t count = write(pipeOut, "25", 2);
-			cout << count << endl;
+			size_t count = write(pipeOut, input.c_str(), BUFFSIZE);
 
 			// Print response
 			// char buff[BUFFSIZE];

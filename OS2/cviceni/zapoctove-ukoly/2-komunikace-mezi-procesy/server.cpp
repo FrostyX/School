@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <cstring>
 #include <errno.h>
+#include <fcntl.h>
 
 using namespace std;
 
@@ -25,6 +26,9 @@ int main()
 	int pipeIn = mkfifo(PIPE_IN, S_IRUSR | S_IWUSR);
 	int pipeOut = mkfifo(PIPE_OUT, S_IRUSR | S_IWUSR);
 
+	pipeIn = open(PIPE_IN, O_RDWR);
+	pipeOut = open(PIPE_OUT, O_RDWR);
+
 	if((pipeIn == -1) || (pipeOut == -1))
 	{
 		cout << "Unable to start server" << endl;
@@ -37,17 +41,9 @@ int main()
 			// Receive message from client
 			char buff[BUFFSIZE];
 			size_t count;
-			count = read(pipeIn, buff, BUFFSIZE);
-			// @FIXME
-			cout << count << endl;
-
-
-			string input;
-			// cout << "FOO" << endl;
-			// read(pipeIn, &input, 1);
-			// cout << input << endl;
-			cout << "BAR" << endl;
-			// system("sleep 2s");
+			count = read(pipeIn, &buff, BUFFSIZE);
+			buff[count] = '\0';
+			string input(buff);
 
 			if(input == "#")
 				break;
