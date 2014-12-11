@@ -24,20 +24,28 @@ int main()
 		while(true)
 		{
 			string input;
+			size_t count;
+
+			// Read number from user
 			cout << ">> ";
 			cin >> input;
 
 			// Send to server
-			size_t count = write(pipeOut, input.c_str(), BUFFSIZE);
+			count = write(pipeOut, input.c_str(), BUFFSIZE);
 
-			// Print response
-			// char buff[BUFFSIZE];
-			// size_t count;
-			// while((count = read(pipeIn, buff, BUFFSIZE)) <= 0) { ; }
-			// buff[count] = '\0';
-			// cout << buff;
+			if(input == "#")
+				break;
 
-			break;
+			// Get response from server
+			char buff[BUFFSIZE];
+			count = read(pipeIn, &buff, BUFFSIZE);
+			buff[count] = '\0';
+			input = buff;
+
+			if(input.length())
+			{
+				cout << input << endl;
+			}
 		}
 	}
 	return 0;

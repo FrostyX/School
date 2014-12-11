@@ -38,9 +38,10 @@ int main()
 	{
 		while(true)
 		{
+			size_t count;
+
 			// Receive message from client
 			char buff[BUFFSIZE];
-			size_t count;
 			count = read(pipeIn, &buff, BUFFSIZE);
 			buff[count] = '\0';
 			string input(buff);
@@ -48,6 +49,7 @@ int main()
 			if(input == "#")
 				break;
 
+			string output = "";
 			switch(input[0])
 			{
 				case '.': param.base = input; break;
@@ -64,10 +66,12 @@ int main()
 				default:
 				{
 					param.number = input;
-
-					// Send message to client
+					output = "BAR";
 				}
 			}
+
+			// Send message to client
+			count = write(pipeOut, output.c_str(), BUFFSIZE);
 		}
 	}
 
