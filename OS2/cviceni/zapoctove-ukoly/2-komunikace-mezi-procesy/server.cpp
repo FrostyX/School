@@ -22,8 +22,8 @@ struct Param
 #define PIPE_OUT "/tmp/PrevodCiselW"
 #define BUFFSIZE 512
 
-string dec2num(string dec);
 string num2dec(string num);
+string dec2num(string dec);
 
 
 int main()
@@ -92,10 +92,17 @@ int main()
 string num2dec(string num)
 {
 	int dec = 0;
-	for(int i=num.length()-1, j=0; i>=0; i--, j++)
+	for(int i=num.length()-1, exp=1; i>=0; i--, exp*=param.base)
 	{
-		// http://stackoverflow.com/a/13534586/3285282
-		dec += (num[i]-'0') * pow(param.base, j);
+		if((num[i] >= 'a') || (num[i] >= 'A'))
+		{
+			char c = num[i] >= 'a' ? 'a' : 'A';
+			dec += (num[i] - (c - 10)) * exp;
+		}
+		else
+		{
+			dec += (num[i] - '0') * exp;
+		}
 	}
 	char output[BUFFSIZE];
 	sprintf(output, "%d", dec);
