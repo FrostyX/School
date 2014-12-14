@@ -10,6 +10,7 @@ using namespace std;
 #define PIPE_OUT "/tmp/PrevodCiselR"
 #define BUFFSIZE 512
 
+
 int main()
 {
 	int pipeIn = open(PIPE_IN, O_RDWR);

@@ -22,39 +22,9 @@ struct Param
 #define PIPE_OUT "/tmp/PrevodCiselW"
 #define BUFFSIZE 512
 
+string dec2num(string dec);
+string num2dec(string num);
 
-string num2dec(string num)
-{
-	int dec = 0;
-	for(int i=num.length()-1, j=0; i>=0; i--, j++)
-	{
-		// http://stackoverflow.com/a/13534586/3285282
-		dec += (num[i]-'0') * pow(param.base, j);
-	}
-	char output[BUFFSIZE];
-	sprintf(output, "%d", dec);
-	return output;
-}
-
-string dec2num(string dec)
-{
-	char num[BUFFSIZE];
-	int d = atoi(dec.c_str());
-	int i = 0;
-
-	while(d != 0)
-	{
-		char modulo[BUFFSIZE];
-		sprintf(modulo, "%d", d % param.target);
-		num[i] = modulo[0];
-		d /= param.target;
-		i++;
-	}
-	num[i] = '\0';
-	string output(num);
-	reverse(output.begin(), output.end());
-	return output;
-}
 
 int main()
 {
@@ -101,8 +71,6 @@ int main()
 				}
 				default:
 				{
-					cout << "base: " << param.base << endl;
-					cout << "target: " << param.target << endl;
 					output = dec2num(num2dec(input));
 				}
 			}
@@ -118,4 +86,39 @@ int main()
 
 	cout << "Quiting server" << endl;
 	return 0;
+}
+
+
+string num2dec(string num)
+{
+	int dec = 0;
+	for(int i=num.length()-1, j=0; i>=0; i--, j++)
+	{
+		// http://stackoverflow.com/a/13534586/3285282
+		dec += (num[i]-'0') * pow(param.base, j);
+	}
+	char output[BUFFSIZE];
+	sprintf(output, "%d", dec);
+	return output;
+}
+
+string dec2num(string dec)
+{
+	char num[BUFFSIZE];
+	int offset = (param.uppercase ? 'A' : 'a') - '9' - 1;
+	int d = atoi(dec.c_str());
+	int i = 0;
+
+	while(d != 0)
+	{
+		char modulo[BUFFSIZE];
+		sprintf(modulo, "%d", d % param.target);
+		num[i] = strlen(modulo) == 1 ? modulo[0] : (atoi(modulo) + '0') + offset;
+		d /= param.target;
+		i++;
+	}
+	num[i] = '\0';
+	string output(num);
+	reverse(output.begin(), output.end());
+	return output;
 }
