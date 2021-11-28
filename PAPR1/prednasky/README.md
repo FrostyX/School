@@ -12,3 +12,8 @@
 10. Kombinatorika na seznamech, reprezentace stromů a množin
 11. Kvazikvotování a manipulace se symbolickými daty
 12. Čistě funkcionální interpret Scheme
+
+
+### Video
+
+https://apollo.inf.upol.cz/owncloud/index.php/s/SVd5vbTtHm3EAsD
